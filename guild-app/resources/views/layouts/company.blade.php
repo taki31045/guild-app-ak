@@ -16,17 +16,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<style>
-    .img{
-        background-image: url("https://i.pinimg.com/736x/39/84/99/398499fa5a036bb790df2be70831423f.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
-</style>
-<body class="img">
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
