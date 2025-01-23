@@ -2,9 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
+// create front
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/create', function () {
+    return view('companies.create');
+});
+Route::get('/company', function () {
+    return view('companies.dashboard');
+});
+//
 
 Route::get('/admindashboard', function () {
     return view('admins/dashbord');
