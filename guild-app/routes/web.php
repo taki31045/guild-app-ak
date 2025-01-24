@@ -15,7 +15,7 @@ Route::get('/company', function () {
 //
 
 Route::get('/admindashboard', function () {
-    return view('admins/dashbord');
+    return view('admins/dashboard');
 });
 
 Route::prefix('admin')->group(function () {

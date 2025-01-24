@@ -1,9 +1,13 @@
 .list-group-item.active {
-    background-color: #6c757d !important;  /* グレーの背景色 */
-    color: white !important;              /* 白い文字 */
-    border-color: #6c757d !important;     /* 境界線の色 */
+    background-color: #6c757d !important;
+    color: white !important;
+    border-color: #6c757d !important;
     }
 
     .icon-lg {
-        font-size: 6rem;
+        font-size: 6rem; 
+    }
+
+    table tr {
+        height: auto;
     }
