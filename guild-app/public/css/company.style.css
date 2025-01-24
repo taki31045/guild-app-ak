@@ -1,0 +1,22 @@
+
+.content{
+ position: relative;
+}
+.in-1{
+    position: absolute;
+    width: 500px;
+    top: 250px;
+    left: -200px;
+    overflow: hidden;
+}
+.in-2{
+    position: absolute;
+    width: 500px;
+    top: 350px;
+}
+.in-3{
+    position: absolute;
+    width: 500px;
+    top: 450px;
+    left: 200px;
+}
