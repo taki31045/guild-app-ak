@@ -9,6 +9,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('users.dashbord');
 });
+Route::get('/job-details', function () {
+    return view('users.job-details');
+});
 
 Auth::routes();
 

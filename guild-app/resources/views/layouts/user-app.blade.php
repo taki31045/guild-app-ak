@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/users/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/users/dashboard.css')}}">
+    <link rel="stylesheet" href="{{asset('css/users/job-details.css')}}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,7 +27,9 @@
 <body>
     <div id="app">
         <header>
-            <h1>GUILD</h1>
+            <a href="/dashboard" class="text-decoration-none text-black">
+                <h1>GUILD</h1>
+            </a>
 
             <nav>
                 <ul>

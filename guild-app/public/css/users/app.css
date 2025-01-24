@@ -1,7 +1,11 @@
 html body{
-    background: url('/images/user-back.jpeg') ;
+    background: url('/images/user-back.jpeg');
     background-size: 50%;
+    width: 100%;
+    overflow-x: hidden;
 }
+
+
 
 header{
     margin: 2rem 3rem;

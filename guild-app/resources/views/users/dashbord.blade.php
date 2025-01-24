@@ -55,8 +55,15 @@
         <div class="col-7 p-5">
             <div class="suggested-job row">
                 <h3>Recent Job</h3>
-                <div class="job">
-                    <h4>Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h4>
+                <a class="job" href="/job-details">
+                    <div class="row">
+                        <div class="col-11">
+                            <h4>Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h4>
+                        </div>
+                        <div class="col-1">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
                     <p class="fw-bold m-0">Kredo Company</p>
                     <p class="m-0">$1000</p>
                     <p>
@@ -68,7 +75,7 @@
                     <span class="skill-tag">CSS</span>
                     <span class="skill-tag">PHP</span>
                     <span class="skill-tag">Javascript</span>
-                </div>
+                </a>
                 <div class="job">
                     <h4>Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h4>
                     <p class="fw-bold m-0">Kredo Company</p>
