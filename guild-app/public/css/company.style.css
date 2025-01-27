@@ -2,34 +2,107 @@
 .content{
  position: relative;
  overflow: hidden;
+
+}
+.content-1{
+ position: relative;
+ overflow: hidden;
+ background-image: url("{{ asset('images/myimage.jpg') }}");
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 h1{
     position: relative;
     left: 140px;
-    top: 100px;
+    top: 50px;
 }
 .in-1{
     position: absolute;
     width: 500px;
-    top: 200px;
+    top: 50px;
     left: -100px;
 }
 .in-2{
     position: absolute;
     width: 700px;
-    top: 350px;
+    top: 200px;
     left: -150px;
 
-}
-img{
-    position: relative;
-    overflow: hidden;
 }
 .in-3{
     position: absolute;
     width: 900px;
-    top: 500px;
+    top: 350px;
     left: -200px;
     /* left: 250px; */
 }
+.create-container {
+    position: relative;
+    overflow: visible; /* Ensure content inside can overflow */
+}
 
+.in-4 {
+    position: absolute;
+    overflow: visible; /* Allow the child to show its overflow */
+    width: 500px;
+    top: 150px;
+    left: -100px;
+    z-index: 10; /* Ensure it appears above overlapping elements */
+}
+.in-5{
+    position: absolute;
+    width: 1800px;
+    top: 600px;
+    left: -100px;
+}
+.in-6{
+    position: absolute;
+    width: 500px;
+    top: 700px;
+    left: 1200px;
+}
+
+/* Scrollable container */
+.scrolling-container {
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+/* Scrollable contents */
+.scrolling-contents {
+    display: flex;          /* Align items horizontally */
+    gap: 20px;              /* Space between cards */
+    align-items: flex-start; /* Align items at the top */
+}
+
+/* Card styling: Shorter height */
+.items {
+    flex: 0 0 300px;        /* Keep the card width fixed */
+    padding: 10px;          /* Reduce padding to shrink the height */
+    border: 1px solid #ddd; /* Add a subtle border */
+    border-radius: 6px;     /* Rounded corners */
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #D9D9D9!important; /* White background */
+}
+
+/* Card image: Shrink height */
+.items img {
+    height: 200px;          /* Reduce image height */
+    object-fit: cover;      /* Ensure the image fits within the dimensions */
+    border-radius: 4px;     /* Optional: Round image corners */
+}
+
+
+/* Paragraph inside the card */
+.paragraph {
+    white-space: nowrap;       /* Prevent wrapping */
+    overflow: hidden;          /* Hide overflowing text */
+    text-overflow: ellipsis;   /* Add ellipsis for truncated text */
+}
+
+/* Tags inside flex-wrap container */
+.d-flex p {
+    margin-bottom: 4px; /* Space between tags */
+    font-size: 12px;    /* Smaller text for tags */
+    padding: 4px 8px;   /* Reduce padding for tags */
+    border-radius: 4px; /* Rounded corners for tags */
+}

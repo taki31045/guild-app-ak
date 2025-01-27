@@ -3,10 +3,14 @@
 @section('title', 'Create')
 
 @section('content')
-    <div class="justify-center-content">
+<div class=" in-4 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
+</div>
+<div class=" in-5 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
+</div>
+<div class=" in-6 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
+</div>
+    <div class="create-container justify-center-content">
         <div class="card rounded  w-50 m-auto mt-3">
-            <span class="material-symbols-rounded">
-                </span>
 
                 
 

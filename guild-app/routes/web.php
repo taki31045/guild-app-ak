@@ -17,6 +17,9 @@ Route::get('/company', function () {
 Route::get('/admindashboard', function () {
     return view('admins/dashbord');
 });
+Route::get('/message', function () {
+    return view('companies/message');
+});
 
 Route::prefix('admin')->group(function () {
     Route::view('freelancer', 'admins.freelancer')->name('admin.freelancer');
