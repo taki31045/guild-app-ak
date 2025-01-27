@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col-9">
-                <h1 class="border-bottom"  style="margin-left: -100px;">User name</h1>
+                <h1 class="border-bottom"  style="margin-left: -100px;">User name name</h1>
 
                 <div style="margin-top: 90px; overflow-y: auto;  height: 600px; padding-right: 10px;"> 
                     <!-- Left Column -->
