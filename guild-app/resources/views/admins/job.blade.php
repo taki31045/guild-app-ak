@@ -108,4 +108,13 @@
     </div>
 </div>
 {{-- {{ $all_users->links() }} --}}
+<!-- Pagination -->
+<div class="pagination">
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <span>...</span>
+    <a href="#">67</a>
+    <a href="#">68</a>
+  </div>
 @endsection

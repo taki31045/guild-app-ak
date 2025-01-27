@@ -12,6 +12,10 @@ Route::get('/create', function () {
 Route::get('/company', function () {
     return view('companies.dashboard');
 });
+Route::get('/profile', function () {
+    return view('companies.profile');
+});
+
 //
 
 Route::get('/admindashboard', function () {
@@ -32,3 +36,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
