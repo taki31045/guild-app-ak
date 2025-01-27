@@ -2,12 +2,18 @@
 
 @section('title', 'Job Details')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/users/job-details.css')}}">
+@endsection
+
 @section('content')
     <div class="row justify-content-center mb-5">
         <div class="col-8">
             <div class="job-header">
                 <h3>JOB DETAILS</h3>
-                <i class="fa-regular fa-heart fa-2x like"></i>
+                <a href="#">
+                    <i class="fa-regular fa-heart fa-2x like"></i>
+                </a>
             </div>
             <div class="details mt-5">
                 <div class="row">

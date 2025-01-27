@@ -2,7 +2,12 @@
 
 @section('title', 'Dashboard for Freelancer')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/users/dashboard.css')}}">
+@endsection
+
 @section('content')
+
     <div class="row justify-content-center mb-5">
         <div class="col-8">
             <h2>ON GOING</h2>
@@ -52,6 +57,8 @@
                 </ul>
             </div>
         </div>
+
+
         <div class="col-7 p-5">
             <div class="suggested-job row">
                 <h3>Recent Job</h3>

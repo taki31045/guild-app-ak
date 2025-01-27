@@ -12,6 +12,9 @@ Route::get('/dashboard', function () {
 Route::get('/job-details', function () {
     return view('users.job-details');
 });
+Route::get('/profile', function () {
+    return view('users.profile');
+});
 
 Auth::routes();
 

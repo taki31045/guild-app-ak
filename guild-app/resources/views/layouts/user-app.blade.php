@@ -15,8 +15,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/users/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/users/dashboard.css')}}">
-    <link rel="stylesheet" href="{{asset('css/users/job-details.css')}}">
+
+    @yield('styles')
+
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,7 +38,7 @@
                     <li><a href="#">About</a></li>
                     <li><a href="#">Project</a></li>
                     <li><a href="#">Message</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="/profile">Profile</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
