@@ -12,10 +12,14 @@ Route::get('/create', function () {
 Route::get('/company', function () {
     return view('companies.dashboard');
 });
+Route::get('/profile', function () {
+    return view('companies.profile');
+});
+
 //
 
 Route::get('/admindashboard', function () {
-    return view('admins/dashbord');
+    return view('admins/dashboard');
 });
 
 Route::prefix('admin')->group(function () {
@@ -42,4 +46,3 @@ Route::get('/profile', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
