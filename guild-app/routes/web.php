@@ -15,6 +15,12 @@ Route::get('/job-details', function () {
 Route::get('/profile', function () {
     return view('users.profile');
 });
+Route::get('/edit-todo', function () {
+    return view('users.edit-todo');
+});
+Route::get('/edit-profile', function () {
+    return view('users.edit-profile');
+});
 
 Auth::routes();
 
