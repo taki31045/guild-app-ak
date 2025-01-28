@@ -76,6 +76,8 @@
                         </div>
                         <div class="bubble">
                             Hello! I'm interested in this job.
+<<<<<<< HEAD
+=======
                             Hello! I'm interested in this job.
                             Hello! I'm interested in this job.
                             Hello! I'm interested in this job.
@@ -83,6 +85,7 @@
                             Hello! I'm interested in this job.
                             Hello! I'm interested in this job.
                             Hello! I'm interested in this job.
+>>>>>>> upstream/main
                         </div>
                     </div>
                     <div class="message user">

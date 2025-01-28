@@ -17,7 +17,7 @@
         <div class="col-9">
                 <h1 class="border-bottom"  style="margin-left: -100px;">User name name</h1>
 
-                <div style="margin-top: 90px; overflow-y: auto;  height: 600px; padding-right: 10px;"> 
+                <div style="margin-top: 90px; overflow-y: auto;  height: 550px; padding-right: 10px;"> 
                     <!-- Left Column -->
                     <div class=" d-flex align-items-start">
                         <i class="fa-solid fa-circle-user fa-3x"></i>
@@ -74,9 +74,19 @@
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error veritatis voluptatum, labore, sunt fugit perspiciatis cum debitis quos consequuntur maiores exercitationem ullam molestiae fuga eius minus maxime optio harum quis?
                         </p>
                     </div>
+
                     
-                
-    
-        </div>
+                    
+                    
+                </div>
+                <form action="" method="">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <!-- Message input field -->
+                        <input type="text" name="message" class="form-control w-100 m-2 rounded-pill py-2 px-3" placeholder="Type your message...">
+                        
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-secondary rounded-pill px-4 py-2 ">Send</button>
+                    </div>
+                </form>
     </div>
 @endsection
