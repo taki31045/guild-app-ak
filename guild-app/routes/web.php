@@ -12,10 +12,14 @@ Route::get('/create', function () {
 Route::get('/company', function () {
     return view('companies.dashboard');
 });
+Route::get('/profile', function () {
+    return view('companies.profile');
+});
+
 //
 
 Route::get('/admindashboard', function () {
-    return view('admins/dashbord');
+    return view('admins/dashboard');
 });
 Route::get('/message', function () {
     return view('companies/message');
@@ -31,6 +35,16 @@ Route::prefix('admin')->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', function () {
+    return view('users.dashbord');
+});
+Route::get('/job-details', function () {
+    return view('users.job-details');
+});
+Route::get('/profile', function () {
+    return view('users.profile');
+});
 
 Auth::routes();
 
