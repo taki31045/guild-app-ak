@@ -76,6 +76,13 @@
                         </div>
                         <div class="bubble">
                             Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
+                            Hello! I'm interested in this job.
                         </div>
                     </div>
                     <div class="message user">
