@@ -1,0 +1,43 @@
+.job-list h2{
+    border-bottom: 2px solid black;
+}
+
+.job{
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 30px;
+    border-bottom: 1px solid #9a9797;
+}
+.job-detail-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.job-date{
+    background: #555;
+    color: white;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-detail{
+    flex-grow: 1;
+}
+
+.like{
+    /* margin-left: auto; */
+    color: #d9534f;
+}
+
+.skill-tag{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 2px 5px;
+    background-color: #D9D9D9;
+    color: black;
+    margin-right: 5px;
+}
