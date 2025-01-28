@@ -46,6 +46,13 @@ Route::get('/profile', function () {
     return view('users.profile');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/edit-todo', function () {
+    return view('users.edit-todo');
+});
+Route::get('/edit-profile', function () {
+    return view('users.edit-profile');
+});
+
+
+

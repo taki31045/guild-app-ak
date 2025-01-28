@@ -47,7 +47,16 @@
             </div>
             {{-- Todo List --}}
             <div class="todo row">
+<<<<<<< HEAD
                 <h3>ToDo List</h3>
+=======
+                <div class="todo-header">
+                    <h3>ToDo List</h3>
+                    <a href="/edit-todo" class="text-black">
+                        <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                    </a>
+                </div>
+>>>>>>> upstream/main
                 <ul>
                     <li>Task 1</li>
                     <li>Task 2</li>
