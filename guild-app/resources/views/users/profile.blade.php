@@ -20,7 +20,7 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
-                    <a href="/edit-user-profile" class="text-black">
+                    <a href="/edit-profile" class="text-black">
                         <i class="fa-solid fa-pen-to-square edit-icon"></i>
                     </a>
                 </div>

@@ -45,6 +45,8 @@ Route::get('/job-details', function () {
 Route::get('/user-profile', function () {
     return view('users.profile');
 });
+
+
 Route::get('/edit-todo', function () {
     return view('users.edit-todo');
 });
@@ -58,6 +60,5 @@ Route::get('/user-message', function () {
     return view('users.message');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
