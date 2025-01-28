@@ -36,20 +36,26 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
+Route::get('/user-dashboard', function () {
     return view('users.dashbord');
 });
 Route::get('/job-details', function () {
     return view('users.job-details');
 });
-Route::get('/profile', function () {
+Route::get('/user-profile', function () {
     return view('users.profile');
 });
 Route::get('/edit-todo', function () {
     return view('users.edit-todo');
 });
-Route::get('/edit-profile', function () {
+Route::get('/edit-user-profile', function () {
     return view('users.edit-profile');
+});
+Route::get('/user-job-list', function () {
+    return view('users.job-list');
+});
+Route::get('/user-message', function () {
+    return view('users.message');
 });
 
 Auth::routes();

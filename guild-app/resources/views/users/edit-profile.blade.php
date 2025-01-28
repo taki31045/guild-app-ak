@@ -58,6 +58,8 @@
 
             <script src="{{asset('js/selected-language.js')}}"></script>
 
+            {{-- create new skill form --}}
+
 
             <button type="submit" class="btn btn-dark w-100 mt-4">Update</button>
         </form>

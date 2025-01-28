@@ -29,16 +29,16 @@
 <body>
     <div id="app">
         <header>
-            <a href="/dashboard" class="text-decoration-none text-black">
+            <a href="/user-dashboard" class="text-decoration-none text-black">
                 <h1>GUILD</h1>
             </a>
 
             <nav>
                 <ul>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Project</a></li>
-                    <li><a href="#">Message</a></li>
-                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/user-job-list">Project</a></li>
+                    <li><a href="/user-message">Message</a></li>
+                    <li><a href="/user-profile">Profile</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
