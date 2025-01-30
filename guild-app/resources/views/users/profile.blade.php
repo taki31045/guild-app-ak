@@ -20,13 +20,19 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
-                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                    <a href="/edit-user-profile" class="text-black">
+                        <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                    </a>
                 </div>
                 <div class="profile-content mb-3">
                     <table class="detail">
                         <tr>
                             <th class="pe-5">Username</th>
                             <td>Ryunosuke</td>
+                        </tr>
+                        <tr>
+                            <th class="pe-5">Name</th>
+                            <td>Ryunosuke Takabayashi</td>
                         </tr>
                         <tr>
                             <th>Email</th>

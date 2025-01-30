@@ -1,5 +1,5 @@
-.todo-list{
-    height: ;
+main{
+    margin-top: 3rem;
 }
 
 .ongoing{
@@ -14,6 +14,12 @@
     border-radius: 16px;
     padding: 10px;
     box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+}
+
+.todo-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .todo{

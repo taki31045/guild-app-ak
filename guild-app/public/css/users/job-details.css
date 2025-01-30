@@ -1,3 +1,7 @@
+main{
+    margin-top: 3rem;
+}
+
 .comments{
     margin-top: 20px;
     padding: 10px;
@@ -90,4 +94,13 @@
 .request-btn:hover{
     background-color: rgb(49, 48, 48);
 
+}
+
+.skill-tag{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 2px 5px;
+    background-color: #D9D9D9;
+    color: black;
+    margin-right: 5px;
 }

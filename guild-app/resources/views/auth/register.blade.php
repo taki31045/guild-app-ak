@@ -1,9 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body{
+        background-image: url(" {{ asset('images/Ancient-Roman-Colosseum2.jpg')}}");
+        background-position: top;
+    }
+</style>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-6">
+            <img src="{{asset('images/')}}" alt="">
+        </div>
+        <div class="col-6">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 

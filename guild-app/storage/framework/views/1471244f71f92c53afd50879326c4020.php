@@ -1,8 +1,6 @@
-@extends('layouts.company')
+<?php $__env->startSection('title', 'Message'); ?>
 
-@section('title', 'Message')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-3 " style="background-color: #C976DE; height: 800px; overflow-y: auto; padding-right: 10px;">
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
@@ -89,4 +87,5 @@
                     </div>
                 </form>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.company', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/ujibayashiryunosuke/Desktop/collabrate work/guild/batch9-guild-app/guild-app-final/batch9-guild-app/guild-app/resources/views/companies/message.blade.php ENDPATH**/ ?>
