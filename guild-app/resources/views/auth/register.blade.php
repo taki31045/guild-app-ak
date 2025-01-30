@@ -3,18 +3,20 @@
 @section('content')
 <style>
     body{
-        background-image: url(" {{ asset('images/Ancient-Roman-Colosseum2.jpg')}}");
+        background-image: url("{{ asset('images/Ancient-Roman-Colosseum2.jpg')}}");
         background-position: top;
+    }
+    .card{
+        background-color: rgba(255, 255, 255, 0.6);
+
+    }
+    input{
+        background-color: rgba(255, 255, 255, 0.6) !important;
     }
 </style>
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <img src="{{asset('images/')}}" alt="">
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card w-50 m-auto" style="margin-top: 170px !important;">
+                <div class="card-header text-center" >{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -72,15 +74,14 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn w-100 bg-secondary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+
     </div>
 </div>
 @endsection

@@ -15,6 +15,10 @@ Route::get('/company', function () {
 Route::get('/profile', function () {
     return view('companies.profile');
 });
+Route::get('/evaluation', function () {
+    return view('companies.evaluation');
+});
+
 
 //
 
