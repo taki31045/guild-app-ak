@@ -5,10 +5,8 @@ html body{
     overflow-x: hidden;
 }
 
-
-
 header{
-    margin: 2rem 3rem;
+    margin: 2rem 2rem 0 2rem;
 }
 
 header h1{
@@ -71,10 +69,16 @@ nav ul li a{
 nav ul li a:hover{
     color: brown;
 }
+/* <<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main */
 
 
 .selected-option {
     font-weight: bold;
 }
+/* <<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main */

@@ -2,6 +2,10 @@
 
 @section('title', 'Edit Profile')
 
+@section('styles')
+    <link rel="stylesheet" href="css/users/profile.css">
+@endsection
+
 @section('content')
 <div class="row justify-content-center">
     <div class="col-6 border border-black rounded shadow py-5 px-5">
@@ -31,36 +35,38 @@
             <label for="facebook" class="form-label">Facebook</label>
             <input type="text" name="facebook" class="form-control mb-4 w-50" value="">
 
-            <div class="row">
-                <div class="col-6">
-                    <label for="language" class="form-label">Skill</label>
-                    <select id="language" name="language" class="form-select mb-5 h-75" multiple>
-                        <option value="" selected hidden>Please select skill</option>
-                        <option value="HTML">HTML</option>
-                        <option value="Python">Python</option>
-                        <option value="CSS">CSS</option>
-                        <option value="Javascript">Javascript</option>
-                        <option value="PHP">PHP</option>
-                        <option value="Ruby">Ruby</option>
-                        <option value="C++">C++</option>
-                        <option value="C#">C#</option>
-                        <option value="Go">Go</option>
-                        <option value="Java">Java</option>
-                        <option value="Laravel">Laravel</option>
-                        <option value="React.js">React.js</option>
-                    </select>
+            <div class="select-container">
+                <label for="select-skill" class="form-label">Select your skills</label>
+                <div class="custom-select" onclick="toggleDropdown()">
+                    <span>Select Language</span>
+                    <span><></span>
                 </div>
-                <div class="col-6 my-4">
-                    <div id="selectedLanguage"></div>
+                <div class="dropdown">
+                    <div data-value="" selected hidden>Please select skill</div>
+                    <div data-value="HTML">HTML</div>
+                    <div data-value="Python">Python</div>
+                    <div data-value="CSS">CSS</div>
+                    <div data-value="Javascript">Javascript</div>
+                    <div data-value="PHP">PHP</div>
+                    <div data-value="Ruby">Ruby</div>
+                    <div data-value="C++">C++</div>
+                    <div data-value="C#">C#</div>
+                    <div data-value="Go">Go</div>
+                    <div data-value="Java">Java</div>
+                    <div data-value="Laravel">Laravel</div>
+                    <div data-value="React.js">React.js</div>
                 </div>
             </div>
 
-
-            <script src="{{asset('js/selected-language.js')}}"></script>
-
-
+            <div class="selected-tags"></div>
+            <input type="hidden" name="languages" id="selectedLanguages">
             <button type="submit" class="btn btn-dark w-100 mt-4">Update</button>
+
+            {{-- create new skill form --}}
+
+
         </form>
     </div>
 </div>
+<script src="{{asset('js/selected-language.js')}}"></script>
 @endsection

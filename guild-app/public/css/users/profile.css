@@ -1,3 +1,7 @@
+main{
+    margin-top: 3rem;
+}
+
 .profile-container{
     display: flex;
     justify-content: center;
@@ -180,5 +184,75 @@
     padding: 15px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+}
+
+.select-container{
+    width: 335px;
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select{
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown{
+    position: absolute;
+    top: -30px;
+    left: 100%;
+    width: 200px;
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+
+.dropdown div{
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+
+.selected-option{
+    background: #0073e6;
+    color: white;
+}
+
+.selected-tags{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag{
+    background: #909294;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.tag span{
+    font-weight: bold;
+    cursor: pointer;
 }
 

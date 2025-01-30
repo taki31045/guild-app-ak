@@ -20,13 +20,9 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
-<<<<<<< HEAD
-                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
-=======
-                    <a href="/edit-profile" class="text-black">
+                    <a href="/edit-user-profile" class="text-black">
                         <i class="fa-solid fa-pen-to-square edit-icon"></i>
                     </a>
->>>>>>> upstream/main
                 </div>
                 <div class="profile-content mb-3">
                     <table class="detail">
@@ -35,13 +31,10 @@
                             <td>Ryunosuke</td>
                         </tr>
                         <tr>
-<<<<<<< HEAD
-=======
                             <th class="pe-5">Name</th>
                             <td>Ryunosuke Takabayashi</td>
                         </tr>
                         <tr>
->>>>>>> upstream/main
                             <th>Email</th>
                             <td>krd2025@kredo.co.jp</td>
                         </tr>
