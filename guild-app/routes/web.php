@@ -59,6 +59,9 @@ Route::get('/user-job-list', function () {
 Route::get('/user-message', function () {
     return view('users.message');
 });
+Route::get('/confirm', function () {
+    return view('email.confirm');
+});
 
 
 
