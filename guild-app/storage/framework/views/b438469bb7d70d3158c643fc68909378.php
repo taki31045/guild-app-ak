@@ -1,15 +1,20 @@
 <?php $__env->startSection('content'); ?>
 <style>
     body{
-        background-image: url(" <?php echo e(asset('images/Ancient-Roman-Colosseum2.jpg')); ?>");
+        background-image: url("<?php echo e(asset('images/Ancient-Roman-Colosseum2.jpg')); ?>");
         background-position: top;
+    }
+    .card{
+        background-color: rgba(255, 255, 255, 0.6);
+
+    }
+    input{
+        background-color: rgba(255, 255, 255, 0.6) !important;
     }
 </style>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"><?php echo e(__('Register')); ?></div>
+            <div class="card w-50 m-auto" style="margin-top: 170px !important;">
+                <div class="card-header text-center" ><?php echo e(__('Register')); ?></div>
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('register')); ?>">
@@ -109,7 +114,7 @@ unset($__errorArgs, $__bag); ?>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn w-100 bg-secondary">
                                     <?php echo e(__('Register')); ?>
 
                                 </button>
@@ -117,8 +122,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+
     </div>
 </div>
 <?php $__env->stopSection(); ?>

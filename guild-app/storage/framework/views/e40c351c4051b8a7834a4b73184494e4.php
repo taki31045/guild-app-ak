@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>" style="<?php echo e(request()->is('message') ? 'height: 100vh; overflow: hidden;' :''); ?>">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="<?php echo e(asset('css/company.style.css')); ?>">
 
@@ -20,7 +19,7 @@
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
 </head>
-<body>
+<body style=" background-color: #f4f4f9; ">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
             <div class="container">
@@ -79,7 +78,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="py-4">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>

@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="content-1 row" style="height:500px; background-image: url('{{ asset('images/myimage.jpg') }}');">
+    <div class="content-1 row" style="height:500px; ('{{ asset('images/myimage.jpg') }}');">
         <div class="col-6">
             <div class=" in-1 border rounded-pill p-4 shadow-lg opacity-75" style="background-color: #C976DE; ">
-                <i class="fa-solid fa-circle  float-end display-5 "></i>
+                <i class="fa-solid fa-circle  float-end display-5"></i>
             </div>
             <br>
             <div class=" in-2 border rounded-pill p-4 shadow-lg opacity-75" style="background-color: #C976DE;">
