@@ -1,0 +1,27 @@
+    .create-container {
+       position: relative;
+       overflow: visible; /* Ensure content inside can overflow */
+   }
+   
+   .line-1 {
+       position: absolute;
+       overflow: visible; /* Allow the child to show its overflow */
+       width: 500px;
+       top: 150px;
+       left: -100px;
+       z-index: 10; /* Ensure it appears above overlapping elements */
+   }
+   .line-2 {
+       position: absolute;
+       width: 1800px;
+       top: 600px;
+       left: -100px;
+   }
+   .line-3 {
+       position: absolute;
+       width: 500px;
+       top: 700px;
+       left: 1200px;
+   }
+
+   

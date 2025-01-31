@@ -82,3 +82,17 @@ body {
         color: #fff; 
         border: 1px solid #000; 
       }
+
+    /* Tags inside flex-wrap container */
+    .d-flex p {
+        margin-bottom: 4px; /* Space between tags */
+        font-size: 12px;    /* Smaller text for tags */
+        padding: 4px 8px;   /* Reduce padding for tags */
+        border-radius: 4px; /* Rounded corners for tags */
+    }
+
+    h1{
+        position: relative;
+        left: 140px;
+        top: 50px;
+    }
