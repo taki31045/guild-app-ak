@@ -12,7 +12,7 @@ Route::get('/create', function () {
 Route::get('/company', function () {
     return view('companies.dashboard');
 });
-Route::get('/profile', function () {
+Route::get('company/profile', function () {
     return view('companies.profile');
 });
 Route::get('/evaluation', function () {
