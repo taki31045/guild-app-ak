@@ -15,13 +15,17 @@ Route::get('/company', function () {
 Route::get('company/profile', function () {
     return view('companies.profile');
 });
+
+Route::get('company/edit', function () {
+    return view('companies.edit');
+});
+
 Route::get('/evaluation', function () {
     return view('companies.evaluation');
 });
 Route::get('/landing', function () {
     return view('companies.landing');
 });
-
 
 //
 
@@ -37,6 +41,7 @@ Route::prefix('admin')->group(function () {
     Route::view('company', 'admins.company')->name('admin.company');
     Route::view('job', 'admins.job')->name('admin.job');
     Route::view('transaction', 'admins.transaction')->name('admin.transaction');
+    Route::view('message', 'admins.message')->name('admin.message');
 });
 
 Auth::routes();

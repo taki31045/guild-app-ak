@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
+@section('title', 'Dashboard')
 
 @section('content')
         <main class="py-4">

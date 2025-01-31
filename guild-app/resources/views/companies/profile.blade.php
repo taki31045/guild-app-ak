@@ -3,7 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
-<link href="{{ asset('css/companyprofile.style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/companyprofile.css') }}" rel="stylesheet">
 
 <div class=" line-1 border rounded-pill p-3 shadow-lg" style="background-color: #C976DE; ">
 </div>
