@@ -18,6 +18,9 @@ Route::get('/profile', function () {
 Route::get('/evaluation', function () {
     return view('companies.evaluation');
 });
+Route::get('/landing', function () {
+    return view('companies.landing');
+});
 
 
 //
