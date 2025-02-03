@@ -3193,3 +3193,690 @@ Did you mean one of these?
 #4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
 #5 {main}
 "} 
+[2025-02-03 07:18:34] local.ERROR: Class "Database\Seeders\Hash" not found {"exception":"[object] (Error(code: 0): Class \"Database\\Seeders\\Hash\" not found at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php:20)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#24 {main}
+"} 
+[2025-02-03 07:19:01] local.ERROR: Class "Database\Seeders\User" not found {"exception":"[object] (Error(code: 0): Class \"Database\\Seeders\\User\" not found at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php:23)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#24 {main}
+"} 
+[2025-02-03 07:19:18] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'role' in 'field list' (Connection: mysql, SQL: insert into `users` (`username`, `name`, `email`, `password`, `avatar`, `role`, `created_at`, `updated_at`) values (admin, John, admin@example.com, $2y$12$WDSL7LFmq1poxV9.7AGQNO2Z6lIk/HGr7EeUqMFIf5Lw8.qpIp.LS, ?, 1, 2025-02-03 07:19:18, 2025-02-03 07:19:18)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'role' in 'field list' (Connection: mysql, SQL: insert into `users` (`username`, `name`, `email`, `password`, `avatar`, `role`, `created_at`, `updated_at`) values (admin, John, admin@example.com, $2y$12$WDSL7LFmq1poxV9.7AGQNO2Z6lIk/HGr7EeUqMFIf5Lw8.qpIp.LS, ?, 1, 2025-02-03 07:19:18, 2025-02-03 07:19:18)) at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array)
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php(18): Illuminate\\Database\\Query\\Builder->insert(Array)
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#28 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'role' in 'field list' at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php:47)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(47): PDO->prepare('insert into `us...')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\MySqlConnection->{closure:Illuminate\\Database\\MySqlConnection::insert():42}('insert into `us...', Array)
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array)
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php(18): Illuminate\\Database\\Query\\Builder->insert(Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#30 {main}
+"} 
+[2025-02-03 07:21:29] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'users_username_unique' (Connection: mysql, SQL: insert into `users` (`username`, `name`, `email`, `password`, `avatar`, `role_id`, `created_at`, `updated_at`) values (admin, John, admin@example.com, $2y$12$kxZAxhst75AU4y5kZ0b4qujNgN66ZHZqmaizxcJBmyqDzUPvxCRRW, ?, 1, 2025-02-03 07:21:28, 2025-02-03 07:21:28)) {"exception":"[object] (Illuminate\\Database\\UniqueConstraintViolationException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'users_username_unique' (Connection: mysql, SQL: insert into `users` (`username`, `name`, `email`, `password`, `avatar`, `role_id`, `created_at`, `updated_at`) values (admin, John, admin@example.com, $2y$12$kxZAxhst75AU4y5kZ0b4qujNgN66ZHZqmaizxcJBmyqDzUPvxCRRW, ?, 1, 2025-02-03 07:21:28, 2025-02-03 07:21:28)) at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:820)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array)
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php(18): Illuminate\\Database\\Query\\Builder->insert(Array)
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#28 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'users_username_unique' at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php:53)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(53): PDOStatement->execute()
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\MySqlConnection->{closure:Illuminate\\Database\\MySqlConnection::insert():42}('insert into `us...', Array)
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array)
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/UsersSeeder.php(18): Illuminate\\Database\\Query\\Builder->insert(Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\UsersSeeder->run()
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#30 {main}
+"} 
+[2025-02-03 07:21:46] local.ERROR: Command "make:rollback" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:rollback\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php:726)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find('make:rollback')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
+[2025-02-03 07:34:00] local.ERROR: Command "make:rollback" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:rollback\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php:726)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find('make:rollback')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
+[2025-02-03 07:34:50] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' (Connection: mysql, SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test User, test@example.com, 2025-02-03 07:34:50, $2y$12$xE7W4wlDV5xOlppYd/YEseZynQ6Jf6IiAnbtJqaXe/u7vNWUx.J2., fs3T6GXcLI, 2025-02-03 07:34:50, 2025-02-03 07:34:50)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' (Connection: mysql, SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test User, test@example.com, 2025-02-03 07:34:50, $2y$12$xE7W4wlDV5xOlppYd/YEseZynQ6Jf6IiAnbtJqaXe/u7vNWUx.J2., fs3T6GXcLI, 2025-02-03 07:34:50, 2025-02-03 07:34:50)) at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array, 'id')
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(2047): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(345): Illuminate\\Database\\Eloquent\\Model->save()
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(259): Illuminate\\Database\\Eloquent\\Factories\\Factory->{closure:Illuminate\\Database\\Eloquent\\Factories\\Factory::store():340}(Object(App\\Models\\User), 0)
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(340): Illuminate\\Support\\Collection->each(Object(Closure))
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(296): Illuminate\\Database\\Eloquent\\Factories\\Factory->store(Object(Illuminate\\Support\\Collection))
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(290): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array, NULL)
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/DatabaseSeeder.php(18): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array)
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#30 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#31 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#32 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#38 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php:47)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(47): PDO->prepare('insert into `us...')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\MySqlConnection->{closure:Illuminate\\Database\\MySqlConnection::insert():42}('insert into `us...', Array)
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array, 'id')
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(2047): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(345): Illuminate\\Database\\Eloquent\\Model->save()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(259): Illuminate\\Database\\Eloquent\\Factories\\Factory->{closure:Illuminate\\Database\\Eloquent\\Factories\\Factory::store():340}(Object(App\\Models\\User), 0)
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(340): Illuminate\\Support\\Collection->each(Object(Closure))
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(296): Illuminate\\Database\\Eloquent\\Factories\\Factory->store(Object(Illuminate\\Support\\Collection))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(290): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array, NULL)
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/DatabaseSeeder.php(18): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array)
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#30 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#31 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#32 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#33 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#34 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#40 {main}
+"} 
+[2025-02-03 07:34:55] local.ERROR: Command "make:rollback" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:rollback\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view
+    migrate:rollback at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php:726)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find('make:rollback')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
+[2025-02-03 07:35:05] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' (Connection: mysql, SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test User, test@example.com, 2025-02-03 07:35:05, $2y$12$qBdMrvFNfF8.M2wTAM.81.Lo0Nzrn70mQFVVzcn2/TU7lpx8F65h., SQSTuZYuIo, 2025-02-03 07:35:05, 2025-02-03 07:35:05)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' (Connection: mysql, SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test User, test@example.com, 2025-02-03 07:35:05, $2y$12$qBdMrvFNfF8.M2wTAM.81.Lo0Nzrn70mQFVVzcn2/TU7lpx8F65h., SQSTuZYuIo, 2025-02-03 07:35:05, 2025-02-03 07:35:05)) at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array, 'id')
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(2047): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(345): Illuminate\\Database\\Eloquent\\Model->save()
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(259): Illuminate\\Database\\Eloquent\\Factories\\Factory->{closure:Illuminate\\Database\\Eloquent\\Factories\\Factory::store():340}(Object(App\\Models\\User), 0)
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(340): Illuminate\\Support\\Collection->each(Object(Closure))
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(296): Illuminate\\Database\\Eloquent\\Factories\\Factory->store(Object(Illuminate\\Support\\Collection))
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(290): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array, NULL)
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/DatabaseSeeder.php(18): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array)
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#30 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#31 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#32 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#38 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email_verified_at' in 'field list' at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php:47)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(47): PDO->prepare('insert into `us...')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\MySqlConnection->{closure:Illuminate\\Database\\MySqlConnection::insert():42}('insert into `us...', Array)
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/MySqlProcessor.php(35): Illuminate\\Database\\MySqlConnection->insert('insert into `us...', Array, 'id')
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3799): Illuminate\\Database\\Query\\Processors\\MySqlProcessor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(2047): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1359): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1324): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1163): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(345): Illuminate\\Database\\Eloquent\\Model->save()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(259): Illuminate\\Database\\Eloquent\\Factories\\Factory->{closure:Illuminate\\Database\\Eloquent\\Factories\\Factory::store():340}(Object(App\\Models\\User), 0)
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(340): Illuminate\\Support\\Collection->each(Object(Closure))
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(296): Illuminate\\Database\\Eloquent\\Factories\\Factory->store(Object(Illuminate\\Support\\Collection))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/Factory.php(290): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array, NULL)
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/DatabaseSeeder.php(18): Illuminate\\Database\\Eloquent\\Factories\\Factory->create(Array)
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\DatabaseSeeder->run()
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#30 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#31 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#32 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#33 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#34 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#40 {main}
+"} 
+[2025-02-03 07:35:37] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'escrow_balance	' in 'field list' (Connection: mysql, SQL: insert into `admins` (`user_id`, `balance`, `total_fee_revenue`, `escrow_balance	`, `created_at`, `updated_at`) values (1, 27000, 2000, 25000, 2025-02-03 07:35:37, 2025-02-03 07:35:37)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'escrow_balance\t' in 'field list' (Connection: mysql, SQL: insert into `admins` (`user_id`, `balance`, `total_fee_revenue`, `escrow_balance\t`, `created_at`, `updated_at`) values (1, 27000, 2000, 25000, 2025-02-03 07:35:37, 2025-02-03 07:35:37)) at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `ad...', Array, Object(Closure))
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `ad...', Array, Object(Closure))
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `ad...', Array)
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/AdminSeeder.php(16): Illuminate\\Database\\Query\\Builder->insert(Array)
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\AdminSeeder->run()
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#28 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'escrow_balance\t' in 'field list' at /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php:47)
+[stacktrace]
+#0 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(47): PDO->prepare('insert into `ad...')
+#1 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\MySqlConnection->{closure:Illuminate\\Database\\MySqlConnection::insert():42}('insert into `ad...', Array)
+#2 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('insert into `ad...', Array, Object(Closure))
+#3 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/MySqlConnection.php(42): Illuminate\\Database\\Connection->run('insert into `ad...', Array, Object(Closure))
+#4 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3748): Illuminate\\Database\\MySqlConnection->insert('insert into `ad...', Array)
+#5 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/database/seeders/AdminSeeder.php(16): Illuminate\\Database\\Query\\Builder->insert(Array)
+#6 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Database\\Seeders\\AdminSeeder->run()
+#7 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#8 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(184): Illuminate\\Container\\Container->call(Array, Array)
+#12 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(193): Illuminate\\Database\\Seeder->{closure:Illuminate\\Database\\Seeder::__invoke():183}()
+#13 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate\\Database\\Seeder->__invoke()
+#14 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate\\Database\\Console\\Seeds\\SeedCommand->{closure:Illuminate\\Database\\Console\\Seeds\\SeedCommand::handle():69}()
+#15 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#16 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#17 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#18 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#22 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#23 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Seeds\\SeedCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1208): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 /Users/nojirikenta/Desktop/batch9-guild-app/guild-app/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#30 {main}
+"} 
