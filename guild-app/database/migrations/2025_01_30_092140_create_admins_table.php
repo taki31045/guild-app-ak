@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('user_id');
             $table->decimal('balance', 10, 2)->default(0.00); // Total assets of the management
             $table->decimal('total_fee_revenue', 10,2)->default(0.00); // Revenue from fees
             $table->decimal('escrow_balance', 10,2)->default(0.00); //Temporarily held payments
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
 
