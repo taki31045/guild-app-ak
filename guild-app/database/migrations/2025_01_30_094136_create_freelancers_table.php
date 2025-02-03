@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('freelancers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('user_id');
             $table->integer('rank')->default(0); // Freelancer rank
             $table->integer('rank_point')->default(0); // Points for rank-up
             $table->string('github');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('facebook');
             $table->decimal('total_earnings', 10, 2);
             $table->decimal('avg_evaluation', 3, 2); // Overall rating
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
 
