@@ -6,11 +6,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use SoftDeletes;
 
     const ADMIN_ROLE_ID = 1;
     const COMPANY_ROLE_ID =2;
@@ -48,5 +51,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+
+    public function freelancer(){
+        return $this->hasOne(Freelancer::class)->withTrashed();
     }
 }

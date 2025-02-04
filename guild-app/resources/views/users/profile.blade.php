@@ -20,7 +20,7 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
-                    <a href="/edit-user-profile" class="text-black">
+                    <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
                         <i class="fa-solid fa-pen-to-square edit-icon"></i>
                     </a>
                 </div>
@@ -28,19 +28,31 @@
                     <table class="detail">
                         <tr>
                             <th class="pe-5">Username</th>
-                            <td>Ryunosuke</td>
+                            <td>{{$user->username}}</td>
                         </tr>
                         <tr>
                             <th class="pe-5">Name</th>
-                            <td>Ryunosuke Takabayashi</td>
+                            <td>{{$user->name}}</td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td>krd2025@kredo.co.jp</td>
+                            <td>{{$user->email}}</td>
                         </tr>
                         <tr>
                             <th>github</th>
-                            <td>krd2025@kredo.co.jp</td>
+                            <td>{{$user->freelancer->github}}</td>
+                        </tr>
+                        <tr>
+                            <th>X</th>
+                            <td>{{$user->freelancer->X}}</td>
+                        </tr>
+                        <tr>
+                            <th>Instagram</th>
+                            <td>{{$user->freelancer->instagram}}</td>
+                        </tr>
+                        <tr>
+                            <th>Facebook</th>
+                            <td>{{$user->freelancer->facebook}}</td>
                         </tr>
                     </table>
                 </div>

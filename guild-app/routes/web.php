@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 // create front
 Route::get('/', function () {
     return view('welcome');
@@ -62,9 +63,9 @@ Route::get('/user-profile', function () {
 Route::get('/edit-todo', function () {
     return view('users.edit-todo');
 });
-Route::get('/edit-user-profile', function () {
-    return view('users.edit-profile');
-});
+Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+
 Route::get('/user-job-list', function () {
     return view('users.job-list');
 });

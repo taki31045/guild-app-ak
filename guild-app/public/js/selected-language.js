@@ -8,7 +8,7 @@ function toggleDropdown(){
 function addOrRemoveTag(value, text, optionElement){
     let index = selectedLanguages.indexOf(value);
 
-    if(index === -1){
+    if(index === -1 && value !== ""){
         selectedLanguages.push(value);
         updateHiddenInput();
 
@@ -45,10 +45,11 @@ function updateHiddenInput(){
     document.getElementById("selectedLanguages").value = selectedLanguages.join(",");
 }
 
-    document.querySelectorAll(".dropdown div").forEach(option => {
-        option.addEventListener("click", function(){
-            let value = this.getAttribute("data-value");
-            let text = this.innerText;
+    document.querySelectorAll(".dropdown div[data-value]").forEach(option => {
+        option.addEventListener("click", function(e){
+            e.stopPropagation(); // 親要素へのクリックイベント伝播を防ぐ
+            const value = this.getAttribute("data-value");
+            const text = this.innerText;
             addOrRemoveTag(value, text, this);
         });
     });
