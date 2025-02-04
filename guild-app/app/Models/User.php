@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+<<<<<<< HEAD
+=======
     const ADMIN_ROLE_ID = 1;
     const COMPANY_ROLE_ID =2;
     const FREELANCER_ROLE_ID =3;
@@ -21,27 +21,20 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+>>>>>>> upstream/main
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
+        'role_id', // role_id を追加
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
