@@ -10,49 +10,52 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        if (auth()->user()->role_id == 2) {
+            return '/company'; // 企業のダッシュボード
+        } elseif (auth()->user()->role_id == 3) {
+            return '/user-dashboard'; // フリーランサーのダッシュボード
+        }
+    }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Validate the user registration data.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        // Validation rules for both role_id 2 (company) and 3 (freelancer)
+        $rules = [
+            'role_id' => ['required', 'in:2,3'], // Role must be either company (2) or freelancer (3)
+        ];
+
+        // Additional validation based on role_id
+        if ($data['role_id'] == '2') { // For companies
+            $rules = array_merge($rules, [
+                'company_name' => ['required', 'string', 'max:255'],
+                'company_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'company_password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        } elseif ($data['role_id'] == '3') { // For freelancers
+            $rules = array_merge($rules, [
+                'username' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -61,12 +64,30 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        // Handle company registration
+        if ($data['role_id'] == '2') { // For companies
+            return User::create([
+                'username' => $data['company_name'],
+                'name' => $data['company_name'],
+                'email' => $data['company_email'], // Use company email
+                'password' => Hash::make($data['company_password']),
+                'role_id' => $data['role_id'], 
+                
+            ]);
+        } 
+
+        // Handle freelancer registration
+        elseif ($data['role_id'] == '3') { // For freelancers
+            return User::create([
+                'username' => $data['username'],
+                'name' => $data['name'],
+                'email' => $data['email'], // Use freelancer email
+                'password' => Hash::make($data['password']),
+                'role_id' => $data['role_id'], 
+            ]);
+        }
     }
 }
+
