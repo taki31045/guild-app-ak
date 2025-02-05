@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
+
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // create front
     Route::get('/', function () {
@@ -34,10 +34,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     });
 
     //
-
     Route::get('/message', function () {
         return view('companies/message');
     });
+
 
     Route::prefix('admin')->group(function () {
         
@@ -55,29 +55,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::view('message', 'admins.message')->name('admin.message');
     });
 
-    Route::get('/user-dashboard', function () {
-        return view('users.dashbord');
-    });
-    Route::get('/job-details', function () {
-        return view('users.job-details');
-    });
-    Route::get('/user-profile', function () {
-        return view('users.profile');
-    });
+Route::get('/user-dashboard', function () {
+    return view('users.dashbord');
+});
+Route::get('/job-details', function () {
+    return view('users.job-details');
+});
+    
 
 
-    Route::get('/edit-todo', function () {
-        return view('users.edit-todo');
-    });
-    Route::get('/edit-user-profile', function () {
-        return view('users.edit-profile');
-    });
-    Route::get('/user-job-list', function () {
-        return view('users.job-list');
-    });
-    Route::get('/user-message', function () {
-        return view('users.message');
-    });
-    Route::get('/confirm', function () {
-        return view('email.confirm');
-    });
+Route::get('/edit-todo', function () {
+    return view('users.edit-todo');
+});
+Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
+
+Route::get('/user-job-list', function () {
+    return view('users.job-list');
+});
+Route::get('/user-message', function () {
+    return view('users.message');
+});
+Route::get('/confirm', function () {
+    return view('email.confirm');
+});

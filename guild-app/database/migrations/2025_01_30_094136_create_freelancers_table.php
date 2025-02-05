@@ -16,12 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('rank')->default(0); // Freelancer rank
             $table->integer('rank_point')->default(0); // Points for rank-up
-            $table->string('github');
-            $table->string('X');
-            $table->string('instagram');
-            $table->string('facebook');
-            $table->decimal('total_earnings', 10, 2);
-            $table->decimal('avg_evaluation', 3, 2); // Overall rating
+            $table->string('github')->nullable();
+            $table->string('X')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->decimal('total_earnings', 10, 2)->default(0);
+            $table->decimal('avg_evaluation', 3, 2)->default(0); // Overall rating
             $table->timestamps();
             $table->softDeletes();
 

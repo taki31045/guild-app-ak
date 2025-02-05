@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
+    protected $fillable = ['name'];
+
     public function freelancers(){
-        return $this->belongsToMany(Freelancer::class, 'freelancer_skills');
+        return $this->belongsToMany(Freelancer::class, 'freelancer_skills', 'skill_id', 'freelancer_id')->withTimestamps();
     }
 }

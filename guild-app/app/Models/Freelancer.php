@@ -19,14 +19,23 @@ class Freelancer extends Model
         'instagram',
         'facebook',
         'total_earnings',
-        'avg_evaluation',
+        'avg_evaluation'
     ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function skills(){
-        return $this->belongsToMany(Skill::class, 'freelancer_skills');
+        return $this->belongsToMany(Skill::class, 'freelancer_skills', 'freelancer_id', 'skill_id')->withTimestamps();
     }
+
+    public function evaluations(){
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function applications(){
+        return $this->hasMany(Application::class);
+    }
+
 }
