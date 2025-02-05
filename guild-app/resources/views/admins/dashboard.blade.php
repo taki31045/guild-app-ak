@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Admin Dashboard')
 
 @section('content')
         <main class="py-4">
@@ -31,8 +31,4 @@
                 </div>
             </div>
         </main>
-    </div>
-</body>
-</html>
-
 @endsection
