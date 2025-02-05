@@ -55,9 +55,7 @@ Route::get('/user-dashboard', function () {
 Route::get('/job-details', function () {
     return view('users.job-details');
 });
-Route::get('/user-profile', function () {
-    return view('users.profile');
-});
+
 
 
 Route::get('/edit-todo', function () {
@@ -65,6 +63,7 @@ Route::get('/edit-todo', function () {
 });
 Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
 Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
 
 Route::get('/user-job-list', function () {
     return view('users.job-list');

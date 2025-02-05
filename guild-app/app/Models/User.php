@@ -25,9 +25,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
+        'avatar'
     ];
 
     /**
@@ -53,6 +55,10 @@ class User extends Authenticatable
         ];
     }
 
+
+    public function company(){
+        return $this->hasOne(Company::class)->withTrashed();
+    }
 
     public function freelancer(){
         return $this->hasOne(Freelancer::class)->withTrashed();
