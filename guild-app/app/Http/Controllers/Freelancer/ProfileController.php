@@ -12,16 +12,25 @@ class ProfileController extends Controller
 {
     public function show($id){
         $user = User::findOrFail($id);
-        $evaluations = $user->freelancer->evaluations();
-        $ongoingJobs  = $user->freelancer->applications()
-                                        ->where('freelancer_id', $user->freelancer->id)
-                                        ->where('status', 'ongoing')
-                                        ->get();
+        $freelancer = $user->freelancer;
 
-        $completedJobs  = $user->freelancer->applications()
-                                        ->where('freelancer_id', $user->freelancer->id)
-                                        ->where('status', 'completed')
-                                        ->get();
+        if($freelancer){
+            $evaluations = $freelancer->evaluations()->get();
+
+            $ongoingJobs  = $freelancer->applications()
+                                            ->where('freelancer_id', $user->freelancer->id)
+                                            ->where('status', 'ongoing')
+                                            ->get();
+
+            $completedJobs  = $freelancer->applications()
+                                            ->where('freelancer_id', $user->freelancer->id)
+                                            ->where('status', 'completed')
+                                            ->get();
+        }else{
+            $evaluations = collect();
+            $ongoingJobs = collect();
+            $completedJobs = collect();
+        }
 
         return view('users.profile', compact('user', 'evaluations', 'ongoingJobs', 'completedJobs'));
     }
