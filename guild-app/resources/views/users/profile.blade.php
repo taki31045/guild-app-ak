@@ -13,14 +13,26 @@
         <div class="profile-left">
             <i class="fa-solid fa-user-circle profile-icon"></i>
             <div class="rank">
-                <span class="stars">⭐️⭐️⭐️</span>
+                <span class="stars">
+                    @if ($user->freelancer->rank === 1)
+                        ⭐️
+                    @elseif($user->freelancer->rank === 2)
+                        ⭐️⭐️
+                    @elseif($user->freelancer->rank === 3)
+                        ⭐️⭐️⭐️
+                    @elseif($user->freelancer->rank === 4)
+                        ⭐️⭐️⭐️⭐️
+                    @elseif($user->freelancer->rank === 5)
+                        ⭐️⭐️⭐️⭐️⭐️
+                    @endif
+                </span>
             </div>
         </div>
         <div class="profile-right">
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
-                    <a href="/edit-user-profile" class="text-black">
+                    <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
                         <i class="fa-solid fa-pen-to-square edit-icon"></i>
                     </a>
                 </div>
@@ -28,29 +40,40 @@
                     <table class="detail">
                         <tr>
                             <th class="pe-5">Username</th>
-                            <td>Ryunosuke</td>
+                            <td>{{$user->username}}</td>
                         </tr>
                         <tr>
                             <th class="pe-5">Name</th>
-                            <td>Ryunosuke Takabayashi</td>
+                            <td>{{$user->name}}</td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td>krd2025@kredo.co.jp</td>
+                            <td>{{$user->email}}</td>
                         </tr>
                         <tr>
                             <th>github</th>
-                            <td>krd2025@kredo.co.jp</td>
+                            <td>{{$user->freelancer->github}}</td>
+                        </tr>
+                        <tr>
+                            <th>X</th>
+                            <td>{{$user->freelancer->X}}</td>
+                        </tr>
+                        <tr>
+                            <th>Instagram</th>
+                            <td>{{$user->freelancer->instagram}}</td>
+                        </tr>
+                        <tr>
+                            <th>Facebook</th>
+                            <td>{{$user->freelancer->facebook}}</td>
                         </tr>
                     </table>
                 </div>
 
                 <h5>Skills</h5>
                 <div class="skills">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">Javascript</span>
+                    @foreach ($user->freelancer->skills as $skill)
+                        <span class="skill-tag">{{$skill->name}}</span>
+                    @endforeach
                 </div>
             </div>
 
@@ -59,25 +82,25 @@
                 <div class="evaluation-item">
                     <span class="evaluation-title">Quality</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: 100%">80%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('quality') * 20}}%">{{$evaluations->avg('quality') * 20}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Communication</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: 60%">60%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('communication') * 20}}%">{{$evaluations->avg('communication') * 20}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Adherence</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: 30%">30%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('adherence') * 20}}%">{{$evaluations->avg('adherence') * 20}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Total</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: 70%">70%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('total') * 20}}%">{{$evaluations->avg('total') * 20}}%</div>
                     </div>
                 </div>
             </div>
@@ -97,47 +120,71 @@
     </div>
 
     <div class="tab-content">
-        <a href="/job-details" class="text-decoration-none text-black">
-            <div class="tab-pane job-history">
-                <div class="job-date">By May</div>
-                <div class="job-details">
-                    <h3 class="h5 m-0">Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h3>
-                    <p class="fw-bold m-0">Kredo Company</p>
-                    <p class="m-0">$1000</p>
-                    <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </p>
+        @foreach ($completedJobs as $completedJob)
+            <a href="/job-details" class="text-decoration-none text-black">
+                <div class="tab-pane job-history">
+                    <div class="job-date">{{$completedJob->project->deadline}}</div>
+                    <div class="job-details">
+                        <h3 class="h5 m-0">{{$completedJob->project->title}}</h3>
+                        <p class="fw-bold m-0">{{$completedJob->project->company->user->name}}</p>
+                        <p class="m-0">{{$completedJob->project->reward_amount}}</p>
+                        <p>
+                            <?php
+                                for($i = 1; $i <= $completedJob->project->required_rank; $i++){
+                            ?>
+                                    <i class="fa-solid fa-star"></i>
+                            <?php
+                                }
+                            ?>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-pane on-going">
-                <div class="job-date">By June</div>
-                <div class="job-details">
-                    <h3 class="h5 m-0">Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h3>
-                    <p class="fw-bold m-0">Kredo Company</p>
-                    <p class="m-0">$1000</p>
-                    <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </p>
+            </a>
+        @endforeach
+
+        @foreach ($ongoingJobs as $ongoingJob)
+            <a href="/job-details" class="text-decoration-none text-black">
+                <div class="tab-pane on-going">
+                    <div class="job-date">{{$ongoingJob->project->deadline}}</div>
+                    <div class="job-details">
+                        <h3 class="h5 m-0">{{$ongoingJob->project->title}}</h3>
+                        <p class="fw-bold m-0">{{$ongoingJob->project->company->user->name}}</p>
+                        <p class="m-0">{{$ongoingJob->project->reward_amount}}</p>
+                        <p>
+                            <?php
+                                for($i = 1; $i <= $ongoingJob->project->required_rank; $i++){
+                            ?>
+                                    <i class="fa-solid fa-star"></i>
+                            <?php
+                                }
+                            ?>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-pane likes">
-                <div class="job-date">By July</div>
-                <div class="job-details">
-                    <h3 class="h5 m-0">Very simple Sketchup Plugin to connect with our Webapp Oauth ....</h3>
-                    <p class="fw-bold m-0">Kredo Company</p>
-                    <p class="m-0">$1000</p>
-                    <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </p>
+            </a>
+        @endforeach
+
+        @foreach ($ongoingJobs as $ongoingJob)
+            <a href="/job-details" class="text-decoration-none text-black">
+                <div class="tab-pane likes">
+                    <div class="job-date">{{$ongoingJob->project->deadline}}</div>
+                    <div class="job-details">
+                        <h3 class="h5 m-0">{{$ongoingJob->project->title}}</h3>
+                        <p class="fw-bold m-0">{{$ongoingJob->project->company->user->name}}</p>
+                        <p class="m-0">{{$ongoingJob->project->reward_amount}}</p>
+                        <p>
+                            <?php
+                                for($i = 1; $i <= $ongoingJob->project->required_rank; $i++){
+                            ?>
+                                    <i class="fa-solid fa-star"></i>
+                            <?php
+                                }
+                            ?>
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        @endforeach
     </div>
 </div>
 
