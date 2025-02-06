@@ -3,7 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\FreelanceController;
+//company
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Company\ProjectController;
+
+//freelancer
+
+
+//admin
+
+
 
 
 Auth::routes();
@@ -11,21 +20,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//company
+    Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
-Route::group(['middleware' => 'company'], function () {
-    Route::get('/company', [CompanyController::class, 'index'])->name('company');
-});
+        Route::get('/company', [CompanyController::class, 'index'])->name('dashboard');
+        Route::get('/company/create', [ProjectController::class, 'create'])->name('create');
+    });
 
+//freelancer
+    // Route::middleware(['freelance']->prefix('freelancer')->name('freelancer')->group(function()){
+    Route::middleware(['freelancer'])->group(function () {
+        Route::get('/freelance', [FreelanceController::class, 'index'])->name('freelance');
+        Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+        Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+        Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
 
-Route::group(['middleware' => 'freelancer'], function () {
-    Route::get('/freelance', [FreelanceController::class, 'index'])->name('freelance');
-
-
-    Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
-Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
-
-});
+    });
+    
+//admin
 
 
 
