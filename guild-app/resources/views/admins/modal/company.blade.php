@@ -1,18 +1,18 @@
-@if ($freelancer->trashed())
+@if ($company->trashed())
     {{-- Activate --}}
-    <div class="modal fade" id="activate-user-{{ $freelancer->user->id }}">
+    <div class="modal fade" id="activate-user-{{ $company->user->id }}">
         <div class="modal-dialog">
             <div class="modal-content border-success">
                 <div class="modal-header border-success">
                     <h3 class="h5 modal-title text-success">
-                        <i class="fa-solid fa-user-check"></i> Activate Freelancer
+                        <i class="fa-solid fa-user-check"></i> Activate Company
                     </h3>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to activate <span class="fw-bold">{{ $freelancer->user->name }}</span>?
+                    Are you sure you want to activate <span class="fw-bold">{{ $company->user->name }}</span>?
                 </div>
                 <div class="modal-footer border-0">
-                    <form action="{{ route('admin.freelancer.activate', $freelancer->id) }}" method="post">
+                    <form action="{{ route('admin.company.activate', $company->id) }}" method="post">
                         @csrf
                         @method('PATCH')
 
@@ -25,19 +25,19 @@
     </div>
 @else
     {{-- Deactivate --}}
-    <div class="modal fade" id="deactivate-user-{{ $freelancer->user->id }}">
+    <div class="modal fade" id="deactivate-user-{{ $company->user->id }}">
         <div class="modal-dialog">
             <div class="modal-content border-danger">
                 <div class="modal-header border-danger">
                     <h3 class="h5 modal-title text-danger">
-                        <i class="fa-solid fa-user-slash"></i> Deactivate Freelancer
+                        <i class="fa-solid fa-user-slash"></i> Deactivate Company
                     </h3>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to deactive <span class="fw-bold">{{ $freelancer->user->name }}</span>?
+                    Are you sure you want to deactive <span class="fw-bold">{{ $company->user->name }}</span>?
                 </div>
                 <div class="modal-footer border-0">
-                    <form action="{{ route('admin.freelancer.deactivate', $freelancer->id) }}" method="post">
+                    <form action="{{ route('admin.company.deactivate', $company->id) }}" method="post">
                         @csrf
                         @method('DELETE')
 

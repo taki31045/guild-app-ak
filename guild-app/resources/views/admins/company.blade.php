@@ -1,132 +1,67 @@
 @extends('admins.dashboard')
 
+@section('title', 'Admin: Company')
+
 @section('page-content')
 <div class="container">
     <div class="ms-5">
-        <div class="col-12 card align-items-center pt-4" style="height: 700px;">
-            <div class="col-10 card m-2">
+        <div class="col-12 card align-items-center pt-4">
+            <div class="card-body">
+            @foreach ($all_companies as $company)
+            <div class="col-12 card m-2">
                 <table class="table table-borderless align-middle text-secondary my-2">
                     <tr>
                         <td></td>
                         <td style="width: 150px;">Company name</td>
-                        <td>Kredo</td>
+                        <td>{{ $company->user->name }}</td>
                         <td>
-                        {{-- @if ($user->trashed())
+                        @if ($company->trashed())
                             <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive
-                        @else --}}
+                        @else
                             <i class="fa-solid fa-circle text-primary"></i>&nbsp; Active
-                        {{-- @endif --}}
+                        @endif
                         </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-sm" data-bs-toggle="dropdown">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </button>
+                            
+                                <div class="dropdown-menu">
+                                    @if ($company->trashed())
+                                        <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user-{{ $company->user->id }}">
+                                            <i class="fa-solid fa-user-check"></i> Activate {{ $company->user->name }}
+                                        </button>
+                                    @else
+                                        <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user-{{ $company->user->id }}">
+                                            <i class="fa-solid fa-user-slash"></i> Deactivate {{ $company->user->name }}
+                                        </button>
+                                    @endif                                    
+                                </div>
+                            </div>
+                            {{-- Include the modal here --}} 
+                            @include('admins.modal.company') 
+                        </td>    
                     </tr>
                     <tr>
                         <td></td>
                         <td style="width: 150px;">email</td>
-                        <td>krd2025@kredo.co.jp</td>
+                        <td>{{ $company->user->email }}</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td style="width: 150px;">Website</td>
-                        <td>www.kredo.co.jp</i></td>
+                        <td>{{ $company->website }}</td>
                         <td></td>
                     </tr>
                 </table>
             </div>
-            <div class="col-10 card m-2">
-                <table class="table table-borderless align-middle text-secondary my-2">
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Company name</td>
-                        <td>Kredo</td>
-                        <td>
-                        {{-- @if ($user->trashed())
-                            <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive
-                        @else --}}
-                            <i class="fa-solid fa-circle text-primary"></i>&nbsp; Active
-                        {{-- @endif --}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">email</td>
-                        <td>krd2025@kredo.co.jp</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Website</td>
-                        <td>www.kredo.co.jp</i></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-10 card m-2">
-                <table class="table table-borderless align-middle text-secondary my-2">
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Company name</td>
-                        <td>Kredo</td>
-                        <td>
-                        {{-- @if ($user->trashed())
-                            <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive
-                        @else --}}
-                            <i class="fa-solid fa-circle text-danger"></i>&nbsp; Active
-                        {{-- @endif --}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">email</td>
-                        <td>krd2025@kredo.co.jp</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Website</td>
-                        <td>www.kredo.co.jp</i></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-10 card m-2">
-                <table class="table table-borderless align-middle text-secondary my-2">
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Company name</td>
-                        <td>Kredo</td>
-                        <td>
-                        {{-- @if ($user->trashed())
-                            <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive
-                        @else --}}
-                            <i class="fa-solid fa-circle text-primary"></i>&nbsp; Active
-                        {{-- @endif --}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">email</td>
-                        <td>krd2025@kredo.co.jp</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="width: 150px;">Website</td>
-                        <td>www.kredo.co.jp</i></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>  
+            @endforeach
         </div>
     </div>
 </div>
-{{-- {{ $all_users->links() }} --}}
-<!-- Pagination -->
-<div class="pagination">
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <span>...</span>
-    <a href="#">67</a>
-    <a href="#">68</a>
-  </div>
+<div class="d-flex justify-content-center mt-3">
+    {{ $all_companies->links('pagination::bootstrap-4') }}
+</div>
 @endsection

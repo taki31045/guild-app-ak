@@ -5,10 +5,10 @@
 @section('page-content')
 <div class="container">
     <div class="ms-5">
-        <div class="col-12 card border-secondary align-items-center pt-4" style="height: 700px;">
+        <div class="col-12 card border-secondary align-items-center pt-4">
             <div class="card-body">
             @foreach ($all_freelancers as $freelancer)
-            <div class="col-10 card m-2">
+            <div class="col-12 card m-2">
                 <table class="table table-borderless align-middle text-secondary my-2">
                     <tr>
                         <td></td>
@@ -37,8 +37,7 @@
                                         <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user-{{ $freelancer->user->id }}">
                                             <i class="fa-solid fa-user-slash"></i> Deactivate {{ $freelancer->user->name }}
                                         </button>
-                                    @endif
-                                    
+                                    @endif                                    
                                 </div>
                             </div>
                             {{-- Include the modal here --}} 
@@ -65,7 +64,7 @@
                         <td></td>
                         <td colspan="3" style="width: 50px;">
                             @foreach ($freelancer->skills as $skill)
-                            <button class="badge text-bg-secondary"></button>&nbsp;
+                            <button class="badge text-bg-secondary">{{ $skill->name }}</button>&nbsp;
                             @endforeach                            
                         </td>
                     </tr>            
@@ -77,14 +76,8 @@
         </div>
     </div>
 </div>
-{{ $all_freelancers->links() }}
-<!-- Pagination -->
-{{-- <div class="pagination">
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <span>...</span>
-    <a href="#">67</a>
-    <a href="#">68</a>
-  </div> --}}
+<div class="d-flex justify-content-center mt-3">
+    {{ $all_freelancers->links('pagination::bootstrap-4') }}
+</div>
+
 @endsection
