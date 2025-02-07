@@ -12,15 +12,16 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use SoftDeletes;
 
-    const ADMIN_ROLE_ID = 1;
-    const COMPANY_ROLE_ID = 2;
-    const FREELANCER_ROLE_ID = 3;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
+
+// >>>>>>> upstream/main
+
+
 
     protected $fillable = [
         'username',

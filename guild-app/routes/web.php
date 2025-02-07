@@ -1,44 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FreelanceController;
+//company
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Company\ProjectController;
 
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// create front
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/create', function () {
-    return view('companies.create');
-});
-Route::get('/company', function () {
-    return view('companies.dashboard');
-});
-Route::get('company/profile', function () {
-    return view('companies.profile');
-});
 
-Route::get('company/edit', function () {
-    return view('companies.edit');
-});
+//company
+    Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
-Route::get('/evaluation', function () {
-    return view('companies.evaluation');
-});
-Route::get('/landing', function () {
-    return view('companies.landing');
-});
+        Route::get('/company', [CompanyController::class, 'index'])->name('dashboard');
+        Route::get('/company/create', [ProjectController::class, 'create'])->name('create');
+    });
 
-//
-Route::get('/message', function () {
-    return view('companies/message');
-});
+//freelancer
+    // Route::middleware(['freelance']->prefix('freelancer')->name('freelancer')->group(function()){
+    Route::middleware(['freelancer'])->group(function () {
+        Route::get('/freelance', [FreelanceController::class, 'index'])->name('freelance');
+        Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+        Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+        Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
 
-
+    });
+    
+//admin
 Route::prefix('admin')->group(function () {
     
     Route::get('/', function(){
@@ -52,7 +44,6 @@ Route::prefix('admin')->group(function () {
     Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('admin.company');
     Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('admin.company.deactivate');
     Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('admin.company.activate');
-    // Route::view('company', 'admins.company')->name('admin.company');
     Route::view('job', 'admins.job')->name('admin.job');
     Route::view('transaction', 'admins.transaction')->name('admin.transaction');
     Route::view('message', 'admins.message')->name('admin.message');
@@ -60,26 +51,4 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/user-dashboard', function () {
     return view('users.dashbord');
-});
-Route::get('/job-details', function () {
-    return view('users.job-details');
-});
-    
-
-
-Route::get('/edit-todo', function () {
-    return view('users.edit-todo');
-});
-Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
-Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
-
-Route::get('/user-job-list', function () {
-    return view('users.job-list');
-});
-Route::get('/user-message', function () {
-    return view('users.message');
-});
-Route::get('/confirm', function () {
-    return view('email.confirm');
 });
