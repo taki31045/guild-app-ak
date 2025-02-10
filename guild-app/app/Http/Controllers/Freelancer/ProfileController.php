@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+
     public function show($id){
         $user = User::findOrFail($id);
         $freelancer = $user->freelancer;
