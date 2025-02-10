@@ -3,7 +3,7 @@
 @section('title', 'Project List')
 
 @section('styles')
-    <link rel="stylesheet" href="css/users/project-list.css">
+    <link rel="stylesheet" href="{{asset('css/users/project-list.css')}}">
 @endsection
 
 @section('scripts')
@@ -18,7 +18,7 @@
             {{-- Searching --}}
 
             @foreach ($all_projects as $project)
-                <a href="{{route('project-details', $project->id)}}" class="text-decoration-none text-dark">
+                <a href="{{route('freelancer.project-details', $project->id)}}" class="text-decoration-none text-dark">
                     <div class="job">
                         <div class="job-detail-container">
                             <div class="job-date">{{$project->deadline}}</div>
@@ -41,7 +41,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <a class="favoriteBtn" data-project_id="{{$project->id}}">
+                        <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
                             <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
                         </a>
                     </div>

@@ -137,16 +137,11 @@
         } else if (freelanceRadio.checked) {
             companyFields.style.display = 'none';
             freelanceFields.style.display = 'block';
-        } else {
-            companyFields.style.display = 'none';
-            freelanceFields.style.display = 'none';
         }
     }
 
-    // ページ読み込み時に選択状態を反映
     document.addEventListener("DOMContentLoaded", function() {
         toggleFields();
     });
 </script>
-
 @endsection

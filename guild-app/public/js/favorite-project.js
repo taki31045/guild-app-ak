@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", function(){
     document.querySelectorAll(".favoriteBtn").forEach(function (btn){
         btn.addEventListener("click", function(e){
             e.preventDefault();
-            let projectId = this.dataset.project_id;
+            let url = this.dataset.url;
             let icon = this.querySelector("i");
 
-            fetch(`/project/${projectId}/favorite`,{
+            fetch(url,{
                 method: "POST",
                 headers: {
                     "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),

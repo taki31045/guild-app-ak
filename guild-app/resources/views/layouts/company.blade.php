@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li><a href="{{ route('company.project')}}">create new job</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

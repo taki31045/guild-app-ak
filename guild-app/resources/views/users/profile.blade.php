@@ -121,7 +121,7 @@
 
     <div class="tab-content">
         @foreach ($completedProjects as $completedProject)
-            <a href="{{route('project-details', $completedProject->project->id)}}" class="text-decoration-none text-black">
+            <a href="{{route('freelancer.project-details', $completedProject->project->id)}}" class="text-decoration-none text-black">
                 <div class="tab-pane Project-history">
                     <div class="Project-date">{{$completedProject->project->deadline}}</div>
                     <div class="Project-details">
@@ -143,7 +143,7 @@
         @endforeach
 
         @foreach ($ongoingProjects as $ongoingProject)
-            <a href="{{route('project-details', $ongoingProject->project->id)}}" class="text-decoration-none text-black">
+            <a href="{{route('freelancer.project-details', $ongoingProject->project->id)}}" class="text-decoration-none text-black">
                 <div class="tab-pane on-going">
                     <div class="Project-date">{{$ongoingProject->project->deadline}}</div>
                     <div class="Project-details">
@@ -166,7 +166,7 @@
 
         {{-- {{dd($favoriteProjects)}} --}}
         @foreach ($favoriteProjects as $favoriteProject)
-            <a href="{{route('project-details', $favoriteProject->id)}}" class="text-decoration-none text-black">
+            <a href="{{route('freelancer.project-details', $favoriteProject->id)}}" class="text-decoration-none text-black">
                 <div class="tab-pane likes">
                     <div class="Project-date">{{$favoriteProject->deadline}}</div>
                     <div class="Project-details">
