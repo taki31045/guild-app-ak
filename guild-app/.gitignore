@@ -23,3 +23,5 @@ yarn-error.log
 /.vscode
 /.zed
 /laravel.log
+/vender
+.DS_Store

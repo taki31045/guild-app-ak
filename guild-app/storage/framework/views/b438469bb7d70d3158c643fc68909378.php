@@ -139,18 +139,13 @@
         } else if (freelanceRadio.checked) {
             companyFields.style.display = 'none';
             freelanceFields.style.display = 'block';
-        } else {
-            companyFields.style.display = 'none';
-            freelanceFields.style.display = 'none';
         }
     }
 
-    // ページ読み込み時に選択状態を反映
     document.addEventListener("DOMContentLoaded", function() {
         toggleFields();
     });
 </script>
-
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/ujibayashiryunosuke/Desktop/collabrate work/guild/batch9-guild-app/guild-app-final/batch9-guild-app/guild-app/resources/views/auth/register.blade.php ENDPATH**/ ?>

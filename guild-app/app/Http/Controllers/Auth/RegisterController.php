@@ -1,45 +1,54 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
 class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    protected function redirectTo()
-    {
-        if (auth()->user()->role_id == 2) {
-            return '/company'; // 企業のダッシュボード
-        } elseif (auth()->user()->role_id == 3) {
-            return '/user-dashboard'; // フリーランサーのダッシュボード
-        }
-    }
+    protected $redirectTo = '/';
 
-    public function __construct()
-    {
+
+    public function __construct(){
         $this->middleware('guest');
     }
 
+
+    public function registered($request, $user){
+
+        if ($user->role_id == 2) {
+            return redirect()->route('company.dashboard');
+        }
+
+        if ($user->role_id == 3) {
+            return redirect()->route('freelance');
+        }
+
+        return redirect('/home');
+    }
+
     /**
-     * Validate the user registration data.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Note: This function expects to recieved string
      */
+    // protected function redirectTo()
+    // {
+    //     // 役割に基づいてリダイレクト先を設定
+    //     if (auth()->user()->role_id == 2) {
+    //         return '/company'; // 会社のダッシュボードにリダイレクト
+    //     }
+    //     if (auth()->user()->role_id == 3) {
+    //         return redirect()->route('/freelance'); // フリーランスのダッシュボードにリダイレクト
+    //     }
+    // }
     protected function validator(array $data)
     {
-        // Validation rules for both role_id 2 (company) and 3 (freelancer)
         $rules = [
             'role_id' => ['required', 'in:2,3'], // Role must be either company (2) or freelancer (3)
         ];
-
-        // Additional validation based on role_id
+        // Add validation rules based on role_id
         if ($data['role_id'] == '2') { // For companies
             $rules = array_merge($rules, [
                 'company_name' => ['required', 'string', 'max:255'],
@@ -54,38 +63,29 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]);
         }
-
         return Validator::make($data, $rules);
     }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    public function create(array $data)
+    protected function create(array $data)
     {
-        // Handle company registration
-        if ($data['role_id'] == '2') { // For companies
+        // Create the user based on the role_id
+        if ($data['role_id'] == '2') {
+            // Company registration
             return User::create([
                 'username' => $data['company_name'],
-                'name' => $data['company_name'],
-                'email' => $data['company_email'], // Use company email
+                'name' => $data['company_name'], // Consider renaming 'name' to 'company_name' in the User model
+                'email' => $data['company_email'],
                 'password' => Hash::make($data['company_password']),
-                'role_id' => $data['role_id'], 
-                
+                'role_id' => $data['role_id'],
             ]);
-        } 
-
-        // Handle freelancer registration
-        elseif ($data['role_id'] == '3') { // For freelancers
+        }
+        if ($data['role_id'] == '3') {
+            // Freelancer registration
             return User::create([
                 'username' => $data['username'],
                 'name' => $data['name'],
-                'email' => $data['email'], // Use freelancer email
+                'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'role_id' => $data['role_id'], 
+                'role_id' => $data['role_id'],
             ]);
         }
     }

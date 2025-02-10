@@ -15,7 +15,7 @@
         <div class="col-8">
             <div class="job-header">
                 <h3>PROJECT DETAILS</h3>
-                <a class="favoriteBtn" data-project_id="{{$project->id}}">
+                <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
                     <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form action="{{route('comment.store')}}" method="post" class="comment-form">
+                <form action="{{route('freelancer.comment.store')}}" method="post" class="comment-form">
                     @csrf
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
