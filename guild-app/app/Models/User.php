@@ -53,4 +53,13 @@ class User extends Authenticatable
     public function freelancer(){
         return $this->hasOne(Freelancer::class)->withTrashed();
     }
+
+    public function ProjectComments(){
+        return $this->hasMany(ProjectComment::class);
+    }
+
+    public function favoriteProjects(){
+        return $this->belongsToMany(Project::class, 'favorite_projects', 'user_id', 'project_id')->withTimestamps();
+    }
+
 }

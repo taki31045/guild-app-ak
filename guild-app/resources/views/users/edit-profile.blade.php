@@ -30,7 +30,6 @@
         @endif
         <form action="{{route('freelancer.profile-update')}}" method="post">
             @csrf
-            @method('PATCH')
             <h3 class="mb-4 fw-bold">Edit Profile</h3>
             <label for="username" class="form-label">Username</label>
             <input type="text" name="username" class="form-control mb-4" value="{{$user->username}}">

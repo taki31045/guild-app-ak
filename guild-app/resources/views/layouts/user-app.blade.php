@@ -36,7 +36,7 @@
             <nav>
                 <ul>
                     <li><a href="#">About</a></li>
-                    <li><a href="/user-job-list">Project</a></li>
+                    <li><a href="{{route('index')}}">Project</a></li>
                     <li><a href="/user-message">Message</a></li>
                     <li><a href="{{route('freelancer.profile', Auth::user()->id)}}">Profile</a></li>
                     <li><a href="#">Contact</a></li>

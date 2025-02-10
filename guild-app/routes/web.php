@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+
 // create front
 Route::get('/', function () {
     return view('welcome');
@@ -49,31 +50,28 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/user-dashboard', function () {
-    return view('users.dashbord');
-});
-Route::get('/job-details', function () {
-    return view('users.job-details');
-});
 
+
+
+//Freelancer Profile
+Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
+Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
+
+//Project
+Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('index');
+Route::get('/project/{id}/project-details', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('project-details');
+Route::post('/project/comment/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('comment.store');
+Route::post('/project/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('project.favorite');
 
 
 Route::get('/edit-todo', function () {
     return view('users.edit-todo');
 });
-Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
-Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
-
-Route::get('/user-job-list', function () {
-    return view('users.job-list');
+Route::get('/user-dashboard', function () {
+    return view('users.dashboard');
 });
-Route::get('/user-message', function () {
-    return view('users.message');
+Route::get('/job-details', function () {
+    return view('users.job-details');
 });
-Route::get('/confirm', function () {
-    return view('email.confirm');
-});
-
-
 
