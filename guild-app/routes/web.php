@@ -21,10 +21,11 @@ Route::get('/', function () {
 });
 
 //company
-    Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
-        Route::get('/company', [CompanyController::class, 'index'])->name('dashboard');
-        Route::get('/company/create', [ProjectController::class, 'create'])->name('create');
+        Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
+        Route::get('/project', [ProjectController::class, 'index'])->name('project');
+        Route::post('/create', [ProjectController::class, 'create'])->name('create');
     });
 
 //freelancer
@@ -36,7 +37,7 @@ Route::get('/', function () {
         Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
 
     });
-    
+
 //admin
 
 

@@ -20,7 +20,7 @@ class RegisterController extends Controller
     public function registered($request, $user){
 
         if ($user->role_id == 2) {
-            return redirect()->route('company');
+            return redirect()->route('company.dashboard');
         }
 
         if ($user->role_id == 3) {
