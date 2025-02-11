@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -61,6 +62,14 @@ class User extends Authenticatable
 
     public function favoriteProjects(){
         return $this->belongsToMany(Project::class, 'favorite_projects', 'user_id', 'project_id')->withTimestamps();
+    }
+
+    public function sentMessages(){
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function receiveMessages(){
+        return $this->hasMany(Message::class, 'receiver_id');
     }
 
 }

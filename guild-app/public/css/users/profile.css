@@ -20,8 +20,10 @@ main{
     padding: 50px;
 }
 
-.profile-icon{
-    font-size: 100px;
+.profile-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 .rank{
@@ -194,7 +196,7 @@ main{
 
 
 .select-container{
-    width: 335px;
+    width: 380px;
     position: relative;
     display: inline-block;
 }

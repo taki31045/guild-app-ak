@@ -11,7 +11,11 @@
 <div class="profile-container">
     <div class="profile">
         <div class="profile-left">
-            <i class="fa-solid fa-user-circle profile-icon"></i>
+            @if ($user->avatar)
+                <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
+            @else
+                <i class="fa-solid fa-user-circle profile-icon"></i>
+            @endif
             <div class="rank">
                 <span class="stars">
                     @if ($user->freelancer->rank === 1)
