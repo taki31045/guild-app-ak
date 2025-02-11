@@ -20,8 +20,10 @@ main{
     padding: 50px;
 }
 
-.profile-icon{
-    font-size: 100px;
+.profile-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 .rank{
@@ -112,12 +114,15 @@ main{
     transition: width 1s ease-in-out;
 }
 
-.job-container{
+.Project-container{
     border: 1px solid black;
     margin-top: 50px!important;
     width: 70%;
     margin: auto;
+    margin-bottom: 80px;
+    height: 600px;
     padding: 0 15px 15px 15px;
+    overflow-y: auto;
 }
 
 .tab-menu{
@@ -127,14 +132,14 @@ main{
     margin-bottom: 20px;
 }
 
-#job-history:checked ~ .tab-menu label[for="job-history"],
+#Project-history:checked ~ .tab-menu label[for="Project-history"],
 #on-going:checked ~ .tab-menu label[for="on-going"],
 #likes:checked ~ .tab-menu label[for="likes"] {
     color: brown;
     border-bottom: 1px solid brown;
 }
 
-.job-container input{
+.Project-container input{
     display: none;
 }
 
@@ -149,6 +154,7 @@ main{
 
 .tab-content{
     padding: 10px;
+    overflow-y: auto;
 }
 
 .tab-pane{
@@ -157,10 +163,9 @@ main{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 15px;
-
 }
 
-#job-history:checked ~ .tab-content .job-history,
+#Project-history:checked ~ .tab-content .Project-history,
 #on-going:checked ~ .tab-content .on-going,
 #likes:checked ~ .tab-content .likes{
     display: block;
@@ -168,7 +173,7 @@ main{
     align-items: center;
 }
 
-.job-date{
+.Project-date{
     background: gray;
     width: 100px;
     height: 100px;
@@ -191,7 +196,7 @@ main{
 
 
 .select-container{
-    width: 335px;
+    width: 380px;
     position: relative;
     display: inline-block;
 }

@@ -29,7 +29,8 @@ class FreelancerProfileRequest extends FormRequest
             'x'          => 'nullable|string|max:255',
             'instagram'  => 'nullable|string|max:255',
             'facebook'   => 'nullable|string|max:255',
-            'skills'     => 'nullable'
+            'skills'     => 'nullable',
+            'avatar'     => 'mimes:jpeg,jpg,png,gif|max:1048'
         ];
     }
 }

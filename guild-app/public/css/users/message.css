@@ -10,11 +10,12 @@ main{
     overflow-y: hidden;
 }
 
+
 .user-sidebar{
     border-right: 1px solid black;
     overflow-y: auto;
     padding: 20px;
-    height: 100%;
+    height: 100vh;
 }
 
 .user-sidebar .user{
@@ -24,8 +25,27 @@ main{
     margin-bottom: 25px;
 }
 
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.user-sidebar a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 15px;
+    color: black;
+}
+
 .user i{
     margin-right: 10px;
+}
+
+.none-message{
+    text-align: center;
+    margin-top: 200px;
+    font-size: 20px;
 }
 
 .message-container{
@@ -33,7 +53,7 @@ main{
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 100%;
+    height: 80vh;
 }
 
 .message-header{
@@ -44,6 +64,7 @@ main{
     flex-grow: 1;
     padding: 50px 20px;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: calc(100vh - 120px);
 }
 
@@ -66,6 +87,8 @@ main{
     color: #5a4a42;
     line-height: 1.5;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .message-content .user{

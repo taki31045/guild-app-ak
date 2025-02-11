@@ -6,6 +6,8 @@ use App\Http\Requests\FreelancerProfileRequest;
 use App\Models\Freelancer;
 use App\Models\User;
 use App\Models\Skill;
+use App\Models\Project;
+use App\Models\FavoriteProject;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -16,24 +18,30 @@ class ProfileController extends Controller
         $freelancer = $user->freelancer;
 
         if($freelancer){
-            $evaluations = $freelancer->evaluations()->get();
+            if($freelancer->evaluations()){
+                $evaluations = $freelancer->evaluations()->get();
+            }
+            if($freelancer->applications()){
+                $ongoingProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', 'ongoing')
+                                                ->get();
 
-            $ongoingJobs  = $freelancer->applications()
-                                            ->where('freelancer_id', $user->freelancer->id)
-                                            ->where('status', 'ongoing')
-                                            ->get();
-
-            $completedJobs  = $freelancer->applications()
-                                            ->where('freelancer_id', $user->freelancer->id)
-                                            ->where('status', 'completed')
-                                            ->get();
+                $completedProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', 'completed')
+                                                ->get();
+            }
+                // $favoriteProjects = FavoriteProject::where('user_id', $user->id)->get();
+                $favoriteProjects = $user->favoriteProjects()->get();
         }else{
             $evaluations = collect();
-            $ongoingJobs = collect();
-            $completedJobs = collect();
+            $ongoingProjects = collect();
+            $completedProjects = collect();
+            $favoriteProjects = collect();
         }
 
-        return view('users.profile', compact('user', 'evaluations', 'ongoingJobs', 'completedJobs'));
+        return view('users.profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects'));
     }
 
 
@@ -52,8 +60,13 @@ class ProfileController extends Controller
         $user->update([
             'username' => $request->username,
             'name'     => $request->name,
-            'email'    => $request->email
+            'email'    => $request->email,
         ]);
+
+        if($request->avatar){
+            $user->avatar = 'data:image/' . $request->avatar->extension() . ';base64,' . base64_encode(file_get_contents($request->avatar));
+            $user->save();
+        }
 
         $freelancer = $user->freelancer;
         if($freelancer){
