@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
 
         if ($user->role_id == 3) {
-            return route('freelance'); // フリーランス用ページ
+            return route('freelancer.index'); // フリーランス用ページ
         }
 
         return '/home'; // それ以外はデフォルトのページへ

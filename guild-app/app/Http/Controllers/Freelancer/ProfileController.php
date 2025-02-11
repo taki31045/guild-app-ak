@@ -60,8 +60,13 @@ class ProfileController extends Controller
         $user->update([
             'username' => $request->username,
             'name'     => $request->name,
-            'email'    => $request->email
+            'email'    => $request->email,
         ]);
+
+        if($request->avatar){
+            $user->avatar = 'data:image/' . $request->avatar->extension() . ';base64,' . base64_encode(file_get_contents($request->avatar));
+            $user->save();
+        }
 
         $freelancer = $user->freelancer;
         if($freelancer){
