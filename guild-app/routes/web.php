@@ -10,6 +10,8 @@ use App\Http\Controllers\Company\ProjectController;
 //freelancer
 
 
+
+// create front
 //admin
 
 
@@ -29,13 +31,19 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
     });
 
 //freelancer
-    // Route::middleware(['freelance']->prefix('freelancer')->name('freelancer')->group(function()){
-    Route::middleware(['freelancer'])->group(function () {
-        Route::get('/freelance', [FreelanceController::class, 'index'])->name('freelance');
-        Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-        Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
-        Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
+    Route::middleware(['freelancer'])->prefix('freelancer')->name('freelancer.')->group(function(){
+        Route::get('/user-dashboard', [FreelanceController::class, 'index'])->name('index');
 
+        //Freelancer Profile
+        Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
+        Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile-edit');
+        Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile-update');
+
+        //Project
+        Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('project.index');
+        Route::get('/project/{id}/project-details', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('project-details');
+        Route::post('/project/comment/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('comment.store');
+        Route::post('/project/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('project.favorite');
     });
 
 //admin
@@ -48,8 +56,4 @@ Route::prefix('admin')->group(function () {
     Route::view('job', 'admins.job')->name('admin.job');
     Route::view('transaction', 'admins.transaction')->name('admin.transaction');
     Route::view('message', 'admins.message')->name('admin.message');
-});
-
-Route::get('/user-dashboard', function () {
-    return view('users.dashbord');
 });
