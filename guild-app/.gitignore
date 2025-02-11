@@ -21,7 +21,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.nova
-# /.vscode
+/.vscode
 /.zed
 /laravel.log
 /vendor
