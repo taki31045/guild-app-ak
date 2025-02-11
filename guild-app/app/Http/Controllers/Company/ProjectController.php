@@ -52,4 +52,18 @@ class ProjectController extends Controller
         }
 
     }
+
+    public function delete($id){
+        $project = Project::findOrFail($id);
+
+        if(Auth::user()->company->id !== $project->company_id){
+            return redirect()->route('company.dashboard')->with('no');
+                }
+
+        ProjectSkill::where('project_id', $project->id)->delete();
+
+        $project->delete();
+        
+        return  redirect()->route('company.dashboard');
+    }
 }

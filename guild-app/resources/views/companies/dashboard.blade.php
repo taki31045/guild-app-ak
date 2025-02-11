@@ -155,19 +155,25 @@
     <div class="content border m-auto mt-5" style="height: 500px; width: 1000px;">
         <div class="row h-100">
             <div class="col-8">
+                @foreach ($projects as $project)
                 <div class="row border rounded p-3 shadow-sm">
                     <!-- First Column: Placeholder or Icon -->
                     <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
+                        <div class="border bg-light  d-flex justify-content-center align-items-center" 
+                             style="width: 50px; height: 50px; font-size: 0.9rem; font-weight: bold; color: #333;">
+                            {{ \Carbon\Carbon::parse($project->deadline)->format('m/d') }}
+                        </div>
                     </div>
                 
                     <!-- Second Column: Title, Name, and Price -->
                     <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
+                        <h2 class="fs-4 fw-bold text-dark mb-1">{{ $project->title }}</h2>
                         <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
+                            <p class="mb-0 me-2 text-muted fw-bold">price : {{ $project->reward_amount }}</p>
+                            @for ($i = 1; $i <= 5; $i++)
+                            <label for="rank-{{ $i }}" class="star {{ $i <= $project->required_rank ? 'text-warning' : 'text-muted' }}">★</label>
+                        @endfor
+                        
                         </div>
                     </div>
                 
@@ -178,97 +184,17 @@
                         </div>
                         
                         <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
+                        <button data-bs-toggle="modal" data-bs-target="#delete-project-{{ $project->id }}"><i class="fa-solid fa-trash-can fa-2x"></i></button>
+                        @include('companies.modal.delete')
+                        
                         
                     </div>
                 </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
+
+                @endforeach
                 
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
-                
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
-                
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-               
-              
-                
-                
-                    
-                </div>
+            </div>
+
                
                 <div class="col-4" style="background-image: url('{{ asset('images/job list.jpg') }}');">
                 </div>

@@ -26,6 +26,7 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
         Route::get('/project', [ProjectController::class, 'index'])->name('project');
         Route::post('/create', [ProjectController::class, 'create'])->name('create');
+        Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
     });
 
 //freelancer

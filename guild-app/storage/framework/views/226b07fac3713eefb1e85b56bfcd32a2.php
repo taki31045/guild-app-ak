@@ -153,19 +153,26 @@
     <div class="content border m-auto mt-5" style="height: 500px; width: 1000px;">
         <div class="row h-100">
             <div class="col-8">
+                <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="row border rounded p-3 shadow-sm">
                     <!-- First Column: Placeholder or Icon -->
                     <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
+                        <div class="border bg-light  d-flex justify-content-center align-items-center" 
+                             style="width: 50px; height: 50px; font-size: 0.9rem; font-weight: bold; color: #333;">
+                            <?php echo e(\Carbon\Carbon::parse($project->deadline)->format('m/d')); ?>
+
+                        </div>
                     </div>
                 
                     <!-- Second Column: Title, Name, and Price -->
                     <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
+                        <h2 class="fs-4 fw-bold text-dark mb-1"><?php echo e($project->title); ?></h2>
                         <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
+                            <p class="mb-0 me-2 text-muted fw-bold">price : <?php echo e($project->reward_amount); ?></p>
+                            <?php for($i = 1; $i <= 5; $i++): ?>
+                            <label for="rank-<?php echo e($i); ?>" class="star <?php echo e($i <= $project->required_rank ? 'text-warning' : 'text-muted'); ?>">★</label>
+                        <?php endfor; ?>
+                        
                         </div>
                     </div>
                 
@@ -176,97 +183,17 @@
                         </div>
                         
                         <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
+                        <button data-bs-toggle="modal" data-bs-target="#delete-project-<?php echo e($project->id); ?>"><i class="fa-solid fa-trash-can fa-2x"></i></button>
+                        <?php echo $__env->make('companies.modal.delete', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        
                         
                     </div>
                 </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
-                
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-                <div class="row border rounded p-3 shadow-sm">
-                    <!-- First Column: Placeholder or Icon -->
-                    <div class="col-2 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle" style="width: 50px; height: 50px;"></div>
-                    </div>
-                
-                    <!-- Second Column: Title, Name, and Price -->
-                    <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">Title</h2>
-                        <a href="#" class="text-decoration-none text-primary">Freelance Name</a>
-                        <div class="d-flex align-items-center mt-2">
-                            <p class="mb-0 me-2 text-muted fw-bold">Price:</p>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                    </div>
-                
-                    <!-- Third Column: Status -->
-                    <div class="col-3 d-flex align-items-center justify-content-center">
-                        <div class="b border bg-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <span>33</span>
-                        </div>
-                        
-                        <i class="fa-solid fa-pen-to-square me-3 fa-2x"></i>
-                        <i class="fa-solid fa-trash-can fa-2x"></i>
-                        
-                    </div>
-                </div>
-               
-              
-                
-                
-                    
-                </div>
+            </div>
+
                
                 <div class="col-4" style="background-image: url('<?php echo e(asset('images/job list.jpg')); ?>');">
                 </div>
