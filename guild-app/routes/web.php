@@ -9,6 +9,7 @@ use App\Http\Controllers\Company\ProjectController;
 
 
 Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -44,8 +45,14 @@ Route::prefix('admin')->group(function () {
     Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('admin.company');
     Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('admin.company.deactivate');
     Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('admin.company.activate');
-    Route::view('job', 'admins.job')->name('admin.job');
-    Route::view('transaction', 'admins.transaction')->name('admin.transaction');
+    Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('admin.project');
+    Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('admin.project.deactivate');
+    Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('admin.project.activate');
+    Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('admin.transaction');
+
+
+    // Route::view('transaction', 'admins.transaction')->name('admin.transaction');
+
     Route::view('message', 'admins.message')->name('admin.message');
 });
 

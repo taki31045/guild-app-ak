@@ -8,15 +8,20 @@ use Illuminate\Http\Request;
 use App\Models\Freelancer;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Project;
+use App\Models\Transaction;
+
 
 class DashboardController extends Controller
 {   
     private $freelancer;
     private $company;
+    private $project;
 
-    public function __construct(Freelancer $freelancer_model, Company $company_model){
+    public function __construct(Freelancer $freelancer_model, Company $company_model, Project $project_model){
         $this->freelancer = $freelancer_model;
         $this->company = $company_model;
+        $this->project = $project_model;
     }
     
 
@@ -79,4 +84,63 @@ class DashboardController extends Controller
         return redirect()->route('admin.company');
     }
 
+    public function getAllProjects(){
+        $all_projects = Project::with(['company' => function ($query) {
+            $query->withTrashed(); 
+        }])
+        ->withTrashed()->orderBy('id', 'asc')->paginate(4);
+
+        return view('admins.project')
+                ->with('all_projects', $all_projects);
+    }
+
+    public function deactivateProject($id){
+        $project = $this->project->findOrFail($id);
+        $project->delete();
+        return redirect()->route('admin.project');
+    }
+
+    public function activateProject($id){
+        $project = $this->project->withTrashed()->findOrFail($id);    
+        $project->restore();
+        return redirect()->route('admin.project');
+    }
+    
+    public function getAllTransactions(){
+        $adminId = User::where('role_id', 1)->value('id');
+
+        $adminBalance = $this->getAdminBalance($adminId);
+
+        $projects = Project::withTrashed()
+            ->with([
+            'company.user',
+            'application.freelancer.user',
+            'transactions' => function ($query) use ($adminId) {
+                $query->where('payer_id', $adminId)
+                    ->orWhere('payee_id', $adminId)
+                    ->orderBy('created_at', 'asc');
+            }
+        ])
+        ->orderBy('id', 'asc')
+        ->paginate(4);
+
+        return view('admins.transaction')
+            ->with('projects', $projects)
+            ->with('adminId', $adminId)
+            ->with('adminBalance', $adminBalance);
+
+    }
+
+    private function getAdminBalance($adminId)
+    {
+        $totalIncome = Transaction::where('payee_id', $adminId)
+            ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+
+        $totalExpense = Transaction::where('payer_id', $adminId)
+            ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+
+        return $totalIncome - $totalExpense;
+    }
+    
 }
+

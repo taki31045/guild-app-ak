@@ -13,7 +13,8 @@
                     <tr>
                         <td></td>
                         <td style="width: 150px;">Company name</td>
-                        <td>{{ $company->user->name }}</td>
+                        <td><a href="#" class="text-decoration-none text-dark">
+                            {{ $company->user->username }}</td>
                         <td>
                         @if ($company->trashed())
                             <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive

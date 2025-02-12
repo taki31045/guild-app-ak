@@ -14,7 +14,8 @@
                         <td></td>
                         <td rowspan="4"  style="width: 150px;"><i class="fa-solid fa-circle-user icon-lg"></i></td>
                         <td style="width: 100px;">Name</td>
-                        <td style="width: 200px;">{{$freelancer->user->name }}</td>
+                        <td style="width: 200px;"><a href="#" class="text-decoration-none text-dark">
+                            {{ $freelancer->user->username }}</td>
                         <td>
                         @if ($freelancer->trashed())
                             <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive

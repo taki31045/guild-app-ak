@@ -34,7 +34,7 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to deactive <span class="fw-bold">{{ $freelancer->user->name }}</span>?
+                    Are you sure you want to deactivate <span class="fw-bold">{{ $freelancer->user->name }}</span>?
                 </div>
                 <div class="modal-footer border-0">
                     <form action="{{ route('admin.freelancer.deactivate', $freelancer->id) }}" method="post">

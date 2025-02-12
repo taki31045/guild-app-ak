@@ -1,18 +1,18 @@
-@if ($company->trashed())
+@if ($project->trashed())
     {{-- Activate --}}
-    <div class="modal fade" id="activate-user-{{ $company->user->id }}">
+    <div class="modal fade" id="activate-project-{{ $project->id }}">
         <div class="modal-dialog">
             <div class="modal-content border-success">
                 <div class="modal-header border-success">
                     <h3 class="h5 modal-title text-success">
-                        <i class="fa-solid fa-user-check"></i> Activate Company
+                        <i class="fa-solid fa-unlock"></i> Activate Project
                     </h3>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to activate <span class="fw-bold">{{ $company->user->name }}</span>?
+                    Are you sure you want to activate <span class="fw-bold">ID: {{ $project->id }}</span>?
                 </div>
                 <div class="modal-footer border-0">
-                    <form action="{{ route('admin.company.activate', $company->id) }}" method="post">
+                    <form action="{{ route('admin.project.activate', $project->id) }}" method="post">
                         @csrf
                         @method('PATCH')
 
@@ -25,19 +25,19 @@
     </div>
 @else
     {{-- Deactivate --}}
-    <div class="modal fade" id="deactivate-user-{{ $company->user->id }}">
+    <div class="modal fade" id="deactivate-project-{{ $project->id }}">
         <div class="modal-dialog">
             <div class="modal-content border-danger">
                 <div class="modal-header border-danger">
                     <h3 class="h5 modal-title text-danger">
-                        <i class="fa-solid fa-user-slash"></i> Deactivate Company
+                        <i class="fa-solid fa-lock"></i> Deactivate Project
                     </h3>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to deactivate <span class="fw-bold">{{ $company->user->name }}</span>?
+                    Are you sure you want to deactivate <span class="fw-bold">ID: {{ $project->id }}</span>?
                 </div>
                 <div class="modal-footer border-0">
-                    <form action="{{ route('admin.company.deactivate', $company->id) }}" method="post">
+                    <form action="{{ route('admin.project.deactivate', $project->id) }}" method="post">
                         @csrf
                         @method('DELETE')
 
