@@ -14,7 +14,7 @@
                         <td></td>
                         <td rowspan="4"  style="width: 150px;"><i class="fa-solid fa-circle-user icon-lg"></i></td>
                         <td style="width: 100px;">Name</td>
-                        <td style="width: 200px;"><a href="#" class="text-decoration-none text-dark">
+                        <td style="width: 200px;"><a href="{{ route('freelancer.profile', $freelancer->user->id ) }}" class="text-decoration-none text-dark">
                             {{ $freelancer->user->username }}</td>
                         <td>
                         @if ($freelancer->trashed())

@@ -7,6 +7,12 @@ use App\Http\Controllers\FreelanceController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 
+//freelancer
+
+
+
+// create front
+//admin
 
 Auth::routes();
 
@@ -15,47 +21,57 @@ Route::get('/', function () {
 });
 
 //company
-    Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
-        Route::get('/company', [CompanyController::class, 'index'])->name('dashboard');
-        Route::get('/company/create', [ProjectController::class, 'create'])->name('create');
+        Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
+        Route::get('/project', [ProjectController::class, 'index'])->name('project');
+        Route::post('/create', [ProjectController::class, 'create'])->name('create');
     });
 
 //freelancer
-    // Route::middleware(['freelance']->prefix('freelancer')->name('freelancer')->group(function()){
-    Route::middleware(['freelancer'])->group(function () {
-        Route::get('/freelance', [FreelanceController::class, 'index'])->name('freelance');
-        Route::get('/freelancer/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-        Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('freelancer.profile-edit');
-        Route::patch('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('freelancer.profile-update');
+Route::middleware(['freelancer'])->prefix('freelancer')->name('freelancer.')->group(function(){
+    Route::get('/user-dashboard', [FreelanceController::class, 'index'])->name('index');
 
-    });
-    
+    //Freelancer Profile
+    Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
+    Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile-edit');
+    Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile-update');
+
+    //Project
+    Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('project.index');
+    Route::get('/project/{id}/project-details', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('project-details');
+    Route::post('/project/comment/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('comment.store');
+    Route::post('/project/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('project.favorite');
+
+    //message
+    Route::get('/message/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('message.index');
+    Route::post('/message/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('message.store');
+
+});
+
+
+
 //admin
-Route::prefix('admin')->group(function () {
+Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
     
     Route::get('/', function(){
         return redirect()->route('admin.freelancer');
     })
-    ->name('admin.dashboard');
+    ->name('dashboard');
     
-    Route::get('freelancer', [App\Http\Controllers\Admin\DashboardController::class, 'getAllFreelancers'])->name('admin.freelancer');
-    Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivate'])->name('admin.freelancer.deactivate');
-    Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activate'])->name('admin.freelancer.activate');
-    Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('admin.company');
-    Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('admin.company.deactivate');
-    Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('admin.company.activate');
-    Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('admin.project');
-    Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('admin.project.deactivate');
-    Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('admin.project.activate');
-    Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('admin.transaction');
+    Route::get('freelancer', [App\Http\Controllers\Admin\DashboardController::class, 'getAllFreelancers'])->name('freelancer');
+    Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivate'])->name('freelancer.deactivate');
+    Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activate'])->name('freelancer.activate');
 
+    Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('company');
+    Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('company.deactivate');
+    Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('company.activate');
 
-    // Route::view('transaction', 'admins.transaction')->name('admin.transaction');
+    Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('project');
+    Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('project.deactivate');
+    Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('project.activate');
+
+    Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('transaction');
 
     Route::view('message', 'admins.message')->name('admin.message');
-});
-
-Route::get('/user-dashboard', function () {
-    return view('users.dashbord');
 });

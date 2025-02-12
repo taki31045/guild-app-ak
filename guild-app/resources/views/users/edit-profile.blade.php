@@ -28,9 +28,8 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('freelancer.profile-update')}}" method="post">
+        <form action="{{route('freelancer.profile-update')}}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
             <h3 class="mb-4 fw-bold">Edit Profile</h3>
             <label for="username" class="form-label">Username</label>
             <input type="text" name="username" class="form-control mb-4" value="{{$user->username}}">
@@ -65,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="selected-tags">
+            <div class="selected-tags mb-4">
                 @foreach ($user->freelancer->skills as $skill)
                     <div class="tag selected-option" data-value="{{$skill->id}}">
                         {{$skill->name}}
@@ -73,6 +72,9 @@
                     </div>
                 @endforeach
             </div>
+
+            <label for="avatar" class="form-label">Avatar</label>
+            <input type="file" name="avatar" class="form-control mb-4 w-50">
 
             <button type="submit" class="btn btn-dark w-100 mt-4">Update</button>
 

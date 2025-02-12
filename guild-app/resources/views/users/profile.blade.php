@@ -11,7 +11,11 @@
 <div class="profile-container">
     <div class="profile">
         <div class="profile-left">
-            <i class="fa-solid fa-user-circle profile-icon"></i>
+            @if ($user->avatar)
+                <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
+            @else
+                <i class="fa-solid fa-user-circle profile-icon"></i>
+            @endif
             <div class="rank">
                 <span class="stars">
                     @if ($user->freelancer->rank === 1)
@@ -108,29 +112,29 @@
     </div>
 </div>
 
-<div class="job-container">
-    <input type="radio" id="job-history" name="tab-group" checked>
+<div class="Project-container">
+    <input type="radio" id="Project-history" name="tab-group" checked>
     <input type="radio" id="on-going" name="tab-group">
     <input type="radio" id="likes" name="tab-group">
 
     <div class="tab-menu">
-        <label for="job-history" class="tab-label">Job History</label>
+        <label for="Project-history" class="tab-label">Project History</label>
         <label for="on-going" class="tab-label">On Going</label>
-        <label for="likes" class="tab-label">Likes Job</label>
+        <label for="likes" class="tab-label">Likes Project</label>
     </div>
 
     <div class="tab-content">
-        @foreach ($completedJobs as $completedJob)
-            <a href="/job-details" class="text-decoration-none text-black">
-                <div class="tab-pane job-history">
-                    <div class="job-date">{{$completedJob->project->deadline}}</div>
-                    <div class="job-details">
-                        <h3 class="h5 m-0">{{$completedJob->project->title}}</h3>
-                        <p class="fw-bold m-0">{{$completedJob->project->company->user->name}}</p>
-                        <p class="m-0">{{$completedJob->project->reward_amount}}</p>
+        @foreach ($completedProjects as $completedProject)
+            <a href="{{route('freelancer.project-details', $completedProject->project->id)}}" class="text-decoration-none text-black">
+                <div class="tab-pane Project-history">
+                    <div class="Project-date">{{$completedProject->project->deadline}}</div>
+                    <div class="Project-details">
+                        <h3 class="h5 m-0">{{$completedProject->project->title}}</h3>
+                        <p class="fw-bold m-0">{{$completedProject->project->company->user->name}}</p>
+                        <p class="m-0">{{$completedProject->project->reward_amount}}</p>
                         <p>
                             <?php
-                                for($i = 1; $i <= $completedJob->project->required_rank; $i++){
+                                for($i = 1; $i <= $completedProject->project->required_rank; $i++){
                             ?>
                                     <i class="fa-solid fa-star"></i>
                             <?php
@@ -142,17 +146,17 @@
             </a>
         @endforeach
 
-        @foreach ($ongoingJobs as $ongoingJob)
-            <a href="/job-details" class="text-decoration-none text-black">
+        @foreach ($ongoingProjects as $ongoingProject)
+            <a href="{{route('freelancer.project-details', $ongoingProject->project->id)}}" class="text-decoration-none text-black">
                 <div class="tab-pane on-going">
-                    <div class="job-date">{{$ongoingJob->project->deadline}}</div>
-                    <div class="job-details">
-                        <h3 class="h5 m-0">{{$ongoingJob->project->title}}</h3>
-                        <p class="fw-bold m-0">{{$ongoingJob->project->company->user->name}}</p>
-                        <p class="m-0">{{$ongoingJob->project->reward_amount}}</p>
+                    <div class="Project-date">{{$ongoingProject->project->deadline}}</div>
+                    <div class="Project-details">
+                        <h3 class="h5 m-0">{{$ongoingProject->project->title}}</h3>
+                        <p class="fw-bold m-0">{{$ongoingProject->project->company->user->name}}</p>
+                        <p class="m-0">{{$ongoingProject->project->reward_amount}}</p>
                         <p>
                             <?php
-                                for($i = 1; $i <= $ongoingJob->project->required_rank; $i++){
+                                for($i = 1; $i <= $ongoingProject->project->required_rank; $i++){
                             ?>
                                     <i class="fa-solid fa-star"></i>
                             <?php
@@ -164,17 +168,18 @@
             </a>
         @endforeach
 
-        @foreach ($ongoingJobs as $ongoingJob)
-            <a href="/job-details" class="text-decoration-none text-black">
+        {{-- {{dd($favoriteProjects)}} --}}
+        @foreach ($favoriteProjects as $favoriteProject)
+            <a href="{{route('freelancer.project-details', $favoriteProject->id)}}" class="text-decoration-none text-black">
                 <div class="tab-pane likes">
-                    <div class="job-date">{{$ongoingJob->project->deadline}}</div>
-                    <div class="job-details">
-                        <h3 class="h5 m-0">{{$ongoingJob->project->title}}</h3>
-                        <p class="fw-bold m-0">{{$ongoingJob->project->company->user->name}}</p>
-                        <p class="m-0">{{$ongoingJob->project->reward_amount}}</p>
+                    <div class="Project-date">{{$favoriteProject->deadline}}</div>
+                    <div class="Project-details">
+                        <h3 class="h5 m-0">{{$favoriteProject->title}}</h3>
+                        <p class="fw-bold m-0">{{$favoriteProject->company->user->name}}</p>
+                        <p class="m-0">{{$favoriteProject->reward_amount}}</p>
                         <p>
                             <?php
-                                for($i = 1; $i <= $ongoingJob->project->required_rank; $i++){
+                                for($i = 1; $i <= $favoriteProject->required_rank; $i++){
                             ?>
                                     <i class="fa-solid fa-star"></i>
                             <?php

@@ -13,7 +13,7 @@
                         <td style="width: 20px"></td>
                         <td rowspan="3" style="width: 100px;" class="bg-secondary text-center">{{ $project->formatted_deadline }}</td>
                         <td colspan="2" class="ps-4">
-                            <a href="#" class="text-decoration-none text-dark" title="{{ $project->title }}">
+                            <a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                             {{ \Str::limit($project->title, 60) }} 
                             </a>
                         </td>

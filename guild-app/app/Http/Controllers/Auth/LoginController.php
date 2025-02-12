@@ -25,7 +25,25 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+        $user = auth()->user(); // ログインユーザー情報を取得
+
+        if ($user->role_id == 1) {
+            return route('admin.dashboard'); // Admin用ダッシュボード
+        }
+        
+        
+        if ($user->role_id == 2) {
+            return route('company.dashboard'); // 企業用ダッシュボード
+        }
+
+        if ($user->role_id == 3) {
+            return route('freelancer.index'); // フリーランス用ページ
+        }
+
+        return '/home'; // それ以外はデフォルトのページへ
+    }
 
     /**
      * Create a new controller instance.
