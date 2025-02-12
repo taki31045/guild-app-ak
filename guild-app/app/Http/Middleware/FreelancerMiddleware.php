@@ -10,7 +10,7 @@ class FreelancerMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role_id ==  3) {
+        if (Auth::check() && (Auth::user()->role_id ==  3 || Auth::user()->role_id ==  1)) {
             return $next($request);
         }
         return redirect('/')->with('error', 'Access denied');

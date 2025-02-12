@@ -29,6 +29,11 @@ class LoginController extends Controller
     {
         $user = auth()->user(); // ログインユーザー情報を取得
 
+        if ($user->role_id == 1) {
+            return route('admin.dashboard'); // Admin用ダッシュボード
+        }
+        
+        
         if ($user->role_id == 2) {
             return route('company.dashboard'); // 企業用ダッシュボード
         }

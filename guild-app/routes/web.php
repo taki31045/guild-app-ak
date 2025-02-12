@@ -14,10 +14,8 @@ use App\Http\Controllers\Company\ProjectController;
 // create front
 //admin
 
-
-
-
 Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -54,11 +52,26 @@ Route::middleware(['freelancer'])->prefix('freelancer')->name('freelancer.')->gr
 
 
 //admin
+Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+    Route::get('/', function(){
+        return redirect()->route('admin.freelancer');
+    })
+    ->name('dashboard');
+    
+    Route::get('freelancer', [App\Http\Controllers\Admin\DashboardController::class, 'getAllFreelancers'])->name('freelancer');
+    Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivate'])->name('freelancer.deactivate');
+    Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activate'])->name('freelancer.activate');
 
-Route::prefix('admin')->group(function () {
-    Route::view('freelancer', 'admins.freelancer')->name('admin.freelancer');
-    Route::view('company', 'admins.company')->name('admin.company');
-    Route::view('job', 'admins.job')->name('admin.job');
-    Route::view('transaction', 'admins.transaction')->name('admin.transaction');
+    Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('company');
+    Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('company.deactivate');
+    Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('company.activate');
+
+    Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('project');
+    Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('project.deactivate');
+    Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('project.activate');
+
+    Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('transaction');
+
     Route::view('message', 'admins.message')->name('admin.message');
 });

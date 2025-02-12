@@ -1,84 +1,60 @@
 @extends('admins.dashboard')
 
+@section('title', 'Admin: Transaction')
+
 @section('page-content')
-  <!-- JOB No.1 -->
-  <div class="job-container">
-    <div class="job-header">JOB No.1</div>
-    <div class="info">
-      <span><strong>Company Name:</strong> kredo</span>
-      <span><strong>Freelancer Name:</strong> Ryunosuke</span>
-      <span class="mt-3"><strong>Transaction History</strong></span>
+    @foreach ($projects as $project)
+    <div class="job-container">
+        <div class="job-header">Project No.{{ $project->id }}</div>
+        <div class="info">
+            <span><strong>Company Name:</strong> {{ $project->company->user->username }}</span>
+            <span><strong>Freelancer Name:</strong> {{ $project->application?->freelancer?->user?->name ?? 'N/A' }}</span>
+            <span class="mt-3"><strong>Transaction History</strong></span>
+        </div>
+        
+        @if($project->transactions->isEmpty())
+            <p>No transactions available for this project.</p>
+        @else
+            <table class="transaction-table">
+                <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>INCOME ($)<br>from Company (10% Fee included)</th>
+                    <th>EXPENSE ($)<br>to Freelancer</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach ($project->transactions as $transaction)
+                    <tr>
+                        <td>{{ $transaction->created_at->format('d M Y') }}</td>
+                        <td>
+                            @if ($transaction->payee_id == $adminId)
+                            {{ $transaction->amount + ($transaction->fee ?? 0) }}
+                            @endif
+                        </td>
+                        <td>
+                            @if ($transaction->payer_id == $adminId)
+                            {{ $transaction->amount }}
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach 
+                        
+                </tbody>
+            </table>
+        @endif
     </div>
-    <table class="transaction-table">
-      <thead>
-        <tr>
-          <th>DATE</th>
-          <th>INCOME ($)</th>
-          <th>EXPENSE ($)</th>
-          <th>NOTES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>01 Apr 2025</td>
-          <td>1,100</td>
-          <td></td>
-          <td>From Company (commission Fee Included)</td>
-        </tr>
-        <tr>
-          <td>28 Apr 2025</td>
-          <td></td>
-          <td>1,000</td>
-          <td>To Freelancer</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    @endforeach
 
-  <!-- JOB No.2 -->
-  <div class="job-container">
-    <div class="job-header">JOB No.2</div>
-    <div class="info">
-      <span><strong>Company Name:</strong> kredo</span>
-      <span><strong>Freelancer Name:</strong> Kenta</span>
-      <span class="mt-3"><strong>Transaction History</strong></span>
+    <!-- Total Balance -->
+    <div class="card mt-4">
+        <div class="card-body d-flex justify-content-between align-items-center">  
+            <h5 class="card-title m-0">Admin Balance</h5>
+            <p class="card-text fs-4 fw-bold m-0">${{ number_format($adminBalance, 2) }}</p>
+        </div>
     </div>
-    <table class="transaction-table">
-      <thead>
-        <tr>
-          <th>DATE</th>
-          <th>INCOME ($)</th>
-          <th>EXPENSE ($)</th>
-          <th>NOTES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>01 May 2025</td>
-          <td>2,200</td>
-          <td></td>
-          <td>From Company (commission Fee Included)</td>
-        </tr>
-        <tr>
-          <td>14 May 2025</td>
-          <td></td>
-          <td>2,000</td>
-          <td>To Freelancer</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
-  <!-- Total Balance -->
-  <div class="total-balance">TOTAL BALANCE: $300</div>
-
-  <!-- Pagination -->
-  <div class="pagination">
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <span>...</span>
-    <a href="#">67</a>
-    <a href="#">68</a>
-  </div>
+    <div class="d-flex justify-content-center mt-3">
+        {{ $projects->links('pagination::bootstrap-4') }}
+    </div>
 @endsection
