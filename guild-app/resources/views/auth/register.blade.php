@@ -22,19 +22,30 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
+                {{-- エラー表示 --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- ユーザータイプ（フリーランス / 会社） -->
                 <div class="row mb-3">
                     <label class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role_id" value="2" id="company" 
+                            <input class="form-check-input" type="radio" name="role_id" value="2" id="company"
                                    {{ old('role_id') == '2' ? 'checked' : '' }} onclick="toggleFields()">
                             <label class="form-check-label" for="company">
                                 {{ __('Company') }}
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role_id" value="3" id="freelance" 
+                            <input class="form-check-input" type="radio" name="role_id" value="3" id="freelance"
                                    {{ old('role_id') == '3' ? 'checked' : '' }} onclick="toggleFields()">
                             <label class="form-check-label" for="freelance">
                                 {{ __('Freelance') }}

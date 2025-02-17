@@ -9,18 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    // Freelancers applying for projects
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('freelancer_id');
-            $table->unsignedBigInteger('project_id');
-            $table->string('status'); // ('requested', 'accepted', 'rejected', 'ongoing', 'submitted', 'resulted' 'completed')
+            $table->string('content');
             $table->timestamps();
 
             $table->foreign('freelancer_id')->references('id')->on('freelancers')->onDelete('cascade');
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('todo');
     }
 };
