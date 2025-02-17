@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
+            // Admin ユーザー (1人)
             [
                 'username' => 'admin_user',
                 'name' => 'Admin User',
@@ -24,24 +25,62 @@ class UsersTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            // Company ユーザー (3人)
             [
-                'username' => 'company_user',
-                'name' => 'Company User',
-                'email' => 'company@example.com',
+                'username' => 'company_user1',
+                'name' => 'Company User 1',
+                'email' => 'company1@example.com',
                 'password' => Hash::make('password'),
                 'role_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'username' => 'freelancer_user',
-                'name' => 'Freelancer User',
-                'email' => 'freelancer@example.com',
+                'username' => 'company_user2',
+                'name' => 'Company User 2',
+                'email' => 'company2@example.com',
+                'password' => Hash::make('password'),
+                'role_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'username' => 'company_user3',
+                'name' => 'Company User 3',
+                'email' => 'company3@example.com',
+                'password' => Hash::make('password'),
+                'role_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            // Freelancer ユーザー (3人)
+            [
+                'username' => 'freelancer_user1',
+                'name' => 'Freelancer User 1',
+                'email' => 'freelancer1@example.com',
                 'password' => Hash::make('password'),
                 'role_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+                'username' => 'freelancer_user2',
+                'name' => 'Freelancer User 2',
+                'email' => 'freelancer2@example.com',
+                'password' => Hash::make('password'),
+                'role_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'username' => 'freelancer_user3',
+                'name' => 'Freelancer User 3',
+                'email' => 'freelancer3@example.com',
+                'password' => Hash::make('password'),
+                'role_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

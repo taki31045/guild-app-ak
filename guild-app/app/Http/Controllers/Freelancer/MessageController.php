@@ -26,13 +26,16 @@ class MessageController extends Controller
                                 });
                             })->get();
 
-        $messages = Message::where(function($query) use ($receiver_id){
-            $query->where('sender_id', Auth::user()->id)
-                    ->where('receiver_id', $receiver_id);
-            })->orWhere(function($query) use ($receiver_id){
-                $query->where('sender_id', $receiver_id)
-                    ->where('receiver_id', Auth::user()->id);
-            })->get();
+        // $messages = Message::where(function($query) use ($receiver_id){
+        //     $query->where('sender_id', Auth::user()->id)
+        //             ->where('receiver_id', $receiver_id);
+        //     })->orWhere(function($query) use ($receiver_id){
+        //         $query->where('sender_id', $receiver_id)
+        //             ->where('receiver_id', Auth::user()->id);
+        //     })->get();
+        $messages = Message::whereIn('sender_id', [Auth::user()->id, $receiver_id])
+                    ->whereIn('receiver_id', [Auth::user()->id, $receiver_id])
+                    ->get();
 
         return view('users.message', compact('all_users', 'messages', 'receiver'));
     }

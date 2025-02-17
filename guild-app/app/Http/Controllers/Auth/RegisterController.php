@@ -1,10 +1,14 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Freelancer;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+
 class RegisterController extends Controller
 {
     use RegistersUsers;
@@ -24,7 +28,7 @@ class RegisterController extends Controller
         }
 
         if ($user->role_id == 3) {
-            return redirect()->route('freelance');
+            return redirect()->route('freelancer.index');
         }
 
         return redirect('/home');
@@ -60,7 +64,12 @@ class RegisterController extends Controller
                 'username' => ['required', 'string', 'max:255'],
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'avatar'     => ['mimes:jpeg,jpg,png,gif', 'max:1048'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'github_id'  => ['nullable', 'string', 'max:255'],
+                'x'          => ['nullable', 'string', 'max:255'],
+                'instagram'  => ['nullable', 'string', 'max:255'],
+                'facebook'   => ['nullable', 'string', 'max:255']
             ]);
         }
         return Validator::make($data, $rules);
@@ -70,23 +79,48 @@ class RegisterController extends Controller
         // Create the user based on the role_id
         if ($data['role_id'] == '2') {
             // Company registration
-            return User::create([
+            $user =  User::create([
                 'username' => $data['company_name'],
                 'name' => $data['company_name'], // Consider renaming 'name' to 'company_name' in the User model
                 'email' => $data['company_email'],
                 'password' => Hash::make($data['company_password']),
                 'role_id' => $data['role_id'],
             ]);
+
+            Company::create([
+                'user_id' => $user->id,
+                'address' => null,
+                'website' => null,
+                'paypal_account' => null,
+                'total_spent' => 0.00
+            ]);
+
+            return $user;
         }
+
         if ($data['role_id'] == '3') {
             // Freelancer registration
-            return User::create([
+            $user = User::create([
                 'username' => $data['username'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'role_id' => $data['role_id'],
             ]);
+
+            Freelancer::create([
+                'user_id' => $user->id,
+                'rank' => 0,
+                'rank_point' => 0,
+                'github' => null,
+                'X' => null,
+                'instagram' => null,
+                'facebook' =>  null,
+                'total_earnings' => 0,
+                'avg_evaluation' => 0
+            ]);
+
+            return $user;
         }
     }
 }

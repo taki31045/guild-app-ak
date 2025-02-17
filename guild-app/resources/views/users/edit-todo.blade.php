@@ -2,34 +2,45 @@
 
 @section('title', 'Edit ToDo')
 
+@section('scripts')
+    <script src="{{asset('js/todo.js')}}"></script>
+@endsection
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-6 border border-black rounded py-5 px-5">
-            <form action="#" method="post">
+            <form action="{{route('freelancer.todo.store')}}" method="post">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <h3 class="mb-4 fw-bold">Edit To Do</h3>
-                <label for="todo1" class="form-label">To Do 1</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
 
-                <label for="todo2" class="form-label">To Do 2</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
-
-                <label for="todo3" class="form-label">To Do 3</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
-
-                <label for="todo4" class="form-label">To Do 4</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
-
-                <label for="todo5" class="form-label">To Do 5</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
-
-                <label for="todo6" class="form-label">To Do 6</label>
-                <input type="text" name="todo1" class="form-control mb-4" value="">
-
-                <label for="todo7" class="form-label">To Do 7</label>
-                <input type="text" name="todo1" class="form-control mb-5" value="">
-
-                <button type="submit" class="btn btn-dark w-100">Update</button>
+                <input type="hidden" name="deleted_todos" id="deleted_todos">
+                <div id="todo-list">
+                    @foreach ($all_todos as $todo)
+                        <div class="todo-item">
+                            <label for="todo" class="form-label">To Do 1</label>
+                            <div class="position-relative">
+                                <input type="hidden" name="todos[{{$loop->index}}][id]" value="{{$todo->id}}">
+                                <input type="text" name="todos[{{$loop->index}}][content]" class="form-control mb-4" value="{{$todo->content}}">
+                                <button type="button" class="btn btn-sm remove-todo position-absolute end-0 top-50 translate-middle-y" data-id="{{$todo->id}}">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button type="button" id="add-todo" class="btn btn-secondary mt-3">Add</button>
+                <button type="submit" class="btn btn-dark w-100 mt-3">Update</button>
             </form>
         </div>
     </div>
