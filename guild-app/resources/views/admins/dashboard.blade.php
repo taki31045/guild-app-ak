@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Admin Dashboard')
 
 @section('content')
         <main class="py-4">
@@ -15,8 +15,8 @@
                                 <a href="{{ route('admin.company') }}" class="list-group-item {{ request()->is('admin/company') ? 'active' : '' }}">
                                     Company
                                 </a>
-                                <a href="{{ route('admin.job') }}" class="list-group-item {{ request()->is('admin/job') ? 'active' : '' }}">
-                                    Job
+                                <a href="{{ route('admin.project') }}" class="list-group-item {{ request()->is('admin/project') ? 'active' : '' }}">
+                                    Project
                                 </a>
                                 <a href="{{ route('admin.transaction') }}" class="list-group-item {{ request()->is('admin/transaction') ? 'active' : '' }}">
                                     Transaction
@@ -31,8 +31,4 @@
                 </div>
             </div>
         </main>
-    </div>
-</body>
-</html>
-
 @endsection

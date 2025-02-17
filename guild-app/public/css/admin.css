@@ -17,6 +17,16 @@ body {
     margin: 20px;
     }
 
+.pagination .page-link {
+    color: black !important;
+    }
+
+.pagination .page-item.active .page-link {
+    background-color: black !important;
+    color: white !important;
+    border-color: black !important;
+    }
+
     .job-container {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -63,26 +73,6 @@ body {
     margin-top: 20px;
     }
 
-    .pagination {
-    text-align: center;
-    margin-top: 20px;
-    }
-
-    .pagination a {
-        margin: 0 5px;
-        text-decoration: none;
-        color: #000;
-        padding: 5px 10px;
-        border: 1px solid transparent;
-        border-radius: 5px;
-      }
-
-    .pagination a.active {
-        background-color: #000; 
-        color: #fff; 
-        border: 1px solid #000; 
-      }
-
     /* Tags inside flex-wrap container */
     .d-flex p {
         margin-bottom: 4px; /* Space between tags */
@@ -96,3 +86,4 @@ body {
         left: 140px;
         top: 50px;
     }
+
