@@ -14,7 +14,12 @@ class Company extends Model
         'address',
         'website',
         'paypal_account',
-        'total_spent'
+        'total_spent',
+        'representative',
+        'employee',
+        'capital',
+        'annualsales',
+        'description'
     ];
 
     public function user(){

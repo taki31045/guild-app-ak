@@ -22,25 +22,25 @@
                 @csrf
                 <div class="mt-5 w-75 m-auto">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="input title">
+                    <input type="text" name="title" id="title" class="form-control" >
                 </div>
 
                 <div class="mt-3 w-75 m-auto">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="input title">
+                    <label for="title" class="form-label">Company name</label>
+                    <input type="text" name="title" id="title" class="form-control" >
                 </div>
 
                 <div class="row w-75 m-auto">
                     <div class="col-6">
                         <div class="mt-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" id="title" class="form-control" placeholder="input title">
+                            <label for="title" class="form-label">Price</label>
+                            <input type="text" name="title" id="title" class="form-control">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mt-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" id="title" class="form-control" placeholder="input title">
+                            <label for="title" class="form-label">Deadline</label>
+                            <input type="text" name="title" id="title" class="form-control">
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,6 @@ use App\Models\ProjectSkill;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -52,6 +51,10 @@ class ProjectController extends Controller
             ]);
         }
 
+    }
+
+    public function edit(){
+        return view('companies.edit-project');
     }
 
 
