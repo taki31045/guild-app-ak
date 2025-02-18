@@ -40,6 +40,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li><a href="<?php echo e(route('company.message', Auth::user()->id)); ?>">mail</a></li>
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
@@ -79,7 +80,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>

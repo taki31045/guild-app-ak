@@ -39,6 +39,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li><a href="{{ route('company.message', Auth::user()->id)}}">mail</a></li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -76,7 +77,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

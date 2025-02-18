@@ -24,7 +24,7 @@ class RegisterController extends Controller
         }
 
         if ($user->role_id == 3) {
-            return redirect()->route('freelance');
+            return redirect()->route('freelancer.index');
         }
 
         return redirect('/home');

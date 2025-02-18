@@ -23,4 +23,8 @@ class Company extends Model
     public function projects(){
         return $this->hasMany(Project::class);
     }
+
+    public function favoriteFreelancers(){
+        return $this->hasMany(FavoriteFreelancer::class);
+    }
 }
