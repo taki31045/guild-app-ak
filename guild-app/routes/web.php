@@ -8,6 +8,8 @@ use App\Http\Controllers\FreelanceController;
 //company
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
+use App\Http\Controllers\Company\EvaluationController;
+use App\Http\Controllers\Company\MessageController;
 
 //freelancer
 
@@ -22,6 +24,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+//company
+Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
+
+        Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
+        Route::get('/project', [ProjectController::class, 'index'])->name('project');
+        Route::post('/create', [ProjectController::class, 'create'])->name('create');
+        Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
+        Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
+        Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
+        Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('message');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update');
+    });
 
 
 // ユーザーがメール内のリンクをクリックしたときの処理
@@ -39,12 +57,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
-//company
-Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('company.')->group(function () {
-    Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
-    Route::get('/project', [ProjectController::class, 'index'])->name('project');
-    Route::post('/create', [ProjectController::class, 'create'])->name('create');
-});
+
 
 //freelancer
 Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->name('freelancer.')->group(function(){

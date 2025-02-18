@@ -26,7 +26,7 @@ class Project extends Model
     }
 
     public function application(){
-        return $this->hasOne(Application::class);
+        return $this->hasOne(Application::class, 'project_id');
     }
 
     public function evaluation(){
