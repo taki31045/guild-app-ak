@@ -20,12 +20,23 @@
             <form method="POST" action="<?php echo e(route('register')); ?>">
                 <?php echo csrf_field(); ?>
 
+                
+                <?php if($errors->any()): ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
                 <!-- ユーザータイプ（フリーランス / 会社） -->
                 <div class="row mb-3">
                     <label class="col-md-4 col-form-label text-md-end"><?php echo e(__('Role')); ?></label>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role_id" value="2" id="company" 
+                            <input class="form-check-input" type="radio" name="role_id" value="2" id="company"
                                    <?php echo e(old('role_id') == '2' ? 'checked' : ''); ?> onclick="toggleFields()">
                             <label class="form-check-label" for="company">
                                 <?php echo e(__('Company')); ?>
@@ -33,7 +44,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role_id" value="3" id="freelance" 
+                            <input class="form-check-input" type="radio" name="role_id" value="3" id="freelance"
                                    <?php echo e(old('role_id') == '3' ? 'checked' : ''); ?> onclick="toggleFields()">
                             <label class="form-check-label" for="freelance">
                                 <?php echo e(__('Freelance')); ?>
