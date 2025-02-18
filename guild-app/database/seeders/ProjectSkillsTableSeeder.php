@@ -14,17 +14,21 @@ class ProjectSkillsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = DB::table('users')->first();
-        $project = DB::table('projects')->first();
+        $projects = DB::table('projects')->get();
+        $skills = DB::table('skills')->pluck('id')->toArray();
 
-        if ($user && $project) {
-            DB::table('project_comments')->insert([
-                'content' => 'This looks like an interesting project!',
-                'user_id' => $user->id,
-                'project_id' => $project->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        foreach ($projects as $project) {
+            // 各プロジェクトにランダムなスキルを 2〜5 つ関連付ける
+            $randomSkills = array_rand(array_flip($skills), rand(2, 5));
+
+            foreach ($randomSkills as $skill_id) {
+                DB::table('project_skills')->insert([
+                    'project_id' => $project->id,
+                    'skill_id' => $skill_id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }

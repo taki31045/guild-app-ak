@@ -53,6 +53,7 @@ class ProjectController extends Controller
 
     }
 
+
     public function edit($id){
         $project = Project::findOrFail($id);
         $skills = Skill::all(); 
@@ -126,6 +127,5 @@ class ProjectController extends Controller
         
         return  redirect()->route('company.dashboard');
     }
-
 
 }

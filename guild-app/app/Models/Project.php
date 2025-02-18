@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Carbon\Carbon;
 
 class Project extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'title',
         'description',
@@ -26,6 +31,14 @@ class Project extends Model
 
     public function evaluation(){
         return $this->hasOne(Evaluation::class);
+    }
+
+    public function getFormattedDeadlineAttribute(){
+        return 'by ' . Carbon::parse($this->deadline)->format('M');
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'project_id');
     }
 
     public function skills(){
