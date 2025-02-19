@@ -21,6 +21,7 @@ class TransactionsTableSeeder extends Seeder
             DB::table('transactions')->insert([
                 'payer_id' => $payer->id,
                 'payee_id' => $payee->id,
+                'project_id' => 1,
                 'amount' => 1500.00,
                 'fee' => 50.00,
                 'type' => 'freelancer_payment',

@@ -11,7 +11,7 @@
 
 <div class=" line-2 border rounded-pill p-3 shadow-lg text-end" style="background-color: #C976DE; ">
     @if ($user->avatar)
-        <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
+        <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px;">
     @else
         <i class="text-end fa-solid fa-circle-user icon-lg"></i>
     @endif

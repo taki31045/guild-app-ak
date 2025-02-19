@@ -14,10 +14,16 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('address');
-            $table->string('website');
+            $table->string('address')->nullable();
+            $table->string('website')->nullable();
             $table->string('paypal_account')->unique();
             $table->decimal('total_spent', 10, 2)->default(0.00); // Total amount spent
+            $table->string('representative')->nullable();
+            $table->integer('employee')->nullable();
+            $table->decimal('capital', 10, 2)->nullable();
+            $table->decimal('annualsales', 10, 2)->nullable();
+            $table->string('description')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
 

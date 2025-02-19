@@ -38,15 +38,14 @@ class ProfileController extends Controller
             'company_name'          => 'required|min:1|max:50',
             'email'         => 'required|email|max:50|unique:users,email,' . Auth::user()->id,
             'avatar'        => 'mimes:jpeg,jpg,png,gif|max:1048',
-            'address'       => 'required|string|max:255',
-            'website'       => 'required|string|max:255',
+            'address'       => 'nullable|string|max:255',
+            'website'       => 'nullable|string|max:255',
             'paypal_account'   => 'required|string|max:255',
-            'total_spent'   => 'required|numeric',
-            'representative'       => 'required|string|max:255',
-            'employee'       => 'required|integer',
-            'capital'       => 'required|numeric',
-            'annualsales'       => 'required|string|max:255',
-            'description'  => 'required|string|max:255'
+            'representative'       => 'nullable|string|max:255',
+            'employee'       => 'nullable|integer',
+            'capital'       => 'nullable|numeric',
+            'annualsales'       => 'nullable|string|max:255',
+            'description'  => 'nullable|string|max:255'
         ]);
 
 

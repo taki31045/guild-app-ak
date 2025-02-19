@@ -33,16 +33,8 @@
             <label for="website" class="form-label">Website</label>
             <input type="url" name="website" class="form-control mb-4" value="{{ $user->company->website }}">
 
-            <div class="row mb-4">
-                <div class="col-md-8">
-                    <label for="paypal_account" class="form-label">Paypal Account</label>
-                    <input type="text" name="paypal_account" class="form-control" value="{{ $user->company->paypal_account }}">
-                </div>
-                <div class="col-md-4">
-                    <label for="total_spent" class="form-label">Total Spent</label>
-                    <input type="number" name="total_spent" class="form-control" value="{{ $user->company->total_spent }}">
-                </div>
-            </div>
+            <label for="paypal_account" class="form-label">Paypal Account</label>
+            <input type="text" name="paypal_account" class="form-control mb-4" value="{{ $user->company->paypal_account }}">
 
             <div class="row mb-4">
                 <div class="col-md-8">
