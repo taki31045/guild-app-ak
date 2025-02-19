@@ -14,13 +14,13 @@ class FreelanceController extends Controller
         $user = Auth::user();
         $freelancer = $user->freelancer;
         if($freelancer){
-            $ongoingProjects  = $freelancer->applications()
-                                                    ->where('freelancer_id', $freelancer->id)
-                                                    ->where('status', 'ongoing')
-                                                    ->get();
+            $applications  = $freelancer->applications()
+                                        ->where('status', '!=', 'completed')
+                                        ->where('freelancer_id', $freelancer->id)
+                                        ->get();
             $all_todos = Todo::where('freelancer_id', Auth::user()->freelancer->id)->get();
         }else{
-            $ongoingProjects = collect();
+            $applications = collect();
             $all_todos = collect();
             $freelancer = collect();
         }
@@ -28,7 +28,7 @@ class FreelanceController extends Controller
 
         $latestProjects = Project::where('status', 'open')->latest()->take(8)->get();
 
-        return view('users.dashboard', compact('user', 'freelancer', 'ongoingProjects', 'all_todos', 'latestProjects'));
+        return view('users.dashboard', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects'));
     }
 
     public function editTodo(){

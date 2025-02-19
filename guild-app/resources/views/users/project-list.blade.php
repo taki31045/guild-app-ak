@@ -47,7 +47,13 @@
                     </div>
                 </a>
             @endforeach
+
+
+            {{-- paginate --}}
+            <div class="d-flex justify-content-start">
+                {{$all_projects->links()}}
+            </div>
+
         </div>
     </div>
-    {{-- pagenate --}}
 @endsection
