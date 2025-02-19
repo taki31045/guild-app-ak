@@ -14,20 +14,22 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $company = DB::table('companies')->first();
+        $companies = DB::table('companies')->get();
 
-        if ($company) {
-            DB::table('projects')->insert([
-                'title' => 'Web Application Development',
-                'description' => 'Build a full-stack Laravel and Vue.js application.',
-                'required_rank' => 2,
-                'deadline' => now()->addDays(30),
-                'reward_amount' => 5000.00,
-                'status' => 'open',
-                'company_id' => $company->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        foreach ($companies as $company) {
+            for ($i = 1; $i <= 3; $i++) {
+                DB::table('projects')->insert([
+                    'title' => "Project {$i} for Company {$company->user_id}",
+                    'description' => 'This is a sample project description.',
+                    'required_rank' => rand(1, 5),
+                    'deadline' => now()->addDays(rand(10, 60)),
+                    'reward_amount' => rand(2000, 10000),
+                    'status' => 'open',
+                    'company_id' => $company->id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }

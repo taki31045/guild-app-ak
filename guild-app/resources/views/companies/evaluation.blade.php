@@ -133,38 +133,38 @@
 <div class="mt-5">
     <h1>Evaluation</h1>
 
-    <form action="#">
-
+    <form action="{{ route('company.store')}}" method="post">
+        @csrf
         <div class="range-container">
             <div class="range-wrapper">
-                <input type="range" class="form-range" id="customRange1" min="0" max="10" value="5" oninput="rangeValue1.textContent = this.value">
+                <input type="range" name="quality" class="form-range" id="customRange1" min="0" max="10" value="5" oninput="rangeValue1.textContent = this.value">
                 <span class="range-value" id="rangeValue1">5</span>
             </div>
-            <label class="range-label">Example Range 1</label>
+            <label class="range-label">quality</label>
         </div>
         
         <div class="range-container">
             <div class="range-wrapper">
-                <input type="range" class="form-range" id="customRange2" min="0" max="20" value="10" oninput="rangeValue2.textContent = this.value">
-                <span class="range-value" id="rangeValue2">10</span>
+                <input type="range" name="communication" class="form-range" id="customRange2" min="0" max="10" value="5" oninput="rangeValue2.textContent = this.value">
+                <span class="range-value" id="rangeValue2">5</span>
             </div>
-            <label class="range-label">Example Range 2</label>
+            <label class="range-label">communication</label>
         </div>
         
         <div class="range-container">
             <div class="range-wrapper">
-                <input type="range" class="form-range" id="customRange3" min="0" max="30" value="15" oninput="rangeValue3.textContent = this.value">
-                <span class="range-value" id="rangeValue3">15</span>
+                <input type="range" name="adherence" class="form-range" id="customRange3" min="0" max="10" value="5" oninput="rangeValue3.textContent = this.value">
+                <span class="range-value" id="rangeValue3">5</span>
             </div>
-            <label class="range-label">Example Range 3</label>
+            <label class="range-label">adherence</label>
         </div>
         
         <div class="range-container">
             <div class="range-wrapper">
-                <input type="range" class="form-range" id="customRange4" min="0" max="40" value="20" oninput="rangeValue4.textContent = this.value">
-                <span class="range-value" id="rangeValue4">20</span>
+                <input type="range" name="total" class="form-range" id="customRange4" min="0" max="10" value="5" oninput="rangeValue4.textContent = this.value">
+                <span class="range-value" id="rangeValue4">5</span>
             </div>
-            <label class="range-label">Example Range 4</label>
+            <label class="range-label">total</label>
         </div>
 
         <!-- Updated button placed below -->

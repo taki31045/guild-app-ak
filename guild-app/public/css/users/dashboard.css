@@ -1,52 +1,126 @@
-/* <<<<<<< HEAD */
-/* .todo-list{ */
-    /* height: ; */
-/* ======= */
+
 main{
     margin-top: 3rem;
-/* >>>>>>> upstream/main */
+}
+
+
+main a{
+    text-decoration: none;
+    color: black;
 }
 
 .ongoing{
-    border: 1px solid grey;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
-}
-
-.profile-sm{
-    border: 1px solid grey;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
-}
-
-.todo-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+    padding: 8px;
+    margin-bottom: 15px;
 }
 
+.ongoing-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Project-date{
+    background: gray;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Project-details{
+    margin: 0 20px;
+    padding-top: 10px;
+}
+
+
+
+.status-label{
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.status-label.ongoing {
+    background-color: #ffc107; /* 黄色 */
+    color: #333;
+}
+
+.status-label.completed {
+    background-color: #28a745; /* 緑 */
+    color: white;
+}
+
+.status-label.pending {
+    background-color: #dc3545; /* 赤 */
+    color: white;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 100px;
+}
+
+.left-side{
+    margin-top: 40px;
+    width: 60%;
+}
+
+.right-side{
+    width: 100%;
+}
+
+.profile-sm{
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+    width: 100;
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+
 .todo{
+    display: flex;
+    justify-content: space-between;
     border: 1px solid grey;
     border-radius: 16px;
     padding: 10px;
     box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
     height: auto;
-    display: flex;
-    flex-direction: column;
 }
 
 .todo ul{
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    padding: 30px 40px;
+    font-size: 20px;
 }
 
 .suggested-job{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    justify-content: space-between;
+    width: 100%;
     border: 2px solid grey;
     border-radius: 16px;
     padding: 30px;
@@ -54,13 +128,51 @@ main{
 }
 
 .job{
-    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 230px;
     border: 1px solid grey;
     border-radius: 16px;
     background-color: #4A583D;
     color: #F5F5F5;
     padding: 10px;
+}
+
+.job a{
     text-decoration: none;
+    color: white;
+}
+
+.job-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.favoriteBtn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #d9534f!important;
+    transition: color 0.3s ease-in-out;
+}
+
+.favoriteBtn i {
+    font-size: 30px;
+}
+
+.favoriteBtn:hover {
+    color: #c9302c!important;
+}
+
+.skills{
+    display: flex;
 }
 
 .skill-tag{

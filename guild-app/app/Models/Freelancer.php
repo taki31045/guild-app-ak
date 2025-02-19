@@ -22,7 +22,7 @@ class Freelancer extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class)->withTrashed();
+        return $this->belongsTo(User::class, 'user_id')->withTrashed();
     }
 
     public function skills(){
@@ -35,6 +35,10 @@ class Freelancer extends Model
 
     public function applications(){
         return $this->hasMany(Application::class);
+    }
+
+    public function favoriteByCompany(){
+        return $this->hasMany(FavoriteFreelancer::class);
     }
 
 }

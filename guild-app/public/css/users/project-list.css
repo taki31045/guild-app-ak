@@ -63,3 +63,13 @@ main{
     color: black;
     margin-right: 5px;
 }
+
+
+.pagination, .page-item, .page-link {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.page-item::after {
+    content: none;
+}
