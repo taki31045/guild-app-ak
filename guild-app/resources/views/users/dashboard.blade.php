@@ -15,29 +15,43 @@
     <div class="row justify-content-center mb-5">
         <div class="col-8">
             <h2>ON GOING</h2>
-            @foreach ($ongoingProjects as $project)
-                <a href="{{route('freelancer.project-details', $project->id)}}">
-                    <div class="ongoing row mb-3">
-                        <div class="col-1 bg-secondary">
-                            <p>{{$project->project->deadline}}</p>
+            @if ($applications->isEmpty())
+                <div class="alert alert-secondary text-center mt-3">
+                    <i class="fa-solid fa-circle-info me-2"></i> No ongoing projects available.
+                </div>
+            @else
+                @foreach ($applications as $application)
+                    <div class="ongoing">
+                        <div class="ongoing-box">
+                            <div class="Project-date">{{$application->project->deadline}}</div>
+                            <div class="Project-details">
+                                <a href="{{route('freelancer.project-details', $application->project->id)}}" class="text-decoration-none text-black">
+                                <h3 class="h5 m-0">{{$application->project->title}}</h3>
+                                </a>
+
+                                <p class="fw-bold m-0">{{$application->project->company->user->name}}</p>
+                                <p class="m-0">{{$application->project->reward_amount}}</p>
+                                <p>
+                                    <?php
+                                        for($i = 1; $i <= $application->project->required_rank; $i++){
+                                    ?>
+                                            <i class="fa-solid fa-star"></i>
+                                    <?php
+                                        }
+                                        ?>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <h3 class="h5 m-0">{{$project->project->title}}</h3>
-                            <p class="fw-bold m-0">{{$project->project->company->user->name}}</p>
-                            <p class="m-0">{{$project->project->reward_amount}}</p>
-                            <p>
-                                <?php
-                                    for($i = 1; $i <= $project->project->required_rank; $i++){
-                                ?>
-                                        <i class="fa-solid fa-star"></i>
-                                <?php
-                                    }
-                                ?>
-                            </p>
+
+                        {{-- status --}}
+                        {{-- requested, accepted, rejected, ongoing, submitted, resulted, completed --}}
+                        <div class="project-status">
+                            <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                         </div>
+                        @include('users.modals.status')
                     </div>
-                </a>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
 
