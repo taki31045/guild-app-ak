@@ -53,9 +53,9 @@ class ProjectController extends Controller
 
     }
 
-    public function edit(){
-        return view('companies.edit-project');
-    }
+    // public function edit(){
+    //     return view('companies.edit-project');
+    // }
 
 
     public function edit($id){

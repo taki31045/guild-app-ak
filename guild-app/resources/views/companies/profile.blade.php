@@ -11,7 +11,7 @@
 
 <div class=" line-2 border rounded-pill p-3 shadow-lg text-end" style="background-color: #C976DE; ">
     @if ($user->avatar)
-        <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px;">
+        <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
     @else
         <i class="text-end fa-solid fa-circle-user icon-lg"></i>
     @endif
@@ -44,10 +44,12 @@
                     </tbody>
                 </table>
             </div>
-        </div>   
-        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->id) }}">
-            <i class="fa-solid fa-pen-to-square icon-sm"></i></a>
         </div>
+        @if (Auth::check() && Auth::id() === $user->id)   
+        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->company->id) }}">
+            <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
+        </div>
+        @endif
     </div>
         
     <div class="profile-container-2 row justify-content-center">

@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CompanyProfileRequest;
 
 
 class ProfileController extends Controller
@@ -27,28 +28,20 @@ class ProfileController extends Controller
     }
 
     public function edit($id){
-        $user = User::findOrFail($id);
 
-        return view('companies.edit-profile', compact('user'));
+        $company = Company::findOrFail($id);
+
+        $user = $company->user;
+
+        if (Auth::id() !== $user->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('companies.edit-profile', compact('company','user'));
     }
 
-    public function update(Request $request){
+    public function update(CompanyProfileRequest $request){
         
-        $request->validate([
-            'company_name'          => 'required|min:1|max:50',
-            'email'         => 'required|email|max:50|unique:users,email,' . Auth::user()->id,
-            'avatar'        => 'mimes:jpeg,jpg,png,gif|max:1048',
-            'address'       => 'nullable|string|max:255',
-            'website'       => 'nullable|string|max:255',
-            'paypal_account'   => 'required|string|max:255',
-            'representative'       => 'nullable|string|max:255',
-            'employee'       => 'nullable|integer',
-            'capital'       => 'nullable|numeric',
-            'annualsales'       => 'nullable|string|max:255',
-            'description'  => 'nullable|string|max:255'
-        ]);
-
-
         $user = Auth::user();
 
         $companyName = $request->company_name;

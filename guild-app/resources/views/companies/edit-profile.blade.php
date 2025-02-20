@@ -5,22 +5,8 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-6 border border-black rounded shadow py-5 px-5">
-
-            {{-- 成功メッセージ表示 --}}
-        @if (session('success'))
-            <div class="alert alert-success">{{session('success')}}</div>
-        @endif
-        {{-- エラー表示 --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form action="{{ route('company.profile.update', ['id' => $user->company->id]) }}" method="post" enctype="multipart/form-data">
+       
+        <form action="{{ route('company.profile.update', ['id' => $company->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <h3 class="mb-4 fw-bold">Edit Profile</h3>
