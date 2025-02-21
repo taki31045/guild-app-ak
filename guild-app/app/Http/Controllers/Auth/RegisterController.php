@@ -58,6 +58,15 @@ class RegisterController extends Controller
                 'company_name' => ['required', 'string', 'max:255'],
                 'company_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
                 'company_password' => ['required', 'string', 'min:8', 'confirmed'],
+                'avatar'        => ['nullable','mimes:jpeg,jpg,png,gif','max:1048'],
+                'address'       => ['nullable','string','max:255'],
+                'website'       => ['nullable','string','max:255'],
+                'paypal_account'   => ['nullable','string','max:255'],
+                'representative'       => ['nullable','string','max:255'],
+                'employee'       => ['nullable','integer'],
+                'capital'       => ['nullable','numeric'],
+                'annualsales'       => ['nullable','numeric'],
+                'description'  => ['nullable','string','max:255']
             ]);
         } elseif ($data['role_id'] == '3') { // For freelancers
             $rules = array_merge($rules, [
@@ -92,7 +101,12 @@ class RegisterController extends Controller
                 'address' => null,
                 'website' => null,
                 'paypal_account' => null,
-                'total_spent' => 0.00
+                'total_spent' => 0.00,
+                'representative'       => null,
+                'employee'       => null,
+                'capital'       => null,
+                'annualsales'       => null,
+                'description'  => null
             ]);
 
             return $user;
