@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 
 
+
+
 //company
 Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
@@ -38,6 +40,13 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update');
+
+        Route::get('/profile', function(){
+            return view('companies.profile');
+        });
+        Route::get('/profile/edit', function(){
+            return view('companies.profile');
+        });
     });
 
 
