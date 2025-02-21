@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="content-1 row" style="height:500px; ('{{ asset('images/myimage.jpg') }}');">
+    <div class="content-1 row" style="height:500px;">
         <div class="col-6">
             <div class=" in-1 border rounded-pill p-4 shadow-lg opacity-75" style="background-color: #C976DE; ">
                 <i class="fa-solid fa-circle  float-end display-5"></i>
@@ -56,7 +56,7 @@
                         </div>
                         @if ($project_progress->application->status == 'requested')
                             <div class="d-flex">
-                                <a href="#" class="me-2">Accept</a>
+                                <a href="{{ route('company.paypal.payment') }}">PayPalで支払う</a>
                                 <a href="#"class="me-2">Decline</a>
                                 <a href="#" class="">Message</a>
                             </div>
@@ -174,7 +174,7 @@
     </div>
             
             
-            
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 
     
 @endsection

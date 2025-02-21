@@ -32,7 +32,6 @@ class ProfileController extends Controller
                                                 ->where('status', 'completed')
                                                 ->get();
             }
-                // $favoriteProjects = FavoriteProject::where('user_id', $user->id)->get();
                 $favoriteProjects = $user->favoriteProjects()->get();
         }else{
             $evaluations = collect();
@@ -71,14 +70,6 @@ class ProfileController extends Controller
         $freelancer = $user->freelancer;
         if($freelancer){
             $freelancer->update([
-                'github'    => $request->github,
-                'X'         => $request->x,
-                'instagram' => $request->instagram,
-                'facebook'  => $request->facebook
-            ]);
-        }else{
-            Freelancer::create([
-                'user_id'   => $user->id,
                 'github'    => $request->github,
                 'X'         => $request->x,
                 'instagram' => $request->instagram,

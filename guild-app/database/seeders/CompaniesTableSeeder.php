@@ -14,15 +14,15 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $companyUser = DB::table('users')->where('role_id', 2)->first();
+        $companyUsers = DB::table('users')->where('role_id', 2)->get();
 
-        if ($companyUser) {
+        foreach ($companyUsers as $user) {
             DB::table('companies')->insert([
-                'user_id' => $companyUser->id,
+                'user_id' => $user->id,
                 'address' => '123 Company St, Tokyo, Japan',
-                'website' => 'https://company.example.com',
-                'paypal_account' => 'company_paypal@example.com',
-                'total_spent' => 5000.00,
+                'website' => 'https://company' . $user->id . '.example.com',
+                'paypal_account' => 'company' . $user->id . '_paypal@example.com',
+                'total_spent' => rand(1000, 10000),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

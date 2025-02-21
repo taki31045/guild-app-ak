@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('freelancer', 'App\Http\Middleware\FreelancerMiddleware');
         $middleware->appendToGroup('company', 'App\Http\Middleware\CompanyMiddleware');
+        $middleware->appendToGroup('admin', 'App\Http\Middleware\AdminMiddleware');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
