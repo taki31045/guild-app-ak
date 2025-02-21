@@ -5,27 +5,70 @@ namespace App\Http\Controllers\Freelancer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Models\Project;
+use App\Models\Skill;
 use App\Models\Application;
 use App\Models\ProjectComment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 
 class ProjectController extends Controller
 {
-    public function index(){
-        $all_projects = Project::where('status', 'open')->latest()->paginate(6);
-        return view('users.project-list', compact('all_projects'));
+    public function index(Request $request){
+        $query = Project::query();
+
+        $query->where('status', 'open');
+
+        if($request->filled('keyword')){
+            $keywords = explode(' ', $request->keyword);
+
+            $query->where(function($q) use ($keywords){
+                foreach($keywords as $keyword){
+                    $q->where(function ($subQ) use ($keyword){
+                        $subQ->where('title', 'like', '%' . $keyword . '%')
+                            ->orWhere('description', 'like', '%' . $keyword . '%');
+                    });
+                }
+            });
+        }
+
+        if($request->filled('required_rank')){
+            $query->where('required_rank', '=', $request->required_rank);
+        }
+
+        if($request->filled('skills')){
+            $skills = $request->input('skills');
+
+            $query->whereHas('skills', function($q) use ($skills){
+                $q->whereIn('skills.id', $skills);
+            });
+        }
+
+        if($request->filled('min_reward')){
+            $query->where('reward_amount', '>=', $request->min_reward);
+        }
+        if($request->filled('max_reward')){
+            $query->where('reward_amount', '<=', $request->max_reward);
+        }
+
+        if($request->sort == 'old'){
+            $query->orderBy('created_at', 'asc');
+        }else{
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $all_projects = $query->paginate(8);
+        $all_skills = Skill::all();
+
+        return view('users.project-list', compact('all_projects', 'all_skills'));
     }
 
     public function show($id){
         $project = Project::findOrFail($id);
         $all_comments = ProjectComment::where('project_id', $id)->get();
 
-        if($project->application){
-            $application = $project->application;
-        }else{
-            $application = collect();
-        }
+        $application = $project->application ?? null;
 
         return view('users.project-details', compact('project', 'all_comments', 'application'));
     }
@@ -38,7 +81,7 @@ class ProjectController extends Controller
             'project_id' => $request->id
         ]);
 
-        return redirect()->route('project-details', $request->id);
+        return redirect()->route('freelancer.project-details', $request->id);
     }
 
     public function favorite(Project $project){

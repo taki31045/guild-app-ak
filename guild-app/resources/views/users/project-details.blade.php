@@ -99,12 +99,12 @@
                     <a href="{{route('freelancer.project.index')}}" class="btn btn-secondary">≪ Back</a>
 
                     <!-- Button trigger modal -->
-                    @if ($project->status == 'open')
+                    @if ($project->status == 'open' && $project->required_rank <= Auth::user()->freelancer->rank)
                         <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
                             Request
                         </button>
-                    @elseif($project->application->freelancer->user->id == Auth::user()->id)
-                        <button class="request-btn {{ $project->application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$project->application->id}}">{{ ucfirst($project->application->status) }}</button>
+                    @elseif($application && $application->freelancer->user->id == Auth::user()->id)
+                        <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                         @include('users.modals.status')
                     @else
                         <button type="button" class="request-btn">

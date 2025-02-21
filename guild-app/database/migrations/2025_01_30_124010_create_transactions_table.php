@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('payer_id'); // Company or Admin
             $table->unsignedBigInteger('payee_id'); // company or Freelancer
+            $table->unsignedBigInteger('project_id');
             $table->decimal('amount', 10, 2);
             $table->decimal('fee', 10, 2)->default(0.00); // Transaction fee
             $table->string('type'); //('escrow_deposit', 'freelancer_payment', 'refund')
@@ -23,6 +24,7 @@ return new class extends Migration
 
             $table->foreign('payer_id')->references('id')->on('users');
             $table->foreign('payee_id')->references('id')->on('users');
+            $table->foreign('project_id')->references('id')->on('projects');
         });
     }
 
