@@ -13,7 +13,7 @@
                     <tr>
                         <td></td>
                         <td style="width: 150px;">Company name</td>
-                        <td><a href="#" class="text-decoration-none text-dark">
+                        <td><a href="{{ route('company.profile',$company->id) }}" class="text-decoration-none text-dark">
                             {{ $company->user->username }}</td>
                         <td>
                         @if ($company->trashed())

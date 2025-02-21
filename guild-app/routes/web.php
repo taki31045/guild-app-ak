@@ -33,6 +33,11 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
         Route::get('/project', [ProjectController::class, 'index'])->name('project');
         Route::post('/create', [ProjectController::class, 'create'])->name('create');
+        
+        Route::get('/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('profile');
+        Route::get('/profile/{id}/edit', [App\Http\Controllers\Company\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('profile.update');
+
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
         Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
