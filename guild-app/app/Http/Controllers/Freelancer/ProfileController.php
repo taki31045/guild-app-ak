@@ -24,7 +24,7 @@ class ProfileController extends Controller
             if($freelancer->applications()){
                 $ongoingProjects  = $freelancer->applications()
                                                 ->where('freelancer_id', $freelancer->id)
-                                                ->where('status', 'ongoing')
+                                                ->where('status', '!=', 'completed')
                                                 ->get();
 
                 $completedProjects  = $freelancer->applications()

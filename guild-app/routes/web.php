@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\FreelanceController;
 //company
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\Company\ProjectController;
+use App\Http\Controllers\Company\ProjectController as CompanyProject;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
 use App\Http\Controllers\PayPalController; 
@@ -41,7 +42,6 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update');
-
         Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
@@ -67,11 +67,16 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 
+
+
 //freelancer
 Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->name('freelancer.')->group(function(){
+    // Dashboard
     Route::get('/user-dashboard', [FreelanceController::class, 'index'])->name('index');
     Route::get('/todo-list/edit', [FreelanceController::class, 'editTodo'])->name('todo-edit');
     Route::post('/todo-list/store', [FreelanceController::class, 'store'])->name('todo.store');
+
+
 
     //Freelancer Profile
     Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
@@ -84,11 +89,18 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
     Route::post('/project/comment/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('comment.store');
     Route::post('/project/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('project.favorite');
 
+    // Project Status
+    Route::get('/project/{id}/request', [App\Http\Controllers\Freelancer\ProjectController::class, 'request'])->name('project.request');
+    Route::get('/project/{id}/cancel-request', [App\Http\Controllers\Freelancer\ProjectController::class, 'cancelRequest'])->name('project.cancel-request');
+    Route::get('/project/{id}/start', [App\Http\Controllers\Freelancer\ProjectController::class, 'start'])->name('project.start');
+    Route::get('/project/{id}/reject-acknowledge', [App\Http\Controllers\Freelancer\ProjectController::class, 'rejectAcknowledge'])->name('project.acknowledge');
+    Route::get('/project/{id}/submit', [App\Http\Controllers\Freelancer\ProjectController::class, 'submit'])->name('project.submit');
+    Route::get('/project/{id}/result', [App\Http\Controllers\Freelancer\ProjectController::class, 'result'])->name('project.result');
+
     //message
     Route::get('/message/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('message.index');
     Route::post('/message/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('message.store');
 
-    
 });
 
 

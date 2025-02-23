@@ -2,6 +2,62 @@ main{
     margin-top: 3rem;
 }
 
+.filter-container{
+    margin: 20px;
+    width: 80%;
+}
+
+.filter-container h3{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.filter-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-form label{
+    margin-bottom: 0;
+}
+
+.filter-form input,
+.filter-form select{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+.filter-form input:focus,
+.filter-form select:focus{
+    border: 2px solid black;
+    outline: none;
+}
+
+
+.filter-form .select-skill{
+    height: 120px;
+    width: 100%;
+}
+
+.filter-form button{
+    background: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.filter-form button:hover{
+    background: #555;
+}
+
 .job-list h2{
     border-bottom: 2px solid black;
 }
@@ -62,4 +118,14 @@ main{
     background-color: #D9D9D9;
     color: black;
     margin-right: 5px;
+}
+
+
+.pagination, .page-item, .page-link {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.page-item::after {
+    content: none;
 }

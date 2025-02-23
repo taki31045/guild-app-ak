@@ -1,6 +1,7 @@
 
 main{
     margin-top: 3rem;
+/* <<<<<<< HEAD
 }
 
 .ongoing{
@@ -48,6 +49,107 @@ main a{
     border-radius: 50%;
     margin-right: 20px;
 }
+
+======= */
+}
+
+
+main a{
+    text-decoration: none;
+    color: black;
+}
+
+.ongoing{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.ongoing-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Project-date{
+    background: gray;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Project-details{
+    margin: 0 20px;
+    padding-top: 10px;
+}
+
+
+
+.status-label{
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.status-label.ongoing {
+    background-color: #ffc107; /* 黄色 */
+    color: #333;
+}
+
+.status-label.completed {
+    background-color: #28a745; /* 緑 */
+    color: white;
+}
+
+.status-label.pending {
+    background-color: #dc3545; /* 赤 */
+    color: white;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 100px;
+}
+
+.left-side{
+    margin-top: 40px;
+    width: 60%;
+}
+
+.right-side{
+    width: 100%;
+}
+
+.profile-sm{
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+    width: 100;
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
 
 
 .todo{

@@ -3,6 +3,7 @@ html body{
     background-size: 50%;
     width: 100%;
     overflow-x: hidden;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 header{

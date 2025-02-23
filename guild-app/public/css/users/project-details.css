@@ -108,10 +108,13 @@ main{
     background-color: rgb(49, 48, 48);
 }
 
-.request-btn{
-    display: block;
-    margin-left: auto;
+.detail-bottom{
+    display: flex;
+    justify-content: space-between;
     margin-top: 40px;
+}
+
+.request-btn{
     padding: 8px 30px;
     border-radius: 20px;
     font-size: 15px;
