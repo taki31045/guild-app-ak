@@ -56,14 +56,14 @@
                         </div>
                         <?php if($project_progress->application->status == 'requested'): ?>
                             <div class="d-flex">
-                                <a href="<?php echo e(route('company.paypal.payment')); ?>">PayPalで支払う</a>
+                                <a href="<?php echo e(route('company.paypal.payment', ['price' => $project_progress->reward_amount, 'id' => $project_progress->id])); ?>">PayPalで支払う</a>
                                 <a href="#"class="me-2">Decline</a>
                                 <a href="#" class="">Message</a>
                             </div>
                         <?php elseif($project_progress->application->status == 'ongoing'): ?>
                         <?php elseif($project_progress->application->status == 'submitted'): ?>
                         <div class="d-flex">
-                            <a href="#" class="me-2">Accept</a>
+                            <a href="<?php echo e(route('company.evaluation',$project_progress->id)); ?>" class="me-2">Accept</a>
                             <a href="#" class="">Decline</a>
                         </div>
                         <?php endif; ?>

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\FreelanceController;
 //company
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\Company\ProjectController as CompanyProject;
+use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
 use App\Http\Controllers\PayPalController; 
@@ -36,15 +36,16 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/project', [ProjectController::class, 'index'])->name('project');
         Route::post('/create', [ProjectController::class, 'create'])->name('create');
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
-        Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
+        Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('message');
-        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store.message');
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update');
         Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+        
         
         
     });
