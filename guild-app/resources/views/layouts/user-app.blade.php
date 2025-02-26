@@ -39,7 +39,7 @@
                     <li><a href="{{route('freelancer.project.index')}}">Project</a></li>
                     <li><a href="{{route('freelancer.message.index', Auth::user()->id)}}">Message</a></li>
                     <li><a href="{{route('freelancer.profile', Auth::user()->id)}}">Profile</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{route('freelancer.contact')}}">Contact</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             Logout

@@ -25,7 +25,7 @@ class FreelanceController extends Controller
             $freelancer = collect();
         }
 
-
+        
         $latestProjects = Project::where('status', 'open')->latest()->take(8)->get();
 
         return view('users.dashboard', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects'));

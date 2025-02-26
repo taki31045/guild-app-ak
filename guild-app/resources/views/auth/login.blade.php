@@ -25,11 +25,11 @@
                 <div class="card-header text-center bg-transparent">
                     <h4 class="text-black">{{ __('Login') }}</h4>
                 </div>
-            
+
                 <div class="card-body mt-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-            
+
                         <!-- Email input -->
                         <div class="mb-4">
                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
@@ -38,7 +38,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-            
+
                         <!-- Password input -->
                         <div class="mb-4">
                             <label for="password" class="form-label">{{ __('Password') }}</label>
@@ -47,13 +47,13 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-            
+
                         <!-- Remember me checkbox -->
                         <div class="mb-4 form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
                         </div>
-            
+
                         <!-- Buttons -->
                         <div class="">
                             <button type="submit" class="btn btn-secondary w-100">
