@@ -3,7 +3,6 @@
 @section('title', 'Edit')
 
 @section('content')
-{{-- <link href="{{ asset('css/companyedit.css') }}" rel="stylesheet"> --}}
 
 <style>
     /* .rating {

@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <div class="row justify-content-center my-5">
         <div class="col-6">
             <div class=" border border-black rounded py-5 px-5 mb-3">
@@ -38,6 +39,7 @@
                                 </button>
                             </div>
                         </div>
+
                         @endforeach
                     </div>
                     <button type="button" id="add-todo" class="btn btn-secondary mt-3">Add</button>
@@ -45,6 +47,7 @@
                 </form>
             </div>
             <a href="{{route('freelancer.index', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
+
         </div>
     </div>
     @endsection
