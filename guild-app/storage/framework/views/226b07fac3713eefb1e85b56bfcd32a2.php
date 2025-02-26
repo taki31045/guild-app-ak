@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'Dashboard'); ?>
 
 <?php $__env->startSection('content'); ?>
-    <div class="content-1 row" style="height:500px; ('<?php echo e(asset('images/myimage.jpg')); ?>');">
+    <div class="content-1 row" style="height:500px;">
         <div class="col-6">
             <div class=" in-1 border rounded-pill p-4 shadow-lg opacity-75" style="background-color: #C976DE; ">
                 <i class="fa-solid fa-circle  float-end display-5"></i>
@@ -56,14 +56,14 @@
                         </div>
                         <?php if($project_progress->application->status == 'requested'): ?>
                             <div class="d-flex">
-                                <a href="#" class="me-2">Accept</a>
+                                <a href="<?php echo e(route('company.paypal.payment', ['price' => $project_progress->reward_amount, 'id' => $project_progress->id])); ?>">PayPalで支払う</a>
                                 <a href="#"class="me-2">Decline</a>
                                 <a href="#" class="">Message</a>
                             </div>
                         <?php elseif($project_progress->application->status == 'ongoing'): ?>
                         <?php elseif($project_progress->application->status == 'submitted'): ?>
                         <div class="d-flex">
-                            <a href="#" class="me-2">Accept</a>
+                            <a href="<?php echo e(route('company.evaluation',$project_progress->id)); ?>" class="me-2">Accept</a>
                             <a href="#" class="">Decline</a>
                         </div>
                         <?php endif; ?>
@@ -175,7 +175,7 @@
     </div>
             
             
-            
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 
     
 <?php $__env->stopSection(); ?>

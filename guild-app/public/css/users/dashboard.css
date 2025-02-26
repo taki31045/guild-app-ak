@@ -1,6 +1,56 @@
 
 main{
     margin-top: 3rem;
+/* <<<<<<< HEAD
+}
+
+.ongoing{
+    border: 1px solid grey;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+}
+
+main a{
+    text-decoration: none;
+    color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 100px;
+}
+
+.left-side{
+    margin-top: 40px;
+    width: 60%;
+}
+
+.right-side{
+    width: 100%;
+}
+
+.profile-sm{
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+    width: 100;
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+======= */
 }
 
 
@@ -99,6 +149,7 @@ main a{
     border-radius: 50%;
     margin-right: 20px;
 }
+
 
 
 .todo{

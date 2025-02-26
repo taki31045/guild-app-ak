@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\FreelanceController;
 //company
@@ -9,6 +11,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
+use App\Http\Controllers\PayPalController; 
+
 
 //freelancer
 
@@ -37,13 +41,20 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('profile.update');
 
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
-        Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
+        Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('message');
-        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store.message');
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update');
+        Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+        Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+        Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+        
+        
+        
     });
+
 
 
 // ユーザーがメール内のリンクをクリックしたときの処理
@@ -63,12 +74,14 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 
+
 //freelancer
 Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->name('freelancer.')->group(function(){
     // Dashboard
     Route::get('/user-dashboard', [FreelanceController::class, 'index'])->name('index');
     Route::get('/todo-list/edit', [FreelanceController::class, 'editTodo'])->name('todo-edit');
     Route::post('/todo-list/store', [FreelanceController::class, 'store'])->name('todo.store');
+
 
 
     //Freelancer Profile
@@ -93,6 +106,7 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
     //message
     Route::get('/message/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('message.index');
     Route::post('/message/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('message.store');
+
 });
 
 
