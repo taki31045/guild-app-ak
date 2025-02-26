@@ -35,7 +35,7 @@ class FreelanceController extends Controller
             $freelancer = collect();
         }
 
-
+        
         $latestProjects = Project::where('status', 'open')->latest()->take(8)->get();
 
 

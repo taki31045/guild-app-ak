@@ -11,7 +11,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
-use App\Http\Controllers\PayPalController; 
+use App\Http\Controllers\PayPalController;
 
 
 //freelancer
@@ -29,13 +29,15 @@ Route::get('/', function () {
 
 
 
+
+
 //company
 Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
 
         Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
         Route::get('/project', [ProjectController::class, 'index'])->name('project');
         Route::post('/create', [ProjectController::class, 'create'])->name('create');
-        
+
         Route::get('/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('profile');
         Route::get('/profile/{id}/edit', [App\Http\Controllers\Company\ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('profile.update');
@@ -50,9 +52,9 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
-        
-        
-        
+
+
+
     });
 
 
@@ -106,6 +108,10 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
     //message
     Route::get('/message/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('message.index');
     Route::post('/message/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('message.store');
+
+    // contact
+    Route::get('/contact', [App\Http\Controllers\Freelancer\ContactController::class, 'index'])->name('contact');
+    Route::post('/contact/send', [App\Http\Controllers\Freelancer\ContactController::class, 'sendMail'])->name('contact.send');
 
 });
 

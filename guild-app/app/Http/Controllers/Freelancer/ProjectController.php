@@ -8,6 +8,8 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Application;
 use App\Models\ProjectComment;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -17,12 +19,10 @@ class ProjectController extends Controller
 {
     public function index(Request $request){
         $query = Project::query();
-
         $query->where('status', 'open');
 
         if($request->filled('keyword')){
             $keywords = explode(' ', $request->keyword);
-
             $query->where(function($q) use ($keywords){
                 foreach($keywords as $keyword){
                     $q->where(function ($subQ) use ($keyword){
@@ -39,7 +39,6 @@ class ProjectController extends Controller
 
         if($request->filled('skills')){
             $skills = $request->input('skills');
-
             $query->whereHas('skills', function($q) use ($skills){
                 $q->whereIn('skills.id', $skills);
             });
@@ -154,13 +153,20 @@ class ProjectController extends Controller
     public function result($id){
         $application = Application::findOrFail($id);
         $project = $application->project;
+        $admin = User::where('role_id', User::ADMIN_ROLE_ID)->first();
 
         $user = Auth::user()->freelancer;
         $user->total_earnings += $project->reward_amount;
         $user->save();
 
-        $application->status = 'completed';
-        $application->save();
+        Transaction::create([
+            'payer_id'   => $admin->id,
+            'payee_id'   => Auth::user()->id,
+            'project_id' => $project->id,
+            'amount'     => $project->reward_amount,
+            'type'       => 'freelancer_payment',
+        ]);
+        $application->delete();
         $project->status = 'completed';
         $project->save();
 
