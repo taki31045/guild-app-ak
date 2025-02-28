@@ -100,10 +100,11 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
 
 
 
-    //Freelancer Profile
+    //Profile
     Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
     Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile-edit');
     Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile-update');
+    Route::get('/profile/{id}/other', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile');
 
     //Project
     Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('project.index');

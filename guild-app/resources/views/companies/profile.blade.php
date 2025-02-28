@@ -33,7 +33,7 @@
 @endif
 
 <div class="profile-container row justify-content-center">
-    <div class="profile-container-1 col-11">        
+    <div class="profile-container-1 col-11">
         <div class="w-50 profile-1 card rounded mt-5 ps-3 py-3 me-3 float-end">
             <div class="header mb-3 fw-bold">Company profile</div>
                 <table class="company-profile">
@@ -54,13 +54,13 @@
                 </table>
             </div>
         </div>
-        @if (Auth::check() && Auth::id() === $user->id)   
+        @if (Auth::check() && Auth::id() === $user->id)
         <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->company->id) }}">
             <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
         </div>
         @endif
     </div>
-        
+
     <div class="profile-container-2 row justify-content-center">
             <div class="col-10 float-start mx-5 mt-5">
                 <div class="card rounded w-75 m-5 p-3">
@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <div class="container">  
+    <div class="container">
         <div class="card-body">
             <!-- Contents of Tab -->
             <div class="project-container">
@@ -115,7 +115,7 @@
                             <div class="project-date">{{ $project->formatted_deadline }}</div>
                             <div class="project-details">
                                 <h3 class="h5 m-0"><a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
-                                    {{ \Str::limit($project->title, 60) }} 
+                                    {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
                                 <p class="fw-bold m-0">{{ $project->company->user->username }}</p>
                                 <p class="m-0">${{ $project->reward_amount }}</p>
@@ -128,7 +128,7 @@
                         </div>
                         @endforeach
                     </div>
-                            
+
                     <!-- Payment History -->
                     <div class="tab-pane payment-history">
                         <table class="table table-bordered w-75">
@@ -154,6 +154,6 @@
             </div>
         </div>
     </div>
-</div>       
+</div>
 
 @endsection

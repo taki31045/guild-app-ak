@@ -1,4 +1,4 @@
-@extends('layouts.user-app')
+@extends('layouts.freelancer')
 
 @section('title', 'Dashboard for Freelancer')
 
@@ -26,11 +26,11 @@
                         <div class="ongoing-box">
                             <div class="Project-date">{{$application->project->deadline}}</div>
                             <div class="Project-details">
-                                <a href="{{route('freelancer.project-details', $application->project->id)}}" class="text-decoration-none text-black">
-                                <h3 class="h5 m-0">{{$application->project->title}}</h3>
+                                <a href="{{route('freelancer.project-details', $application->project->id)}}" class="fs-5">
+                                    {{$application->project->title}}
                                 </a>
 
-                                <p class="fw-bold m-0">{{$application->project->company->user->name}}</p>
+                                <a href="{{route('freelancer.company.profile', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
                                 <p class="m-0">{{$application->project->reward_amount}}</p>
                                 <p>
                                     <?php
@@ -105,13 +105,15 @@
                 @foreach ($latestProjects as $project)
                     <div class="job">
                         <div class="job-header">
-                            <a href="{{route('freelancer.project-details', $project->id)}}" class="title">{{Str::limit($project->title, 40)}}</a>
+                            <a href="{{route('freelancer.project-details', $project->id)}}" class="title">
+                                {{Str::limit($project->title, 40)}}
+                            </a>
                             <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
                                 <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
                             </a>
                         </div>
 
-                        <a href="#" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                        <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
                         <p class="m-0">{{$project->reward_amount}}</p>
                         <p>
                             <?php
