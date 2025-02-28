@@ -12,9 +12,15 @@
                 <table class="table table-borderless align-middle text-secondary my-2">
                     <tr>
                         <td></td>
-                        <td rowspan="4"  style="width: 150px;"><i class="fa-solid fa-circle-user icon-lg"></i></td>
+                        <td rowspan="4" class="mx-5">
+                        @if ($freelancer->user->avatar)
+                            <img src="{{ $freelancer->user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                        @else
+                            <i class="fa-solid fa-circle-user icon-lg"></i>
+                        @endif
+                        </td>
                         <td style="width: 100px;">Name</td>
-                        <td style="width: 200px;"><a href="{{ route('freelancer.profile', $freelancer->user->id ) }}" class="text-decoration-none text-dark">
+                        <td style="width: 200px;"><a href="{{ route('admin.freelancer.profile', $freelancer->user->id ) }}" class="text-decoration-none text-dark">
                             {{ $freelancer->user->username }}</td>
                         <td>
                         @if ($freelancer->trashed())

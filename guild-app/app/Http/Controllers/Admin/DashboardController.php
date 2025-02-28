@@ -37,6 +37,37 @@ class DashboardController extends Controller
                 ->with('all_freelancers', $all_freelancers);
     }
 
+    public function showFreelancer($id){
+        $user = User::findOrFail($id);
+        $freelancer = $user->freelancer;
+
+        if($freelancer){
+            if($freelancer->evaluations()){
+                $evaluations = $freelancer->evaluations()->get();
+            }
+            if($freelancer->applications()){
+                $ongoingProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', '!=', 'completed')
+                                                ->get();
+
+                $completedProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', 'completed')
+                                                ->get();
+            }
+                $favoriteProjects = $user->favoriteProjects()->get();
+        }else{
+            $evaluations = collect();
+            $ongoingProjects = collect();
+            $completedProjects = collect();
+            $favoriteProjects = collect();
+        }
+
+        return view('admins.freelancer-profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects'));
+    }
+
+
     public function deactivate($id){
         $freelancer = $this->freelancer->findOrFail($id);
         $freelancer->user()->delete();
@@ -64,6 +95,20 @@ class DashboardController extends Controller
 
         return view('admins.company')
                 ->with('all_companies', $all_companies);
+    }
+
+    public function showCompany($id){
+        $company = Company::with('projects')->findOrFail($id);
+        $projects = $company->projects;
+        $user = $company->user;
+        
+        $transactions = Transaction::where('payer_id', $user->id)
+                    ->orWhere('payee_id', $user->id)
+                    ->with('project')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return view('admins.company-profile', compact('company','user','projects','transactions'));
     }
 
     public function deactivateCompany($id){
