@@ -1,9 +1,9 @@
 .icon-sm {
-    font-size: 2rem; 
+    font-size: 2rem;
 }
 
 .icon-lg {
-    font-size: 5rem; 
+    font-size: 5rem;
 }
 
 
@@ -11,6 +11,8 @@
 body {
     overflow-x: hidden;
 }
+
+
 
 
 .profile-container {
@@ -102,8 +104,8 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    max-height: 500px; 
-    overflow-y: auto;  
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .project-history-contents{
@@ -112,7 +114,7 @@ body {
     padding: 10px;
     display: flex;
     background-color: white;
-    
+
 }
 
 .project-date{
