@@ -14,9 +14,18 @@ use App\Http\Requests\CompanyProfileRequest;
 class ProfileController extends Controller
 {
     public function show($id){
-        $company = Company::with('projects')->findOrFail($id);
-        $projects = $company->projects;
-        $user = $company->user;
+        $user = User::with('company.projects')->findOrFail($id);
+
+        $company = $user->company;
+
+        $projects = $company ? $company->projects : collect();
+
+        $layout = match (Auth::user()->role_id) {
+            1 => 'layouts.admin',      // 管理者
+            2 => 'layouts.company',    // 企業
+            3 => 'layouts.freelancer', // フリーランサー
+
+        };
         
         $transactions = Transaction::where('payer_id', $user->id)
                     ->orWhere('payee_id', $user->id)
@@ -24,7 +33,7 @@ class ProfileController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->get();
 
-        return view('companies.profile', compact('company','user','projects','transactions'));
+        return view('companies.profile', compact('company','user','projects','transactions','layout'));
     }
 
     public function edit($id){
