@@ -1,41 +1,21 @@
-@extends($layout)
+@extends('layouts.admin')
 
-@section('title', 'Profile')
+@section('title', 'Admin company-profile')
 
 @section('content')
-<link href="{{ asset('css/companyprofile.css') }}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="{{ asset('css/admins/company-profile.css') }}" rel="stylesheet">
 
-@if (Auth::user()->role_id == 2)
-    <div class=" line-1 border rounded-pill p-3 shadow-lg" style="background-color: #C976DE; ">
-    </div>
-    <div class=" line-2 border rounded-pill p-3 shadow-lg text-end" style="background-color: #C976DE; ">
+<div class="profile-container row justify-content-center align-items-center">
+    <div class="col-2 text-center">
         @if ($user->avatar)
             <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
         @else
-            <i class="text-end fa-solid fa-circle-user icon-lg"></i>
+            <i class="fa-solid fa-circle-user icon-lg"></i>
         @endif
     </div>
-    <div class=" line-3 border rounded-pill shadow-lg" style="background-color: #C976DE; ">
-    </div>
-
-    <div class=" line-4 border rounded-pill p-2 shadow-lg" style="background-color: #C976DE; ">
-    </div>
-
-@else
-    <div class="line-5 text-end">
-        @if ($user->avatar)
-            <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
-        @else
-            <i class="text-end fa-solid fa-circle-user icon-lg"></i>
-        @endif
-    </div>
-@endif
-
-<div class="profile-container row justify-content-center">
-    <div class="profile-container-1 col-11">
-        <div class="w-50 profile-1 card rounded mt-5 ps-3 py-3 me-3 float-end">
-            <div class="header mb-3 fw-bold">Company profile</div>
+    <div class="profile-container-1 col-4">        
+        <div class="profile-1 card rounded ps-3 py-3">
+            <div class="header fw-bold">Company profile</div>
                 <table class="company-profile">
                     <tbody>
                         <tr>
@@ -54,16 +34,11 @@
                 </table>
             </div>
         </div>
-        @if (Auth::check() && Auth::id() === $user->id)
-        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->company->id) }}">
-            <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
-        </div>
-        @endif
     </div>
-
+        
     <div class="profile-container-2 row justify-content-center">
-            <div class="col-10 float-start mx-5 mt-5">
-                <div class="card rounded w-75 m-5 p-3">
+            <div class="col-6">
+                <div class="card rounded my-4 p-3">
                         <table class="profile-2">
                             <tbody>
                             <tr>
@@ -97,7 +72,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container">  
         <div class="card-body">
             <!-- Contents of Tab -->
             <div class="project-container">
@@ -115,7 +90,7 @@
                             <div class="project-date">{{ $project->formatted_deadline }}</div>
                             <div class="project-details">
                                 <h3 class="h5 m-0"><a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
-                                    {{ \Str::limit($project->title, 60) }}
+                                    {{ \Str::limit($project->title, 60) }} 
                                     </a></h3>
                                 <p class="fw-bold m-0">{{ $project->company->user->username }}</p>
                                 <p class="m-0">${{ $project->reward_amount }}</p>
@@ -128,7 +103,7 @@
                         </div>
                         @endforeach
                     </div>
-
+                            
                     <!-- Payment History -->
                     <div class="tab-pane payment-history">
                         <table class="table table-bordered w-75">
@@ -154,6 +129,5 @@
             </div>
         </div>
     </div>
-</div>
-
+</div>  
 @endsection
