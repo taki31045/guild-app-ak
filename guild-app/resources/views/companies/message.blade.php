@@ -55,7 +55,7 @@
             @endif
                
 
-                <form  action="{{route('company.store', $user->id)}}" method="post">
+                <form  action="{{route('company.store.message', $user->id)}}" method="post">
                     @csrf
                     <div class="d-flex align-items-center justify-content-between">
                         <input type="hidden" name="receiver_id" value="{{$user->id}}">
