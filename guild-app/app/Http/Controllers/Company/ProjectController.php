@@ -13,15 +13,15 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-   
+
     public function index(){//show page for create for new project
-        $skills = Skill::all(); 
+        $skills = Skill::all();
         return view('companies.create', compact('skills'));
     }
 
 
     public function create(CompanyRequest $request){//create project
-        
+
         //create project table
         $project = project::create([
             'company_id' =>Auth::user()->company->id,
@@ -36,13 +36,13 @@ class ProjectController extends Controller
         if ($request->has('skill')) {
             foreach ($request->skill as $skill_id) {
                 ProjectSkill::create([
-                    'project_id' => $project->id, 
-                    'skill_id' => $skill_id,      
+                    'project_id' => $project->id,
+                    'skill_id' => $skill_id,
                 ]);
             }
         }
 
-        //creates Skill table and projectSkill table. 
+        //creates Skill table and projectSkill table.
         if ($request->has('else_skills')  && !empty($request->else_skills)) {
             $customSkill = Skill::create(['name' => $request->else_skills]);
             ProjectSkill::create([
@@ -59,8 +59,12 @@ class ProjectController extends Controller
 
 
     public function edit($id){
-        $project = Project::findOrFail($id);
-        $skills = Skill::all(); 
+//         $project = Project::findOrFail($id);
+// <<<<<<< HEAD
+//         $skills = Skill::all(); 
+// =======
+        $skills = Skill::all();
+// >>>>>>> upstream/main
         return view('companies.edit-project', compact('skills','project'));
     }
 
@@ -108,12 +112,12 @@ class ProjectController extends Controller
             }
 
             return redirect()->route('company.dashboard');
-        
+
         }
 
-        
 
-        
+
+
 
         return redirect()->route('company.dashboard')->with('success','Project was edited');
     }
@@ -128,11 +132,11 @@ class ProjectController extends Controller
         ProjectSkill::where('project_id', $project->id)->delete();
 
         $project->delete();
-        
+
         return  redirect()->route('company.dashboard');
     }
 
-    
+
 
 
 }

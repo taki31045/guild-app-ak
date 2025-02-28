@@ -18,7 +18,7 @@ class CompanyController extends Controller
     public function index(){
         $user = Auth::user();
         $projects = $user->company->projects->where('status','open')->all();
-        $projects_progress = $user->company->projects->where('status','on-going')->all();
+        $projects_progress = $user->company->projects->where('status','ongoing')->all();
         
         $company = $user->company;
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。

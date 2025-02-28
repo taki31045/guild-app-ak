@@ -15,6 +15,9 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory, Notifiable;
     use SoftDeletes;
 
+    const ADMIN_ROLE_ID = 1;
+    const COMPANY_ROLE_ID = 2;
+    const FREELANCER_ROLE_ID = 3;
 
 
     /**

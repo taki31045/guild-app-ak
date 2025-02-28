@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Application;
