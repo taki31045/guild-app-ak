@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Srmklive\PayPal\Services\PayPal as PayPalClient; //srlive\paypalというライブラリーで支払いの作成、成功、キャンセルの処理を行う。
 use Illuminate\Http\Request;
-use App\Models\PaypalTransaction;
 use App\Models\Application;
+use App\Models\Transaction;
 
 class PayPalController extends Controller
 {
@@ -62,19 +62,26 @@ class PayPalController extends Controller
 
     public function success(Request $request)
     {
+        $project_id = session('project_id');
+        $freelancer_id = Application::where('project_id', $project_id)->value('freelancer_id');
+
        
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request->query('token'));
         if (isset($response['status']) && $response['status'] === 'COMPLETED') {
+            $paypalFee = $response['purchase_units'][0]['payments']['captures'][0]['seller_receivable_breakdown']['paypal_fee']['value'] ?? 0.00;
 
-            PaypalTransaction::create([
-                'user_id' => auth()->id(),
+            Transaction::create([
+                'payer_id' => auth()->id(),
+                'payee_id' => $freelancer_id,
+                'project_id' => $project_id,
                 'order_id' => $response['id'],
+                'type' => 'escrow_deposit',
                 'transaction_id' => $response['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
                 'amount' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'],
-
+                'fee' => $paypalFee,
                 'currency' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
                 'status' => 'COMPLETED',
                 'paypal_response' => $response

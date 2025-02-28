@@ -12,6 +12,7 @@ use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
 use App\Http\Controllers\PayPalController; 
+use App\Http\Controllers\Company\StatusController;
 
 
 //freelancer
@@ -50,6 +51,12 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+
+
+        Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
+        Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
+        Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
+        // Route::get('/status/message', [MessageController::class, 'create'])->name('status.message');
         
         
         

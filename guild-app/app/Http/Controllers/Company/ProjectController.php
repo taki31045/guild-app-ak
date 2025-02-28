@@ -61,7 +61,7 @@ class ProjectController extends Controller
     public function edit($id){
         $project = Project::findOrFail($id);
         $skills = Skill::all(); 
-        return view('companies.edit', compact('skills','project'));
+        return view('companies.edit-project', compact('skills','project'));
     }
 
 
@@ -131,6 +131,8 @@ class ProjectController extends Controller
         
         return  redirect()->route('company.dashboard');
     }
+
+    
 
 
 }
