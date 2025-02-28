@@ -15,6 +15,7 @@
     <div class="row justify-content-center mb-5">
         <div class="col-8">
             <h2>ON GOING</h2>
+
             @if ($applications->isEmpty())
                 <div class="alert alert-secondary text-center mt-3">
                     <i class="fa-solid fa-circle-info me-2"></i> No ongoing projects available.
@@ -52,6 +53,7 @@
                     </div>
                 @endforeach
             @endif
+
         </div>
     </div>
 

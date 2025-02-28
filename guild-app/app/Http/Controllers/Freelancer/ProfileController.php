@@ -6,8 +6,10 @@ use App\Http\Requests\FreelancerProfileRequest;
 use App\Models\Freelancer;
 use App\Models\User;
 use App\Models\Skill;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\App;
+
 use App\Models\Project;
-use App\Models\FavoriteProject;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -27,11 +29,8 @@ class ProfileController extends Controller
                                                 ->where('status', '!=', 'completed')
                                                 ->get();
 
-                $completedProjects  = $freelancer->applications()
-                                                ->where('freelancer_id', $freelancer->id)
-                                                ->where('status', 'completed')
-                                                ->get();
             }
+                $completedProjects  = Transaction::where('payee_id', $id)->with('project')->get();
                 $favoriteProjects = $user->favoriteProjects()->get();
         }else{
             $evaluations = collect();

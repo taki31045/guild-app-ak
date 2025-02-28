@@ -30,6 +30,35 @@
                 @elseif($application->status === 'ongoing')
                     Once you submit your work, it will be reviewed.
                 @elseif($application->status === 'resulted')
+                    @if ($application->project->evaluation !== NULL)
+                        <div class="evaluation-container">
+                            <h4>Evaluation</h4>
+                            <div class="evaluation-item">
+                                <span class="evaluation-title">Quality</span>
+                                <div class="evaluation-bar">
+                                    <div class="progress" style="width: {{$application->project->evaluation->quality * 20}}%">{{$application->project->evaluation->quality * 20}}%</div>
+                                </div>
+                            </div>
+                            <div class="evaluation-item">
+                                <span class="evaluation-title">Communication</span>
+                                <div class="evaluation-bar">
+                                    <div class="progress" style="width: {{$application->project->evaluation->communication * 20}}%">{{$application->project->evaluation->communication * 20}}%</div>
+                                </div>
+                            </div>
+                            <div class="evaluation-item">
+                                <span class="evaluation-title">Adherence</span>
+                                <div class="evaluation-bar">
+                                    <div class="progress" style="width: {{$application->project->evaluation->adherence * 20}}%">{{$application->project->evaluation->adherence * 20}}%</div>
+                                </div>
+                            </div>
+                            <div class="evaluation-item">
+                                <span class="evaluation-title">Total</span>
+                                <div class="evaluation-bar">
+                                    <div class="progress" style="width: {{$application->project->evaluation->total * 20}}%">{{$application->project->evaluation->total * 20}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     If you receive your payment, the project status will be changed to "completed."
                 @else
                     Current project Status: {{ucfirst($application->status)}}
