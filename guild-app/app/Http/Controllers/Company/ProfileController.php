@@ -82,4 +82,31 @@ class ProfileController extends Controller
 
         return redirect()->route('company.profile', $company->id);
     }
+
+    public function other($id){
+        $user = User::findOrFail($id);
+        $freelancer = $user->freelancer;
+
+        if($freelancer){
+            if($freelancer->evaluations()){
+                $evaluations = $freelancer->evaluations()->get();
+            }
+            if($freelancer->applications()){
+                $ongoingProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', '!=', 'completed')
+                                                ->get();
+
+            }
+                $completedProjects  = Transaction::where('payee_id', $id)->with('project')->get();
+                $favoriteProjects = $user->favoriteProjects()->get();
+        }else{
+            $evaluations = collect();
+            $ongoingProjects = collect();
+            $completedProjects = collect();
+            $favoriteProjects = collect();
+        }
+
+        return view('companies.freelancer_profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects'));
+    }
 }

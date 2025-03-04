@@ -46,6 +46,7 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('profile');
         Route::get('/profile/{id}/edit', [App\Http\Controllers\Company\ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/profile/{id}/other', [App\Http\Controllers\Company\ProfileController::class, 'other'])->name('freelancer.profile');
 
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
