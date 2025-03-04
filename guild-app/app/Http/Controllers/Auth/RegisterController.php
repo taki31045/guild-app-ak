@@ -33,20 +33,6 @@ class RegisterController extends Controller
 
         return redirect('/home');
     }
-
-    /**
-     * Note: This function expects to recieved string
-     */
-    // protected function redirectTo()
-    // {
-    //     // 役割に基づいてリダイレクト先を設定
-    //     if (auth()->user()->role_id == 2) {
-    //         return '/company'; // 会社のダッシュボードにリダイレクト
-    //     }
-    //     if (auth()->user()->role_id == 3) {
-    //         return redirect()->route('/freelance'); // フリーランスのダッシュボードにリダイレクト
-    //     }
-    // }
     protected function validator(array $data)
     {
         $rules = [

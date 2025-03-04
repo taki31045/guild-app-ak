@@ -26,7 +26,9 @@ class ContactController extends Controller
         ";
 
         Mail::send([], [], function($message) use ($request, $emailContent){
-            $message->to('guild20250106@gmail.com')
+            $message->from($request->email, $request->name)
+                    ->to('guild20250106@gmail.com')
+                    ->replyTo($request->email, $request->name)
                     ->subject('New Inquiry: ' . $request->title)
                     ->html($emailContent);
             if($request->hasFile('attachment')){

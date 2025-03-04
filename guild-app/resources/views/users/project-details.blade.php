@@ -1,4 +1,4 @@
-@extends('layouts.user-app')
+@extends('layouts.freelancer')
 
 @section('title', 'Project Details')
 
@@ -23,8 +23,8 @@
                 <div class="row">
 
                     <div class="col">
-                        <h4 class="h5">{{$project->title}}</h4>
-                        <p class="fw-bold m-0">{{$project->company->user->name}}</p>
+                        <h4 class="h5 fw-bold">{{$project->title}}</h4>
+                        <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
                         <p class="m-0">${{$project->reward_amount}}</p>
                         <p>
                             <?php
@@ -65,7 +65,23 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    <i class="fa-solid fa-user-circle fa-3x"></i>
+                                    @if ($comment->user->role_id == 2)
+                                        <a href="{{route('freelancer.company.profile', $comment->user->company->id)}}" class="fw-bold m-0">
+                                            @if ($comment->user->avatar)
+                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                            @else
+                                                <i class="fa-solid fa-user-circle profile-icon"></i>
+                                            @endif
+                                        </a>
+                                    @else
+                                        <a href="{{route('freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
+                                            @if ($comment->user->avatar)
+                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                            @else
+                                                <i class="fa-solid fa-user-circle profile-icon"></i>
+                                            @endif
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="message-content">
                                     <div class="username">{{$comment->user->username}}</div>
@@ -96,7 +112,7 @@
 
                 <div class="detail-bottom">
                     {{-- back link --}}
-                    <a href="{{route('freelancer.project.index')}}" class="btn btn-secondary">≪ Back</a>
+                    <a href="{{url()->previous()}}" class="btn btn-secondary">≪ Back</a>
 
                     <!-- Button trigger modal -->
                     @if ($project->status == 'open' && $project->required_rank <= Auth::user()->freelancer->rank)
@@ -107,7 +123,7 @@
                         <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                         @include('users.modals.status')
                     @else
-                        <button type="button" class="request-btn">
+                        <button type="button" class="request-btn bg-black bg-opacity-50">
                             {{$project->status}}
                         </button>
                     @endif

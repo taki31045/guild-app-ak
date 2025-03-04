@@ -3,13 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
-    protected $fillable = ['payer_id', 'payee_id', 'amount', 'fee', 'type', 'project_id'];
+    use HasFactory;
+    protected $fillable = [
+        'payer_id', 'payee_id', 'amount', 'fee', 'type', 'project_id', 
+        'order_id', 'transaction_id', 'currency', 'status'
+    ];
     
     public function project()
     {
         return $this->belongsTo(Project::class, 'project_id');
+    }
+
+    protected $casts = [
+        'paypal_response' => 'array',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

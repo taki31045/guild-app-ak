@@ -11,7 +11,12 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
-use App\Http\Controllers\PayPalController;
+// <<<<<<< HEAD
+use App\Http\Controllers\PayPalController; 
+use App\Http\Controllers\Company\StatusController;
+// =======
+// use App\Http\Controllers\PayPalController;
+// >>>>>>> upstream/main
 
 
 //freelancer
@@ -54,7 +59,16 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
 
+// <<<<<<< HEAD
+        Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
+        Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
+        Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
+        
+        
+        
+// =======
 
+// >>>>>>> upstream/main
     });
 
 
@@ -86,10 +100,11 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
 
 
 
-    //Freelancer Profile
+    //Profile
     Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
     Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile-edit');
     Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile-update');
+    Route::get('/profile/{id}/other', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile');
 
     //Project
     Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('project.index');
