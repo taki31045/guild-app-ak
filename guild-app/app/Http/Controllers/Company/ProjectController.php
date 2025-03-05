@@ -59,7 +59,7 @@ class ProjectController extends Controller
 
 
     public function edit($id){
-//         $project = Project::findOrFail($id);
+        $project = Project::findOrFail($id);
 // <<<<<<< HEAD
 //         $skills = Skill::all(); 
 // =======

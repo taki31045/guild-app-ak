@@ -31,6 +31,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/landing', [CompanyController::class, 'landing'])->name('landing');
 
 
 
@@ -63,6 +64,9 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
         Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
+
+        Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
+        Route::post('/contact/send', [MessageController::class, 'sendMail'])->name('contact.send');
         
         
         
