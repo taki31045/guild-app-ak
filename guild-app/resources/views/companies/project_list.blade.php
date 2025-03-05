@@ -66,7 +66,7 @@
                         @if ($project->id)
                             <a href="{{ route('company.edit', $project->id) }}">edit</a>
                             <button data-bs-toggle="modal" data-bs-target="#delete-project-{{ $project->id }}">
-                                detail
+                                delate
                             </button>
                             @include('companies.modal.delete')
                         @else
