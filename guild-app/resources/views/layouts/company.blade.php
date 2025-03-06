@@ -67,6 +67,7 @@
                         <!-- Authentication Links -->
                         <li><a href="{{ route('company.message', Auth::user()->id)}}">mail</a></li>
                         <li><a href="{{ route('company.profile', Auth::user()->id)}}">profile</a></li>
+                        <li><a href="{{ route('company.contact', Auth::user()->id)}}">contact</a></li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">

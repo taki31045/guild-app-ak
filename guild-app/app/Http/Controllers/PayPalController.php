@@ -12,6 +12,7 @@ class PayPalController extends Controller
     public function payment(Request $request)
     {
         $price = $request->query('price');
+        $totalPrice = 
         $id = $request->query('id');
 
         session(['project_id' => $id]);

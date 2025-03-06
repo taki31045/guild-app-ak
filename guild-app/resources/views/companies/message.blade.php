@@ -11,7 +11,7 @@
     }
 </style>
     <div class="row">
-        <div class="col-3" style="background-color: #C976DE; height: 800px; overflow-y: auto; padding-right: 10px;">
+        <div class="col-3" style="background-color: #e3d9c3; height: 800px; overflow-y: auto; padding-right: 10px;">
             @foreach ($all_users as $user_all)
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
                 <i class="fa-solid fa-circle-user fa-3x"></i>
@@ -19,7 +19,7 @@
             </div>
             @endforeach
         </div>
-        <div class="col-9">
+        <div class="col-9" style="background-color: #F4EEE0">
             @if($user->id == Auth::user()->id)
                 <div class="none-message">
                     <h1 class="border-bottom"  style="margin-left: -100px;">User name:</h1>

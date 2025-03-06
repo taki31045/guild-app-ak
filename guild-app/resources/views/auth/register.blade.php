@@ -12,11 +12,18 @@
     input {
         background-color: rgba(255, 255, 255, 0.6) !important;
     }
+    nav{
+        background-color: rgba(255, 255, 255, 0.6);
+        width: 80% !important;
+        margin: auto;
+    }
 </style>
+
 
 <div class="container">
     <div class="card w-50 m-auto" style="margin-top: 170px !important;">
         <div class="card-header text-center">{{ __('Register') }}</div>
+       
 
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">

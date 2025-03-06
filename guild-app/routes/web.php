@@ -11,12 +11,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
-// <<<<<<< HEAD
 use App\Http\Controllers\PayPalController; 
 use App\Http\Controllers\Company\StatusController;
-// =======
-// use App\Http\Controllers\PayPalController;
-// >>>>>>> upstream/main
 
 
 //freelancer
@@ -31,6 +27,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/landing', [CompanyController::class, 'landing'])->name('landing');
 
 
 
@@ -59,17 +56,14 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
-
-// <<<<<<< HEAD
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
         Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
-        
-        
-        
-// =======
 
-// >>>>>>> upstream/main
+        Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
+        Route::post('/contact/send', [MessageController::class, 'sendMail'])->name('contact.send');
+        
+
     });
 
 
