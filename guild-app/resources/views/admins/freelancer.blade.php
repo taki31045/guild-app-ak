@@ -20,8 +20,14 @@
                         @endif
                         </td>
                         <td style="width: 100px;">Name</td>
-                        <td style="width: 200px;"><a href="{{ route('admin.freelancer.profile', $freelancer->user->id ) }}" class="text-decoration-none text-dark">
-                            {{ $freelancer->user->username }}</td>
+                        <td style="width: 200px;">
+                            @if ($freelancer->trashed())
+                                {{ $freelancer->user->username }}
+                            @else
+                            <a href="{{ route('admin.freelancer.profile', $freelancer->user->id ) }}" class="text-decoration-none text-dark">
+                                {{ $freelancer->user->username }} </a>
+                            @endif
+                        </td>
                         <td>
                         @if ($freelancer->trashed())
                             <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive

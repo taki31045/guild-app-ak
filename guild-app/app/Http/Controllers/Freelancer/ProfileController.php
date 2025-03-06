@@ -19,6 +19,20 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $freelancer = $user->freelancer;
 
+        $layout = match (Auth::user()->role_id) {
+            1 => 'layouts.admin',      // 管理者
+            2 => 'layouts.company',    // 企業
+            3 => 'layouts.freelancer', // フリーランサー
+
+        };
+
+        $styles = match (Auth::user()->role_id) {
+            1 => 'css/admins/freelancer-profile.css',      // 管理者
+            2 => 'css/freelancer-profile.css',    // 企業
+            3 => 'css/users/profile.css', // フリーランサー
+
+        };
+        
         if($freelancer){
             if($freelancer->evaluations()){
                 $evaluations = $freelancer->evaluations()->get();
@@ -39,7 +53,7 @@ class ProfileController extends Controller
             $favoriteProjects = collect();
         }
 
-        return view('users.profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects'));
+        return view('users.profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects','layout','styles'));
     }
 
 

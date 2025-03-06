@@ -1,9 +1,9 @@
-@extends('layouts.freelancer')
+@extends($layout)
 
 @section('title', 'Show Freelancer Profile')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/users/profile.css')}}">
+    <link rel="stylesheet" href="{{asset($styles)}}">
 @endsection
 
 @section('content')
@@ -36,9 +36,11 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <h3>Profile</h3>
+                    @if (Auth::check() && Auth::id() === $user->id)
                     <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
                         <i class="fa-solid fa-pen-to-square edit-icon"></i>
                     </a>
+                    @endif
                 </div>
                 <div class="profile-content mb-3">
                     <table class="detail">

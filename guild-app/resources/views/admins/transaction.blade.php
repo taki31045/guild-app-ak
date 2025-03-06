@@ -19,8 +19,8 @@
                 <thead>
                 <tr>
                     <th>DATE</th>
-                    <th>INCOME ($)<br>from Company (10% Fee included)</th>
-                    <th>EXPENSE ($)<br>to Freelancer</th>
+                    <th>TRANSACTION ($)</th>
+                    <th>TYPE</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,14 +29,12 @@
                         <td>{{ $transaction->created_at->format('d M Y') }}</td>
                         <td>
                             @if ($transaction->payee_id == $adminId)
-                            {{ $transaction->amount + ($transaction->fee ?? 0) }}
-                            @endif
-                        </td>
-                        <td>
-                            @if ($transaction->payer_id == $adminId)
                             {{ $transaction->amount }}
+                            @else
+                            {{ -$transaction->amount }}
                             @endif
                         </td>
+                        <td>{{ $transaction->type }}</td>
                     </tr>
                     @endforeach 
                         
@@ -48,9 +46,15 @@
 
     <!-- Total Balance -->
     <div class="card mt-4">
-        <div class="card-body d-flex justify-content-between align-items-center">  
-            <h5 class="card-title m-0">Admin Balance</h5>
-            <p class="card-text fs-4 fw-bold m-0">${{ number_format($adminBalance, 2) }}</p>
+        <div class="card-body row justify-content-center align-items-center">
+            <div class="col-6 text-center">
+                <p class="card-text fs-5 m-0">Total Fee Revenue: <strong> ${{ number_format($totalFeeRevenue, 2) }}</strong></p>
+                <p class="card-text fs-5 m-0">Escrow Balance: <strong> ${{ number_format($escrowBalance, 2) }}</strong></p>
+            </div>
+            <div class="col-6 d-flex justify-content-center">  
+                <p class="fs-4 m-0">Balance:</p>
+                <p class="card-text fs-4 fw-bold m-0">${{ number_format($balance, 2) }}</p>
+            </div>
         </div>
     </div>
 
