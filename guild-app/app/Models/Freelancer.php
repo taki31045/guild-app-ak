@@ -36,9 +36,10 @@ class Freelancer extends Model
     public function applications(){
         return $this->hasMany(Application::class);
     }
-
-    public function favoriteByCompany(){
-        return $this->hasMany(FavoriteFreelancer::class);
+    public function favoriteByCompany()
+    {
+        return $this->belongsToMany(Company::class, 'favorite_freelancers', 'freelancer_id', 'company_id');
     }
+    
 
 }

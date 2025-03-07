@@ -3,43 +3,57 @@
 @section('title', '')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/company.style.css')}}"> 
 
 <style>
     body {
         background-color: #F4EEE0;
     }
+    h1 {
+        color: rgba(66, 66, 66, 0.9);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+    }
     .freelancer-container {
         display: flex;
         overflow-x: auto;
         gap: 20px;
-        padding-bottom: 10px;
+        padding-bottom: 0;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE/Edge */
+        margin-top: -10px;
     }
     .freelancer-container::-webkit-scrollbar {
         display: none; /* Chrome, Safari */
     }
     .freelancer-card {
-        flex: 0 0 30%; /* 3枚表示（100% / 3） */
+        flex: 0 0 25%; /* 3枚表示（100% / 3） */
         max-width: 30%;
         background-color: rgba(66, 66, 66, 0.8); /* 背景色を薄く */
         color: #F4EEE0;
         border-radius: 10px;
 
     }
+
+    .freelancer-card img {
+    width: 100%; /* カードの幅いっぱいに調整 */
+    height: 250px; /* 高さを統一 */
+    object-fit: cover; /* 画像をトリミングして均一に表示 */
+    border-radius: 10px; /* 角を少し丸める */
+}
 </style>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-6">
-            <h2>Meet the Best Freelancers for Your Projects</h2>
+            <h1>Meet the Best Freelancers for Your Projects</h1>
+            <a href="{{ route('company.list.freelancer')}}" class="btn btn-sm btn-outline-secondary">list</a>
         </div>
         <div class="col-6">
-            <h2>Top Talent, Top Results</h2>
+            <h1>Top Talent, Top Results</h1>
             <p class="mb-5">Our top freelancers are vetted, highly skilled, and ready to bring your ideas to life. Find the perfect match for your project today.</p>
         </div>
     </div>
+</div>
 
     @php
         // フリーランサーの数が3未満なら、ダミーオブジェクトを追加
@@ -60,8 +74,8 @@
 @php
 // 変更したい画像のパスを配列で用意
 $customImages = [
-    asset('images/image 3.png'),
-    asset('images/image 1 (1).png'),
+    asset('images/image 3 (1).png'),
+    asset('images/image 1 (2).png'),
     asset('images/image 2.png'),
 ];
 @endphp
@@ -70,13 +84,13 @@ $customImages = [
 @foreach ($favoriteFreelancers as $freelancer)
 <div class="card freelancer-card">
     <div class="border p-2 m-3">
-        @if ($loop->index < 3) 
-            <!-- 最初の3人は特定の画像を適用 -->
-            <img src="{{ $customImages[$loop->index] }}" class="card-img-top" alt="Freelancer Image">
-        @else
-            <!-- それ以降はデフォルト画像 -->
-            <img src="{{ asset('images/image-placeholder.png')}}" class="card-img-top" alt="Freelancer Image">
-        @endif
+        @if ($freelancer->freelancer->user->avatar)
+        <!-- 登録したユーザーの写真を使用 -->
+        <img src="{{ $freelancer->freelancer->user->avatar }}" class="card-img-top" alt="Freelancer Image">
+    @else
+        <!-- カスタム画像をループで割り当て -->
+        <img src="{{ $customImages[$loop->index % count($customImages)] }}" class="card-img-top" alt="Freelancer Image">
+    @endif
     </div>
     <div class="card-body">
         <h5 class="card-title">{{ $freelancer->freelancer->user->name }}</h5>
@@ -106,5 +120,5 @@ $customImages = [
     </div>
 </div>
 @endforeach
-</div>
+
 @endsection
