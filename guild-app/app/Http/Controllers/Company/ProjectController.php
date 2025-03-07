@@ -51,11 +51,10 @@ class ProjectController extends Controller
             ]);
         }
 
+        return redirect()->route('company.test');
+
     }
 
-    // public function edit(){
-    //     return view('companies.edit-project');
-    // }
 
 
     public function edit($id){
@@ -135,6 +134,9 @@ class ProjectController extends Controller
 
         return  redirect()->route('company.dashboard');
     }
+
+
+
 
 
 
