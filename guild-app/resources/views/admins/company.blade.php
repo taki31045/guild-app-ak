@@ -18,10 +18,17 @@
                             @else
                                 <i class="fa-solid fa-circle-user icon-lg"></i>
                             @endif
-                            </td>
+                        </td>
                         <td style="width: 150px;">Company name</td>
-                        <td><a href="{{ route('company.profile',$company->user->id) }}" class="text-decoration-none text-dark">
-                            {{ $company->user->username }}</td>
+                        <td>
+                            @if ($company->trashed())
+                                {{ $company->user->username }}
+                            @else
+                            <a href="{{ route('company.profile',$company->user->id) }}" class="text-decoration-none text-dark">
+                                {{ $company->user->username }} </a>
+                                
+                            @endif
+                            </td>
                         <td>
                         @if ($company->trashed())
                             <i class="fa-solid fa-circle text-secondary"></i>&nbsp; Inactive

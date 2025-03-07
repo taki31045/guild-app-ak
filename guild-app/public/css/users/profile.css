@@ -227,7 +227,7 @@ main{
     display: none;
     border-radius: 5px;
     z-index: 1000;
-}
+} 
 
 
 .dropdown div{
@@ -265,4 +265,4 @@ main{
     font-weight: bold;
     cursor: pointer;
 }
-
+ 

@@ -13,16 +13,25 @@
                         <td style="width: 20px"></td>
                         <td rowspan="3" style="width: 100px;" class="bg-secondary text-center">{{ $project->formatted_deadline }}</td>
                         <td colspan="2" class="ps-4">
+                            @if ($project->trashed())  
+                                {{ \Str::limit($project->title, 60) }} 
+                            @else
                             <a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                             {{ \Str::limit($project->title, 60) }} 
                             </a>
+                            @endif
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 20px"></td>
                         <td colspan="2" class="ps-4">
-                            <a href="#" class="text-decoration-none text-dark">
+                            @if ($project->trashed())
                             {{ $project->company->user->username }}
+                            @else
+                            <a href="{{ route('company.profile',$project->company->user->id) }}" class="text-decoration-none text-dark">
+                                {{ $project->company->user->username }}
+                                </a>
+                            @endif
                         </td>
                         <td></td>
                     </tr>

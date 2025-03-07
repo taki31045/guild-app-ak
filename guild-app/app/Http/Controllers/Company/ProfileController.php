@@ -38,9 +38,9 @@ class ProfileController extends Controller
 
     public function edit($id){
 
-        $company = Company::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $user = $company->user;
+        $company = $user->company;
 
         if (Auth::id() !== $user->id) {
             abort(403, 'Unauthorized action.');
@@ -80,6 +80,7 @@ class ProfileController extends Controller
         
         $company ? $company->update($data) : Company::create(array_merge($data, ['user_id' => $user->id]));
 
-        return redirect()->route('company.profile', $company->id);
+        return redirect()->route('company.profile', $user->id);
     }
+
 }
