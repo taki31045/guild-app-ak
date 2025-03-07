@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -119,6 +119,7 @@ class RegisterController extends Controller
                 'total_earnings' => 0,
                 'avg_evaluation' => 0
             ]);
+
 
             return $user;
         }

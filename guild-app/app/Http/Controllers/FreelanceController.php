@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Todo;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class FreelanceController extends Controller
 {
@@ -14,15 +15,6 @@ class FreelanceController extends Controller
         $user = Auth::user();
         $freelancer = $user->freelancer;
         if($freelancer){
-// <<<<<<< HEAD
-//             $ongoingProjects  = $freelancer->applications()
-//                                                     ->where('freelancer_id', $freelancer->id)
-//                                                     ->where('status', 'ongoing')
-//                                                     ->get();
-//             $all_todos = Todo::where('freelancer_id', Auth::user()->freelancer->id)->get();
-//         }else{
-//             $ongoingProjects = collect();
-// =======
             $applications  = $freelancer->applications()
                                         ->where('status', '!=', 'completed')
                                         ->where('freelancer_id', $freelancer->id)
@@ -35,11 +27,13 @@ class FreelanceController extends Controller
             $freelancer = collect();
         }
 
-        
         $latestProjects = Project::where('status', 'open')->latest()->take(8)->get();
 
+        $monthlyEarnings = Transaction::where('payee_id', Auth::user()->id)
+                                        ->whereMonth('created_at', Carbon::now()->month)
+                                        ->sum('amount');
 
-        return view('users.dashboard', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects'));
+        return view('users.dashboard', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects', 'monthlyEarnings'));
 
     }
 

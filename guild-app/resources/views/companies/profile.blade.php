@@ -6,31 +6,21 @@
 <link href="{{ asset('css/companyprofile.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-@if (Auth::user()->role_id == 2)
-    <div class=" line-1 border rounded-pill p-3 shadow-lg" style="background-color: #C976DE; ">
-    </div>
-    <div class=" line-2 border rounded-pill p-3 shadow-lg text-end" style="background-color: #C976DE; ">
-        @if ($user->avatar)
-            <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
-        @else
-            <i class="text-end fa-solid fa-circle-user icon-lg"></i>
-        @endif
-    </div>
-    <div class=" line-3 border rounded-pill shadow-lg" style="background-color: #C976DE; ">
-    </div>
 
-    <div class=" line-4 border rounded-pill p-2 shadow-lg" style="background-color: #C976DE; ">
-    </div>
+<div class=" line-1 border rounded-pill p-3 shadow-lg" style="background-color: #9a9797; {{Auth::user()->role_id == 3  ? 'margin-top: 100px;' : ''}}">
+</div>
+<div class=" line-2 border rounded-pill p-3 shadow-lg text-end" style="background-color: #9a9797; {{Auth::user()->role_id == 3  ? 'margin-top: 100px;' : ''}}">
+    @if ($user->avatar)
+        <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+    @else
+        <i class="text-end fa-solid fa-circle-user icon-lg"></i>
+    @endif
+</div>
+<div class=" line-3 border rounded-pill shadow-lg" style="background-color: #9a9797; {{Auth::user()->role_id == 3  ? 'margin-top: 100px;' : ''}}">
+</div>
 
-@else
-    <div class="line-5 text-end">
-        @if ($user->avatar)
-            <img src="{{ $user->avatar }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
-        @else
-            <i class="text-end fa-solid fa-circle-user icon-lg"></i>
-        @endif
-    </div>
-@endif
+<div class=" line-4 border rounded-pill p-2 shadow-lg" style="background-color: #9a9797; {{Auth::user()->role_id == 3  ? 'margin-top: 100px;' : ''}}">
+</div>
 
 <div class="profile-container row justify-content-center">
     <div class="profile-container-1 col-11">
@@ -48,7 +38,9 @@
                         </tr>
                         <tr>
                             <td>website</td>
-                            <td>{{ $user->company->website }}</td>
+                            @if ($user->company)
+                                <td>{{ $user->company->website }}</td>
+                            @endif
                         </tr>
                     </tbody>
                 </table>
@@ -68,27 +60,39 @@
                             <tbody>
                             <tr>
                                 <td>Representative:</td>
-                                <td>{{ $company->representative }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->representative }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Number of Employees:</td>
-                                <td>{{ $company->employee }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->employee }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Capital($):</td>
-                                <td>{{ $company->capital }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->capital }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Annual Sales($):</td>
-                                <td>{{ $company->annualsales }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->annualsales }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Address(Prefecture):</td>
-                                <td>{{ $company->address }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->address }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Business Description:</td>
-                                <td>{{ $company->description }}</td>
+                                @if ($user->company)
+                                    <td>{{ $company->description }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -105,7 +109,9 @@
                 <input type="radio" id="payment-history" name="tab-group">
                 <div class="tab-menu">
                     <label for="project-history" class="tab-label">Project History</label>
-                    <label for="payment-history" class="tab-label">Payment History</label>
+                    @if (Auth::user()->id == $user->id || Auth::user()->role_id == 1)
+                        <label for="payment-history" class="tab-label">Payment History</label>
+                    @endif
                 </div>
                 <div class="tab-content">
                     <!-- Project History -->

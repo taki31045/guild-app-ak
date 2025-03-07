@@ -69,19 +69,18 @@
                         <i class="fa-solid fa-circle-user fa-3x profile-icon"></i>
                     @endif
                 </a>
-                <div>
+                <div class="profile-details">
                     <h3>{{$user->username}}</h3>
                     <p>
+                        Rank: 
                         @if ($freelancer)
-                            <?php
-                                for($i = 1; $i <= $freelancer->rank; $i++){
-                            ?>
-                                    <i class="fa-solid fa-star"></i>
-                            <?php
-                                }
-                            ?>
+                            @for($i = 1; $i <= $freelancer->rank; $i++)
+                                <i class="fa-solid fa-star"></i>
+                            @endfor
                         @endif
                     </p>
+                    <p>Ongoing Projects: <strong>{{$applications->count()}} items</strong></p>
+                    <p>Earnings This Month: <strong>${{$monthlyEarnings}}</strong></p>
                 </div>
             </div>
             {{-- Todo List --}}
