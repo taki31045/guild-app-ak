@@ -117,7 +117,7 @@
                                 <h3 class="h5 m-0"><a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
-                                <p class="fw-bold m-0">{{ $project->company->user->username }}</p>
+                                <p class="fw-bold m-0">{{optional($project->freelancer)->user->username ?? 'N/A'}}</p>
                                 <p class="m-0">${{ $project->reward_amount }}</p>
                                 <p>
                                     @for ($i = 1; $i <= $project->required_rank; $i++)
