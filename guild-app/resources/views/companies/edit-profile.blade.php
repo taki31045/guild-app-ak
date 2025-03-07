@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
     <div class="col-6 border border-black rounded shadow py-5 px-5">
        
-        <form action="{{ route('company.profile.update', ['id' => $company->id]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('company.profile.update', ['id' => $user->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <h3 class="mb-4 fw-bold">Edit Profile</h3>

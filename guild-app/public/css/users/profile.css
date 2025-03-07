@@ -255,7 +255,7 @@ main a:hover{
     display: none;
     border-radius: 5px;
     z-index: 1000;
-}
+} 
 
 
 .dropdown div{
@@ -293,4 +293,4 @@ main a:hover{
     font-weight: bold;
     cursor: pointer;
 }
-
+ 

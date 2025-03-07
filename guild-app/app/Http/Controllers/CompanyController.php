@@ -8,12 +8,12 @@ use App\Models\User;
 use App\Models\FavoriteFreelancer;
 use App\Models\Project;
 use App\Models\ProjectComment;
+use App\Models\Freelancer;
 use Illuminate\Support\Facades\Auth;
 
 
 class CompanyController extends Controller
 {
-
 
     public function index(){
         $user = Auth::user();
@@ -31,13 +31,23 @@ class CompanyController extends Controller
         $user = Auth::user();
         $projects = $user->company->projects->where('status','open')->all();
 
+        // 各プロジェクトごとのおすすめフリーランサーの数を取得
+    foreach ($projects as $project) {
+        $skillIds = $project->skills->pluck('id');
+
+        // スキルに一致するフリーランサーの数を取得
+        $project->recommended_freelancers_count = Freelancer::whereHas('skills', function ($query) use ($skillIds) {
+            $query->whereIn('skills.id', $skillIds);
+        })->count();
+    }
+
         return view('companies.project_list', compact('projects'));
     }
 
     public function favorite_freelancer_list(){
         $user = Auth::user();
         $company = $user->company;
-        $favoriteFreelancers = $company->favoriteFreelancers;
+        $favoriteFreelancers = $company->ListOffavoriteFreelancers;
 
         return view('companies.favorite_freelancer_list', compact('favoriteFreelancers'));
     }
@@ -60,5 +70,21 @@ class CompanyController extends Controller
 
         return redirect()->route('company.project-details', $request->id);
     }
+
+    public function recommendedFreelancers($projectId)
+{
+    // プロジェクトのスキルを取得
+    $project = Project::with('skills')->findOrFail($projectId);
+
+    // プロジェクトのスキルIDを取得
+    $skillIds = $project->skills->pluck('id');
+
+    // プロジェクトのスキルと一致するフリーランサーを取得
+    $freelancers = Freelancer::whereHas('skills', function ($query) use ($skillIds) {
+        $query->whereIn('skills.id', $skillIds);
+    })->get();
+
+    return view('companies.recommended_freelancers', compact('freelancers', 'project'));
+}
 
 }

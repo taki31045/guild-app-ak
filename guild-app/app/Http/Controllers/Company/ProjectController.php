@@ -50,15 +50,14 @@ class ProjectController extends Controller
             ]);
         }
 
+        return redirect()->route('company.test');
+
     }
 
-    // public function edit(){
-    //     return view('companies.edit-project');
-    // }
 
 
     public function edit($id){
-//         $project = Project::findOrFail($id);
+        $project = Project::findOrFail($id);
 // <<<<<<< HEAD
 //         $skills = Skill::all();
 // =======
@@ -134,6 +133,9 @@ class ProjectController extends Controller
 
         return  redirect()->route('company.dashboard');
     }
+
+
+
 
 
 

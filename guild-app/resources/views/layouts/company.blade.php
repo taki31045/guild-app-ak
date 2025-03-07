@@ -13,6 +13,8 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    @yield('styles')
+
     {{-- <link rel="stylesheet" href="{{ asset('css/company.style.css')}}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -43,7 +45,7 @@
 }
 </style>
 
-<body>
+<body style="font-family: Georgia, 'Times New Roman', Times, serif; ">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
@@ -71,6 +73,7 @@
                         <!-- Authentication Links -->
                         <li><a href="{{ route('company.message', Auth::user()->id)}}">mail</a></li>
                         <li><a href="{{ route('company.profile', Auth::user()->id)}}">profile</a></li>
+                        <li><a href="{{ route('company.contact', Auth::user()->id)}}">contact</a></li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">

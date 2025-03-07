@@ -6,15 +6,19 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient; //srlive\paypalというラ
 use Illuminate\Http\Request;
 use App\Models\Application;
 use App\Models\Transaction;
+use App\Models\Admin;
+
+use Illuminate\Support\Facades\DB;
 
 class PayPalController extends Controller
 {
     public function payment(Request $request)
     {
         $price = $request->query('price');
+        $totalPrice = $price + $price * 0.1;
         $id = $request->query('id');
 
-        session(['project_id' => $id]);
+        session(['project_id' => $id,'price' => $price, 'totalPrice' => $totalPrice]);
 
         $provider = new PayPalClient;//paypalClientをインスタンス化して、APIの認証情報をを設定
         $provider->setApiCredentials(config('paypal')); //config\paypalにapiの情報を設定しておく。
@@ -30,7 +34,7 @@ class PayPalController extends Controller
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $price
+                        "value" => $totalPrice
                     ]
                 ]
             ]
@@ -63,6 +67,10 @@ class PayPalController extends Controller
     public function success(Request $request)
     {
         $project_id = session('project_id');
+        $price = session('price');
+        $totalPrice = session('totalPrice');
+
+        $fee = $price * 0.1;
         $freelancer_id = Application::where('project_id', $project_id)->value('freelancer_id');
 
        
@@ -88,6 +96,14 @@ class PayPalController extends Controller
             ]);
 
             Application::where('project_id',  session('project_id'))->update(['status' => 'ongoing']);
+
+
+            Admin::where('user_id','1')->update([
+                'balance' => DB::raw('balance + ' . $fee),
+                'total_fee_revenue' => DB::raw('total_fee_revenue + ' . $fee),
+                'escrow_balance' => DB::raw('escrow_balance + ' . $price),
+            ]);
+              
 
             
             return redirect()

@@ -37,7 +37,7 @@
 }
 </style>
 
-<body>
+<body style="font-family: Georgia, 'Times New Roman', Times, serif; ">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
@@ -65,6 +65,7 @@
                         <!-- Authentication Links -->
                         <li><a href="<?php echo e(route('company.message', Auth::user()->id)); ?>">mail</a></li>
                         <li><a href="<?php echo e(route('company.profile', Auth::user()->id)); ?>">profile</a></li>
+                        <li><a href="<?php echo e(route('company.contact', Auth::user()->id)); ?>">contact</a></li>
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('login')): ?>
                         <li class="nav-item">

@@ -11,7 +11,7 @@
     }
 </style>
     <div class="row">
-        <div class="col-3" style="background-color: #C976DE; height: 800px; overflow-y: auto; padding-right: 10px;">
+        <div class="col-3" style="background-color: #e3d9c3; height: 800px; overflow-y: auto; padding-right: 10px;">
             @foreach ($all_users as $user_all)
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
                 <i class="fa-solid fa-circle-user fa-3x"></i>
@@ -19,21 +19,21 @@
             </div>
             @endforeach
         </div>
-        <div class="col-9">
+        <div class="col-9" style="background-color: #F4EEE0">
             @if($user->id == Auth::user()->id)
                 <div class="none-message">
-                    <h1 class="border-bottom"  style="margin-left: -100px;">User name:</h1>
+                    <h1 class="border-bottom mt-3"  style="margin-left: 100px;">User name:</h1>
                     <div style="margin-top: 90px; overflow-y: auto;  height: 550px; padding-right: 10px; display:flex; justify-content:center; align-items: center;"> 
                         <div class="text-center">
                             <i class="fa-regular fa-comment text-dark fa-4x"></i>
                             <h4>Your messages</h4>
                             <p class="text-secondary">Send a message to start a chat.</p>
-                            <a href="#" class="btn btn-secondary">Send message</a>
+                            <a href="{{ route('company.list.freelancer')}}" class="btn btn-secondary">Send message</a>
                         </div>
                     </div>
                 </div>
             @else
-                <h1 class="border-bottom"  style="margin-left: -100px;">User name: {{ $user->name }}</h1>
+                <h1 class="border-bottom mt-3"  style="margin-left: 100px;">User name: {{ $user->name }}</h1>
                 <div style="margin-top: 90px; overflow-y: auto;  height: 550px; padding-right: 10px;"> 
                     @foreach ($messages as $message)
                         @if ($message->sender_id == Auth::user()->id)
