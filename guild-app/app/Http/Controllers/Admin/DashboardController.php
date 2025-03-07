@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Transaction;
+use App\Models\Admin;
 
 
 class DashboardController extends Controller
@@ -154,38 +155,84 @@ class DashboardController extends Controller
     public function getAllTransactions(){
         $adminId = User::where('role_id', 1)->value('id');
 
-        $adminBalance = $this->getAdminBalance($adminId);
+    // Adminデータ取得 & 財務情報を更新
+    $admin = Admin::first();
+    $admin->updateFinancials();
 
-        $projects = Project::withTrashed()
-            ->with([
+    // 関連するプロジェクトと取引情報を取得
+    $projects = Project::withTrashed()
+        ->with([
             'company.user',
             'application.freelancer.user',
+
             'transactions' => function ($query) use ($adminId) {
                 $query->where('payer_id', $adminId)
-                    ->orWhere('payee_id', $adminId)
-                    ->orderBy('created_at', 'asc');
+                      ->orWhere('payee_id', $adminId)
+                      ->orderBy('created_at', 'asc');
             }
         ])
         ->orderBy('id', 'asc')
         ->paginate(4);
 
-        return view('admins.transaction')
-            ->with('projects', $projects)
-            ->with('adminId', $adminId)
-            ->with('adminBalance', $adminBalance);
 
-    }
+    // ビューにデータを渡す
+    return view('admins.transaction', [
+        'projects' => $projects,
+        'adminId' => $adminId,
+        'balance' => $admin->balance,
+        'totalFeeRevenue' => $admin->total_fee_revenue,
+        'escrowBalance' => $admin->escrow_balance
+    ]);
+        
+}       
+        
+    //     $adminId = User::where('role_id', 1)->value('id');
 
-    private function getAdminBalance($adminId)
-    {
-        $totalIncome = Transaction::where('payee_id', $adminId)
-            ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+    //     // $adminBalance = $this->getAdminBalance($adminId);
 
-        $totalExpense = Transaction::where('payer_id', $adminId)
-            ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+    //     $projects = Project::withTrashed()
+    //         ->with([
+    //         'company.user',
+    //         'application.freelancer.user',
+    //         'transactions' => function ($query) use ($adminId) {
+    //             $query->where('payer_id', $adminId)
+    //                 ->orWhere('payee_id', $adminId)
+    //                 ->orderBy('created_at', 'asc');
+    //         }
+    //     ])
+    //     ->orderBy('id', 'asc')
+    //     ->paginate(4);
 
-        return $totalIncome - $totalExpense;
-    }
-    
+    //     return view('admins.transaction')
+    //         ->with('projects', $projects)
+    //         ->with('adminId', $adminId)
+    //         ->with('adminBalance', $adminBalance);
+
+    // }
+
+    // public function showFinancials()
+    // {
+    //     $admin = Admin::first(); // 管理者データを取得
+
+    //     // 計算メソッドがあるなら更新
+    //     $admin->updateFinancials();
+
+    //     return view('admin.financials', [
+    //         'balance' => $admin->balance,
+    //         'totalFeeRevenue' => $admin->total_fee_revenue,
+    //         'escrowBalance' => $admin->escrow_balance,
+    //     ]);
+    // }
+
+    // private function getAdminBalance($adminId)
+    // {
+    //     $totalIncome = Transaction::where('payee_id', $adminId)
+    //         ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+
+    //     $totalExpense = Transaction::where('payer_id', $adminId)
+    //         ->sum(\DB::raw('amount + COALESCE(fee, 0)'));
+
+    //     return $totalIncome - $totalExpense;
+    // }
+
 }
-

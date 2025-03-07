@@ -11,7 +11,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
-use App\Http\Controllers\PayPalController; 
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\Company\StatusController;
 use App\Http\Controllers\Company\FreelancerController;
 
@@ -35,7 +35,7 @@ Route::get('/landing', [CompanyController::class, 'landing'])->name('landing');
 
 
 //company
-Route::middleware(['company'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('company.')->group(function () {
 
         Route::get('/', [CompanyController::class, 'index'])->name('dashboard');
         Route::get('/project', [ProjectController::class, 'index'])->name('project');
@@ -44,6 +44,7 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('profile');
         Route::get('/profile/{id}/edit', [App\Http\Controllers\Company\ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/freelancer/profile/{id}/', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
 
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete');
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
@@ -56,8 +57,12 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
-
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
+        Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('project-details');
+        Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store');
+        Route::get('/profile/{id}/other', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
+
+
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
         Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
 
@@ -70,8 +75,8 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
 
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
     ->name('recommended_freelancers');
-        
-        
+
+
     });
 
 
@@ -144,20 +149,24 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     ->name('dashboard');
     // freelancer management
     Route::get('freelancer', [App\Http\Controllers\Admin\DashboardController::class, 'getAllFreelancers'])->name('freelancer');
-    Route::get('freelancer/profile/{id}/', [App\Http\Controllers\Admin\DashboardController::class, 'showFreelancer'])->name('freelancer.profile');
+    Route::get('freelancer/profile/{id}/', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
     Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivate'])->name('freelancer.deactivate');
     Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activate'])->name('freelancer.activate');
-    // company management 
+
+    // company management
     Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('company');
-    Route::get('company/profile/{id}/', [App\Http\Controllers\Admin\DashboardController::class, 'showCompany'])->name('company.profile');
+    Route::get('company/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile');
     Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('company.deactivate');
     Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('company.activate');
+
     // project management
     Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('project');
     Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('project.deactivate');
     Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('project.activate');
+
     // transaction
     Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('transaction');
+
     // message
-    Route::view('message', 'admins.message')->name('admin.message');
+    // Route::view('message', 'admins.message')->name('admin.message');
 });

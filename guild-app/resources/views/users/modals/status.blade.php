@@ -36,25 +36,25 @@
                             <div class="evaluation-item">
                                 <span class="evaluation-title">Quality</span>
                                 <div class="evaluation-bar">
-                                    <div class="progress" style="width: {{$application->project->evaluation->quality * 20}}%">{{$application->project->evaluation->quality * 20}}%</div>
+                                    <div class="progress" style="width: {{$application->project->evaluation->quality * 10}}%">{{$application->project->evaluation->quality * 10}}%</div>
                                 </div>
                             </div>
                             <div class="evaluation-item">
                                 <span class="evaluation-title">Communication</span>
                                 <div class="evaluation-bar">
-                                    <div class="progress" style="width: {{$application->project->evaluation->communication * 20}}%">{{$application->project->evaluation->communication * 20}}%</div>
+                                    <div class="progress" style="width: {{$application->project->evaluation->communication * 10}}%">{{$application->project->evaluation->communication * 10}}%</div>
                                 </div>
                             </div>
                             <div class="evaluation-item">
                                 <span class="evaluation-title">Adherence</span>
                                 <div class="evaluation-bar">
-                                    <div class="progress" style="width: {{$application->project->evaluation->adherence * 20}}%">{{$application->project->evaluation->adherence * 20}}%</div>
+                                    <div class="progress" style="width: {{$application->project->evaluation->adherence * 10}}%">{{$application->project->evaluation->adherence * 10}}%</div>
                                 </div>
                             </div>
                             <div class="evaluation-item">
                                 <span class="evaluation-title">Total</span>
                                 <div class="evaluation-bar">
-                                    <div class="progress" style="width: {{$application->project->evaluation->total * 20}}%">{{$application->project->evaluation->total * 20}}%</div>
+                                    <div class="progress" style="width: {{$application->project->evaluation->total * 10}}%">{{$application->project->evaluation->total * 10}}%</div>
                                 </div>
                             </div>
                         </div>

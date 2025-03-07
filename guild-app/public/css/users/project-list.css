@@ -58,6 +58,15 @@ main{
     background: #555;
 }
 
+main a{
+    text-decoration: none;
+    color: black;
+}
+
+main a:hover{
+    text-decoration: underline;
+}
+
 .job-list h2{
     border-bottom: 2px solid black;
 }

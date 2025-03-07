@@ -12,6 +12,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -169,6 +170,28 @@ class ProjectController extends Controller
         $application->delete();
         $project->status = 'completed';
         $project->save();
+
+        DB::transaction(function() use ($user, $project){
+            $new_rank_point = $user->rank_point;
+
+            if($user->rank == $project->required_rank){
+                $new_rank_point += 1;
+            }elseif($user->rank < $project->required_rank){
+                $new_rank_point += 2;
+            }else{
+                $new_rank_point += 0;
+            }
+            $user->save();
+
+            if($new_rank_point >= 10 && $user->rank < 5){
+                $user->rank += 1;
+                $new_rank_point = 0;
+            }
+
+            $user->rank_point = $new_rank_point;
+            $user->save();
+        });
+
 
         return redirect()->back();
     }

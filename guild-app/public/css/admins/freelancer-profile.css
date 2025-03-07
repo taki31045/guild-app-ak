@@ -134,7 +134,7 @@ main{
 }
 
 #Project-history:checked ~ .tab-menu label[for="Project-history"],
-#on-going:checked ~ .tab-menu label[for="on-going"],
+#ongoing:checked ~ .tab-menu label[for="ongoing"],
 #likes:checked ~ .tab-menu label[for="likes"] {
     color: brown;
     border-bottom: 1px solid brown;
@@ -167,7 +167,7 @@ main{
 }
 
 #Project-history:checked ~ .tab-content .Project-history,
-#on-going:checked ~ .tab-content .on-going,
+#ongoing:checked ~ .tab-content .ongoing,
 #likes:checked ~ .tab-content .likes{
     display: block;
     display: flex;
@@ -215,12 +215,12 @@ main{
     align-items: center;
 }
 
-.dropdown div{
+/* .dropdown div{
     padding: 10px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
     white-space: nowrap;
-}
+} */
 
 
 .selected-option{
@@ -250,4 +250,3 @@ main{
     font-weight: bold;
     cursor: pointer;
 }
-

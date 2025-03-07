@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('payee_id'); // company or Freelancer
             $table->unsignedBigInteger('project_id');
             $table->string('type'); //('escrow_deposit', 'freelancer_payment', 'refund')
-            
+
             $table->string('order_id')->unique()->nullable();
             $table->string('transaction_id')->nullable();
             $table->decimal('amount', 10, 2);
