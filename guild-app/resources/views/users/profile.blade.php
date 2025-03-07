@@ -37,9 +37,9 @@
                 <div class="profile-header">
                     <h3>Profile</h3>
                     @if (Auth::check() && Auth::id() === $user->id)
-                    <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
-                        <i class="fa-solid fa-pen-to-square edit-icon"></i>
-                    </a>
+                        <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
+                            <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                        </a>
                     @endif
                 </div>
                 <div class="profile-content mb-3">
@@ -72,6 +72,12 @@
                             <th>Facebook</th>
                             <td>{{$user->freelancer->facebook}}</td>
                         </tr>
+                        @if (Auth::user()->id == $user->id)
+                            <tr>
+                                <th>Total Earnings</th>
+                                <td>{{$user->freelancer->total_earnings}}</td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
 
@@ -88,25 +94,25 @@
                 <div class="evaluation-item">
                     <span class="evaluation-title">Quality</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('quality') * 20}}%">{{$evaluations->avg('quality') * 20}}%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('quality') * 10}}%">{{$evaluations->avg('quality') * 10}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Communication</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('communication') * 20}}%">{{$evaluations->avg('communication') * 20}}%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('communication') * 10}}%">{{$evaluations->avg('communication') * 10}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Adherence</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('adherence') * 20}}%">{{$evaluations->avg('adherence') * 20}}%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('adherence') * 10}}%">{{$evaluations->avg('adherence') * 10}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Total</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('total') * 20}}%">{{$evaluations->avg('total') * 20}}%</div>
+                        <div class="progress" style="width: {{$evaluations->avg('total') * 10}}%">{{$evaluations->avg('total') * 10}}%</div>
                     </div>
                 </div>
             </div>
@@ -116,23 +122,26 @@
 
 <div class="Project-container">
     <input type="radio" id="Project-history" name="tab-group" checked>
-    <input type="radio" id="on-going" name="tab-group">
+    <input type="radio" id="ongoing" name="tab-group">
     <input type="radio" id="likes" name="tab-group">
 
     <div class="tab-menu">
         <label for="Project-history" class="tab-label">Project History</label>
-        <label for="on-going" class="tab-label">On Going</label>
+        <label for="ongoing" class="tab-label">On Going</label>
         <label for="likes" class="tab-label">Likes Project</label>
     </div>
 
     <div class="tab-content">
         @foreach ($completedProjects as $completedProject)
-            <a href="{{route('freelancer.project-details', $completedProject->project->id)}}" class="text-decoration-none text-black">
-                <div class="tab-pane Project-history">
+            <div class="tab-pane Project-history">
+                <div class="project-box">
                     <div class="Project-date">{{$completedProject->project->deadline}}</div>
                     <div class="Project-details">
-                        <h3 class="h5 m-0">{{$completedProject->project->title}}</h3>
-                        <p class="fw-bold m-0">{{$completedProject->project->company->user->name}}</p>
+                        <a href="{{route('freelancer.project-details', $completedProject->project->id)}}" class="fs-5 fw-bold">
+                            {{$completedProject->project->title}}
+                        </a>
+                        <br>
+                        <a href="{{route('freelancer.company.profile', $completedProject->project->company->user->id)}}" class="fw-bold m-0">{{$completedProject->project->company->user->name}}</a>
                         <p class="m-0">{{$completedProject->project->reward_amount}}</p>
                         <p>
                             <?php
@@ -145,20 +154,28 @@
                         </p>
                     </div>
                 </div>
-            </a>
+
+                <div class="project-status">
+                    <button class="status-label" data-bs-toggle="modal" data-bs-target="#evaluation{{$completedProject->project->id}}">Evaluation</button>
+                </div>
+                @include('users.modals.evaluation')
+            </div>
         @endforeach
 
-        @foreach ($ongoingProjects as $ongoingProject)
-            <a href="{{route('freelancer.project-details', $ongoingProject->project->id)}}" class="text-decoration-none text-black">
-                <div class="tab-pane on-going">
-                    <div class="Project-date">{{$ongoingProject->project->deadline}}</div>
+        @foreach ($ongoingProjects as $application)
+            <div class="tab-pane ongoing">
+                <div class="project-box">
+                    <div class="Project-date">{{$application->project->deadline}}</div>
                     <div class="Project-details">
-                        <h3 class="h5 m-0">{{$ongoingProject->project->title}}</h3>
-                        <p class="fw-bold m-0">{{$ongoingProject->project->company->user->name}}</p>
-                        <p class="m-0">{{$ongoingProject->project->reward_amount}}</p>
+                        <a href="{{route('freelancer.project-details', $application->project->id)}}" class="fs-5 fw-bold">
+                            {{$application->project->title}}
+                        </a>
+                        <br>
+                        <a href="{{route('freelancer.company.profile', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
+                        <p class="m-0">{{$application->project->reward_amount}}</p>
                         <p>
                             <?php
-                                for($i = 1; $i <= $ongoingProject->project->required_rank; $i++){
+                                for($i = 1; $i <= $application->project->required_rank; $i++){
                             ?>
                                     <i class="fa-solid fa-star"></i>
                             <?php
@@ -167,30 +184,39 @@
                         </p>
                     </div>
                 </div>
-            </a>
+
+                {{-- status --}}
+                {{-- requested, accepted, rejected, ongoing, submitted, resulted, completed --}}
+                <div class="project-status">
+                    <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                </div>
+                @include('users.modals.status')
+            </div>
         @endforeach
 
-        {{-- {{dd($favoriteProjects)}} --}}
         @foreach ($favoriteProjects as $favoriteProject)
-            <a href="{{route('freelancer.project-details', $favoriteProject->id)}}" class="text-decoration-none text-black">
-                <div class="tab-pane likes">
+            <div class="tab-pane likes">
+                <div class="project-box">
                     <div class="Project-date">{{$favoriteProject->deadline}}</div>
                     <div class="Project-details">
-                        <h3 class="h5 m-0">{{$favoriteProject->title}}</h3>
-                        <p class="fw-bold m-0">{{$favoriteProject->company->user->name}}</p>
+                        <a href="{{route('freelancer.project-details', $favoriteProject->id)}}" class="fw-bold">
+                            {{$favoriteProject->title}}
+                        </a>
+                        <br>
+                        <a href="{{route('freelancer.company.profile', $favoriteProject->company->user->id)}}" class="fw-bold m-0">{{$favoriteProject->company->user->name}}</a>
                         <p class="m-0">{{$favoriteProject->reward_amount}}</p>
                         <p>
                             <?php
                                 for($i = 1; $i <= $favoriteProject->required_rank; $i++){
                             ?>
-                                    <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             <?php
                                 }
                             ?>
                         </p>
                     </div>
                 </div>
-            </a>
+            </div>
         @endforeach
     </div>
 </div>

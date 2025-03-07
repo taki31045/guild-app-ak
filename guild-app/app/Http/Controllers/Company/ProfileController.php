@@ -17,7 +17,6 @@ class ProfileController extends Controller
         $user = User::with('company.projects')->findOrFail($id);
 
         $company = $user->company;
-
         $projects = $company ? $company->projects : collect();
 
         $layout = match (Auth::user()->role_id) {
@@ -26,7 +25,7 @@ class ProfileController extends Controller
             3 => 'layouts.freelancer', // フリーランサー
 
         };
-        
+
         $transactions = Transaction::where('payer_id', $user->id)
                     ->orWhere('payee_id', $user->id)
                     ->with('project')
@@ -50,7 +49,7 @@ class ProfileController extends Controller
     }
 
     public function update(CompanyProfileRequest $request){
-        
+
         $user = Auth::user();
 
         $companyName = $request->company_name;
@@ -77,10 +76,9 @@ class ProfileController extends Controller
             'address'         => $request->address,
             'description'     => $request->description
         ];
-        
+
         $company ? $company->update($data) : Company::create(array_merge($data, ['user_id' => $user->id]));
 
         return redirect()->route('company.profile', $user->id);
     }
-
 }

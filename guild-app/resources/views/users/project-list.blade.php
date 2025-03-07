@@ -64,34 +64,35 @@
             <div class="job-list">
                 <h2> PROJECT LIST</h2>
                 @foreach ($all_projects as $project)
-                    <a href="{{route('freelancer.project-details', $project->id)}}" class="text-decoration-none text-dark">
-                        <div class="job">
-                            <div class="job-detail-container">
-                                <div class="job-date">{{$project->deadline}}</div>
-                                <div class="job-detail">
-                                    <h4>{{$project->title}}</h4>
-                                    <p class="fw-bold m-0">{{$project->company->user->name}}</p>
-                                    <p class="m-0">${{$project->reward_amount}}</p>
-                                    <p>
-                                        <?php
-                                            for($i = 1; $i <= $project->required_rank; $i++){
-                                        ?>
-                                                <i class="fa-solid fa-star"></i>
-                                        <?php
-                                            }
-                                        ?>
-                                    </p>
+                    <div class="job">
+                        <div class="job-detail-container">
+                            <div class="job-date">{{$project->deadline}}</div>
+                            <div class="job-detail">
+                                <a href="{{route('freelancer.project-details', $project->id)}}" class="fs-5 fw-bold">
+                                    {{$project->title}}
+                                </a>
+                                <br>
+                                <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                                <p class="m-0">${{$project->reward_amount}}</p>
+                                <p>
+                                    <?php
+                                        for($i = 1; $i <= $project->required_rank; $i++){
+                                    ?>
+                                            <i class="fa-solid fa-star"></i>
+                                    <?php
+                                        }
+                                    ?>
+                                </p>
 
-                                    @foreach ($project->skills as $skill)
-                                        <span class="skill-tag">{{$skill->name}}</span>
-                                    @endforeach
-                                </div>
+                                @foreach ($project->skills as $skill)
+                                    <span class="skill-tag">{{$skill->name}}</span>
+                                @endforeach
                             </div>
-                            <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
-                                <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
-                            </a>
                         </div>
-                    </a>
+                        <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
+                            <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
+                        </a>
+                    </div>
                 @endforeach
 
                 {{-- paginate --}}
