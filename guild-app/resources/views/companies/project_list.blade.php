@@ -44,15 +44,15 @@
                 <div class="row align-items-center">
                     <!-- First Column: Placeholder or Icon -->
                     <div class="col-2 d-flex justify-content-center">
-                        <div class="border bg-light d-flex justify-content-center align-items-center" 
+                        <div class="border bg-light d-flex justify-content-center align-items-center"
                             style="width: 50px; height: 50px; font-size: 0.9rem; font-weight: bold; color: #333;">
                             {{ $project->deadline ? \Carbon\Carbon::parse($project->deadline)->format('m/d') : '--/--' }}
                         </div>
                     </div>
-                
+
                     <!-- Second Column: Title, Name, and Price -->
                     <div class="col-7">
-                        <h2 class="fs-4 fw-bold text-dark mb-1">{{ $project->title }}</h2>
+                        <a href="{{route('company.project-details', (int)$project->id)}}" class="fs-4 fw-bold text-dark mb-1">{{ $project->title }}</a>
                         <div class="d-flex align-items-center mt-2">
                             <p class="mb-0 me-2 text-muted fw-bold">price : {{ $project->reward_amount }}</p>
                             @for ($i = 1; $i <= 5; $i++)
@@ -60,7 +60,7 @@
                             @endfor
                         </div>
                     </div>
-                
+
                     <!-- Third Column: Status -->
                     <div class="col-3 d-flex align-items-center justify-content-center">
                         @if ($project->id)

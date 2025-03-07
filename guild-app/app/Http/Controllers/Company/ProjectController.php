@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-
     public function index(){//show page for create for new project
         $skills = Skill::all();
         return view('companies.create', compact('skills'));
@@ -61,7 +60,7 @@ class ProjectController extends Controller
     public function edit($id){
 //         $project = Project::findOrFail($id);
 // <<<<<<< HEAD
-//         $skills = Skill::all(); 
+//         $skills = Skill::all();
 // =======
         $skills = Skill::all();
 // >>>>>>> upstream/main

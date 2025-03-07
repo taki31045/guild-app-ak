@@ -1,4 +1,4 @@
-@extends('layouts.freelancer')
+@extends('layouts.company')
 
 @section('title', 'Project Details')
 
@@ -7,7 +7,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{asset('js/favorite-project.js')}}"></script>
 @endsection
 
 @section('content')
@@ -24,7 +24,7 @@
 
                     <div class="col">
                         <h4 class="h5 fw-bold">{{$project->title}}</h4>
-                        <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                        <p class="fw-bold m-0">{{$project->company->user->name}}</p>
                         <p class="m-0">${{$project->reward_amount}}</p>
                         <p>
                             <?php
@@ -62,23 +62,13 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    @if ($comment->user->role_id == 2)
-                                        <a href="{{route('freelancer.company.profile', $comment->user->id)}}" class="fw-bold m-0">
-                                            @if ($comment->user->avatar)
-                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
-                                            @else
-                                                <i class="fa-solid fa-user-circle profile-icon"></i>
-                                            @endif
-                                        </a>
-                                    @else
-                                        <a href="{{route('freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
-                                            @if ($comment->user->avatar)
-                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
-                                            @else
-                                                <i class="fa-solid fa-user-circle profile-icon"></i>
-                                            @endif
-                                        </a>
-                                    @endif
+                                    <a href="{{route('company.freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
+                                        @if ($comment->user->avatar)
+                                            <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                        @else
+                                            <i class="fa-solid fa-user-circle profile-icon"></i>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="message-content">
                                     <div class="username">{{$comment->user->username}}</div>
@@ -88,7 +78,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form action="{{route('freelancer.comment.store')}}" method="post" class="comment-form">
+                <form action="{{route('company.comment.store')}}" method="post" class="comment-form">
                     @csrf
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
@@ -111,14 +101,8 @@
                     {{-- back link --}}
                     <a href="{{url()->previous()}}" class="btn btn-secondary">≪ Back</a>
 
-                    <!-- Button trigger modal -->
-                    @if ($project->status == 'open' && $project->required_rank - 1 <= Auth::user()->freelancer->rank)
-                        <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
-                            Request
-                        </button>
-                    @elseif($application && $application->freelancer->user->id == Auth::user()->id)
-                        <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
-                        @include('users.modals.status')
+                    @if($application)
+                        <button class="request-btn {{ $application->status }} bg-black bg-opacity-50">{{ ucfirst($application->status) }}</button>
                     @else
                         <button type="button" class="request-btn bg-black bg-opacity-50">
                             {{$project->status}}
