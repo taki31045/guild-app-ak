@@ -37,6 +37,11 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-decoration: none;
+        color: #F4EEE0;
+    }
+    .text-truncate:hover{
+        text-decoration: underline;
     }
     .carousel-control-prev{
         margin-left: -70px;
@@ -98,7 +103,7 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        <h2 class="fs-5 fw-bold text-truncate">{{ $project->title }}</h2>
+                                        <a href="{{route('company.project-details', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
                                         <div class="d-flex align-items-center mt-2">
                                             <p class="mb-0 me-2 text-muted fw-bold">Price: {{ $project->reward_amount }}</p>
                                             @for ($i = 1; $i <= 5; $i++)
