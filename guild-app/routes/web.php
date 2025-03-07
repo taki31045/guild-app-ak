@@ -11,12 +11,9 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\EvaluationController;
 use App\Http\Controllers\Company\MessageController;
-// <<<<<<< HEAD
 use App\Http\Controllers\PayPalController; 
 use App\Http\Controllers\Company\StatusController;
-// =======
-// use App\Http\Controllers\PayPalController;
-// >>>>>>> upstream/main
+use App\Http\Controllers\Company\FreelancerController;
 
 
 //freelancer
@@ -60,19 +57,21 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
 
-// <<<<<<< HEAD
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('test');
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('test.freelancer');
         Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline');
 
         Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
         Route::post('/contact/send', [MessageController::class, 'sendMail'])->name('contact.send');
-        
-        
-        
-// =======
 
-// >>>>>>> upstream/main
+        //freelancer list
+        Route::get('/freelancer_list', [FreelancerController::class, 'index'])->name('list.freelancer');
+        Route::post('/freelancers/{freelancer}/favorite', [FreelancerController::class, 'favorite']);
+
+        Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
+    ->name('recommended_freelancers');
+        
+        
     });
 
 

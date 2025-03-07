@@ -76,4 +76,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Message::class, 'receiver_id');
     }
 
+
+    public function favoriteFreelancers()
+{
+    return $this->belongsToMany(Freelancer::class, 'favorite_freelancers', 'company_id', 'freelancer_id');
+}
+
 }

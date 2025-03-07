@@ -37,7 +37,7 @@
 }
 </style>
 
-<body>
+<body style="font-family: Georgia, 'Times New Roman', Times, serif; ">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">

@@ -30,7 +30,12 @@ class Company extends Model
         return $this->hasMany(Project::class);
     }
 
-    public function favoriteFreelancers(){
+    public function ListOffavoriteFreelancers(){
         return $this->hasMany(FavoriteFreelancer::class);
+    }
+
+    public function favoriteFreelancers()
+    {
+        return $this->belongsToMany(Freelancer::class, 'favorite_freelancers', 'company_id', 'freelancer_id')->withTimestamps();
     }
 }
