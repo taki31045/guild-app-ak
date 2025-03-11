@@ -167,9 +167,15 @@
                 <div class="project-box">
                     <div class="Project-date">{{$application->project->deadline}}</div>
                     <div class="Project-details">
-                        <a href="{{route('freelancer.project-details', $application->project->id)}}" class="fs-5 fw-bold">
-                            {{$application->project->title}}
-                        </a>
+                        @if(Auth::user()->role_id == 3)
+                            <a href="{{route('freelancer.project-details', $application->project->id)}}" class="fs-5 fw-bold">
+                                {{$application->project->title}}
+                            </a>
+                        @else
+                            <a href="{{route('company.project-details', $application->project->id)}}" class="fs-5 fw-bold">
+                                {{$application->project->title}}
+                            </a>
+                        @endif
                         <br>
                         <a href="{{route('freelancer.company.profile', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
                         <p class="m-0">{{$application->project->reward_amount}}</p>

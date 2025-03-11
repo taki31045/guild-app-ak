@@ -58,11 +58,9 @@ class ProjectController extends Controller
 
     public function edit($id){
         $project = Project::findOrFail($id);
-// <<<<<<< HEAD
-//         $skills = Skill::all();
-// =======
+
         $skills = Skill::all();
-// >>>>>>> upstream/main
+        
         return view('companies.edit-project', compact('skills','project'));
     }
 

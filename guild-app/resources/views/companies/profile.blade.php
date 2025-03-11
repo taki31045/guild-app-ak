@@ -120,7 +120,7 @@
                         <div class="project-history-contents w-100">
                             <div class="project-date">{{ $project->formatted_deadline }}</div>
                             <div class="project-details">
-                                <h3 class="h5 m-0"><a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
+                                <h3 class="h5 m-0"><a href="{{ route('company.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
                                 <p class="fw-bold m-0">{{optional($project->freelancer)->user->username ?? 'N/A'}}</p>
@@ -141,7 +141,7 @@
                             <thead>
                                 <tr>
                                     <th>DATE</th>
-                                    <th>PROJECT ID: </th>
+                                    <th>PROJECT TITLE </th>
                                     <th>AMOUNT</th>
                                 </tr>
                             </thead>
@@ -149,7 +149,7 @@
                                 @foreach ($transactions as $transaction)
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
-                                    <td>{{ $transaction->project->id }}</td>
+                                    <td>{{ $transaction->project->title }}</td>
                                     <td>{{ $transaction->amount  + ($transaction->fee ?? 0) }}</td>
                                 </tr>
                                 @endforeach

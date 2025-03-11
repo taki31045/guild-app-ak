@@ -1,4 +1,4 @@
-@extends('layouts.company')
+@extends($layout)
 
 @section('title', 'Project Details')
 
@@ -15,9 +15,9 @@
         <div class="col-8">
             <div class="job-header">
                 <h3>PROJECT DETAILS</h3>
-                <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
+                {{-- <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
                     <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
-                </a>
+                </a> --}}
             </div>
             <div class="details mt-5">
                 <div class="row">

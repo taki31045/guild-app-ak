@@ -58,7 +58,13 @@ class CompanyController extends Controller
 
         $application = $project->application ?? null;
 
-        return view('companies.project-details', compact('project', 'all_comments', 'application'));
+        $layout = match (Auth::user()->role_id) {
+            1 => 'layouts.admin',      // 管理者
+            2 => 'layouts.company',    // 企業
+
+        };
+
+        return view('companies.project-details', compact('project', 'all_comments', 'application','layout'));
     }
 
     public function store(CommentRequest $request){

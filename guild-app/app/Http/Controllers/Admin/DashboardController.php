@@ -155,9 +155,9 @@ class DashboardController extends Controller
     public function getAllTransactions(){
         $adminId = User::where('role_id', 1)->value('id');
 
-    // Adminデータ取得 & 財務情報を更新
-    $admin = Admin::first();
-    $admin->updateFinancials();
+    // Adminデータ取得
+    $admin = Admin::where('user_id', $adminId)->first();
+   
 
     // 関連するプロジェクトと取引情報を取得
     $projects = Project::withTrashed()
@@ -179,9 +179,9 @@ class DashboardController extends Controller
     return view('admins.transaction', [
         'projects' => $projects,
         'adminId' => $adminId,
-        'balance' => $admin->balance,
-        'totalFeeRevenue' => $admin->total_fee_revenue,
-        'escrowBalance' => $admin->escrow_balance
+        'balance' => $admin->balance ?? 0,
+        'totalFeeRevenue' => $admin->total_fee_revenue ?? 0,
+        'escrowBalance' => $admin->escrow_balance ?? 0
     ]);
         
 }       
