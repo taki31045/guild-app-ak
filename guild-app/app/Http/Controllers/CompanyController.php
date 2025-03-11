@@ -82,7 +82,7 @@ class CompanyController extends Controller
             'project_id' => $request->id
         ]);
 
-        return redirect()->route('company.project-details', $request->id);
+        return redirect()->route('company.project.detail', $request->id);
     }
 
 
@@ -126,7 +126,7 @@ class CompanyController extends Controller
 //profileの編集
 //profileのページに移動
 
-//project作成のためのpageに移動 
+//project作成のためのpageに移動
 //projectの作成
 //projectの編集をするためのpageに移動
 //projectの編集

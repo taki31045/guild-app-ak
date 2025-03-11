@@ -6,18 +6,16 @@
     <link rel="stylesheet" href="{{asset('css/users/project-details.css')}}">
 @endsection
 
-@section('scripts')
-<script src="{{asset('js/favorite-project.js')}}"></script>
-@endsection
-
 @section('content')
-    <div class="row justify-content-center mb-5">
-        <div class="col-8">
-            <div class="job-header">
-                <h3>PROJECT DETAILS</h3>
-            </div>
-            <div class="details mt-5">
-                <div class="row">
+<div class="row justify-content-center mb-5">
+    <div class="col-8">
+        <div class="project-container">
+            <div class="detail-container">
+                <div class="job-header">
+                    <h3>PROJECT DETAILS</h3>
+                </div>
+                <div class="details mt-5">
+                    <div class="row">
 
                         <div class="col">
                             <h4 class="h5 fw-bold">{{$project->title}}</h4>
@@ -59,9 +57,6 @@
                             </button>
                         @endif
                     </div>
-
-                    @include('freelancers.projects.modal.request')
-
                 </div>
             </div>
 
@@ -78,23 +73,13 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    @if ($comment->user->role_id == 2)
-                                        <a href="{{route('freelancer.company.profile.show', $comment->user->id)}}" class="fw-bold m-0">
-                                            @if ($comment->user->avatar)
-                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
-                                            @else
-                                                <i class="fa-solid fa-user-circle profile-icon"></i>
-                                            @endif
-                                        </a>
-                                    @else
-                                        <a href="{{route('company.freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
-                                            @if ($comment->user->avatar)
-                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
-                                            @else
-                                                <i class="fa-solid fa-user-circle profile-icon"></i>
-                                            @endif
-                                        </a>
-                                    @endif
+                                    <a href="{{route('company.freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
+                                        @if ($comment->user->avatar)
+                                            <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                        @else
+                                            <i class="fa-solid fa-user-circle profile-icon"></i>
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="message-content">
                                     <div class="username">{{$comment->user->username}}</div>
