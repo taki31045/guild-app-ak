@@ -10,7 +10,7 @@
                 <p>Are you sure want to delete this project?</p>
             </div>
             <div class="modal-footer border-0">
-                <form action="{{ route('company.delete',$project->id) }}" method="post">
+                <form action="{{ route('company.project.delete',$project->id) }}" method="post">
                     @csrf
                     @method('DELETE')
 

@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EvaluationController extends Controller
 {
+//evaluationのページに移動
     public function index($id){
         session()->put('project_id', $id);
-        return view('companies.evaluation');
+        return view('companies.projects.evaluation');
     }
 
+//評価をデータベースに保存する。
     public function store(EvaluationRequest $request){
         $project_id = session('project_id');
        $id =  Application::where('project_id',$project_id)->first();
@@ -32,7 +34,10 @@ class EvaluationController extends Controller
 
         Application::where('project_id',$project_id)->update(['status'=>'resulted']);
 
-        return redirect()->route('company.dashboard')->with('success','thank you');
+        return redirect()->route('company.project.on_going')->with('success','thank you');
 
     }
 }
+
+//evaluationのページに移動
+//評価をデータベースに保存する。

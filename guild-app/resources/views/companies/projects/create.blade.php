@@ -23,7 +23,7 @@
 
 <div class="create-container justify-center-content">
     <div class="card rounded w-50 m-auto mt-3">
-        <form action="{{ route('company.create')}}" method="post">
+        <form action="{{ route('company.project.create')}}" method="post">
             @csrf
             @method('POST')
             

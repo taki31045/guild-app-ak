@@ -133,7 +133,7 @@
 <div class="mt-5">
     <h1>Evaluation</h1>
 
-    <form action="{{ route('company.store')}}" method="post">
+    <form action="{{ route('company.evaluation.store')}}" method="post">
         @csrf
         <div class="range-container">
             <div class="range-wrapper">

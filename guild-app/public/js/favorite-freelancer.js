@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let freelancerId = this.dataset.id;
             let icon = this.querySelector("i");
-            let url = `/company/freelancers/${freelancerId}/favorite`;
+            let url = `/company/freelancer/like/${freelancerId}`;
 
             fetch(url, {
                 method: "POST",  // Laravel のルートと統一

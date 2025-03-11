@@ -32,7 +32,7 @@
 
                 
 
-            <form action="{{ route('company.update',$project->id)}}" method="post">
+            <form action="{{ route('company.project.update',$project->id)}}" method="post">
                 @csrf
                 @method('POST')
                 <div class="mt-3 w-75 m-auto">

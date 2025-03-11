@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
+
+//freelancer and companyのmessageのやりとり
     public function index($user_id){
         $user = User::findOrFail($user_id);
         $all_users = User::where('id','!=',Auth::user()->id)
@@ -31,9 +33,10 @@ class MessageController extends Controller
         $query->where('sender_id',$user_id)->where('receiver_id',Auth::user()->id);
        })->get();
 
-        return view('companies.message',compact('all_users','messages','user'));
+        return view('companies.contact.with_freelancer',compact('all_users','messages','user'));
     }
 
+//-----
     public function store(MessageRequest $request){
         Message::create([
             'sender_id'   => Auth::user()->id,
@@ -44,11 +47,12 @@ class MessageController extends Controller
         return redirect()->back();
     }
 
-
+//adminとcontactを取るためのpageに移動するだけもの
     public function contact(){
-        return view('companies.contact');
+        return view('companies.contact.to_admin');
     }
 
+//adminへのコンタクトはgmailを使用する。そのためのfunction
     public function sendMail(ContactRequest $request){
         $email = Auth::user()->email;
         $emailContent = "
@@ -72,7 +76,12 @@ class MessageController extends Controller
                 ]);
             }
         });
-        return redirect()->route('company.contact')->with('success', 'Your inquiry has been sent successfully.');
+        return redirect()->route('company.contact.contact')->with('success', 'Your inquiry has been sent successfully.');
     }
 
 }
+
+//freelancer and companyのmessageのやりとり
+//-----
+//adminとcontactを取るためのpageに移動するだけもの
+//adminへのコンタクトはgmailを使用する。そのためのfunction

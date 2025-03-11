@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-6">
             <h1>Meet the Best Freelancers for Your Projects</h1>
-            <a href="{{ route('company.list.freelancer')}}" class="btn btn-sm btn-outline-secondary">list</a>
+            <a href="{{ route('company.freelancer.list')}}" class="btn btn-sm btn-outline-secondary">list</a>
         </div>
         <div class="col-6">
             <h1>Top Talent, Top Results</h1>

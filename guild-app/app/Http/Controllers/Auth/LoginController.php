@@ -35,7 +35,7 @@ class LoginController extends Controller
         
         
         if ($user->role_id == 2) {
-            return route('company.dashboard'); // 企業用ダッシュボード
+            return route('company.project.on_going'); // 企業用ダッシュボード
         }
 
         if ($user->role_id == 3) {

@@ -63,17 +63,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li> <a href="{{ route('company.dashboard')}}">On-Going</a></li>
-                        <li class="ms-4"> <a href="{{ route('company.test')}}">Job list</a></li>
+                        <li> <a href="{{ route('company.project.on_going')}}">On-Going</a></li>
+                        <li class="ms-4"> <a href="{{ route('company.project.list')}}">Job list</a></li>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li><a href="{{ route('company.message', Auth::user()->id)}}">mail</a></li>
-                        <li><a href="{{ route('company.profile', Auth::user()->id)}}">profile</a></li>
-                        <li><a href="{{ route('company.contact', Auth::user()->id)}}">contact</a></li>
+                        <li><a href="{{ route('company.contact.with_freelancer', Auth::user()->id)}}">mail</a></li>
+                        <li><a href="{{ route('company.profile.profile', Auth::user()->id)}}">profile</a></li>
+                        <li><a href="{{ route('company.contact.contact', Auth::user()->id)}}">contact</a></li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
