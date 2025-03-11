@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FreelancerController extends Controller
 {
+//freelancer listのページに移動。また絞り込み
     public function index(Request $request){
         $query = Freelancer::query();
 
@@ -34,9 +35,11 @@ class FreelancerController extends Controller
         $freelancers = $query->get();
         $all_skills = Skill::all();
 
-        return view('companies.freelancer_list',compact('freelancers','all_skills'));
+        return view('companies.freelancers.list',compact('freelancers','all_skills'));
     }
 
+
+//freelancerのいいね追加
     public function favorite(Request $request, $freelancerId)
     {
         $company = Auth::user()->company;
@@ -56,3 +59,5 @@ class FreelancerController extends Controller
 
     
 }
+//freelancer listのページに移動。また絞り込み
+//freelancerのいいね追加

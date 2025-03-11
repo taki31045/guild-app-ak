@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
 
+//ongoingのページに今ongoingのプロジェクトを表示させる。また、移動
     public function index(){
         $user = Auth::user();
         $projects = $user->company->projects->where('status','open')->all();
@@ -24,9 +25,11 @@ class CompanyController extends Controller
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。
         $favoriteFreelancers = $company->favoriteFreelancers;
 
-        return view('companies.dashboard', compact('projects','favoriteFreelancers','projects_progress'));
+        return view('companies.projects.on_going', compact('projects','favoriteFreelancers','projects_progress'));
     }
 
+
+//project_listを表示させる。　また移動
     public function project_list(){
         $user = Auth::user();
         $projects = $user->company->projects->where('status','open')->all();
@@ -41,17 +44,20 @@ class CompanyController extends Controller
         })->count();
     }
 
-        return view('companies.project_list', compact('projects'));
+        return view('companies.projects.list', compact('projects'));
     }
 
+
+//favorite freelancerを表示させるため　また移動
     public function favorite_freelancer_list(){
         $user = Auth::user();
         $company = $user->company;
         $favoriteFreelancers = $company->ListOffavoriteFreelancers;
 
-        return view('companies.favorite_freelancer_list', compact('favoriteFreelancers'));
+        return view('companies.freelancers.favorite_freelancer_list', compact('favoriteFreelancers'));
     }
 
+//companyのprojectの詳細を表示
     public function show($id){
         $project = Project::findOrFail($id);
         $all_comments = ProjectComment::where('project_id', $id)->get();
@@ -61,6 +67,8 @@ class CompanyController extends Controller
         return view('companies.project-details', compact('project', 'all_comments', 'application'));
     }
 
+
+//projectの作成
     public function store(CommentRequest $request){
         ProjectComment::create([
             'content'    => $request->content,
@@ -71,6 +79,9 @@ class CompanyController extends Controller
         return redirect()->route('company.project-details', $request->id);
     }
 
+
+
+//プロジェクトに対するフリーランサーのおすすめ
     public function recommendedFreelancers($projectId)
 {
     // プロジェクトのスキルを取得
@@ -84,7 +95,35 @@ class CompanyController extends Controller
         $query->whereIn('skills.id', $skillIds);
     })->get();
 
-    return view('companies.recommended_freelancers', compact('freelancers', 'project'));
+    return view('companies.projects.recommended_freelancers', compact('freelancers', 'project'));
 }
 
 }
+//ongoingのページに今ongoingのプロジェクトを表示させる。また、移動
+//project_listを表示させる。　また移動
+//favorite freelancerを表示させるため　また移動
+//companyのprojectの詳細を表示
+//projectの作成
+//プロジェクトに対するフリーランサーのおすすめ
+
+//evaluationのページに移動
+//評価をデータベースに保存する。
+
+//freelancer listのページに移動。また絞り込み
+//freelancerのいいね追加
+
+//freelancer and companyのmessageのやりとり
+//-----
+//adminとcontactを取るためのpageに移動するだけもの
+//adminへのコンタクトはgmailを使用する。そのためのfunction
+
+//profileの編集
+//profileのページに移動
+
+//project作成のためのpageに移動 
+//projectの作成
+//projectの編集をするためのpageに移動
+//projectの編集
+//projectのdelete
+
+//ongoingのrequested時のdecline

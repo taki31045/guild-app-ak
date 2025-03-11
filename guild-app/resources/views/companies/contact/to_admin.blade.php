@@ -11,7 +11,7 @@
 <div class="row justify-content-center my-5">
     <div class="col-6">
         <div class=" border border-black rounded py-5 px-5 mb-3">
-            <form action="{{route('company.contact.send')}}" method="Post" enctype="multipart/form-data">
+            <form action="{{route('company.contact.send_to_admin')}}" method="Post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- 成功メッセージ表示 --}}
@@ -47,7 +47,7 @@
                 <button type="submit" class="btn btn-dark w-100 mt-3">Send</button>
             </form>
         </div>
-        <a href="{{route('company.dashboard', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
+        <a href="{{route('company.project.on_going', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
     </div>
 </div>
 @endsection

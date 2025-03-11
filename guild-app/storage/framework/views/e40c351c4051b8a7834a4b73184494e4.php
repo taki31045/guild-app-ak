@@ -13,14 +13,22 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <?php echo $__env->yieldContent('styles'); ?>
+
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <?php echo $__env->yieldContent('styles'); ?>
 
 
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
 </head>
 <style>
+    body {
+        background-color: #F4EEE0;
+    }
     .navbar{
         background-color: #424242;
     }
@@ -55,24 +63,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li> <a href="<?php echo e(route('company.dashboard')); ?>">On-Going</a></li>
-                        <li class="ms-4"> <a href="<?php echo e(route('company.test')); ?>">Job list</a></li>
+                        <li> <a href="<?php echo e(route('company.project.on_going')); ?>">On-Going</a></li>
+                        <li class="ms-4"> <a href="<?php echo e(route('company.project.list')); ?>">Job list</a></li>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li><a href="<?php echo e(route('company.message', Auth::user()->id)); ?>">mail</a></li>
-                        <li><a href="<?php echo e(route('company.profile', Auth::user()->id)); ?>">profile</a></li>
-                        <li><a href="<?php echo e(route('company.contact', Auth::user()->id)); ?>">contact</a></li>
+                        <li><a href="<?php echo e(route('company.contact.with_freelancer', Auth::user()->id)); ?>">mail</a></li>
+                        <li><a href="<?php echo e(route('company.profile.profile', Auth::user()->id)); ?>">profile</a></li>
+                        <li><a href="<?php echo e(route('company.contact.contact', Auth::user()->id)); ?>">contact</a></li>
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('login')): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                         </li>
                         <?php endif; ?>
-                        
+
                         <?php if(Route::has('register')): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
@@ -84,7 +92,7 @@
                                 <?php echo e(Auth::user()->name); ?>
 
                             </a>
-                            
+
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
@@ -92,7 +100,7 @@
                                         <?php echo e(__('Logout')); ?>
 
                                     </a>
-                                    
+
                                     <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                         <?php echo csrf_field(); ?>
                                     </form>

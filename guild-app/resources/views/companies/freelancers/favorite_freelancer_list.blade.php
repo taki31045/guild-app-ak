@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-6">
             <h1>Meet the Best Freelancers for Your Projects</h1>
-            <a href="{{ route('company.list.freelancer')}}" class="btn btn-sm btn-outline-secondary">list</a>
+            <a href="{{ route('company.freelancer.list')}}" class="btn btn-sm btn-outline-secondary">list</a>
         </div>
         <div class="col-6">
             <h1>Top Talent, Top Results</h1>
@@ -84,13 +84,12 @@ $customImages = [
 @foreach ($favoriteFreelancers as $freelancer)
 <div class="card freelancer-card">
     <div class="border p-2 m-3">
-        @if ($freelancer->freelancer->user->avatar)
-        <!-- 登録したユーザーの写真を使用 -->
+        @if (isset($freelancer->freelancer->user->avatar) && $freelancer->freelancer->user->avatar)
         <img src="{{ $freelancer->freelancer->user->avatar }}" class="card-img-top" alt="Freelancer Image">
     @else
-        <!-- カスタム画像をループで割り当て -->
         <img src="{{ $customImages[$loop->index % count($customImages)] }}" class="card-img-top" alt="Freelancer Image">
     @endif
+    
     </div>
     <div class="card-body">
         <h5 class="card-title">{{ $freelancer->freelancer->user->name }}</h5>

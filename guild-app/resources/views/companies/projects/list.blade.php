@@ -83,8 +83,8 @@
     @endphp
 
     <div class="mb-3">
-        <a href="{{ route('company.project') }}" class="btn btn-outline-secondary me-2">Create New Job</a>
-        <a href="{{ route('company.test.freelancer') }}" class="btn btn-outline-secondary">Favorite Freelancer</a>
+        <a href="{{ route('company.project.for_create') }}" class="btn btn-outline-secondary me-2">Create New Job</a>
+        <a href="{{ route('company.freelancer.favorite.list') }}" class="btn btn-outline-secondary">Favorite Freelancer</a>
     </div>
 
     <!-- Bootstrap Carousel for Pagination -->
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        <a href="{{route('company.project-details', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
+                                        <a href="{{route('company.project.detail', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
                                         <div class="d-flex align-items-center mt-2">
                                             <p class="mb-0 me-2 text-muted fw-bold">Price: {{ $project->reward_amount }}</p>
                                             @for ($i = 1; $i <= 5; $i++)
@@ -113,14 +113,14 @@
                                     </div>
                                     <div class="col-5">
                                         @if ($project->id)
-                                            <a href="{{ route('company.recommended_freelancers', $project->id) }}" class="recommend-circle ms-5">
+                                            <a href="{{ route('company.project.recommended_freelancers', $project->id) }}" class="recommend-circle ms-5">
                                                 {{ $project->recommended_freelancers_count }}
                                             </a>
-                                            <a href="{{ route('company.edit', $project->id) }}" class="btn btn-sm btn-outline-secondary mb-1 ms-3">Edit</a>
+                                            <a href="{{ route('company.project.for_update', $project->id) }}" class="btn btn-sm btn-outline-secondary mb-1 ms-3">Edit</a>
                                             <button class="btn btn-sm btn-outline-secondary mb-1" data-bs-toggle="modal" data-bs-target="#delete-project-{{ $project->id }}">
                                                 Delete
                                             </button>
-                                            @include('companies.modal.delete')
+                                            @include('companies.projects.modal.delete')
                                         @else
                                             <p class="text-muted">No Actions Available</p>
                                         @endif

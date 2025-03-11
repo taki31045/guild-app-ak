@@ -13,6 +13,8 @@ use App\Http\Requests\CompanyProfileRequest;
 
 class ProfileController extends Controller
 {
+
+//profileのページに移動
     public function show($id){
         $user = User::with('company.projects')->findOrFail($id);
 
@@ -32,9 +34,11 @@ class ProfileController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->get();
 
-        return view('companies.profile', compact('company','user','projects','transactions','layout'));
+        return view('companies.profile.show', compact('company','user','projects','transactions','layout'));
     }
 
+
+//profileの編集
     public function edit($id){
 
         $user = User::findOrFail($id);
@@ -45,7 +49,7 @@ class ProfileController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        return view('companies.edit-profile', compact('company','user'));
+        return view('companies.profile.edit', compact('company','user'));
     }
 
     public function update(CompanyProfileRequest $request){
@@ -79,6 +83,10 @@ class ProfileController extends Controller
 
         $company ? $company->update($data) : Company::create(array_merge($data, ['user_id' => $user->id]));
 
-        return redirect()->route('company.profile', $user->id);
+        return redirect()->route('company.profile.profile', $user->id);
     }
 }
+
+
+//profileの編集
+//profileのページに移動
