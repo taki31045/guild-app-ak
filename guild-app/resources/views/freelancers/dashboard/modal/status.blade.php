@@ -69,15 +69,15 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
                 @if ($application->status === 'requested')
-                    <a href="{{route('freelancer.project.cancel-request', $application->id)}}" class="btn btn-danger">Cancel Request</a>
+                    <a href="{{route('freelancer.projects.cancel', $application->id)}}" class="btn btn-danger">Cancel Request</a>
                 @elseif($application->status === 'accepted')
-                    <a href="{{route('freelancer.project.start', $application->id)}}" class="btn btn-primary">Start</a>
+                    <a href="{{route('freelancer.projects.start', $application->id)}}" class="btn btn-primary">Start</a>
                 @elseif($application->status === 'rejected')
-                    <a href="{{route('freelancer.project.acknowledge', $application->id)}}" class="btn btn-primary">Acknowledge</a>
+                    <a href="{{route('freelancer.projects.acknowledge', $application->id)}}" class="btn btn-primary">Acknowledge</a>
                 @elseif($application->status === 'ongoing')
-                    <a href="{{route('freelancer.project.submit', $application->id)}}" class="btn btn-primary">Submit</a>
+                    <a href="{{route('freelancer.projects.submit', $application->id)}}" class="btn btn-primary">Submit</a>
                 @elseif($application->status === 'resulted')
-                    <a href="{{route('freelancer.project.result', $application->id)}}" class="btn btn-primary">result</a>
+                    <a href="{{route('freelancer.projects.result', $application->id)}}" class="btn btn-primary">result</a>
                 @endif
             </div>
         </div>

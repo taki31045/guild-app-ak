@@ -137,11 +137,11 @@
                 <div class="project-box">
                     <div class="Project-date">{{$completedProject->project->deadline}}</div>
                     <div class="Project-details">
-                        <a href="{{route('freelancer.projects.show', $completedProject->project->id)}}" class="fs-5 fw-bold">
+                        <a href="{{route('company.project.detail', $completedProject->project->id)}}" class="fs-5 fw-bold">
                             {{$completedProject->project->title}}
                         </a>
                         <br>
-                        <a href="{{route('freelancer.company.profile.show', $completedProject->project->company->user->id)}}" class="fw-bold m-0">{{$completedProject->project->company->user->name}}</a>
+                        <p class="fw-bold m-0">{{$completedProject->project->company->user->name}}</p>
                         <p class="m-0">{{$completedProject->project->reward_amount}}</p>
                         <p>
                             <?php
@@ -167,17 +167,11 @@
                 <div class="project-box">
                     <div class="Project-date">{{$application->project->deadline}}</div>
                     <div class="Project-details">
-                        @if(Auth::user()->role_id == 3)
-                            <a href="{{route('freelancer.projects.show', $application->project->id)}}" class="fs-5 fw-bold">
-                                {{$application->project->title}}
-                            </a>
-                        @else
-                            <a href="{{route('company.project.detail', $application->project->id)}}" class="fs-5 fw-bold">
-                                {{$application->project->title}}
-                            </a>
-                        @endif
+                        <a href="{{route('company.project.detail', $application->project->id)}}" class="fs-5 fw-bold">
+                            {{$application->project->title}}
+                        </a>
                         <br>
-                        <a href="{{route('freelancer.company.profile.show', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
+                        <a class="fw-bold m-0">{{$application->project->company->user->name}}</a>
                         <p class="m-0">{{$application->project->reward_amount}}</p>
                         <p>
                             <?php
@@ -196,7 +190,7 @@
                 <div class="project-status">
                     <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                 </div>
-                @include('freelancers.dashboard.modal.status')
+                @include('users.modals.status')
             </div>
         @endforeach
 
@@ -205,11 +199,11 @@
                 <div class="project-box">
                     <div class="Project-date">{{$favoriteProject->deadline}}</div>
                     <div class="Project-details">
-                        <a href="{{route('freelancer.projects.show', $favoriteProject->id)}}" class="fw-bold">
+                        <a href="{{route('company.project.detail', $favoriteProject->id)}}" class="fw-bold">
                             {{$favoriteProject->title}}
                         </a>
                         <br>
-                        <a href="{{route('freelancer.company.profile.show', $favoriteProject->company->user->id)}}" class="fw-bold m-0">{{$favoriteProject->company->user->name}}</a>
+                        <p class="fw-bold m-0">{{$favoriteProject->company->user->name}}</p>
                         <p class="m-0">{{$favoriteProject->reward_amount}}</p>
                         <p>
                             <?php

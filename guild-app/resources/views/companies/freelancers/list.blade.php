@@ -8,7 +8,7 @@
 <style>
     body {
         background-color: #F4EEE0;
-        
+
     }
     h1 {
         color: rgba(66, 66, 66, 0.9);
@@ -16,7 +16,7 @@
         font-weight: bold;
         margin-right: 100px;
     }
-    
+
     .freelancer-container {
         display: flex;
         overflow-x: auto;
@@ -28,7 +28,7 @@
     .freelancer-container::-webkit-scrollbar {
         display: none; /* Chrome, Safari */
     }
-    .freelancer-card { 
+    .freelancer-card {
         flex: 0 0 25%; /* 3枚表示（100% / 3） */
         max-width: 30%;
         background-color: rgba(66, 66, 66, 0.8); /* 背景色を薄く */
@@ -43,7 +43,7 @@
     }
 
 
-    
+
 </style>
 
 <div class="mt-5">
@@ -72,7 +72,7 @@
                 </option>
                 @endforeach
             </select>
-            
+
 
 
         <!-- Latest or Oldest -->
@@ -82,7 +82,7 @@
                 <option value="new" {{ request('sort', 'new') == 'new' ? 'selected' : '' }}>Latest</option>
                 <option value="old" {{ request('sort') == 'old' ? 'selected' : '' }}>Oldest</option>
             </select>
-        
+
         <button type="submit">Search</button>
     </form>
 </div>
@@ -92,7 +92,7 @@
 <div class="card freelancer-card">
     <div class="border p-2 m-3">
         @if($freelancer->user->avatar)
-        <img src="{{ $freelancer->user->avatar }}" class="card-img-top" alt="Freelancer Image">
+            <img src="{{ $freelancer->user->avatar }}" class="card-img-top" alt="Freelancer Image">
         @else
             <img src="{{ asset('images/image 3 (1).png')}}" class="card-img-top" alt="Freelancer Image">
         @endif
@@ -111,11 +111,11 @@
     </div>
 </div>
 
-        
-        
-        
 
-       
+
+
+
+
         <p class="paragraph">{{ $freelancer->user->email }}</p>
         <p>
             @for ($i = 1; $i <= 5; $i++)
@@ -138,7 +138,7 @@
                     {{ $skill }}
                 </p>
             @endforeach
-            
+
         </div>
     </div>
 </div>

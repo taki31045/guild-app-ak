@@ -19,7 +19,7 @@
 
                         <div class="col">
                             <h4 class="h5 fw-bold">{{$project->title}}</h4>
-                            <a href="{{route('freelancer.company.profile.show', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                            <p href="{{route('freelancer.company.profile.show', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</p>
                             <p class="m-0">${{$project->reward_amount}}</p>
                             <p>
                                 <?php
@@ -73,7 +73,7 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    <a href="{{route('company.freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
+                                    <a href="{{route('company.freelancer.profile.show', $comment->user->id)}}" class="fw-bold m-0">
                                         @if ($comment->user->avatar)
                                             <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
                                         @else
