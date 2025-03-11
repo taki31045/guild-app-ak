@@ -13,7 +13,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-6">
-        <a href="{{route('freelancer.profile', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
+        <a href="{{route('freelancer.profile.show', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
 
         <div class="border border-black rounded shadow py-5 px-5 my-3">
             {{-- 成功メッセージ表示 --}}
@@ -31,8 +31,9 @@
                 </div>
             @endif
 
-            <form action="{{route('freelancer.profile-update')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('freelancer.profile.update')}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PATCH')
                 <h3 class="mb-4 fw-bold">Edit Profile</h3>
                 <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" class="form-control mb-4" value="{{$user->username}}">

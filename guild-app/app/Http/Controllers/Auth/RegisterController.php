@@ -118,7 +118,7 @@ class RegisterController extends Controller
 
             Freelancer::create([
                 'user_id' => $user->id,
-                'rank' => 0,
+                'rank' => 1,
                 'rank_point' => 0,
                 'github' => null,
                 'X' => null,

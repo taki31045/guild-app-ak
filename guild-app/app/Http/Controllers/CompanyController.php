@@ -64,7 +64,13 @@ class CompanyController extends Controller
 
         $application = $project->application ?? null;
 
-        return view('companies.project-details', compact('project', 'all_comments', 'application'));
+        $layout = match (Auth::user()->role_id) {
+            1 => 'layouts.admin',      // 管理者
+            2 => 'layouts.company',    // 企業
+
+        };
+
+        return view('companies.projects.details', compact('project', 'all_comments', 'application','layout'));
     }
 
 
@@ -76,7 +82,7 @@ class CompanyController extends Controller
             'project_id' => $request->id
         ]);
 
-        return redirect()->route('company.project-details', $request->id);
+        return redirect()->route('company.project.detail', $request->id);
     }
 
 
@@ -120,7 +126,7 @@ class CompanyController extends Controller
 //profileの編集
 //profileのページに移動
 
-//project作成のためのpageに移動 
+//project作成のためのpageに移動
 //projectの作成
 //projectの編集をするためのpageに移動
 //projectの編集

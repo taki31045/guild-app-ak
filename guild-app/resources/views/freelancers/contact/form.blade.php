@@ -5,7 +5,8 @@
 @section('content')
     <div class="row justify-content-center my-5">
         <div class="col-6">
-            <div class=" border border-black rounded py-5 px-5 mb-3">
+            <a href="{{route('freelancer.index', Auth::user()->id)}}" class="text-decoration-none text-black fs-3"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
+            <div class=" border border-black rounded py-5 px-5 my-3">
                 <form action="{{route('freelancer.contact.send')}}" method="Post" enctype="multipart/form-data">
                     @csrf
 
@@ -42,7 +43,7 @@
                     <button type="submit" class="btn btn-dark w-100 mt-3">Send</button>
                 </form>
             </div>
-            <a href="{{route('freelancer.index', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
+
         </div>
     </div>
 @endsection

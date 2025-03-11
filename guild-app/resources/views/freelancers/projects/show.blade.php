@@ -1,9 +1,13 @@
-@extends($layout)
+@extends('layouts.freelancer')
 
 @section('title', 'Project Details')
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/users/project-details.css')}}">
+@endsection
+
+@section('scripts')
+<script src="{{asset('js/favorite-project.js')}}"></script>
 @endsection
 
 @section('content')
@@ -13,6 +17,9 @@
             <div class="detail-container">
                 <div class="job-header">
                     <h3>PROJECT DETAILS</h3>
+                    <a class="favoriteBtn" data-url="{{route('freelancer.projects.favorite', ['project' => $project->id])}}">
+                        <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
+                    </a>
                 </div>
                 <div class="details mt-5">
                     <div class="row">
@@ -49,14 +56,23 @@
                         {{-- back link --}}
                         <a href="{{url()->previous()}}" class="fs-2"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
 
-                        @if($application)
-                            <button class="request-btn {{ $application->status }} bg-black bg-opacity-50">{{ ucfirst($application->status) }}</button>
+                        <!-- Button trigger modal -->
+                        @if ($project->status == 'open' && $project->required_rank - 1 <= Auth::user()->freelancer->rank)
+                            <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
+                                Request
+                            </button>
+                        @elseif($application && $application->freelancer->user->id == Auth::user()->id)
+                            <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                            @include('users.modals.status')
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
                                 {{$project->status}}
                             </button>
                         @endif
                     </div>
+
+                    @include('freelancers.projects.modal.request')
+
                 </div>
             </div>
 
@@ -73,13 +89,23 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    <a href="{{route('company.freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
-                                        @if ($comment->user->avatar)
-                                            <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
-                                        @else
-                                            <i class="fa-solid fa-user-circle profile-icon"></i>
-                                        @endif
-                                    </a>
+                                    @if ($comment->user->role_id == 2)
+                                        <a href="{{route('freelancer.company.profile.show', $comment->user->id)}}" class="fw-bold m-0">
+                                            @if ($comment->user->avatar)
+                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                            @else
+                                                <i class="fa-solid fa-user-circle profile-icon"></i>
+                                            @endif
+                                        </a>
+                                    @else
+                                        <a href="{{route('freelancer.profile', $comment->user->id)}}" class="fw-bold m-0">
+                                            @if ($comment->user->avatar)
+                                                <img src="{{$comment->user->avatar}}" alt="user id {{$comment->user->id}}" class="profile-icon">
+                                            @else
+                                                <i class="fa-solid fa-user-circle profile-icon"></i>
+                                            @endif
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="message-content">
                                     <div class="username">{{$comment->user->username}}</div>
@@ -89,7 +115,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form action="{{route('company.project.comment.store')}}" method="post" class="comment-form">
+                <form action="{{route('freelancer.projects.comments.store')}}" method="post" class="comment-form">
                     @csrf
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
