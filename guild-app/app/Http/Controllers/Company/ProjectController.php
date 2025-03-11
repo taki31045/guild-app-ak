@@ -13,13 +13,14 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index(){//show page for create for new project
+//project作成のためのpageに移動 
+    public function index(){
         $skills = Skill::all();
-        return view('companies.create', compact('skills'));
+        return view('companies.projects.create', compact('skills'));
     }
 
-
-    public function create(CompanyRequest $request){//create project
+//projectの作成
+    public function create(CompanyRequest $request){
 
         //create project table
         $project = project::create([
@@ -50,23 +51,21 @@ class ProjectController extends Controller
             ]);
         }
 
-        return redirect()->route('company.test');
+        return redirect()->route('company.project.list');
 
     }
 
 
-
+//projectの編集をするためのpageに移動
     public function edit($id){
         $project = Project::findOrFail($id);
-// <<<<<<< HEAD
-//         $skills = Skill::all();
-// =======
         $skills = Skill::all();
 // >>>>>>> upstream/main
-        return view('companies.edit-project', compact('skills','project'));
+        return view('companies.projects.edit', compact('skills','project'));
     }
 
 
+//projectの編集
     public function update(CompanyRequest $request, $project_id){
         $project = Project::where('id',$project_id)->first();
 
@@ -109,7 +108,7 @@ class ProjectController extends Controller
                 ]);
             }
 
-            return redirect()->route('company.dashboard');
+            return redirect()->route('company.project.list');
 
         }
 
@@ -120,6 +119,8 @@ class ProjectController extends Controller
         return redirect()->route('company.dashboard')->with('success','Project was edited');
     }
 
+
+//projectのdelete
     public function delete($id){
         $project = Project::findOrFail($id);
 
@@ -131,7 +132,7 @@ class ProjectController extends Controller
 
         $project->delete();
 
-        return  redirect()->route('company.dashboard');
+        return  redirect()->route('company.project.list');
     }
 
 
@@ -141,3 +142,10 @@ class ProjectController extends Controller
 
 
 }
+
+
+//project作成のためのpageに移動 
+//projectの作成
+//projectの編集をするためのpageに移動
+//projectの編集
+//projectのdelete

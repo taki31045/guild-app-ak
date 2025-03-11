@@ -21,18 +21,12 @@
     }
     /* inputの要素をターゲットにしている。チェックされたときに適用で、その一般兄弟であるlabelに指定できる */
 </style>
-<div class=" in-4 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
-</div>
-<div class=" in-5 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
-</div>
-<div class=" in-6 border rounded-pill p-4 shadow-lg" style="background-color: #C976DE; ">
-</div>
     <div class="create-container justify-center-content">
         <div class="card rounded  w-50 m-auto mt-3">
 
                 
 
-            <form action="{{ route('company.update',$project->id)}}" method="post">
+            <form action="{{ route('company.project.update',$project->id)}}" method="post">
                 @csrf
                 @method('POST')
                 <div class="mt-3 w-75 m-auto">

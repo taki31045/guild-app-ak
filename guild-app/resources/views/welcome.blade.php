@@ -22,6 +22,14 @@
     <body>
 
         <style>
+
+            @media (min-width: 1024px){
+                .container{
+                    margin-top: 500px;
+                    margin-left: 350px;
+                }
+            }
+
             body{
                 background-image: url("{{ asset('images/1.jpg')}}");
                 background-size: cover;
@@ -31,7 +39,7 @@
     border: solid 3px;
     width: 300px;
     height: 70px;
-    margin: 30px;
+    margin-top: 30px;
     text-align: center;
     line-height: 70px; 
     transition: background-color 1s ease-in-out, transform 0.5s ease-in-out;
@@ -49,12 +57,12 @@ a:active {
 
     
         </style>
-        <div class="container" style="margin-top: 400px; margin-left: 230px;">
+        <div class="container">
             @if (Route::has('login'))
 
                 @auth
                     <a
-                        href="{{ route('company.dashboard') }}"
+                        href="{{ route('company.project.on_going') }}"
                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Dashboard

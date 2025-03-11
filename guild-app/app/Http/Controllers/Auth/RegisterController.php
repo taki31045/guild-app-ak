@@ -24,7 +24,7 @@ class RegisterController extends Controller
     public function registered($request, $user){
 
         if ($user->role_id == 2) {
-            return redirect()->route('company.dashboard');
+            return redirect()->route('company.project.on_going');
         }
 
         if ($user->role_id == 3) {
@@ -33,6 +33,10 @@ class RegisterController extends Controller
 
         return redirect('/home');
     }
+
+
+
+
     protected function validator(array $data)
     {
         $rules = [
@@ -69,6 +73,10 @@ class RegisterController extends Controller
         }
         return Validator::make($data, $rules);
     }
+
+
+
+    
     protected function create(array $data)
     {
         // Create the user based on the role_id

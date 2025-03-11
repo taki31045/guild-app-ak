@@ -48,7 +48,7 @@
 
 <div class="mt-5">
     <h1 class="float-end">Meet the Freelancer</h1>
-    <form  action="{{route('company.list.freelancer')}}" method="GET" >
+    <form  action="{{ route('company.freelancer.list')}}" method="GET" >
 
         <!-- Required Rank -->
         <label for="rank" class="ms-5">Rank</label>
@@ -106,7 +106,7 @@
         <a class="favoriteBtn me-1" data-id="{{ $freelancer->id }}">
             <i class="{{ auth()->check() && auth()->user()->company->favoriteFreelancers->contains($freelancer->id) ? 'fa-solid text-red-500' : 'fa-regular' }} fa-heart fa-2x"></i>
         </a>
-        <a href="{{ route('company.message', ['id' => $freelancer['user_id']])}}" class="btn btn-sm btn-outline-secondary ">Message</a>
+        <a href="{{ route('company.contact.with_freelancer', ['id' => $freelancer['user_id']])}}" class="btn btn-sm btn-outline-secondary ">Message</a>
 
     </div>
 </div>

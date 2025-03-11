@@ -1,4 +1,4 @@
-@extends('layouts.company')
+@extends($layout)
 
 @section('title', 'Project Details')
 
@@ -11,18 +11,13 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center mb-5">
-    <div class="col-8">
-        <div class="project-container">
-            <div class="detail-container">
-                <div class="job-header">
-                    <h3>PROJECT DETAILS</h3>
-                    <a class="favoriteBtn" data-url="{{route('freelancer.projects.favorite', ['project' => $project->id])}}">
-                        <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
-                    </a>
-                </div>
-                <div class="details mt-5">
-                    <div class="row">
+    <div class="row justify-content-center mb-5">
+        <div class="col-8">
+            <div class="job-header">
+                <h3>PROJECT DETAILS</h3>
+            </div>
+            <div class="details mt-5">
+                <div class="row">
 
                         <div class="col">
                             <h4 class="h5 fw-bold">{{$project->title}}</h4>
@@ -109,7 +104,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form action="{{route('company.comment.store')}}" method="post" class="comment-form">
+                <form action="{{route('company.project.comment.store')}}" method="post" class="comment-form">
                     @csrf
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">

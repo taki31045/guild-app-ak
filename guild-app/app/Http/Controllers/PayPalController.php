@@ -38,14 +38,15 @@ class PayPalController extends Controller
                     ]
                 ]
             ]
-
-//             まとめ
-// ✅ createOrder() で 新しい支払いオーダーを作成 する。
-// ✅ intent: "CAPTURE" は 即時決済 を意味する。
-// ✅ return_url & cancel_url で 支払い成功・キャンセル後の遷移先 を設定。
-// ✅ purchase_units で 支払い金額や通貨を指定。
-// ✅ 成功すると 注文IDや支払いリンク がPayPalから返ってくる。
+            
+            //             まとめ
+            // ✅ createOrder() で 新しい支払いオーダーを作成 する。
+            // ✅ intent: "CAPTURE" は 即時決済 を意味する。
+            // ✅ return_url & cancel_url で 支払い成功・キャンセル後の遷移先 を設定。
+            // ✅ purchase_units で 支払い金額や通貨を指定。
+            // ✅ 成功すると 注文IDや支払いリンク がPayPalから返ってくる。
         ]);
+    
 
 
 
@@ -71,7 +72,10 @@ class PayPalController extends Controller
         $totalPrice = session('totalPrice');
 
         $fee = $price * 0.1;
-        $freelancer_id = Application::where('project_id', $project_id)->value('freelancer_id');
+        $application = Application::where('project_id', $project_id)->first();
+        $user = $application->freelancer->user->id;
+
+
 
        
         $provider = new PayPalClient;
@@ -83,7 +87,7 @@ class PayPalController extends Controller
 
             Transaction::create([
                 'payer_id' => auth()->id(),
-                'payee_id' => $freelancer_id,
+                'payee_id' => $user,
                 'project_id' => $project_id,
                 'order_id' => $response['id'],
                 'type' => 'escrow_deposit',
@@ -92,7 +96,6 @@ class PayPalController extends Controller
                 'fee' => $paypalFee,
                 'currency' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
                 'status' => 'COMPLETED',
-                'paypal_response' => $response
             ]);
 
             Application::where('project_id',  session('project_id'))->update(['status' => 'ongoing']);
@@ -107,7 +110,7 @@ class PayPalController extends Controller
 
             
             return redirect()
-                ->route('company.dashboard')
+                ->route('company.project.on_going')
                 ->with('success', '支払いが完了しました。');
         }
 

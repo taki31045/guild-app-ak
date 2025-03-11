@@ -47,7 +47,7 @@
             </div>
         </div>
         @if (Auth::check() && Auth::id() === $user->id)
-        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->id) }}">
+        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.for_update', $user->id) }}">
             <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
         </div>
         @endif
@@ -120,10 +120,10 @@
                         <div class="project-history-contents w-100">
                             <div class="project-date">{{ $project->formatted_deadline }}</div>
                             <div class="project-details">
-                                <h3 class="h5 m-0"><a href="{{ route('freelancer.projects.show', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
+                                <h3 class="h5 m-0"><a href="{{ route('company.project.detail', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
-                                <p class="fw-bold m-0">{{ $project->company->user->username }}</p>
+                                <p class="fw-bold m-0">{{optional($project->freelancer)->user->username ?? 'N/A'}}</p>
                                 <p class="m-0">${{ $project->reward_amount }}</p>
                                 <p>
                                     @for ($i = 1; $i <= $project->required_rank; $i++)
@@ -141,7 +141,7 @@
                             <thead>
                                 <tr>
                                     <th>DATE</th>
-                                    <th>PROJECT ID: </th>
+                                    <th>PROJECT TITLE </th>
                                     <th>AMOUNT</th>
                                 </tr>
                             </thead>
@@ -149,7 +149,7 @@
                                 @foreach ($transactions as $transaction)
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
-                                    <td>{{ $transaction->project->id }}</td>
+                                    <td>{{ $transaction->project->title }}</td>
                                     <td>{{ $transaction->amount  + ($transaction->fee ?? 0) }}</td>
                                 </tr>
                                 @endforeach

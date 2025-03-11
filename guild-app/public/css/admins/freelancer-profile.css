@@ -159,7 +159,8 @@ main{
 }
 
 .tab-pane{
-    display: none;
+    display: flex;
+    justify-content: space-between;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
@@ -174,6 +175,12 @@ main{
     align-items: center;
 }
 
+.project-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .Project-date{
     background: gray;
     width: 100px;
@@ -184,15 +191,36 @@ main{
     justify-content: center;
 }
 
+main a{
+    text-decoration: none;
+    color: black;
+}
 
-.ongoing{
-    display: flex;
-    align-items: center;
-    background: #f8f8f8;
-    border-radius: 10px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+main a:hover{
+    text-decoration: underline;
+}
+
+.status-label{
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.status-label.ongoing {
+    background-color: #ffc107; /* 黄色 */
+    color: #333;
+}
+
+.status-label.completed {
+    background-color: #28a745; /* 緑 */
+    color: white;
+}
+
+.status-label.pending {
+    background-color: #dc3545; /* 赤 */
+    color: white;
 }
 
 
@@ -214,14 +242,6 @@ main{
     justify-content: space-between;
     align-items: center;
 }
-
-/* .dropdown div{
-    padding: 10px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-    white-space: nowrap;
-} */
-
 
 .selected-option{
     background: #0073e6;
