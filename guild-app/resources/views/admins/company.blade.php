@@ -24,7 +24,7 @@
                             @if ($company->trashed())
                                 {{ $company->user->username }}
                             @else
-                            <a href="{{ route('company.profile',$company->user->id) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('company.profile.profile',$company->user->id) }}" class="text-decoration-none text-dark">
                                 {{ $company->user->username }} </a>
                                 
                             @endif

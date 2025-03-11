@@ -78,7 +78,7 @@
                         @endif
                     @endforeach
                 </div>
-                <form action="{{route('company.comment.store')}}" method="post" class="comment-form">
+                <form action="{{route('company.project.comment.store')}}" method="post" class="comment-form">
                     @csrf
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">

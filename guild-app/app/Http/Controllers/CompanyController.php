@@ -70,7 +70,7 @@ class CompanyController extends Controller
 
         };
 
-        return view('companies.project-details', compact('project', 'all_comments', 'application','layout'));
+        return view('companies.projects.details', compact('project', 'all_comments', 'application','layout'));
     }
 
 

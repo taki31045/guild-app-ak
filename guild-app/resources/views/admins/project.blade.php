@@ -16,7 +16,7 @@
                             @if ($project->trashed())  
                                 {{ \Str::limit($project->title, 60) }} 
                             @else
-                            <a href="{{ route('company.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
+                            <a href="{{ route('company.project.detail', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                             {{ \Str::limit($project->title, 60) }} 
                             </a>
                             @endif
@@ -28,7 +28,7 @@
                             @if ($project->trashed())
                             {{ $project->company->user->username }}
                             @else
-                            <a href="{{ route('company.profile',$project->company->user->id) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('company.profile.profile',$project->company->user->id) }}" class="text-decoration-none text-dark">
                                 {{ $project->company->user->username }}
                                 </a>
                             @endif
