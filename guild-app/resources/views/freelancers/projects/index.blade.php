@@ -16,7 +16,7 @@
         <div class="col-3">
             <div class="filter-container">
                 <h3>Filter Projects</h3>
-                <form  action="{{route('freelancer.project.index')}}" method="GET" class="filter-form">
+                <form  action="{{route('freelancer.projects.index')}}" method="GET" class="filter-form">
                     <!-- Keyword Searching -->
                     <input type="text" name="keyword" placeholder="keyword" value="{{ request('keyword') }}">
 
@@ -68,11 +68,11 @@
                         <div class="job-detail-container">
                             <div class="job-date">{{$project->deadline}}</div>
                             <div class="job-detail">
-                                <a href="{{route('freelancer.project-details', $project->id)}}" class="fs-5 fw-bold">
+                                <a href="{{route('freelancer.projects.show', $project->id)}}" class="fs-5 fw-bold">
                                     {{$project->title}}
                                 </a>
                                 <br>
-                                <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                                <a href="{{route('freelancer.company.profile.show', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
                                 <p class="m-0">${{$project->reward_amount}}</p>
                                 <p>
                                     <?php
@@ -89,7 +89,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
+                        <a class="favoriteBtn" data-url="{{route('freelancer.projects.favorite', ['project' => $project->id])}}">
                             <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
                         </a>
                     </div>

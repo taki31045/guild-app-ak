@@ -61,7 +61,7 @@ class ProjectController extends Controller
         $all_projects = $query->paginate(8);
         $all_skills = Skill::all();
 
-        return view('users.project-list', compact('all_projects', 'all_skills'));
+        return view('freelancers.projects.index', compact('all_projects', 'all_skills'));
     }
 
     public function show($id){
@@ -70,7 +70,7 @@ class ProjectController extends Controller
 
         $application = $project->application ?? null;
 
-        return view('users.project-details', compact('project', 'all_comments', 'application'));
+        return view('freelancers.projects.show', compact('project', 'all_comments', 'application'));
     }
 
 
@@ -81,7 +81,7 @@ class ProjectController extends Controller
             'project_id' => $request->id
         ]);
 
-        return redirect()->route('freelancer.project-details', $request->id);
+        return redirect()->route('freelancer.projects.show', $request->id);
     }
 
     public function favorite(Project $project){
@@ -164,8 +164,13 @@ class ProjectController extends Controller
             'payer_id'   => $admin->id,
             'payee_id'   => Auth::user()->id,
             'project_id' => $project->id,
-            'amount'     => $project->reward_amount,
             'type'       => 'freelancer_payment',
+            'order_id' => null,
+            'transaction_id' => null,
+            'amount'     => $project->reward_amount,
+            'fee' => $project->reward_amount * 0.1,
+            'currency' => null,
+            'status' => 'COMPLETED'
         ]);
         $application->delete();
         $project->status = 'completed';

@@ -78,7 +78,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <!-- Authentication Links -->
-                        <li><a href="{{ route('company.message', Auth::user()->id)}}" class="text-decoration-none text-white"><i class="fa-regular fa-envelope icon-md"></i></a></li>
+                        <li><a href="{{ route('company.contact.with_freelancer', Auth::user()->id)}}" class="text-decoration-none text-white"><i class="fa-regular fa-envelope icon-md"></i></a></li>
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -99,12 +99,12 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <!-- Profile Link -->
-                                <a class="dropdown-item" href="{{ route('company.profile', Auth::user()->id) }}">
+                                <a class="dropdown-item" href="{{ route('company.profile.profile', Auth::user()->id) }}">
                                     {{ __('Profile') }}
                                 </a>
-                                
+
                                 <!-- Contact Link -->
-                                <a class="dropdown-item" href="{{ route('company.contact', Auth::user()->id) }}">
+                                <a class="dropdown-item" href="{{ route('company.contact.contact', Auth::user()->id) }}">
                                     {{ __('Contact') }}
                                 </a>
                                 <hr>

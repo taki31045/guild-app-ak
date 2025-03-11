@@ -36,7 +36,7 @@ class MessageController extends Controller
                     ->whereIn('receiver_id', [Auth::user()->id, $receiver_id])
                     ->get();
 
-        return view('users.message', compact('all_users', 'messages', 'receiver'));
+        return view('freelancers.messages.index', compact('all_users', 'messages', 'receiver'));
     }
 
     public function store(MessageRequest $request){
@@ -48,6 +48,4 @@ class MessageController extends Controller
 
         return redirect()->back();
     }
-
-    
 }
