@@ -33,13 +33,13 @@ class FreelanceController extends Controller
                                         ->whereMonth('created_at', Carbon::now()->month)
                                         ->sum('amount');
 
-        return view('users.dashboard', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects', 'monthlyEarnings'));
+        return view('freelancers.dashboard.index', compact('user', 'freelancer', 'applications', 'all_todos', 'latestProjects', 'monthlyEarnings'));
 
     }
 
     public function editTodo(){
         $all_todos = Todo::where('freelancer_id', Auth::user()->freelancer->id)->get();
-        return view('users.edit-todo', compact('all_todos'));
+        return view('freelancers.todos.edit', compact('all_todos'));
     }
 
     public function store(TodoRequest $request){

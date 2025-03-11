@@ -120,7 +120,7 @@
                         <div class="project-history-contents w-100">
                             <div class="project-date">{{ $project->formatted_deadline }}</div>
                             <div class="project-details">
-                                <h3 class="h5 m-0"><a href="{{ route('freelancer.project-details', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
+                                <h3 class="h5 m-0"><a href="{{ route('freelancer.projects.show', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
                                 <p class="fw-bold m-0">{{ $project->company->user->username }}</p>

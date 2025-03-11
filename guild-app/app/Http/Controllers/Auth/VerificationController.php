@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -38,4 +40,24 @@ class VerificationController extends Controller
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+
+
+public function show(Request $request)
+{
+    $user = Auth::user();
+    $layout = 'layouts.app'; // デフォルトレイアウト
+
+    if ($user) {
+        if ($user->role_id == 1) {
+            $layout = 'layouts.admin';
+        } elseif ($user->role_id == 2) {
+            $layout = 'layouts.company';
+        } elseif ($user->role_id == 3) {
+            $layout = 'layouts.freelancer';
+        }
+    }
+
+    return view('auth.verify', compact('layout'));
+}
+
 }

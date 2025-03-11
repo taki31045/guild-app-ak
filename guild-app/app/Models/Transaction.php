@@ -9,10 +9,10 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'payer_id', 'payee_id', 'amount', 'fee', 'type', 'project_id', 
+        'payer_id', 'payee_id', 'amount', 'fee', 'type', 'project_id',
         'order_id', 'transaction_id', 'currency', 'status'
     ];
-    
+
     public function project()
     {
         return $this->belongsTo(Project::class, 'project_id');
@@ -27,20 +27,20 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::created(function () {
-            Admin::first()->updateFinancials();
-        });
+    //     static::created(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
 
-        static::updated(function () {
-            Admin::first()->updateFinancials();
-        });
+    //     static::updated(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
 
-        static::deleted(function () {
-            Admin::first()->updateFinancials();
-        });
-    }
+    //     static::deleted(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
+    // }
 }

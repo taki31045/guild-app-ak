@@ -102,35 +102,37 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 //freelancer
 Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->name('freelancer.')->group(function(){
     // Dashboard
-    Route::get('/user-dashboard', [FreelanceController::class, 'index'])->name('index');
-    Route::get('/todo-list/edit', [FreelanceController::class, 'editTodo'])->name('todo-edit');
-    Route::post('/todo-list/store', [FreelanceController::class, 'store'])->name('todo.store');
+    Route::get('/dashboard', [FreelanceController::class, 'index'])->name('index');
+
+    // Todos
+    Route::get('/todos/edit', [FreelanceController::class, 'editTodo'])->name('todos.edit');
+    Route::post('/todos/store', [FreelanceController::class, 'store'])->name('todos.store');
 
 
 
     //Profile
-    Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
-    Route::get('/freelancer/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile-edit');
-    Route::post('/freelancer/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile-update');
-    Route::get('/profile/{id}/other', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile');
+    Route::get('/profile/{id}/show', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/{id}/edit', [App\Http\Controllers\Freelancer\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [App\Http\Controllers\Freelancer\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{id}/other', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile.show');
 
     //Project
-    Route::get('/project-list', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('project.index');
-    Route::get('/project/{id}/project-details', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('project-details');
-    Route::post('/project/comment/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('comment.store');
-    Route::post('/project/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('project.favorite');
+    Route::get('/projects', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/{id}/show', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('projects.show');
+    Route::post('/projects/comments/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('projects.comments.store');
+    Route::post('/projects/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('projects.favorite');
 
     // Project Status
-    Route::get('/project/{id}/request', [App\Http\Controllers\Freelancer\ProjectController::class, 'request'])->name('project.request');
-    Route::get('/project/{id}/cancel-request', [App\Http\Controllers\Freelancer\ProjectController::class, 'cancelRequest'])->name('project.cancel-request');
-    Route::get('/project/{id}/start', [App\Http\Controllers\Freelancer\ProjectController::class, 'start'])->name('project.start');
-    Route::get('/project/{id}/reject-acknowledge', [App\Http\Controllers\Freelancer\ProjectController::class, 'rejectAcknowledge'])->name('project.acknowledge');
-    Route::get('/project/{id}/submit', [App\Http\Controllers\Freelancer\ProjectController::class, 'submit'])->name('project.submit');
-    Route::get('/project/{id}/result', [App\Http\Controllers\Freelancer\ProjectController::class, 'result'])->name('project.result');
+    Route::get('/projects/{id}/request', [App\Http\Controllers\Freelancer\ProjectController::class, 'request'])->name('projects.request');
+    Route::get('/projects/{id}/cancel', [App\Http\Controllers\Freelancer\ProjectController::class, 'cancelRequest'])->name('projects.cancel');
+    Route::get('/projects/{id}/start', [App\Http\Controllers\Freelancer\ProjectController::class, 'start'])->name('projects.start');
+    Route::get('/projects/{id}/reject-acknowledge', [App\Http\Controllers\Freelancer\ProjectController::class, 'rejectAcknowledge'])->name('projects.acknowledge');
+    Route::get('/projects/{id}/submit', [App\Http\Controllers\Freelancer\ProjectController::class, 'submit'])->name('projects.submit');
+    Route::get('/projects/{id}/result', [App\Http\Controllers\Freelancer\ProjectController::class, 'result'])->name('projects.result');
 
     //message
-    Route::get('/message/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('message.index');
-    Route::post('/message/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('message.store');
+    Route::get('/messages/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('messages.index');
+    Route::post('/messages/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('messages.store');
 
     // contact
     Route::get('/contact', [App\Http\Controllers\Freelancer\ContactController::class, 'index'])->name('contact');

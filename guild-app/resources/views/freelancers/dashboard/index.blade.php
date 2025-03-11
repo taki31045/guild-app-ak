@@ -49,7 +49,7 @@
                         <div class="project-status">
                             <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                         </div>
-                        @include('users.modals.status')
+                        @include('freelancers.dashboard.modal.status')
                     </div>
                 @endforeach
             @endif
@@ -62,17 +62,17 @@
         <div class="left-side">
             {{-- Profile --}}
             <div class="profile-sm">
-                <a href="{{route('freelancer.profile', Auth::user()->id)}}">
+                <a href="{{route('freelancer.profile.show', Auth::user()->id)}}">
                     @if ($user->avatar)
                         <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
                     @else
-                        <i class="fa-solid fa-circle-user fa-3x profile-icon"></i>
+                        <i class="fa-solid fa-circle-user profile-icon"></i>
                     @endif
                 </a>
                 <div class="profile-details">
                     <h3>{{$user->username}}</h3>
                     <p>
-                        Rank: 
+                        Rank:
                         @if ($freelancer)
                             @for($i = 1; $i <= $freelancer->rank; $i++)
                                 <i class="fa-solid fa-star"></i>
@@ -91,7 +91,7 @@
                         <li>{{$todo->content}}</li>
                     @endforeach
                 </ul>
-                <a href="{{route('freelancer.todo-edit')}}" class="text-black">
+                <a href="{{route('freelancer.todos.edit')}}" class="text-black">
                     <i class="fa-solid fa-pen-to-square fa-2x"></i>
                 </a>
             </div>
@@ -99,20 +99,20 @@
 
 
         <div class="right-side">
-            <h3>Recent Job</h3>
+            <h3>Recent Projects</h3>
             <div class="suggested-job">
                 @foreach ($latestProjects as $project)
                     <div class="job">
                         <div class="job-header">
-                            <a href="{{route('freelancer.project-details', $project->id)}}" class="title">
+                            <a href="{{route('freelancer.projects.show', $project->id)}}" class="title">
                                 {{Str::limit($project->title, 40)}}
                             </a>
-                            <a class="favoriteBtn" data-url="{{route('freelancer.project.favorite', ['project' => $project->id])}}">
+                            <a class="favoriteBtn" data-url="{{route('freelancer.projects.favorite', ['project' => $project->id])}}">
                                 <i class="fa-heart fa-2x {{ $project->isFavorited() ? 'fa-solid' : 'fa-regular' }}"></i>
                             </a>
                         </div>
 
-                        <a href="{{route('freelancer.company.profile', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
+                        <a href="{{route('freelancer.company.profile.show', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</a>
                         <p class="m-0">{{$project->reward_amount}}</p>
                         <p>
                             <?php

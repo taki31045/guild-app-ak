@@ -12,14 +12,14 @@
         <div class="col-3 user-sidebar">
             @foreach ($all_users as $user)
                 <div class="user">
-                    <a href="#">
+                    <a href="{{route('freelancer.company.profile.show', $user->id)}}">
                         @if ($user->avatar)
                             <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
                         @else
                             <i class="fa-solid fa-circle-user"></i>
                         @endif
                     </a>
-                    <a href="{{route('freelancer.message.index', $user->id)}}">{{$user->username}}</a>
+                    <a href="{{route('freelancer.messages.index', $user->id)}}">{{$user->username}}</a>
                 </div>
             @endforeach
         </div>
@@ -30,7 +30,6 @@
                     <i class="fa-regular fa-comment text-dark fa-4x"></i>
                     <h4>Your messages</h4>
                     <p class="text-secondary">Send a message to start a chat.</p>
-                    <a href="#" class="btn btn-secondary">Send message</a>
                 </div>
             @else
                 <div class="message-header">
@@ -47,11 +46,11 @@
                         @else
                             <div class="message other">
                                 <div class="chat-icon">
-                                    <a href="#">
+                                    <a href="{{route('freelancer.company.profile.show', $user->id)}}">
                                         @if ($user->avatar)
                                             <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
                                         @else
-                                            <i class="fa-solid fa-circle-user fa-3x"></i>
+                                            <i class="fa-solid fa-circle-user profile-icon"></i>
                                         @endif
                                     </a>
                                 </div>
@@ -73,7 +72,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('freelancer.message.store', $receiver->id)}}" method="post" class="comment-form">
+                    <form action="{{route('freelancer.messages.store', $receiver->id)}}" method="post" class="comment-form">
                         @csrf
 
                         <input type="hidden" name="receiver_id" value="{{$receiver->id}}">
