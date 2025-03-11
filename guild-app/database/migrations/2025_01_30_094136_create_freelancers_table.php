@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('freelancers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('rank')->default(0); // Freelancer rank
+            $table->integer('rank')->default(1); // Freelancer rank
             $table->integer('rank_point')->default(0); // Points for rank-up
             $table->string('github')->nullable();
             $table->string('X')->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('freelancers');
-        Schema::enableForeignKeyConstraints(); 
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -53,7 +53,7 @@ class ProfileController extends Controller
             $favoriteProjects = collect();
         }
 
-        return view('users.profile', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects','layout','styles'));
+        return view('freelancers.profile.show', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects','layout','styles'));
     }
 
 
@@ -61,7 +61,7 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $skills = Skill::all();
 
-        return view('users.edit-profile', compact('user', 'skills'));
+        return view('freelancers.profile.edit', compact('user', 'skills'));
     }
 
 
@@ -99,6 +99,6 @@ class ProfileController extends Controller
         }else{
             $freelancer->skills()->detach();
         }
-        return redirect()->route('freelancer.profile', $user->id);
+        return redirect()->route('freelancer.profile.show', $user->id);
     }
 }

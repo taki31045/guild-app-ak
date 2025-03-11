@@ -102,7 +102,7 @@
                                 <a class="dropdown-item" href="{{ route('company.profile.profile', Auth::user()->id) }}">
                                     {{ __('Profile') }}
                                 </a>
-                                
+
                                 <!-- Contact Link -->
                                 <a class="dropdown-item" href="{{ route('company.contact.contact', Auth::user()->id) }}">
                                     {{ __('Contact') }}

@@ -37,7 +37,7 @@
                 <div class="profile-header">
                     <h3>Profile</h3>
                     @if (Auth::check() && Auth::id() === $user->id)
-                        <a href="{{route('freelancer.profile-edit', $user->id)}}" class="text-black">
+                        <a href="{{route('freelancer.profile.edit', $user->id)}}" class="text-black">
                             <i class="fa-solid fa-pen-to-square edit-icon"></i>
                         </a>
                     @endif
@@ -158,7 +158,7 @@
                 <div class="project-status">
                     <button class="status-label" data-bs-toggle="modal" data-bs-target="#evaluation{{$completedProject->project->id}}">Evaluation</button>
                 </div>
-                @include('users.modals.evaluation')
+                @include('freelancers.profile.modal.evaluation')
             </div>
         @endforeach
 
@@ -205,11 +205,11 @@
                 <div class="project-box">
                     <div class="Project-date">{{$favoriteProject->deadline}}</div>
                     <div class="Project-details">
-                        <a href="{{route('freelancer.project-details', $favoriteProject->id)}}" class="fw-bold">
+                        <a href="{{route('freelancer.projects.show', $favoriteProject->id)}}" class="fw-bold">
                             {{$favoriteProject->title}}
                         </a>
                         <br>
-                        <a href="{{route('freelancer.company.profile', $favoriteProject->company->user->id)}}" class="fw-bold m-0">{{$favoriteProject->company->user->name}}</a>
+                        <a href="{{route('freelancer.company.profile.show', $favoriteProject->company->user->id)}}" class="fw-bold m-0">{{$favoriteProject->company->user->name}}</a>
                         <p class="m-0">{{$favoriteProject->reward_amount}}</p>
                         <p>
                             <?php

@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="{{route('freelancer.project.request', $project->id)}}" class="btn btn-primary">Request</a>
+                <a href="{{route('freelancer.projects.request', $project->id)}}" class="btn btn-primary">Request</a>
             </div>
         </div>
     </div>

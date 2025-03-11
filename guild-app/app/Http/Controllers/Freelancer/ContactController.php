@@ -12,11 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class ContactController extends Controller
 {
     public function index(){
-        return view('users.contact');
+        return view('freelancers.contact.form');
     }
 
     public function sendMail(ContactRequest $request){
-
         $emailContent = "
         <p>You have receive a new inquiry.</p>
         <p><strong>Name: </strong>$request->name</p>
@@ -25,10 +24,12 @@ class ContactController extends Controller
         <p><strong>Message: </strong>" . nl2br(e($request->content)) . "</p>
         ";
 
-        Mail::send([], [], function($message) use ($request, $emailContent){
-            $message->from($request->email, $request->name)
+        $email = Auth::user()->email;
+
+        Mail::send([], [], function($message) use ($request, $emailContent, $email){
+            $message->from($email, $request->name)
                     ->to('guild20250106@gmail.com')
-                    ->replyTo($request->email, $request->name)
+                    ->replyTo($email, $request->name)
                     ->subject('New Inquiry: ' . $request->title)
                     ->html($emailContent);
             if($request->hasFile('attachment')){

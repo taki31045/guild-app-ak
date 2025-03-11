@@ -11,7 +11,7 @@
     <div class="row justify-content-center my-5">
         <div class="col-6">
             <div class=" border border-black rounded py-5 px-5 mb-3">
-                <form action="{{route('freelancer.todo.store')}}" method="post">
+                <form action="{{route('freelancer.todos.store')}}" method="post">
                     @csrf
 
                     @if ($errors->any())

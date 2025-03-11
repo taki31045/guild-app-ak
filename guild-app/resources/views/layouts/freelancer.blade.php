@@ -36,12 +36,12 @@
             <nav>
                 <ul>
                     <li><a href="#">About</a></li>
-                    <li><a href="{{route('freelancer.project.index')}}">Project</a></li>
-                    <li><a href="{{route('freelancer.message.index', Auth::user()->id)}}">Message</a></li>
-                    <li><a href="{{route('freelancer.profile', Auth::user()->id)}}">Profile</a></li>
+                    <li><a href="{{route('freelancer.projects.index')}}">Project</a></li>
+                    <li><a href="{{route('freelancer.messages.index', Auth::user()->id)}}">Message</a></li>
+                    <li><a href="{{route('freelancer.profile.show', Auth::user()->id)}}">Profile</a></li>
                     <li><a href="{{route('freelancer.contact')}}">Contact</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                             Logout
                         </a>
                     </li>
@@ -55,6 +55,31 @@
         <main>
             @yield('content')
         </main>
+
+        @if (!request()->is('freelancer/messages/*'))
+            <footer>
+                <nav>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="{{route('freelancer.projects.index')}}">Project</a></li>
+                        <li><a href="{{route('freelancer.messages.index', Auth::user()->id)}}">Message</a></li>
+                        <li><a href="{{route('freelancer.profile.show', Auth::user()->id)}}">Profile</a></li>
+                        <li><a href="{{route('freelancer.contact')}}">Contact</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                        </form>
+                    </ul>
+                </nav>
+                <p>&copy; {{ date('Y') }} GUILD. All Rights Reserved.</p>
+            </footer>
+        @endif
+
+
     </div>
     @yield('scripts')
 </body>
