@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Freelancer;
 use App\Models\Skill;
+use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 class FreelancerController extends Controller
@@ -44,7 +46,7 @@ class FreelancerController extends Controller
     {
         $company = Auth::user()->company;
         $freelancer = Freelancer::findOrFail($freelancerId);
-    
+
         if ($company->favoriteFreelancers()->where('freelancer_id', $freelancerId)->exists()) {
             // すでにお気に入り → 削除
             $company->favoriteFreelancers()->detach($freelancerId);
@@ -55,9 +57,48 @@ class FreelancerController extends Controller
             return response()->json(['favorite' => true]);
         }
     }
-    
 
-    
+    public function show($id){
+        $user = User::findOrFail($id);
+        $freelancer = $user->freelancer;
+
+        $layout = match (Auth::user()->role_id) {
+            1 => 'layouts.admin',      // 管理者
+            2 => 'layouts.company',    // 企業
+            3 => 'layouts.freelancer', // フリーランサー
+
+        };
+
+        $styles = match (Auth::user()->role_id) {
+            1 => 'css/admins/freelancer-profile.css',      // 管理者
+            2 => 'css/users/profile.css',    // 企業
+            3 => 'css/users/profile.css', // フリーランサー
+        };
+
+        if($freelancer){
+            if($freelancer->evaluations()){
+                $evaluations = $freelancer->evaluations()->get();
+            }
+            if($freelancer->applications()){
+                $ongoingProjects  = $freelancer->applications()
+                                                ->where('freelancer_id', $freelancer->id)
+                                                ->where('status', '!=', 'completed')
+                                                ->get();
+
+            }
+                $completedProjects  = Transaction::where('payee_id', $id)->with('project')->get();
+                $favoriteProjects = $user->favoriteProjects()->get();
+        }else{
+            $evaluations = collect();
+            $ongoingProjects = collect();
+            $completedProjects = collect();
+            $favoriteProjects = collect();
+        }
+
+        return view('companies.freelancers.show', compact('user', 'evaluations', 'ongoingProjects', 'completedProjects', 'favoriteProjects','layout','styles'));
+    }
+
+
 }
 //freelancer listのページに移動。また絞り込み
 //freelancerのいいね追加
