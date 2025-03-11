@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('employee')->nullable();
             $table->decimal('capital', 10, 2)->nullable();
             $table->decimal('annualsales', 10, 2)->nullable();
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

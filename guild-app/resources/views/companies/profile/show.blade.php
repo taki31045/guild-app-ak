@@ -47,7 +47,7 @@
             </div>
         </div>
         @if (Auth::check() && Auth::id() === $user->id)
-        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.edit', $user->id) }}">
+        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.for_update', $user->id) }}">
             <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
         </div>
         @endif

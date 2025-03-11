@@ -15,7 +15,7 @@
             @foreach ($all_users as $user_all)
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
                 <i class="fa-solid fa-circle-user fa-3x"></i>
-                <a href="{{ route('company.message', $user_all->id )}}" class="mt-2 fs-5">{{ $user_all->name }}</a>
+                <a href="{{ route('company.contact.with_freelancer', $user_all->id )}}" class="mt-2 fs-5">{{ $user_all->name }}</a>
             </div>
             @endforeach
         </div>
@@ -28,7 +28,7 @@
                             <i class="fa-regular fa-comment text-dark fa-4x"></i>
                             <h4>Your messages</h4>
                             <p class="text-secondary">Send a message to start a chat.</p>
-                            <a href="{{ route('company.list.freelancer')}}" class="btn btn-secondary">Send message</a>
+                            <a href="{{ route('company.freelancer.list')}}" class="btn btn-secondary">Send message</a>
                         </div>
                     </div>
                 </div>
@@ -52,10 +52,7 @@
                         @endif
                     @endforeach
                 </div>
-            @endif
-               
-
-                <form  action="{{route('company.store.message', $user->id)}}" method="post">
+                <form  action="{{route('company.contact.store', $user->id)}}" method="post">
                     @csrf
                     <div class="d-flex align-items-center justify-content-between">
                         <input type="hidden" name="receiver_id" value="{{$user->id}}">
@@ -66,5 +63,8 @@
                         <button type="submit" class="btn btn-secondary rounded-pill px-4 py-2 ">Send</button>
                     </div>
                 </form>
+            @endif
+               
+
     </div>
 @endsection

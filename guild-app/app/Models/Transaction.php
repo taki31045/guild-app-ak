@@ -27,20 +27,22 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::created(function () {
-            Admin::first()->updateFinancials();
-        });
+    //     static::created(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
 
-        static::updated(function () {
-            Admin::first()->updateFinancials();
-        });
+    //     static::updated(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
 
-        static::deleted(function () {
-            Admin::first()->updateFinancials();
-        });
-    }
+    //     static::deleted(function () {
+    //         Admin::first()->updateFinancials();
+    //     });
+    // }
 }
+
+
