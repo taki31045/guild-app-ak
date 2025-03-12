@@ -91,24 +91,6 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     });
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-        //freelancer list
-
-
-
-
->>>>>>> upstream/main
     });
 
 
