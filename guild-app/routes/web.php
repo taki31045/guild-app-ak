@@ -39,31 +39,37 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
     //project
     Route::group(['prefix' => 'project', 'as' =>'project.'], function(){
         Route::get('/', [CompanyController::class, 'index'])->name('on_going');  //ongoing
-        Route::get('/project', [ProjectController::class, 'index'])->name('for_create'); //page for create
-        Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
-        Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete'); //delete
-        Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('for_update'); //page for update
-        Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update'); //update
-        Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('detail'); //detail
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('list'); //list
+<<<<<<< HEAD
+        Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('detail'); //detail
+        Route::get('/project', [ProjectController::class, 'index'])->name('for_create'); //page for create
+        Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('for_update'); //page for update
+=======
         Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
 
+>>>>>>> upstream/main
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
         ->name('recommended_freelancers'); //recommendedfreelancer related project
+        Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
+        Route::patch('/update/{id}',[ProjectController::class, 'update'])->name('update'); //update
+        Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete'); //delete
+        Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
 
+        //status
         Route::group(['prefix' => 'status', 'as' => 'status.'], function(){
             Route::get('/status/decline', [StatusController::class, 'decline'])->name('decline'); //decline requested
 
         });
 
     });
-
+    //profile
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
         Route::get('/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('profile');
         Route::get('/profile/{id}/edit', [App\Http\Controllers\Company\ProfileController::class, 'edit'])->name('for_update');
         Route::patch('/profile/update', [App\Http\Controllers\Company\ProfileController::class, 'update'])->name('update');
     });
 
+    //freelancer
     Route::group(['prefix' => 'freelancer', 'as' => 'freelancer.'], function(){
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('favorite.list');
         Route::get('/freelancer_list', [FreelancerController::class, 'index'])->name('list');
@@ -71,24 +77,33 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/{id}/profile', [FreelancerController::class, 'show'])->name('profile.show');
     });
 
+    //evaluation
     Route::group(['prefix' => 'evaluation', 'as' => 'evaluation.'], function(){
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
+<<<<<<< HEAD
+    
+    //contact
+=======
 
+>>>>>>> upstream/main
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
-        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::post('/contact/send', [MessageController::class, 'sendMail'])->name('send_to_admin');
 
     });
 
+    //paypal
     Route::group(['prefix' => 'paypal', 'as' => 'paypal.'],function(){
         Route::get('/paypal/payment', [PayPalController::class, 'payment'])->name('payment');
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     });
+<<<<<<< HEAD
+=======
 
 
 
@@ -104,6 +119,7 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
 
 
 
+>>>>>>> upstream/main
     });
 
 
