@@ -43,6 +43,13 @@
     transform: translate(-50%, -50%); /* 画像の中央に配置 */
 
 }
+
+.icon-md {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 </style>
 
 <body style="font-family: Georgia, 'Times New Roman', Times, serif; ">
@@ -69,11 +76,9 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <!-- Authentication Links -->
-                        <li><a href="<?php echo e(route('company.contact.with_freelancer', Auth::user()->id)); ?>">mail</a></li>
-                        <li><a href="<?php echo e(route('company.profile.profile', Auth::user()->id)); ?>">profile</a></li>
-                        <li><a href="<?php echo e(route('company.contact.contact', Auth::user()->id)); ?>">contact</a></li>
+                        <li><a href="<?php echo e(route('company.contact.with_freelancer', Auth::user()->id)); ?>" class="text-decoration-none text-white"><i class="fa-regular fa-envelope icon-md"></i></a></li>
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('login')): ?>
                         <li class="nav-item">
@@ -88,12 +93,25 @@
                         <?php endif; ?>
                         <?php else: ?>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <?php echo e(Auth::user()->name); ?>
 
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <!-- Profile Link -->
+                                <a class="dropdown-item" href="<?php echo e(route('company.profile.profile', Auth::user()->id)); ?>">
+                                    <?php echo e(__('Profile')); ?>
+
+                                </a>
+
+                                <!-- Contact Link -->
+                                <a class="dropdown-item" href="<?php echo e(route('company.contact.contact', Auth::user()->id)); ?>">
+                                    <?php echo e(__('Contact')); ?>
+
+                                </a>
+                                <hr>
+                                <!-- Log Out -->
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
