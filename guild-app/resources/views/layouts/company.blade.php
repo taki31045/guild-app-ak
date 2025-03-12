@@ -70,8 +70,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li> <a href="{{ route('company.project.on_going')}}">On-Going</a></li>
-                        <li class="ms-4"> <a href="{{ route('company.project.list')}}">Job list</a></li>
+                        <li> <a href="{{ route('company.project.on_going')}}" class="text-decoration-none text-white">On-Going</a></li>
+                        <li class="ms-4"> <a href="{{ route('company.project.list')}}" class="text-decoration-none text-white">Job list</a></li>
 
                     </ul>
 
