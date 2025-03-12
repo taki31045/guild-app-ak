@@ -40,14 +40,14 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
     Route::group(['prefix' => 'project', 'as' =>'project.'], function(){
         Route::get('/', [CompanyController::class, 'index'])->name('on_going');  //ongoing
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('list'); //list
-<<<<<<< HEAD
+// <<<<<<< HEAD
         Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('detail'); //detail
         Route::get('/project', [ProjectController::class, 'index'])->name('for_create'); //page for create
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('for_update'); //page for update
-=======
-        Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
+// =======
+//         Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
 
->>>>>>> upstream/main
+// >>>>>>> upstream/main
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
         ->name('recommended_freelancers'); //recommendedfreelancer related project
         Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
@@ -82,12 +82,12 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
-<<<<<<< HEAD
+// <<<<<<< HEAD
     
     //contact
-=======
+// =======
 
->>>>>>> upstream/main
+// >>>>>>> upstream/main
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
         Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
@@ -102,8 +102,8 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     });
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
 
 
@@ -114,12 +114,12 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
 
 
 
-        //freelancer list
+//         //freelancer list
 
 
 
 
->>>>>>> upstream/main
+// >>>>>>> upstream/main
     });
 
 
