@@ -211,7 +211,4 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
     // transaction
     Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('transaction');
-
-    // message
-    // Route::view('message', 'admins.message')->name('admin.message');
 });

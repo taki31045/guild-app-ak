@@ -171,6 +171,7 @@ class DashboardController extends Controller
                       ->orderBy('created_at', 'asc');
             }
         ])
+        ->has('transactions')
         ->orderBy('id', 'asc')
         ->paginate(4);
 
