@@ -27,10 +27,10 @@
                     <h3 class="mb-4 fw-bold">Edit To Do</h3>
 
                     <input type="hidden" name="deleted_todos" id="deleted_todos">
-                    <div id="todo-list">
+                    <div id="todo-list" style="height: 60vh; overflow-y: auto;">
                         @foreach ($all_todos as $todo)
                         <div class="todo-item">
-                            <label for="todo" class="form-label">To Do 1</label>
+                            <label for="todo" class="form-label">To Do {{$loop->index + 1}}</label>
                             <div class="position-relative">
                                 <input type="hidden" name="todos[{{$loop->index}}][id]" value="{{$todo->id}}">
                                 <input type="text" name="todos[{{$loop->index}}][content]" class="form-control mb-4" value="{{$todo->content}}">
