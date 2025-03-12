@@ -121,7 +121,7 @@
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
                     <button type="submit" class="comment-btn">Send</button>
 
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -129,7 +129,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif --}}
                 </form>
             </div>
 

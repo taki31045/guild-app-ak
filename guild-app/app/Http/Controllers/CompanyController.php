@@ -18,14 +18,13 @@ class CompanyController extends Controller
 //ongoingのページに今ongoingのプロジェクトを表示させる。また、移動
     public function index(){
         $user = Auth::user();
-        $projects = $user->company->projects->where('status','open')->all();
         $projects_progress = $user->company->projects->where('status','ongoing')->all();
 
         $company = $user->company;
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。
         $favoriteFreelancers = $company->favoriteFreelancers;
 
-        return view('companies.projects.on_going', compact('projects','favoriteFreelancers','projects_progress'));
+        return view('companies.projects.on_going', compact('favoriteFreelancers','projects_progress'));
     }
 
 
