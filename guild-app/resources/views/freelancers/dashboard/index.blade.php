@@ -26,7 +26,7 @@
                         <div class="ongoing-box">
                             <div class="Project-date">{{$application->project->deadline}}</div>
                             <div class="Project-details">
-                                <a href="{{route('freelancer.projects.index', $application->project->id)}}" class="fs-5">
+                                <a href="{{route('freelancer.projects.show', $application->project->id)}}" class="fs-5">
                                     {{$application->project->title}}
                                 </a>
 

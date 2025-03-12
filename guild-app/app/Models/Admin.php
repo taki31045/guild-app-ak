@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Admin extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['balance', 'total_fee_revenue', 'escrow_balance'];
 
     // public function updateFinancials()

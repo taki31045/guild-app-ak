@@ -197,6 +197,10 @@ class ProjectController extends Controller
             $user->save();
         });
 
+        $admin->admin->balance -= $project->reward_amount;
+        $admin->admin->escrow_balance -= $project->reward_amount;
+        $admin->admin->save();
+
 
         return redirect()->back();
     }

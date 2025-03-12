@@ -47,7 +47,7 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('detail'); //detail
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('list'); //list
         Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
-        
+
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
         ->name('recommended_freelancers'); //recommendedfreelancer related project
 
@@ -68,15 +68,14 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/test/freelancer_list', [CompanyController::class, 'favorite_freelancer_list'])->name('favorite.list');
         Route::get('/freelancer_list', [FreelancerController::class, 'index'])->name('list');
         Route::post('/like/{freelancer}', [FreelancerController::class, 'favorite']);
-        Route::get('/profile/{id}/other', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
-        Route::get('/freelancer/profile/{id}/', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('profile');
+        Route::get('/{id}/profile', [FreelancerController::class, 'show'])->name('profile.show');
     });
 
     Route::group(['prefix' => 'evaluation', 'as' => 'evaluation.'], function(){
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
-    
+
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
         Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
@@ -91,18 +90,18 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     });
 
-       
-     
-       
 
 
-        
+
+
+
+
 
 
 
         //freelancer list
 
-     
+
 
 
     });
@@ -115,7 +114,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $user = $request->user();
 
     if($user->role_id == 2){
-        return redirect()->route('company.dashboard');
+        return redirect()->route('company.project.on_going');
     }elseif($user->role_id == 3){
         return redirect()->route('freelancer.index'); // 認証成功後のリダイレクト先
     }
