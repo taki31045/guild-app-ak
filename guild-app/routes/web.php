@@ -75,12 +75,8 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
-<<<<<<< HEAD
 
     //contact
-=======
-
->>>>>>> upstream/main
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
         Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
