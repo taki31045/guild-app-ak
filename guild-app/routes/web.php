@@ -18,8 +18,6 @@ use App\Http\Controllers\Company\FreelancerController;
 
 //freelancer
 
-
-
 // create front
 //admin
 
