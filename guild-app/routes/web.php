@@ -114,7 +114,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $user = $request->user();
 
     if($user->role_id == 2){
-        return redirect()->route('company.dashboard');
+        return redirect()->route('company.project.on_going');
     }elseif($user->role_id == 3){
         return redirect()->route('freelancer.index'); // 認証成功後のリダイレクト先
     }
