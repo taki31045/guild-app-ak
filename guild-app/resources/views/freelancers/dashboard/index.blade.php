@@ -26,11 +26,11 @@
                         <div class="ongoing-box">
                             <div class="Project-date">{{$application->project->deadline}}</div>
                             <div class="Project-details">
-                                <a href="{{route('freelancer.project-details', $application->project->id)}}" class="fs-5">
+                                <a href="{{route('freelancer.projects.index', $application->project->id)}}" class="fs-5">
                                     {{$application->project->title}}
                                 </a>
 
-                                <a href="{{route('freelancer.company.profile', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
+                                <a href="{{route('freelancer.company.profile.show', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
                                 <p class="m-0">{{$application->project->reward_amount}}</p>
                                 <p>
                                     <?php

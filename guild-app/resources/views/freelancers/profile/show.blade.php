@@ -177,7 +177,7 @@
                             </a>
                         @endif
                         <br>
-                        <a href="{{route('freelancer.company.profile', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
+                        <a href="{{route('freelancer.company.profile.show', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
                         <p class="m-0">{{$application->project->reward_amount}}</p>
                         <p>
                             <?php
@@ -196,7 +196,7 @@
                 <div class="project-status">
                     <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                 </div>
-                @include('users.modals.status')
+                @include('freelancers.dashboard.modal.status')
             </div>
         @endforeach
 

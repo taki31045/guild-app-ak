@@ -150,7 +150,7 @@
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
                                     <td>{{ $transaction->project->title }}</td>
-                                    <td>{{ $transaction->amount  + ($transaction->fee ?? 0) }}</td>
+                                    <td>{{ $transaction->amount }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
