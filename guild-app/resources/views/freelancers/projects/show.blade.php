@@ -63,7 +63,7 @@
                             </button>
                         @elseif($application && $application->freelancer->user->id == Auth::user()->id)
                             <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
-                            @include('users.modals.status')
+                            @include('freelancers.dashboard.modal.status')
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
                                 {{$project->status}}

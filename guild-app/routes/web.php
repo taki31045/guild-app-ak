@@ -46,7 +46,7 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
         ->name('recommended_freelancers'); //recommendedfreelancer related project
         Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
-        Route::post('/update/{id}',[ProjectController::class, 'update'])->name('update'); //update
+        Route::patch('/update/{id}',[ProjectController::class, 'update'])->name('update'); //update
         Route::delete('/delete/{id}', [ProjectController::class, 'delete'])->name('delete'); //delete
         Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
 
@@ -104,7 +104,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $user = $request->user();
 
     if($user->role_id == 2){
-        return redirect()->route('company.dashboard');
+        return redirect()->route('company.project.on_going');
     }elseif($user->role_id == 3){
         return redirect()->route('freelancer.index'); // 認証成功後のリダイレクト先
     }

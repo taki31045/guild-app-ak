@@ -87,13 +87,13 @@ class PayPalController extends Controller
 
             Transaction::create([
                 'payer_id' => auth()->id(),
-                'payee_id' => $user,
+                'payee_id' => 1,
                 'project_id' => $project_id,
                 'order_id' => $response['id'],
                 'type' => 'escrow_deposit',
                 'transaction_id' => $response['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
                 'amount' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'],
-                'fee' => $paypalFee,
+                'fee' => $fee,
                 'currency' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
                 'status' => 'COMPLETED',
             ]);
