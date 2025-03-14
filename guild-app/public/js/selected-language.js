@@ -36,7 +36,7 @@ function addOrRemoveTag(value, text, optionElement){
         const tag = document.createElement("div");
         tag.classList.add("tag");
         tag.setAttribute("data-value", value);
-        tag.innerHTML = `${text} <span onclick="removeTag(this)">x</span>`;
+        tag.innerHTML = `${text} <span onclick="removeTag(this)">×</span>`;
         document.querySelector(".selected-tags").appendChild(tag);
         optionElement.classList.add("selected-option");
     }else{

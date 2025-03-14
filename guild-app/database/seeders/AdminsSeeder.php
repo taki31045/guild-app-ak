@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AdminsTableSeeder extends Seeder
+class AdminsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,9 +17,9 @@ class AdminsTableSeeder extends Seeder
         if ($adminUser) {
             DB::table('admins')->insert([
                 'user_id' => $adminUser->id,
-                'balance' => 10000.00,
-                'total_fee_revenue' => 500.00,
-                'escrow_balance' => 2000.00,
+                'balance' => 0.00,
+                'total_fee_revenue' => 0.00,
+                'escrow_balance' => 0.00,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

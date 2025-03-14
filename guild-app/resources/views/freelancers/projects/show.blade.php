@@ -7,7 +7,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{asset('js/favorite-project.js')}}"></script>
 @endsection
 
 @section('content')
@@ -114,14 +114,7 @@
                             </div>
                         @endif
                     @endforeach
-                </div>
-                <form action="{{route('freelancer.projects.comments.store')}}" method="post" class="comment-form">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$project->id}}">
-                    <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
-                    <button type="submit" class="comment-btn">Send</button>
-
-                    {{-- @if ($errors->any())
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -129,7 +122,14 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif --}}
+                    @endif
+                </div>
+                <form action="{{route('freelancer.projects.comments.store')}}" method="post" class="comment-form">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$project->id}}">
+                    <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
+                    <button type="submit" class="comment-btn">Send</button>
+
                 </form>
             </div>
 
