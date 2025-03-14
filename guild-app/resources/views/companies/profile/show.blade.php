@@ -3,6 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
+
 <link href="{{ asset('css/companyprofile.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -25,19 +26,19 @@
 <div class="profile-container row justify-content-center">
     <div class="profile-container-1 col-11">
         <div class="w-50 profile-1 card rounded mt-5 ps-3 py-3 me-3 float-end">
-            <div class="header mb-3 fw-bold">Company profile</div>
+            <div class="header mb-3 fw-bold fs-4">Company profile</div>
                 <table class="company-profile">
                     <tbody>
                         <tr>
-                            <td>Company name</td>
+                            <td>Company name:</td>
                             <td>{{ $user->username }}</td>
                         </tr>
                         <tr>
-                            <td>email</td>
+                            <td>Email:</td>
                             <td>{{ $user->email }}</td>
                         </tr>
                         <tr>
-                            <td>website</td>
+                            <td>Website:</td>
                             @if ($user->company)
                                 <td>{{ $user->company->website }}</td>
                             @endif
@@ -91,7 +92,7 @@
                             <tr>
                                 <td>Business Description:</td>
                                 @if ($user->company)
-                                    <td>{{ $company->description }}</td>
+                                    <td>{!! nl2br(e($company->description)) !!}</td>
                                 @endif
                             </tr>
                         </tbody>
@@ -116,19 +117,22 @@
                 <div class="tab-content">
                     <!-- Project History -->
                     <div class="tab-pane project-history">
-                    @foreach ($projects as $project)
+                    @foreach ($projectsWithFreelancers  as $project)
                         <div class="project-history-contents w-100">
-                            <div class="project-date">{{ $project->formatted_deadline }}</div>
-                            <div class="project-details">
+                            <div class="project-date">{{ $project->deadline }}</div>
+                            <div class="project-details ms-3">
                                 <h3 class="h5 m-0"><a href="{{ route('company.project.detail', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
-                                <p class="fw-bold m-0">{{optional($project->freelancer)->user->username ?? 'N/A'}}</p>
-                                <p class="m-0">${{ $project->reward_amount }}</p>
-                                <p>
-                                    @for ($i = 1; $i <= $project->required_rank; $i++)
-                                    <i class="fa-solid fa-star text-warning"></i>
-                                    @endfor
+                                <p class="my-3"> 
+                                    <span class="fw-bold">Assigned Freelancer: &nbsp;{{ $project->freelancer_name }}</span>
+                                </p>
+                                <p class="m-0">${{ $project->reward_amount }} 
+                                    <span class="ms-3">
+                                        @for ($i = 1; $i <= $project->required_rank; $i++)
+                                        <i class="fa-solid fa-star text-warning"></i>
+                                        @endfor
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -142,7 +146,7 @@
                                 <tr>
                                     <th>DATE</th>
                                     <th>PROJECT TITLE </th>
-                                    <th>AMOUNT</th>
+                                    <th>AMOUNT($)</th>
                                 </tr>
                             </thead>
                             <tbody>
