@@ -123,12 +123,12 @@
                         @if ($project_progress)
                             <div class="actions mt-3 d-flex justify-content-center">
                                 @if ($project_progress['application']['status'] == 'requested')
-                                    <a href="{{ route('company.paypal.payment', ['price' => $project_progress['reward_amount'], 'id' => $project_progress['id']]) }}" class="btn btn-sm btn-primary">PayPalで支払う</a>
+                                    <a href="{{ route('company.paypal.payment', ['price' => $project_progress['reward_amount'], 'id' => $project_progress['id']]) }}" class="btn btn-sm btn-primary">accept and next PayPal (*10%)</a>
                                     <a href="{{ route('company.project.status.decline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
                                     <a href="{{ route('company.contact.with_freelancer', ['id' => $project_progress['application']['freelancer']['user_id']])}}" class="btn btn-sm btn-outline-secondary">Message</a>
                                 @elseif ($project_progress['application']['status'] == 'submitted')
                                     <a href="{{ route('company.evaluation.evaluation', $project_progress['id']) }}" class="btn btn-sm btn-success">Accept</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">Decline</a>
+                                    <a href="{{ route('company.project.status.submittedDecline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
                                 @endif
                             </div>
                         @endif
