@@ -14,7 +14,6 @@ main{
 .user-sidebar{
     border-right: 1px solid black;
     overflow-y: auto;
-    padding: 20px;
     height: 100vh;
 }
 
@@ -23,6 +22,9 @@ main{
     align-items: center;
     font-size: 50px;
     margin-bottom: 25px;
+    background-color: #b39265;
+    margin-left: 2rem;
+    padding: 5px;
 }
 
 main .user-sidebar .user:hover{
