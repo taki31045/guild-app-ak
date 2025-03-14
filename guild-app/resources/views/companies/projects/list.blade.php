@@ -103,7 +103,12 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
+                                        @if ($project->id)
                                         <a href="{{route('company.project.detail', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
+                                    @else
+                                        <span class="fs-5 fw-bold text-muted">{{ $project->title }}</span>
+                                    @endif
+                                    
                                         <div class="d-flex align-items-center mt-2">
                                             <p class="mb-0 me-2 text-muted fw-bold">Price: {{ $project->reward_amount }}</p>
                                             @for ($i = 1; $i <= 5; $i++)

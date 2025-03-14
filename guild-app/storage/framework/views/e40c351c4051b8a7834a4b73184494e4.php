@@ -58,8 +58,8 @@
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <div class="image-container">
-                        <img src="<?php echo e(asset('images/gu ld.png')); ?>" alt="Base Image" class="base-image">
-                        <img src="<?php echo e(asset('images/logo-removebg-preview 1.png')); ?>" alt="Overlay Image" class="overlay-image">
+                        <img src="<?php echo e(asset('images/gu ld (1).png')); ?>" alt="Base Image" class="base-image">
+                        <img src="<?php echo e(asset('images/logo-removebg-preview 1 (2).png')); ?>" alt="Overlay Image" class="overlay-image">
                     </div>
 
                 </a>
@@ -70,8 +70,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li> <a href="<?php echo e(route('company.project.on_going')); ?>">On-Going</a></li>
-                        <li class="ms-4"> <a href="<?php echo e(route('company.project.list')); ?>">Job list</a></li>
+                        <li> <a href="<?php echo e(route('company.project.on_going')); ?>" class="text-decoration-none text-white">On-Going</a></li>
+                        <li class="ms-4"> <a href="<?php echo e(route('company.project.list')); ?>" class="text-decoration-none text-white">Job list</a></li>
 
                     </ul>
 

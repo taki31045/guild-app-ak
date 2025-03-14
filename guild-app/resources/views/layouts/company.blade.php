@@ -58,8 +58,8 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <div class="image-container">
-                        <img src="{{ asset('images/gu ld.png')}}" alt="Base Image" class="base-image">
-                        <img src="{{ asset('images/logo-removebg-preview 1.png')}}" alt="Overlay Image" class="overlay-image">
+                        <img src="{{ asset('images/gu ld (1).png')}}" alt="Base Image" class="base-image">
+                        <img src="{{ asset('images/logo-removebg-preview 1 (2).png')}}" alt="Overlay Image" class="overlay-image">
                     </div>
 
                 </a>
