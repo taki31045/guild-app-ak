@@ -58,7 +58,7 @@ class ProjectController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-        $all_projects = $query->paginate(8);
+        $all_projects = $query->paginate(5);
         $all_skills = Skill::all();
 
         return view('freelancers.projects.index', compact('all_projects', 'all_skills'));
@@ -168,7 +168,7 @@ class ProjectController extends Controller
             'order_id' => null,
             'transaction_id' => null,
             'amount'     => $project->reward_amount,
-            'fee' => $project->reward_amount * 0.1,
+            'fee' => null,
             'currency' => null,
             'status' => 'COMPLETED'
         ]);
