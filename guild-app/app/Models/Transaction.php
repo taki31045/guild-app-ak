@@ -27,6 +27,11 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function payee()
+    {
+        return $this->belongsTo(User::class, 'payee_id');
+    }
+
     // protected static function boot()
     // {
     //     parent::boot();

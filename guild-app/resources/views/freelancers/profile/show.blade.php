@@ -172,7 +172,7 @@
                                 {{$application->project->title}}
                             </a>
                         @else
-                            <a href="{{route('company.projects.show', $application->project->id)}}" class="fs-5 fw-bold">
+                            <a href="{{route('company.project.detail', $application->project->id)}}" class="fs-5 fw-bold">
                                 {{$application->project->title}}
                             </a>
                         @endif

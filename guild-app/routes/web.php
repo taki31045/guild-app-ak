@@ -40,14 +40,9 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
     Route::group(['prefix' => 'project', 'as' =>'project.'], function(){
         Route::get('/', [CompanyController::class, 'index'])->name('on_going');  //ongoing
         Route::get('/test/project_list', [CompanyController::class, 'project_list'])->name('list'); //list
-<<<<<<< HEAD
         Route::get('/project/{id}/project-details', [CompanyController::class, 'show'])->name('detail'); //detail
         Route::get('/project', [ProjectController::class, 'index'])->name('for_create'); //page for create
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('for_update'); //page for update
-=======
-        Route::post('/project/comment/store', [CompanyController::class, 'store'])->name('comment.store'); //comment store
-
->>>>>>> upstream/main
         Route::get('/company/recommended_freelancers/{projectId}', [CompanyController::class, 'recommendedFreelancers'])
         ->name('recommended_freelancers'); //recommendedfreelancer related project
         Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
@@ -82,12 +77,8 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
-<<<<<<< HEAD
     
     //contact
-=======
-
->>>>>>> upstream/main
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
         Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
@@ -102,24 +93,6 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/paypal/success', [PayPalController::class, 'success'])->name('success');
         Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     });
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-        //freelancer list
-
-
-
-
->>>>>>> upstream/main
     });
 
 
@@ -187,28 +160,22 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
 
 //admin
 Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
-
-    Route::get('/', function(){
-        return redirect()->route('admin.freelancer');
-    })
-    ->name('dashboard');
+    
     // freelancer management
-    Route::get('freelancer', [App\Http\Controllers\Admin\DashboardController::class, 'getAllFreelancers'])->name('freelancer');
+    Route::get('freelancer', [App\Http\Controllers\Admin\FreelancerController::class, 'getAllFreelancers'])->name('freelancer');
     Route::get('freelancer/profile/{id}/', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');
-    Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivate'])->name('freelancer.deactivate');
-    Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activate'])->name('freelancer.activate');
+    Route::delete('/freelancer/{id}/deactivate', [App\Http\Controllers\Admin\FreelancerController::class, 'deactivate'])->name('freelancer.deactivate');
+    Route::patch('/freelancer/{id}/activate', [App\Http\Controllers\Admin\FreelancerController::class, 'activate'])->name('freelancer.activate');
 
     // company management
-    Route::get('company', [App\Http\Controllers\Admin\DashboardController::class, 'getAllCompanies'])->name('company');
+    Route::get('company', [App\Http\Controllers\Admin\CompanyController::class, 'getAllCompanies'])->name('company');
     Route::get('company/profile/{id}/', [App\Http\Controllers\Company\ProfileController::class, 'show'])->name('company.profile');
-    Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateCompany'])->name('company.deactivate');
-    Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateCompany'])->name('company.activate');
+    Route::delete('/company/{id}/deactivate', [App\Http\Controllers\Admin\CompanyController::class, 'deactivateCompany'])->name('company.deactivate');
+    Route::patch('/company/{id}/activate', [App\Http\Controllers\Admin\CompanyController::class, 'activateCompany'])->name('company.activate');
 
-    // project management
-    Route::get('project', [App\Http\Controllers\Admin\DashboardController::class, 'getAllProjects'])->name('project');
-    Route::delete('/project/{id}/deactivate', [App\Http\Controllers\Admin\DashboardController::class, 'deactivateProject'])->name('project.deactivate');
-    Route::patch('/project/{id}/activate', [App\Http\Controllers\Admin\DashboardController::class, 'activateProject'])->name('project.activate');
+    // project list
+    Route::get('project', [App\Http\Controllers\Admin\ProjectController::class, 'getAllProjects'])->name('project');
 
     // transaction
-    Route::get('transaction', [App\Http\Controllers\Admin\DashboardController::class, 'getAllTransactions'])->name('transaction');
+    Route::get('transaction', [App\Http\Controllers\Admin\TransactionController::class, 'getAllTransactions'])->name('transaction');
 });

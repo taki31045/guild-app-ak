@@ -16,7 +16,9 @@ class ProfileController extends Controller
 
 //profileのページに移動
     public function show($id){
-        $user = User::with('company.projects')->findOrFail($id);
+        $user = User::with(['company.projects' => function ($query) {
+            $query->where('status', 'completed'); // ここでstatusが'completed'のものだけを取得
+        }])->findOrFail($id);
 
         $company = $user->company;
         $projects = $company ? $company->projects : collect();
@@ -28,15 +30,31 @@ class ProfileController extends Controller
 
         };
 
+        // このcompanyの持つprojectに紐づくfreelancer情報を取得
+        $projectsWithFreelancers = $projects->map(function ($project) {
+                
+            $freelancerTransaction = $project->transactions()
+                ->whereHas('payee', function ($query){
+                    $query->where('role_id', 3);
+                })
+                ->first();
+
+                $freelancer = optional($freelancerTransaction)->payee->username ?? 'N/A';
+
+            // `$project` に `$freelancer_name` を追加
+            $project->freelancer_name = $freelancer;
+            return $project;
+
+        });
+
         $transactions = Transaction::where('payer_id', $user->id)
                     ->orWhere('payee_id', $user->id)
                     ->with('project')
                     ->orderBy('created_at', 'desc')
                     ->get();
 
-        return view('companies.profile.show', compact('company','user','projects','transactions','layout'));
+        return view('companies.profile.show', compact('company','user','projectsWithFreelancers','projects','transactions','layout'));
     }
-
 
 //profileの編集
     public function edit($id){

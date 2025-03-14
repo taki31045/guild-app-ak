@@ -19,7 +19,7 @@
                             <i class="fa-solid fa-circle-user icon-lg"></i>
                         @endif
                         </td>
-                        <td style="width: 100px;">Name</td>
+                        <td style="width: 100px;">Freelancer Name:</td>
                         <td style="width: 200px;">
                             @if ($freelancer->trashed())
                                 {{ $freelancer->user->username }}
@@ -59,7 +59,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="width: 100px;">Email</td>
+                        <td style="width: 100px;">Email:</td>
                         <td style="width: 200px;">{{$freelancer->user->email }}</td>
                         <td></td>
                     </tr>
