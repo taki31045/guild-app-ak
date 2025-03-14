@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function admin(){
         return $this->hasOne(Admin::class)->withTrashed();
     }
-    
+
     public function company(){
         return $this->hasOne(Company::class)->withTrashed();
     }
