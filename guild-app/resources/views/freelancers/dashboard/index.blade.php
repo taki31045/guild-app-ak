@@ -24,7 +24,7 @@
                 @foreach ($applications as $application)
                     <div class="ongoing">
                         <div class="ongoing-box">
-                            <div class="Project-date">{{$application->project->deadline}}</div>
+                            <div class="Project-date">{{ \Carbon\Carbon::parse($application->project->deadline)->format('m/d') }}</div>
                             <div class="Project-details">
                                 <a href="{{route('freelancer.projects.show', $application->project->id)}}" class="fs-5">
                                     {{$application->project->title}}
@@ -92,14 +92,14 @@
                     @endforeach
                 </ul>
                 <a href="{{route('freelancer.todos.edit')}}" class="text-black">
-                    <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                    <i class="fa-solid fa-pen-to-square fa-2x edit-icon"></i>
                 </a>
             </div>
         </div>
 
 
         <div class="right-side">
-            <h3>Recent Projects</h3>
+            <h2>Recent Projects</h2>
             <div class="suggested-job">
                 @foreach ($latestProjects as $project)
                     <div class="job">
