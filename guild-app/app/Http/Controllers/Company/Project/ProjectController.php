@@ -1,19 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\company;
+namespace App\Http\Controllers\company\project;
+
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
-use App\Models\Project;
-use App\Models\Company;
-use App\Models\Skill;
-use App\Models\ProjectSkill;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
+use App\Models\Project;
+use App\Models\ProjectComment;
+use App\Http\Requests\CompanyRequest;
+use App\Models\Skill;
+use App\Models\ProjectSkill;
 
 class ProjectController extends Controller
 {
-//project作成のためのpageに移動 
+    //projectのcomment作成
+    public function store(CommentRequest $request){
+        ProjectComment::create([
+            'content'    => $request->content,
+            'user_id'    => Auth::user()->id,
+            'project_id' => $request->id
+        ]);
+
+        return redirect()->route('company.project.detail', $request->id);
+    }
+
+    //project作成のためのpageに移動 
     public function index(){
         $skills = Skill::all();
         return view('companies.projects.create', compact('skills'));
@@ -60,7 +74,6 @@ class ProjectController extends Controller
     public function edit($id){
         $project = Project::findOrFail($id);
         $skills = Skill::all();
-// >>>>>>> upstream/main
         return view('companies.projects.edit', compact('skills','project'));
     }
 
@@ -134,18 +147,4 @@ class ProjectController extends Controller
 
         return  redirect()->route('company.project.list');
     }
-
-
-
-
-
-
-
 }
-
-
-//project作成のためのpageに移動 
-//projectの作成
-//projectの編集をするためのpageに移動
-//projectの編集
-//projectのdelete

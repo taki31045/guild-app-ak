@@ -9,6 +9,7 @@
         <div class="info">
             <span><strong>Company Name:</strong> {{ $project->company->user->username }}</span>
             <span><strong>Freelancer Name:</strong> {{ $project->application?->freelancer?->user?->name ?? 'N/A' }}</span>
+            
             <span class="mt-3"><strong>Transaction History</strong></span>
         </div>
         
