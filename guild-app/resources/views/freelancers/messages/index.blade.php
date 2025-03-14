@@ -8,8 +8,8 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-center px-5">
-        <div class="col-3 user-sidebar">
+    <div class="row justify-content-center">
+        <div class="col-3 user-sidebar p-0">
             @foreach ($all_users as $user)
                 <div class="user">
                     <a href="{{route('freelancer.company.profile.show', $user->id)}}">
@@ -81,8 +81,6 @@
                     </form>
                 </div>
             @endif
-
-
         </div>
     </div>
 </div>
