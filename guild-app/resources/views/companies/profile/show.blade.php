@@ -119,8 +119,8 @@
                     <div class="tab-pane project-history">
                     @foreach ($projectsWithFreelancers  as $project)
                         <div class="project-history-contents w-100">
-                            <div class="project-date">{{ $project->formatted_deadline }}</div>
-                            <div class="project-details">
+                            <div class="project-date">{{ $project->deadline }}</div>
+                            <div class="project-details ms-3">
                                 <h3 class="h5 m-0"><a href="{{ route('company.project.detail', $project->id) }}" class="text-decoration-none text-dark" title="{{ $project->title }}">
                                     {{ \Str::limit($project->title, 60) }}
                                     </a></h3>
