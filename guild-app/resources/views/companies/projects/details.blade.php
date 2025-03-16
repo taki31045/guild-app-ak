@@ -56,7 +56,17 @@
                                 {{$project->status}}
                             </button>
                         @endif
+
                     </div>
+
+                    <div class="download mt-3">
+                        @if ($application != null)
+                            @if ($application->submission_path && $application->project->company->id == Auth::user()->company->id)
+                                <a href="{{ route('company.project.download.file', $application->id) }}" class="btn btn-secondary"><i class="fa-solid fa-download fa-2x"></i></a>
+                            @endif
+                        @endif
+                    </div>
+
                 </div>
             </div>
 

@@ -7,48 +7,62 @@
 main{
     flex-grow: 1;
     display: flex;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 
-.user-sidebar{
-    border-right: 1px solid black;
-    overflow-y: auto;
+.user-sidebar {
+    border-right: 2px solid #5a4632; /* クラシックな枠線 */
     height: 100vh;
+    overflow-y: auto;
 }
 
-.user-sidebar .user{
+/* ユーザーリストのデザイン */
+.user-sidebar .user {
     display: flex;
     align-items: center;
-    font-size: 50px;
-    margin-bottom: 25px;
-    background-color: #b39265;
-    margin-left: 2rem;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 8px 15px 0 32px;
+    font-size: 18px;
+    color: #4a3b2b;
+    background: rgba(245, 238, 226, 0.8); /* 柔らかい背景 */
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* ユーザー名のリンク */
+.user-sidebar .user a {
+    text-decoration: none;
+    color: #3d2c1e;
+    font-weight: 500;
+    margin-left: 12px
+}
+
+/* 選択中のユーザー */
+.user-sidebar .user.active-chat {
+    background: #d5bfa6; /* ほんのり強調 */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    color: #2e2218;
+}
+
+/* ホバー時 */
+.user-sidebar .user:hover {
+    background-color: #e7dac8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* プロフィールアイコンのデザイン */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 30px !important;
+    border-radius: 50%;
+    color: #5a4632;
+    background: rgba(255, 248, 236, 0.8);
     padding: 5px;
 }
 
-main .user-sidebar .user:hover{
-    transform: translateY(-5px);
-}
-
-.profile-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    border-radius: 50%;
-    color: black;
-}
-
-.user-sidebar a{
-    text-decoration: none;
-    font-size: 30px;
-    margin-left: 15px;
-    color: black;
-}
-
-.user i{
-    margin-right: 10px;
-}
 
 .none-message{
     text-align: center;
@@ -70,10 +84,11 @@ main .user-sidebar .user:hover{
 
 .message-content{
     flex-grow: 1;
-    padding: 50px 20px;
+    padding: 30px 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 160px);
+    padding-bottom: 80px;
 }
 
 .message{
@@ -93,7 +108,6 @@ main .user-sidebar .user:hover{
     max-width: 70%;
     font-size: 16px;
     color: #5a4a42;
-    line-height: 1.5;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -107,37 +121,44 @@ main .user-sidebar .user:hover{
     justify-content: flex-start;
 }
 
-.comment-form{
-    position: absolute;
-    bottom: 5px;
-    left: 20px;
-    right: 20px;
-    width: 100%;
+.comment-form {
     display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #5a4632;
     gap: 10px;
-    margin-top: 20px;
+    width: calc(100% - 40px);
+    margin: auto;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-.comment-input{
-    flex-grow: 1;
-    padding: 8px 15px;
+.comment-input {
+    padding: 10px 15px;
+    width: 90%;
     border: 1px solid #8d7761;
     border-radius: 10px;
-    font-size: 15px;
-    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    background: rgba(245, 238, 226, 0.8); /* 柔らかい背景 */
     outline: none;
     color: #5a4a42;
 }
 
-.comment-btn{
-    padding: 8px 15px;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: black;
+.comment-btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #8d6f52;
     color: white;
     border: none;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.comment-btn:hover{
-    background-color: rgb(49, 48, 48);
+.comment-btn:hover {
+    background-color: #735a42;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
