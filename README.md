@@ -71,7 +71,7 @@ php artisan serve
 このプロジェクトのデータベース構造は以下の通りです。
 
 ![15513C32-4890-48CB-A5B1-94F4F9B928E6](https://github.com/user-attachments/assets/5a2bea49-d674-4ff6-a3b8-69eeb1618742)
-```
+
 
 ## ⚙️ 環境設定 (.env)
 以下の環境変数を `.env` に設定してください。
