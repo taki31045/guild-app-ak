@@ -116,11 +116,10 @@ PAYPAL_CURRENCY=USD
 4. 承認後、開始
 5. ファイル提出
 6. 完了後、報酬受け取り
+7. 評価・レビュー機能
 
 ## 🔧 今後の改善点
-- [ ] **評価・レビュー機能** - フリーランサーと企業の信頼性向上
 - [ ] **通知機能** - メッセージや案件進行のリアルタイム通知
-- [ ] **案件フィードの最適化** - AIを活用したおすすめ案件表示
 - [ ] **多言語対応** - 英語、日本語、その他の言語対応
 - [ ] **モバイル最適化** - スマホ・タブレット向けのUI改善
 
@@ -128,5 +127,5 @@ PAYPAL_CURRENCY=USD
 このプロジェクトは MIT ライセンスのもとで公開されています。詳細は [LICENSE](LICENSE) を参照してください。
 
 ## 🔗 リンク
-[GitHub Repository](https://github.com/yourname/GUILD)
+[GitHub Repository](https://github.com/Kenta2360/guild-app)
 
