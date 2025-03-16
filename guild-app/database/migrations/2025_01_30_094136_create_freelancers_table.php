@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->decimal('total_earnings', 10, 2)->default(0);
-            $table->decimal('avg_evaluation', 3, 2)->default(0); // Overall rating
             $table->timestamps();
             $table->softDeletes();
 

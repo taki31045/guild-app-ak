@@ -7,7 +7,8 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{ asset('js/submitWork.js') }}"></script>
 @endsection
 
 @section('content')
@@ -58,21 +59,27 @@
 
                         <!-- Button trigger modal -->
                         @if ($project->status == 'open' && $project->required_rank - 1 <= Auth::user()->freelancer->rank)
-                            <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
-                                Request
-                            </button>
+                        <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
+                            Request
+                        </button>
                         @elseif($application && $application->freelancer->user->id == Auth::user()->id)
-                            <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
-                            @include('freelancers.dashboard.modal.status')
+                        <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                        @include('freelancers.dashboard.modal.status')
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
                                 {{$project->status}}
                             </button>
                         @endif
                     </div>
-
                     @include('freelancers.projects.modal.request')
 
+                    <div class="download mt-3">
+                        @if ($application != null)
+                            @if ($application->submission_path && $application->freelancer_id == Auth::user()->freelancer->id)
+                                <a href="{{ route('freelancer.download.file', $application->id) }}" class="btn btn-secondary"><i class="fa-solid fa-download fa-2x"></i></a>
+                            @endif
+                        @endif
+                    </div>
                 </div>
             </div>
 
@@ -114,14 +121,7 @@
                             </div>
                         @endif
                     @endforeach
-                </div>
-                <form action="{{route('freelancer.projects.comments.store')}}" method="post" class="comment-form">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$project->id}}">
-                    <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
-                    <button type="submit" class="comment-btn">Send</button>
-
-                    {{-- @if ($errors->any())
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -129,7 +129,13 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif --}}
+                    @endif
+                </div>
+                <form action="{{route('freelancer.projects.comments.store')}}" method="post" class="comment-form">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$project->id}}">
+                    <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
+                    <button type="submit" class="comment-btn">Send</button>
                 </form>
             </div>
 

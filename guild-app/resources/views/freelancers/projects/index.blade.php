@@ -43,9 +43,16 @@
                     </select>
 
                     <!-- Reward Amount -->
-                    <label for="rank">Reward Amount</label>
-                    <input type="number" name="min_reward" placeholder="Min Reward" value="{{ request('min_reward') }}">
-                    <input type="number" name="max_reward" placeholder="Max Reward" value="{{ request('max_reward') }}">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="rank">Min Reward</label>
+                            <input type="number" name="min_reward" placeholder="Min Reward" value="{{ request('min_reward') }}">
+                        </div>
+                        <div class="col-6">
+                            <label for="rank">Max Reward</label>
+                            <input type="number" name="max_reward" placeholder="Max Reward" value="{{ request('max_reward') }}">
+                        </div>
+                    </div>
 
                     <!-- Latest or Oldest -->
                     <label for="rank">Sort Order</label>
@@ -96,7 +103,7 @@
                 @endforeach
 
                 {{-- paginate --}}
-                <div class="d-flex justify-content-start">
+                <div class="d-flex justify-content-start mt-3">
                     {{$all_projects->links()}}
                 </div>
             </div>

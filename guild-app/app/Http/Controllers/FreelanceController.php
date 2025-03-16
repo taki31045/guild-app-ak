@@ -27,7 +27,7 @@ class FreelanceController extends Controller
             $freelancer = collect();
         }
 
-        $latestProjects = Project::where('status', 'open')->latest()->take(8)->get();
+        $latestProjects = Project::where('status', 'open')->latest()->take(6)->get();
 
         $monthlyEarnings = Transaction::where('payee_id', Auth::user()->id)
                                         ->whereMonth('created_at', Carbon::now()->month)

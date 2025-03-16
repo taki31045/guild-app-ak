@@ -31,6 +31,7 @@ main{
     outline: none;
     font-size: 16px;
     background-color: transparent;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 .filter-form input:focus,
@@ -52,6 +53,7 @@ main{
     border: none;
     border-radius: 5px;
     font-size: 16px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 .filter-form button:hover{
@@ -77,6 +79,26 @@ main a:hover{
     padding: 35px 30px;
     border-bottom: 1px solid #9a9797;
 }
+
+
+.job:hover {
+    background-color: #e5d4b7 !important;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+    border-bottom: 2px solid #b39265;
+}
+
+
+.job:hover .job-date {
+    background-color: #b39265 !important;
+    color: #fff !important;
+}
+
+.job:hover .job-detail a {
+    color: #8d6b46 !important;
+}
+
+
 .job-detail-container{
     display: flex;
     align-items: center;
@@ -130,11 +152,38 @@ main a:hover{
 }
 
 
-.pagination, .page-item, .page-link {
-    border: none !important;
-    box-shadow: none !important;
+/* ページネーションのコンテナ */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
 }
 
-.page-item::after {
-    content: none;
+
+.page-link {
+    color: #5a4636 !important;
+    background-color: #f1e3c6 !important;
+    border: 1px solid #b39265 !important;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
 }
+
+.page-link:hover {
+    background-color: #d5b88a !important;
+    color: #3f2d20 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #b39265 !important;
+    color: #fff !important;
+    border-color: #8d6b46 !important;
+}
+
+.page-item.disabled .page-link {
+    color: #a08b72 !important;
+    background-color: #e5d4b7 !important;
+    border-color: #c4b7a6 !important;
+}
+

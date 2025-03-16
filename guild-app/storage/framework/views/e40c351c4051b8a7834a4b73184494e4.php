@@ -43,6 +43,13 @@
     transform: translate(-50%, -50%); /* 画像の中央に配置 */
 
 }
+
+.icon-md {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 </style>
 
 <body style="font-family: Georgia, 'Times New Roman', Times, serif; ">
@@ -51,8 +58,8 @@
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <div class="image-container">
-                        <img src="<?php echo e(asset('images/gu ld.png')); ?>" alt="Base Image" class="base-image">
-                        <img src="<?php echo e(asset('images/logo-removebg-preview 1.png')); ?>" alt="Overlay Image" class="overlay-image">
+                        <img src="<?php echo e(asset('images/gu ld (1).png')); ?>" alt="Base Image" class="base-image">
+                        <img src="<?php echo e(asset('images/logo-removebg-preview 1 (2).png')); ?>" alt="Overlay Image" class="overlay-image">
                     </div>
 
                 </a>
@@ -63,17 +70,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li> <a href="<?php echo e(route('company.project.on_going')); ?>">On-Going</a></li>
-                        <li class="ms-4"> <a href="<?php echo e(route('company.project.list')); ?>">Job list</a></li>
+                        <li> <a href="<?php echo e(route('company.project.on_going')); ?>" class="text-decoration-none text-white">On-Going</a></li>
+                        <li class="ms-4"> <a href="<?php echo e(route('company.project.list')); ?>" class="text-decoration-none text-white">Job list</a></li>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <!-- Authentication Links -->
-                        <li><a href="<?php echo e(route('company.contact.with_freelancer', Auth::user()->id)); ?>">mail</a></li>
-                        <li><a href="<?php echo e(route('company.profile.profile', Auth::user()->id)); ?>">profile</a></li>
-                        <li><a href="<?php echo e(route('company.contact.contact', Auth::user()->id)); ?>">contact</a></li>
+                        <li><a href="<?php echo e(route('company.contact.with_freelancer', Auth::user()->id)); ?>" class="text-decoration-none text-white"><i class="fa-regular fa-envelope icon-md"></i></a></li>
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('login')): ?>
                         <li class="nav-item">
@@ -88,12 +93,25 @@
                         <?php endif; ?>
                         <?php else: ?>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <?php echo e(Auth::user()->name); ?>
 
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <!-- Profile Link -->
+                                <a class="dropdown-item" href="<?php echo e(route('company.profile.profile', Auth::user()->id)); ?>">
+                                    <?php echo e(__('Profile')); ?>
+
+                                </a>
+
+                                <!-- Contact Link -->
+                                <a class="dropdown-item" href="<?php echo e(route('company.contact.contact', Auth::user()->id)); ?>">
+                                    <?php echo e(__('Contact')); ?>
+
+                                </a>
+                                <hr>
+                                <!-- Log Out -->
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

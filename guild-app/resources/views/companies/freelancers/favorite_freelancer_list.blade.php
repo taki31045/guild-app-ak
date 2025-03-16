@@ -57,7 +57,7 @@
 
     @php
         // フリーランサーの数が3未満なら、ダミーオブジェクトを追加
-        while(count($favoriteFreelancers) < 3) {
+        while(count($favoriteFreelancers) < 4) {
             $favoriteFreelancers[] = (object)[
                 'freelancer' => (object)[
                     'user' => (object)[

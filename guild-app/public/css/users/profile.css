@@ -24,6 +24,7 @@ main{
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    border: 1px solid grey;
 }
 
 
@@ -37,6 +38,7 @@ main{
     border-radius: 10px;
     width: 800px;
     padding: 20px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 .profile-header{
@@ -47,6 +49,10 @@ main{
 
 .edit-icon{
     font-size: 25px;
+}
+
+.edit-icon:hover{
+    color: brown;
 }
 
 .profile-content p{
@@ -79,6 +85,7 @@ main{
     max-width: 800px;
     padding: 20px;
     margin-top: 10px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 .evaluation-item{
@@ -106,7 +113,7 @@ main{
     height: 100%;
     background: linear-gradient(90deg, #8a2be2, #ac93c3);
     text-align: right;
-    padding-right: 5px;
+    padding: 0 20px 0 5px;
     font-size: 12px;
     font-weight: bold;
     color: white;
@@ -117,13 +124,15 @@ main{
 
 .Project-container{
     border: 1px solid black;
+    border-radius: 10px;
     margin-top: 50px!important;
     width: 70%;
     margin: auto;
     margin-bottom: 80px;
-    height: 600px;
+    height: 500px;
     padding: 0 15px 15px 15px;
     overflow-y: auto;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 .tab-menu{
@@ -151,6 +160,10 @@ main{
     cursor: pointer;
 }
 
+.tab-label:hover{
+    color: brown;
+}
+
 
 
 .tab-content{
@@ -165,6 +178,7 @@ main{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 15px;
+    box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
 }
 
 #Project-history:checked ~ .tab-content .Project-history,
@@ -208,19 +222,8 @@ main a:hover{
     padding: 5px;
 }
 
-.status-label.ongoing {
-    background-color: #ffc107; /* 黄色 */
-    color: #333;
-}
-
-.status-label.completed {
-    background-color: #28a745; /* 緑 */
-    color: white;
-}
-
-.status-label.pending {
-    background-color: #dc3545; /* 赤 */
-    color: white;
+.status-label:hover{
+    background-color: rgb(170, 168, 168);
 }
 
 
@@ -255,7 +258,7 @@ main a:hover{
     display: none;
     border-radius: 5px;
     z-index: 1000;
-} 
+}
 
 
 .dropdown div{
@@ -293,4 +296,4 @@ main a:hover{
     font-weight: bold;
     cursor: pointer;
 }
- 
+

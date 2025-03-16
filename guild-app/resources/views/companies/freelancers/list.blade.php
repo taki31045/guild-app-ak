@@ -87,6 +87,8 @@
     </form>
 </div>
 
+
+
 <div class="freelancer-container mt-5">
 @foreach ($freelancers as $freelancer)
 <div class="card freelancer-card">
