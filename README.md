@@ -9,15 +9,15 @@ GUILDは、フリーランサーと企業をつなぐクラウドソーシング
 ### フリーランサー向け
 - ✅ ユーザー登録・ログイン（メール認証）
 - ✅ プロフィール編集・ToDo管理
-- ✅ プロジェクト一覧表示・検索・絞り込み
+- ✅ 案件一覧表示・検索・絞り込み
 - ✅ メッセージ機能
 - ✅ Google SMTPを使用した管理者への問い合わせ
-- ✅ プロジェクトいいね機能
+- ✅ 案件いいね機能
 - ✅ ファイル提出・ダウンロード機能
 
 ### 企業向け
-- ✅ プロジェクト作成・編集・削除
-- ✅ プロジェクト一覧表示
+- ✅ 案件作成・編集・削除
+- ✅ 案件一覧表示
 - ✅ おすすめフリーランサーの表示
 - ✅ メッセージ機能
 - ✅ Google SMTPを使用した管理者への問い合わせ
@@ -59,31 +59,31 @@ php artisan serve
 ```
 
 ## ⚙️ 環境設定 (.env)
+以下の環境変数を `.env` に設定してください。
 ```
 APP_NAME=GUILD
 APP_ENV=local
-APP_KEY=（php artisan key:generate で生成）
 APP_DEBUG=true
 APP_URL=http://localhost
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=guild
-DB_USERNAME=root
-DB_PASSWORD=
+DB_DATABASE=guild_project
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
 
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
-MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-email-password
+MAIL_USERNAME=your_email
+MAIL_PASSWORD=your_email_password
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=your-email@gmail.com
-MAIL_FROM_NAME="GUILD Support"
 
-PAYPAL_CLIENT_ID=your-paypal-client-id
-PAYPAL_SECRET=your-paypal-secret
+PAYPAL_MODE=sandbox
+PAYPAL_SANDBOX_CLIENT_ID=your_paypal_client_id
+PAYPAL_SANDBOX_CLIENT_SECRET=your_paypal_client_secret
+PAYPAL_CURRENCY=USD
 ```
 
 ## 💡 使用方法
