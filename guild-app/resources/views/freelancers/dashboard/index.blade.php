@@ -8,6 +8,7 @@
 
 @section('scripts')
     <script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{asset('js/submitWork.js') }}"></script>
 @endsection
 
 @section('content')
