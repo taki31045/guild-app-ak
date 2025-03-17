@@ -55,16 +55,23 @@
 
                     <div class="detail-bottom">
                         {{-- back link --}}
-                        <a href="{{url()->previous()}}" class="fs-2"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
+                        <a href="{{url()->previous()}}" class="fs-2  back-link"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
 
                         <!-- Button trigger modal -->
                         @if ($project->status == 'open' && $project->required_rank - 1 <= Auth::user()->freelancer->rank)
-                        <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
-                            Request
-                        </button>
+                            <button type="button" class="request-btn" data-bs-toggle="modal" data-bs-target="#requestModal">
+                                Request
+                            </button>
                         @elseif($application && $application->freelancer->user->id == Auth::user()->id)
-                        <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
-                        @include('freelancers.dashboard.modal.status')
+                            <div class="bottom-right">
+                                @if ($application != null)
+                                    @if ($application->submission_path && $application->freelancer_id == Auth::user()->freelancer->id)
+                                        <a href="{{ route('freelancer.download.file', $application->id) }}"><i class="fa-solid fa-download download-icon"></i></a>
+                                    @endif
+                                @endif
+                                <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                            </div>
+                            @include('freelancers.dashboard.modal.status')
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
                                 {{$project->status}}
@@ -72,14 +79,6 @@
                         @endif
                     </div>
                     @include('freelancers.projects.modal.request')
-
-                    <div class="download mt-3">
-                        @if ($application != null)
-                            @if ($application->submission_path && $application->freelancer_id == Auth::user()->freelancer->id)
-                                <a href="{{ route('freelancer.download.file', $application->id) }}" class="btn btn-secondary"><i class="fa-solid fa-download fa-2x"></i></a>
-                            @endif
-                        @endif
-                    </div>
                 </div>
             </div>
 

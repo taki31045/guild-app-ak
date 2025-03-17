@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Freelancer;
 use App\Models\Skill;
 use App\Models\Transaction;
-
+use Illuminate\Support\Facades\Auth;
 class FreelancerController extends Controller
 {
     //freelancer listのページに移動。また絞り込み
@@ -41,6 +41,7 @@ class FreelancerController extends Controller
 
 
     public function show($id){
+
         $user = User::findOrFail($id);
         $freelancer = $user->freelancer;
 

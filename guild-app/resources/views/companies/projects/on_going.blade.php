@@ -5,75 +5,83 @@
 @section('content')
 
 <style>
-    body {
-        background-color: #F4EEE0;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+body {
+    background-color: #F4EEE0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100%;
+    height: 100%;
+}
 
-    /* タイトルの強調 */
-    h1 {
-        color: rgba(66, 66, 66, 0.9);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        font-weight: bold;
-    }
+/* タイトルの強調 */
+h1 {
+    color: rgba(66, 66, 66, 0.9);
+    text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    font-size: 3vw; /* 画面サイズに応じたフォント */
+}
 
-    /* カードのスタイル */
-    .card {
-        border: none;
-        transition: 0.3s ease-in-out;
-        border-radius: 30px;
-        background-color: rgba(66, 66, 66, 0.9);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
+/* カードのスタイル */
+.card {
+    border: none;
+    transition: 0.3s ease-in-out;
+    border-radius: 5%;
+    background-color: rgba(66, 66, 66, 0.9);
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding: 2%;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 10px 10px 20px rgba(13, 2, 27, 0.8);
-    }
+.card:hover {
+    transform: translateY(-1%);
+    box-shadow: 1vw 1vw 2vw rgba(13, 2, 27, 0.8);
+}
 
-    .card-header, .card-body {
-        color: #F4EEE0;
+.card-header, .card-body {
+    color: #F4EEE0;
+    border: none;
+    font-size: 1.5vw;
+}
 
-        border: none;
-    }
+/* ステータスバッジの強調 */
+.status-badge {
+    min-width: 15%;
+    text-align: center;
+    border-radius: 1vw;
+    padding: 1.5% 2%;
+    background-color: #C976DE;
+    color: white;
+    box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 1vw;
+}
 
-    /* ステータスバッジの強調 */
-    .status-badge {
-        min-width: 100px;
-        text-align: center;
-        border-radius: 8px;
-        padding: 8px 12px;
-        background-color: #C976DE;
-        color: white;
-        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-        font-weight: bold;
-    }
+/* 価格の強調 */
+.fw-bold {
+    font-size: 2vw;
+}
 
-    /* 価格の強調 */
-    .fw-bold {
-        font-size: 1.2rem;
-    }
+/* アクションボタン */
+.actions a {
+    text-decoration: none;
+    margin-right: 2%;
+}
 
-    /* アクションボタン */
-    .actions a {
-        text-decoration: none;
-        margin-right: 10px;
-    }
+/* 星評価のデザイン */
+.star {
+    font-size: 1.5vw;
+    cursor: default;
+}
 
-    /* 星評価のデザイン */
-    .star {
-        font-size: 18px;
-        cursor: default;
-    }
+.text-warning {
+    color: #ffc107 !important;
+}
 
-    .text-warning {
-        color: #ffc107 !important;
-    }
+.text-muted {
+    color: #6c757d !important;
+}
 
-    .text-muted {
-        color: #6c757d !important;
-    }
 </style>
 
 <div class="container mt-5">

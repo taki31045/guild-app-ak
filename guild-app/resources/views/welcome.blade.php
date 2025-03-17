@@ -23,37 +23,43 @@
 
         <style>
 
-            @media (min-width: 1024px){
-                .container{
-                    margin-top: 500px;
-                    margin-left: 350px;
-                }
-            }
+        
+            body {
+    background-image: url("{{ asset('images/1.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 背景固定 */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
 
-            body{
-                background-image: url("{{ asset('images/1.jpg')}}");
-                background-size: cover;
-            }
-            a {
+a {
     display: block;
-    border: solid 3px;
-    width: 300px;
-    height: 70px;
-    margin-top: 30px;
+    border: solid 0.3vw;  /* 相対的な枠線サイズ */
+    width: 30%;  /* 横幅を画面幅の30% */
+    height: 10vh; /* 高さを画面の10% */
+    margin-top: 5vh;  /* 画面の高さに応じて調整 */
     text-align: center;
-    line-height: 70px; 
+    line-height: 10vh;  /* ボタン内の文字を中央に配置 */
+    font-size: 2vw;  /* フォントサイズを画面幅に合わせる */
     transition: background-color 1s ease-in-out, transform 0.5s ease-in-out;
 }
 
 a:hover {
     background-color: rgb(101, 96, 58);
-    transform: scale(1.2); /* 中央から拡大 */
-}
-a:active {
-    border-color:  rgb(101, 96, 58);
-    color: rgb(101, 96, 58)
+    transform: scale(1.2);
 }
 
+a:active {
+    border-color: rgb(101, 96, 58);
+    color: rgb(101, 96, 58);
+}
+.contain{
+    margin-top: 50vh;
+    margin-left: 25vh;
+}
 
     
         </style>
@@ -61,13 +67,17 @@ a:active {
             @if (Route::has('login'))
 
                 @auth
+                <div class="contain">
                     <a
-                        href="{{ route('company.project.on_going') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    href="{{ route('company.project.on_going') }}"
+                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
-                        Dashboard
-                    </a>
+                    Dashboard
+                </a>
+
+                </div>
                 @else
+                <div class="contain">
                     <a
                         href="{{ route('login') }}"
                     >
@@ -80,6 +90,8 @@ a:active {
                         >
                             Register
                         </a>
+
+                </div>
                     @endif
                 @endauth
 
