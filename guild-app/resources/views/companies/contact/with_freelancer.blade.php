@@ -57,6 +57,12 @@
         align-items: start;
         justify-content: end;
     }
+
+    a {
+    color: inherit;  /* 親要素の色を継承 */
+    text-decoration: none;  /* 下線を削除 */
+}
+
 </style>
 
 <div class="d-flex">
