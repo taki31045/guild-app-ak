@@ -64,7 +64,7 @@ require __DIR__.'/freelancer.php';
 
 //admin
 Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
-    
+
     // freelancer management
     Route::get('freelancer', [App\Http\Controllers\Admin\FreelancerController::class, 'getAllFreelancers'])->name('freelancer');
     Route::get('freelancer/profile/{id}/', [App\Http\Controllers\Freelancer\ProfileController::class, 'show'])->name('freelancer.profile');

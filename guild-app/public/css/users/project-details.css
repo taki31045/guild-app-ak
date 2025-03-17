@@ -145,7 +145,30 @@ main a:hover{
 .detail-bottom{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 40px;
+}
+
+.detail-bottom .back-link{
+    text-decoration: none;
+}
+
+.detail-bottom .back-link:hover{
+    color: rgb(49, 48, 48);
+}
+
+.bottom-right{
+    display: flex;
+    align-items: center;
+}
+
+.bottom-right .download-icon{
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.bottom-right .download-icon:hover{
+    color: rgb(49, 48, 48);
 }
 
 .request-btn{
@@ -159,7 +182,6 @@ main a:hover{
 
 .request-btn:hover{
     background-color: rgb(49, 48, 48);
-
 }
 
 .skill-tag{
