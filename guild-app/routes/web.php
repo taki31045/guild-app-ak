@@ -98,4 +98,5 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
     // transaction
     Route::get('transaction', [App\Http\Controllers\Admin\TransactionController::class, 'getAllTransactions'])->name('transaction');
+
 });
