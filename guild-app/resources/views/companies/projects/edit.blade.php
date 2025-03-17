@@ -14,6 +14,10 @@
     .star.active {
         color: gold;
     }
+
+    .card{
+        background-color: #F4EEE0;
+    }
 </style>
     <div class="create-container justify-center-content">
         <div class="card rounded  w-50 m-auto mt-3">
@@ -64,7 +68,11 @@
                     <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $project->description }}</textarea>
                 </div>
         
-                <button type="submit" class="btn btn-secondary mt-3 mb-2" style="margin-left: 150px; padding: 0px 200px;">submit</button>
+                <button type="submit" class="btn btn-secondary mt-3 mb-2"
+                style="width: 300px; display: block; margin-left: auto; margin-right: auto;">
+                Submit
+            </button>
+            
             </form>
         </div>
     </div>
