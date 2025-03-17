@@ -8,6 +8,7 @@
 
 @section('scripts')
     <script src="{{asset('js/favorite-project.js')}}"></script>
+    <script src="{{ asset('js/submitWork.js') }}"></script>
 @endsection
 
 @section('content')
@@ -54,7 +55,7 @@
 
                     <div class="detail-bottom">
                         {{-- back link --}}
-                        <a href="{{url()->previous()}}" class="fs-2"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
+                        <a href="{{url()->previous()}}" class="fs-2  back-link"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
 
                         <!-- Button trigger modal -->
                         @if ($project->status == 'open' && $project->required_rank - 1 <= Auth::user()->freelancer->rank)
@@ -62,7 +63,14 @@
                                 Request
                             </button>
                         @elseif($application && $application->freelancer->user->id == Auth::user()->id)
-                            <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                            <div class="bottom-right">
+                                @if ($application != null)
+                                    @if ($application->submission_path && $application->freelancer_id == Auth::user()->freelancer->id)
+                                        <a href="{{ route('freelancer.download.file', $application->id) }}"><i class="fa-solid fa-download download-icon"></i></a>
+                                    @endif
+                                @endif
+                                <button class="request-btn {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                            </div>
                             @include('freelancers.dashboard.modal.status')
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
@@ -70,9 +78,7 @@
                             </button>
                         @endif
                     </div>
-
                     @include('freelancers.projects.modal.request')
-
                 </div>
             </div>
 
@@ -129,7 +135,6 @@
                     <input type="hidden" name="id" value="{{$project->id}}">
                     <input type="text" name="content" class="comment-input" placeholder="Write a comment...">
                     <button type="submit" class="comment-btn">Send</button>
-
                 </form>
             </div>
 

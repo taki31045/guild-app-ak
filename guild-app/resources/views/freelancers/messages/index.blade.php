@@ -8,15 +8,15 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-center px-5">
-        <div class="col-3 user-sidebar">
+    <div class="row justify-content-center">
+        <div class="col-3 user-sidebar p-0">
             @foreach ($all_users as $user)
-                <div class="user">
+                <div class="user @if($user->id == $receiver->id) active-chat @endif">
                     <a href="{{route('freelancer.company.profile.show', $user->id)}}">
                         @if ($user->avatar)
                             <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
                         @else
-                            <i class="fa-solid fa-circle-user"></i>
+                            <i class="fa-solid fa-circle-user profile-icon"></i>
                         @endif
                     </a>
                     <a href="{{route('freelancer.messages.index', $user->id)}}">{{$user->username}}</a>
@@ -60,8 +60,8 @@
                             </div>
                         @endif
                     @endforeach
-
-
+                </div>
+                <div class="comment-form">
                     {{-- エラー表示 --}}
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -72,7 +72,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('freelancer.messages.store', $receiver->id)}}" method="post" class="comment-form">
+                    <form action="{{route('freelancer.messages.store', $receiver->id)}}" method="post" class="w-100">
                         @csrf
 
                         <input type="hidden" name="receiver_id" value="{{$receiver->id}}">
@@ -81,8 +81,6 @@
                     </form>
                 </div>
             @endif
-
-
         </div>
     </div>
 </div>

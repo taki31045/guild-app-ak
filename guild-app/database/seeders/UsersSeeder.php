@@ -27,9 +27,9 @@ class UsersSeeder extends Seeder
             ],
             // Company Users (username = 会社名, name = 会社名)
             [
-                'username' => 'Tech Corp',
-                'name' => 'Tech Corp',
-                'email' => 'contact@techcorp.com',
+                'username' => 'Kredo Japan',
+                'name' => 'Kredo Japan',
+                'email' => 'Kredo@example.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'role_id' => 2, // Company

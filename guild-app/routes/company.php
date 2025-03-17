@@ -12,6 +12,7 @@ use App\Http\Controllers\Company\Evaluation\EvaluationController;
 use App\Http\Controllers\Company\Admin\AdminController;
 //paypal
 use App\Http\Controllers\PayPalController;
+use App\Models\Message;
 
 //company
 Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('company.')->group(function () {
@@ -20,6 +21,8 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/', [ProjectViewController::class, 'index'])->name('on_going');  //ongoing
         Route::get('/test/project_list', [ProjectViewController::class, 'project_list'])->name('list'); //list
         Route::get('/project/{id}/project-details', [ProjectViewController::class, 'show'])->name('detail'); //detail
+        Route::get('/download/{id}', [App\Http\Controllers\Freelancer\ProjectController::class, 'downloadFile'])->name('download.file');
+
         Route::get('/project', [ProjectController::class, 'index'])->name('for_create'); //page for create
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('for_update'); //page for update
         Route::post('/create', [ProjectController::class, 'create'])->name('create');  //create
@@ -55,12 +58,12 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
         Route::get('/evaluation/{id}', [EvaluationController::class, 'index'])->name('evaluation');
         Route::post('/evaluate', [EvaluationController::class, 'store'])->name('store');
     });
-    
+
     //contact
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
         Route::get('/contact', [AdminController::class, 'contact'])->name('contact');
-        Route::POST('/message/{id}/store', [AdminController::class, 'store'])->name('store');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::post('/contact/send', [AdminController::class, 'sendMail'])->name('send_to_admin');
     });
 

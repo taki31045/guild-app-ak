@@ -7,10 +7,7 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to request to join this project?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="{{route('freelancer.projects.request', $project->id)}}" class="btn btn-primary">Request</a>
+                <a href="{{route('freelancer.projects.request', $project->id)}}" class="btn btn-primary mt-4 w-100">Request</a>
             </div>
         </div>
     </div>

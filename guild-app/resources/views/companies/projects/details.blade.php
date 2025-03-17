@@ -47,10 +47,17 @@
 
                     <div class="detail-bottom">
                         {{-- back link --}}
-                        <a href="{{url()->previous()}}" class="fs-2"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
+                        <a href="{{url()->previous()}}" class="fs-2 back-link"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
 
                         @if($application)
-                            <button class="request-btn {{ $application->status }} bg-black bg-opacity-50">{{ ucfirst($application->status) }}</button>
+                            <div class="bottom-right">
+                                @if ($application != null)
+                                    @if ($application->submission_path && $application->project->company->id == Auth::user()->company->id)
+                                        <a href="{{ route('company.project.download.file', $application->id) }}"><i class="fa-solid fa-download download-icon"></i></a>
+                                    @endif
+                                @endif
+                                <button class="request-btn {{ $application->status }} bg-black bg-opacity-50">{{ ucfirst($application->status) }}</button>
+                            </div>
                         @else
                             <button type="button" class="request-btn bg-black bg-opacity-50">
                                 {{$project->status}}

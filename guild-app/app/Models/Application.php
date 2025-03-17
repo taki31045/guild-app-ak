@@ -9,7 +9,9 @@ class Application extends Model
     protected $fillable = [
         'freelancer_id',
         'project_id',
-        'status'
+        'status',
+        'submission_path',
+        'submitted_at'
     ];
 
     public function freelancer(){
