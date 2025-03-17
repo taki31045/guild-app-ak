@@ -89,10 +89,20 @@ $customImages = [
     @else
         <img src="{{ $customImages[$loop->index % count($customImages)] }}" class="card-img-top" alt="Freelancer Image">
     @endif
-    
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{ $freelancer->freelancer->user->name }}</h5>
+        @if(isset($freelancer->freelancer->user->id))
+        <div class="row">
+            <div class="col-6">
+            <a href="{{ route('company.freelancer.profile.show', $freelancer->freelancer->user->id)}}" class="card-title">{{ $freelancer->freelancer->user->name }}</a>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a href="{{ route('company.contact.with_freelancer',  $freelancer->freelancer->user->id)}}" class="btn btn-sm btn-outline-secondary ">Message</a>
+        </div>
+    </div>
+    @else
+        <p>No profile found</p>
+    @endif
         <p class="paragraph">{{ $freelancer->freelancer->user->email }}</p>
         <p>
             @for ($i = 1; $i <= 5; $i++)
@@ -119,5 +129,5 @@ $customImages = [
     </div>
 </div>
 @endforeach
-
+<script src="{{asset('js/favorite-freelancer.js')}}"></script>
 @endsection

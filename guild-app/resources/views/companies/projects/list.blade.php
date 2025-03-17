@@ -15,7 +15,18 @@
     .card {
         background-color: rgba(66, 66, 66, 0.8);
         color: #F4EEE0;
-        border-radius: 10px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 10px 10px 20px rgba(13, 2, 27, 0.8);
+    }
+
+    .card-header, .card-body {
+        color: #F4EEE0;
+        border: none;
     }
     .deadline-box {
         width: 50px;
@@ -95,7 +106,7 @@
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         @foreach ($chunk as $project)
                         <div class="col">
-                            <div class="card border rounded p-3 shadow-sm h-100">
+                            <div class="card border mt-1  p-3  h-100">
                                 <div class="row align-items-center">
                                     <div class="col-2 d-flex justify-content-center">
                                         <div class="deadline-box">
@@ -103,12 +114,12 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        @if ($project->id)
-                                        <a href="{{route('company.project.detail', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
-                                    @else
-                                        <span class="fs-5 fw-bold text-muted">{{ $project->title }}</span>
-                                    @endif
-                                    
+                                      @if ($project->id)
+    <a href="{{route('company.project.detail', (int)$project->id)}}" class="fs-5 fw-bold text-truncate">{{ $project->title }}</a>
+@else
+    <span class="fs-5 fw-bold text-muted">{{ $project->title }}</span>
+@endif
+
                                         <div class="d-flex align-items-center mt-2">
                                             <p class="mb-0 me-2 text-muted fw-bold">Price: {{ $project->reward_amount }}</p>
                                             @for ($i = 1; $i <= 5; $i++)

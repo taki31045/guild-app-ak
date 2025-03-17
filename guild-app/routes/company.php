@@ -59,8 +59,8 @@ Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('com
     //contact
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function(){
         Route::get('/message/{id}/show', [MessageController::class, 'index'])->name('with_freelancer');
-        Route::get('/contact', [MessageController::class, 'contact'])->name('contact');
-        Route::POST('/message/{id}/store', [AdminController::class, 'store'])->name('store');
+        Route::get('/contact', [AdminController::class, 'contact'])->name('contact');
+        Route::POST('/message/{id}/store', [MessageController::class, 'store'])->name('store');
         Route::post('/contact/send', [AdminController::class, 'sendMail'])->name('send_to_admin');
     });
 

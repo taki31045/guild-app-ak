@@ -74,6 +74,7 @@ Route::middleware(['freelancer', 'auth', 'verified'])->prefix('freelancer')->nam
     // contact
     Route::get('/contact', [App\Http\Controllers\Freelancer\ContactController::class, 'index'])->name('contact');
     Route::post('/contact/send', [App\Http\Controllers\Freelancer\ContactController::class, 'sendMail'])->name('contact.send');
+    Route::get('/chart',[App\Http\Controllers\Freelancer\ChartController::class, 'index'])->name('chart');
 
 });
 
