@@ -30,7 +30,7 @@ class LoginController extends Controller
         $user = auth()->user(); // ログインユーザー情報を取得
 
         if ($user->role_id == 1) {
-            return route('admin.dashboard'); // Admin用ダッシュボード
+            return route('admin.freelancer'); // Admin用ダッシュボード
         }
         
         

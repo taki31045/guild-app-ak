@@ -103,7 +103,7 @@
                 @endforeach
 
                 {{-- paginate --}}
-                <div class="d-flex justify-content-start">
+                <div class="d-flex justify-content-start mt-3">
                     {{$all_projects->links()}}
                 </div>
             </div>

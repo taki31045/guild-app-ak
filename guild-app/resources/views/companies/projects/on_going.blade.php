@@ -137,6 +137,11 @@ h1 {
                                 @elseif ($project_progress['application']['status'] == 'submitted')
                                     <a href="{{ route('company.evaluation.evaluation', $project_progress['id']) }}" class="btn btn-sm btn-success">Accept</a>
                                     <a href="{{ route('company.project.status.submittedDecline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
+
+                                    @if ($project_progress->application->submission_path)
+                                        <a href="{{ route('company.project.download.file', $project_progress->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
+                                    @endif
+
                                 @endif
                             </div>
                         @endif

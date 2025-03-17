@@ -18,17 +18,9 @@
             @endif
             <div class="rank">
                 <span class="stars">
-                    @if ($user->freelancer->rank === 1)
-                        ⭐️
-                    @elseif($user->freelancer->rank === 2)
-                        ⭐️⭐️
-                    @elseif($user->freelancer->rank === 3)
-                        ⭐️⭐️⭐️
-                    @elseif($user->freelancer->rank === 4)
-                        ⭐️⭐️⭐️⭐️
-                    @elseif($user->freelancer->rank === 5)
-                        ⭐️⭐️⭐️⭐️⭐️
-                    @endif
+                    @for($i = 1; $i <= $user->freelancer->rank; $i++)
+                        <i class="fa-solid fa-star"></i>
+                    @endfor
                 </span>
             </div>
         </div>
@@ -172,7 +164,7 @@
                                 {{$application->project->title}}
                             </a>
                         @else
-                            <a href="{{route('company.projects.show', $application->project->id)}}" class="fs-5 fw-bold">
+                            <a href="{{route('company.project.detail', $application->project->id)}}" class="fs-5 fw-bold">
                                 {{$application->project->title}}
                             </a>
                         @endif

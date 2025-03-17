@@ -47,11 +47,11 @@
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="capital" class="form-label">Capital</label>
+                    <label for="capital" class="form-label">Capital ($)</label>
                     <input type="number" name="capital" class="form-control" value="{{ $user->company->capital }}">
                 </div>
                 <div class="col-md-6">
-                    <label for="annualsales" class="form-label">Annual Sales</label>
+                    <label for="annualsales" class="form-label">Annual Sales ($)</label>
                     <input type="number" name="annualsales" class="form-control" value="{{ $user->company->annualsales }}">
                 </div>
             </div>

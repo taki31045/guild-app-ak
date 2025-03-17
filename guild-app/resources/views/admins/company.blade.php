@@ -19,7 +19,7 @@
                                 <i class="fa-solid fa-circle-user icon-lg"></i>
                             @endif
                         </td>
-                        <td style="width: 150px;">Company name</td>
+                        <td style="width: 150px;">Company name:</td>
                         <td>
                             @if ($company->trashed())
                                 {{ $company->user->username }}
@@ -60,13 +60,13 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="width: 150px;">email</td>
+                        <td style="width: 150px;">Email:</td>
                         <td>{{ $company->user->email }}</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="width: 150px;">Website</td>
+                        <td style="width: 150px;">Website:</td>
                         <td>{{ $company->website }}</td>
                         <td></td>
                     </tr>

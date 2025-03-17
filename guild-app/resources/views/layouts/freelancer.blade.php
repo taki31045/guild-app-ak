@@ -35,7 +35,6 @@
 
             <nav>
                 <ul>
-                    <li><a href="#">About</a></li>
                     <li><a href="{{route('freelancer.projects.index')}}">Project</a></li>
                     <li><a href="{{route('freelancer.messages.index', Auth::user()->id)}}">Message</a></li>
                     <li><a href="{{route('freelancer.profile.show', Auth::user()->id)}}">Profile</a></li>
@@ -61,7 +60,6 @@
             <footer>
                 <nav>
                     <ul>
-                        <li><a href="#">About</a></li>
                         <li><a href="{{route('freelancer.projects.index')}}">Project</a></li>
                         <li><a href="{{route('freelancer.messages.index', Auth::user()->id)}}">Message</a></li>
                         <li><a href="{{route('freelancer.profile.show', Auth::user()->id)}}">Profile</a></li>

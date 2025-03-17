@@ -5,17 +5,15 @@
 @section('page-content')
     @foreach ($projects as $project)
     <div class="job-container">
-        <div class="job-header">Project No.{{ $project->id }}</div>
+        <div class="job-header">Project No.{{ $project->id }} : {{ $project->title }}</div>
         <div class="info">
             <span><strong>Company Name:</strong> {{ $project->company->user->username }}</span>
-            <span><strong>Freelancer Name:</strong> {{ $project->application?->freelancer?->user?->name ?? 'N/A' }}</span>
-            
-            <span class="mt-3"><strong>Transaction History</strong></span>
+            <span><strong>Freelancer Name:</strong>  
+                {{ $project->freelancerPayee?->username ?? 'N/A' }}
+            </span>
+            <span class="mt-4 fw-bold fs-5"><strong>Transaction History</strong></span>
         </div>
         
-        @if($project->transactions->isEmpty())
-            <p>No transactions available for this project.</p>
-        @else
             <table class="transaction-table">
                 <thead>
                 <tr>
@@ -30,9 +28,9 @@
                         <td>{{ $transaction->created_at->format('d M Y') }}</td>
                         <td>
                             @if ($transaction->payee_id == $adminId)
-                            {{ $transaction->amount }}
+                            {{ $transaction->amount + $transaction->fee }}
                             @else
-                            {{ -$transaction->amount }}
+                            {{ -($transaction->amount + $transaction->fee) }}
                             @endif
                         </td>
                         <td>{{ $transaction->type }}</td>
@@ -41,7 +39,6 @@
                         
                 </tbody>
             </table>
-        @endif
     </div>
     @endforeach
 

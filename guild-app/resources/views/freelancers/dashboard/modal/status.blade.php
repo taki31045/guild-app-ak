@@ -23,12 +23,26 @@
             <div class="modal-body">
                 @if ($application->status === 'requested')
                     If you cancel this project request, it cannot be undone.
+                    <a href="{{route('freelancer.projects.cancel', $application->id)}}" class="btn btn-danger mt-4 w-100">Cancel Request</a>
                 @elseif($application->status === 'accepted')
                     Once you start this project, the status will be change to "ongoing".
+                    <a href="{{route('freelancer.projects.start', $application->id)}}" class="btn btn-primary mt-4 w-100">Start</a>
                 @elseif($application->status === 'rejected')
                     This project request has been rejected.
+                    <a href="{{route('freelancer.projects.acknowledge', $application->id)}}" class="btn btn-primary mt-4 w-100">Acknowledge</a>
                 @elseif($application->status === 'ongoing')
-                    Once you submit your work, it will be reviewed.
+                    <p>Once you submit your work, it will be reviewed.</p>
+
+                    <!-- エラー表示エリア -->
+                    <div id="error-messages-{{$application->id}}" class="alert alert-danger d-none"></div>
+
+                    <form id="submitForm-{{$application->id}}" action="{{route('freelancer.projects.submit', $application->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <label for="file-upload-{{$application->id}}" class="form-label">Upload your work file</label>
+                        <input type="file" class="form-control" id="file-upload-{{$application->id}}" name="submission_file" required>
+                        <button type="submit" class="btn btn-primary mt-4 w-100">Submit Work</button>
+                    </form>
+
                 @elseif($application->status === 'resulted')
                     @if ($application->project->evaluation !== NULL)
                         <div class="evaluation-container">
@@ -60,24 +74,9 @@
                         </div>
                     @endif
                     If you receive your payment, the project status will be changed to "completed."
+                    <a href="{{route('freelancer.projects.result', $application->id)}}" class="btn btn-primary mt-4 w-100">result</a>
                 @else
                     Current project Status: {{ucfirst($application->status)}}
-                @endif
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
-                @if ($application->status === 'requested')
-                    <a href="{{route('freelancer.projects.cancel', $application->id)}}" class="btn btn-danger">Cancel Request</a>
-                @elseif($application->status === 'accepted')
-                    <a href="{{route('freelancer.projects.start', $application->id)}}" class="btn btn-primary">Start</a>
-                @elseif($application->status === 'rejected')
-                    <a href="{{route('freelancer.projects.acknowledge', $application->id)}}" class="btn btn-primary">Acknowledge</a>
-                @elseif($application->status === 'ongoing')
-                    <a href="{{route('freelancer.projects.submit', $application->id)}}" class="btn btn-primary">Submit</a>
-                @elseif($application->status === 'resulted')
-                    <a href="{{route('freelancer.projects.result', $application->id)}}" class="btn btn-primary">result</a>
                 @endif
             </div>
         </div>
