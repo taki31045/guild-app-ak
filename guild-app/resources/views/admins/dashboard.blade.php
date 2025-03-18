@@ -21,6 +21,7 @@
                                 <a href="{{ route('admin.transaction') }}" class="list-group-item {{ request()->is('admin/transaction') ? 'active' : '' }}">
                                     Transaction
                                 </a>
+                                
                             </div>
                         </div>
                     {{-- @endif --}}
