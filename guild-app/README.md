@@ -139,5 +139,5 @@ PAYPAL_CURRENCY=USD
 - [ ] **モバイル最適化** - スマホ・タブレット向けのUI改善
 
 ## 🔗 リンク
-[GitHub Repository](https://github.com/your_account)
+[GitHub Repository](https://github.com/Kenta2360/guild-app)
 
