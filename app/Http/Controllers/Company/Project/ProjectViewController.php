@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\company\project;
+namespace App\Http\Controllers\Company\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class ProjectViewController extends Controller
     //ongoingのページに今ongoingのプロジェクトを表示させる。また、移動
     public function index(){
         $user = Auth::user();
-        $projects_progress = $user->company->projects->where('status','ongoing')->all();
+        $projects_progress = $user->company->projects->where('status','ongoing')->get();
 
         $company = $user->company;
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。
