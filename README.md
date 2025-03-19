@@ -1,66 +1,143 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# GUILD
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 概要
+GUILDは、フリーランサーと企業をつなぐクラウドソーシングプラットフォームです。
+フリーランサーが仕事を見つけやすく、企業が適切な人材を効率的に採用できる仕組みを提供します。（3/28までにデプロイ予定）
 
-## About Laravel
+## 🎯 主な機能
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### フリーランサー向け
+- ✅ ユーザー登録・ログイン（メール認証）
+- ✅ プロフィール編集・ToDo管理
+- ✅ 案件一覧表示・検索・絞り込み
+- ✅ メッセージ機能
+- ✅ Google SMTPを使用した管理者への問い合わせ
+- ✅ 案件いいね機能
+- ✅ ファイル提出・ダウンロード機能
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 企業向け
+- ✅ 案件作成・編集・削除
+- ✅ 案件一覧表示
+- ✅ おすすめフリーランサーの表示
+- ✅ メッセージ機能
+- ✅ Google SMTPを使用した管理者への問い合わせ
+- ✅ 提出されたファイルのダウンロード
+- ✅ プロフィール編集
+- ✅ 報酬支払い機能（PayPal対応）
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 管理者向け
+- ✅ フリーランサー・企業・プロジェクトの一覧表示・非表示
+- ✅ 支払い履歴一覧
 
-## Learning Laravel
+## 🛠 使用技術
+- **フロントエンド:** HTML / CSS / JavaScript / Bootstrap
+- **バックエンド:** PHP / Laravel
+- **データベース:** MySQL
+- **その他:** Font Awesome
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📥 インストール方法
+```bash
+# リポジトリをクローン
+git clone https://github.com/Kenta2360/guild-app.git
+cd guild-app
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# 1. 依存関係をインストール (Laravelのパッケージ)
+composer install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 2. 環境設定ファイルを作成
+cp .env.example .env
 
-## Laravel Sponsors
+# 3. アプリケーションキーを生成
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 4. 設定をクリアして反映
+php artisan config:clear
+php artisan cache:clear
 
-### Premium Partners
+# 5. データベースを作成し、マイグレーション + Seeder 実行
+php artisan migrate --seed
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# 6. npm 依存関係をインストール (フロントエンド)
+npm install && npm run dev
 
-## Contributing
+# 7. (必要なら) 本番環境用のビルド
+npm run build
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 8. 開発サーバーを起動
+php artisan serve
+```
 
-## Code of Conduct
+## 📊 ERD（データベース設計）
+このプロジェクトのデータベース構造は以下の通りです。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![15513C32-4890-48CB-A5B1-94F4F9B928E6](https://github.com/user-attachments/assets/5a2bea49-d674-4ff6-a3b8-69eeb1618742)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## ⚙️ 環境設定 (.env)
+以下の環境変数を `.env` に設定してください。
+```
+APP_NAME=GUILD
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
 
-## License
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=guild_project
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_email
+MAIL_PASSWORD=your_email_password
+MAIL_ENCRYPTION=tls
+
+PAYPAL_MODE=sandbox
+PAYPAL_SANDBOX_CLIENT_ID=your_paypal_client_id
+PAYPAL_SANDBOX_CLIENT_SECRET=your_paypal_client_secret
+PAYPAL_CURRENCY=USD
+```
+
+## 💡 使用方法
+
+### デモアカウント
+- **管理者**
+  - メール: `admin@example.com`
+  - パスワード: `adminpassword`
+- **企業**
+  - メール: `info@cloudsolutions.com`
+  - パスワード: `password`
+- **フリーランサー**
+  - メール: `emily@freelance.com`
+  - パスワード: `password`
+
+### 基本的な利用フロー
+#### 企業
+1. ユーザー登録
+2. プロフィール編集
+3. プロジェクト作成
+4. リクエスト受け取り
+5. 支払い
+6. ファイル受け取り
+7. 案件完了
+
+#### フリーランサー
+1. ユーザー登録
+2. プロフィール編集
+3. 案件リクエスト
+4. 承認後、開始
+5. ファイル提出
+6. 完了後、報酬受け取り
+7. 評価・レビュー機能
+
+## 🔧 今後の改善点
+- [ ] **通知機能** - メッセージや案件進行のリアルタイム通知
+- [ ] **多言語対応** - 英語、日本語、その他の言語対応
+- [ ] **モバイル最適化** - スマホ・タブレット向けのUI改善
+
+## 🔗 リンク
+[GitHub Repository](https://github.com/Kenta2360/guild-app)
+
