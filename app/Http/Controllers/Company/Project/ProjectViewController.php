@@ -20,11 +20,6 @@ class ProjectViewController extends Controller
         $company = $user->company;
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。
         $favoriteFreelancers = $company->favoriteFreelancers;
-        $user = Auth::user();
-if (!$user->company) {
-    abort(403, 'Company not found.');
-}
-
 
         return view('companies.projects.on_going', compact('favoriteFreelancers','projects_progress'));
     }
@@ -33,7 +28,7 @@ if (!$user->company) {
     //project_listを表示させる。　また移動
     public function project_list(){
         $user = Auth::user();
-        $projects = $user->company->projects->where('status','open')->all();
+        $projects = $user->company->projects->where('status','open')->get();
 
         // 各プロジェクトごとのおすすめフリーランサーの数を取得
     foreach ($projects as $project) {
@@ -44,6 +39,11 @@ if (!$user->company) {
             $query->whereIn('skills.id', $skillIds);
         })->count();
     }
+
+    if (!$user->company) {
+        abort(403, 'No company associated with this user.');
+    }
+    
 
         return view('companies.projects.list', compact('projects'));
     }
