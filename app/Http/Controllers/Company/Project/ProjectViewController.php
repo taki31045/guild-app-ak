@@ -15,11 +15,16 @@ class ProjectViewController extends Controller
     //ongoingのページに今ongoingのプロジェクトを表示させる。また、移動
     public function index(){
         $user = Auth::user();
-        $projects_progress = $user->company->projects->where('status','ongoing')->get();
+        $projects_progress = $user->company->projects->where('status','ongoing')->all();
 
         $company = $user->company;
         // $favoriteFreelancers = $company->favoriteFreelancers()->with('freelancer.user')->get();なるべく一度のクエリでまとめることができるなら、withを使用してN＋１問題を回避してパフォーマンスをよくしよう。
         $favoriteFreelancers = $company->favoriteFreelancers;
+        $user = Auth::user();
+if (!$user->company) {
+    abort(403, 'Company not found.');
+}
+
 
         return view('companies.projects.on_going', compact('favoriteFreelancers','projects_progress'));
     }
