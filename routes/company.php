@@ -1,9 +1,9 @@
 <?php
 //company
-use App\Http\Controllers\company\project\ProjectViewController;
-use App\Http\Controllers\company\project\ProjectController;
-use App\Http\Controllers\company\project\ProjectStatusController;
-use App\Http\Controllers\company\project\ProjectRecommendationController;
+use App\Http\Controllers\Company\Project\ProjectViewController;
+use App\Http\Controllers\Company\Project\ProjectController;
+use App\Http\Controllers\Company\Project\ProjectStatusController;
+use App\Http\Controllers\Company\Project\ProjectRecommendationController;
 use App\Http\Controllers\Company\Profile\ProfileController;
 use App\Http\Controllers\Company\Message\MessageController;
 use App\Http\Controllers\Company\Freelancer\FavoriteFreelancerController;
