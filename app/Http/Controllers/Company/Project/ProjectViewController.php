@@ -28,7 +28,7 @@ class ProjectViewController extends Controller
     //project_listを表示させる。　また移動
     public function project_list(){
         $user = Auth::user();
-        $projects = $user->company->projects->where('status','open')->get();
+        $projects = $user->company->projects->where('status','open')->all();
 
         // 各プロジェクトごとのおすすめフリーランサーの数を取得
     foreach ($projects as $project) {
@@ -39,11 +39,6 @@ class ProjectViewController extends Controller
             $query->whereIn('skills.id', $skillIds);
         })->count();
     }
-
-    if (!$user->company) {
-        abort(403, 'No company associated with this user.');
-    }
-    
 
         return view('companies.projects.list', compact('projects'));
     }
