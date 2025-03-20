@@ -153,7 +153,7 @@ a {
                                     <a href="{{ route('company.project.status.submittedDecline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
 
                                     @if ($project_progress->application->submission_path)
-                                        <a href="{{ route('company.project.download.file', $project_progress->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
+                                        <a href="{{ route('company.project.download.file', $project_progress->application->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
                                     @endif
 
                                 @endif
