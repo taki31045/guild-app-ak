@@ -122,11 +122,17 @@ main a:hover{
     font-size: 20px;
 }
 
+.detail-bottom .back-link{
+    text-decoration: none;
+}
+
+.detail-bottom .back-link:hover{
+    color: rgb(49, 48, 48);
+}
+
 .edit-icon:hover{
     color: brown;
 }
-
-
 
 .suggested-job{
     display: grid;
