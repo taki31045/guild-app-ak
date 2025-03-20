@@ -86,6 +86,7 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     // statistics
     Route::get('/statistics', [App\Http\Controllers\Admin\StatisticsController::class, 'index'])->name('statistics');
     Route::get('/statistics/data', [App\Http\Controllers\Admin\StatisticsController::class, 'getStatisticsData'])->name('statistics.data');
-    Route::get('/statistics/skills', [App\Http\Controllers\Admin\StatisticsController::class, 'getSkillStatistics'])->name('statistics.skills');
+    Route::get('/statistics/skills', [App\Http\Controllers\Admin\StatisticsController::class, 'getProjectSkillStatistics'])->name('statistics.skills');
+    Route::get('/statistics/freelancer-skills', [App\Http\Controllers\Admin\StatisticsController::class, 'getFreelancerSkillStatistics'])->name('statistics.freelancer_skills');
 
 });

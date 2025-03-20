@@ -19,10 +19,16 @@
             </div>
         </div>
 
-        <!-- スキルのグラフ（追加） -->
-        <div class="mt-5">
-            <h4>Most Required Skills</h4>
-            <canvas id="skillsChart"></canvas>
+        <!-- スキルのグラフを横並びで追加 -->
+        <div class="d-flex justify-content-between mt-5">
+            <div style="width: 48%;">
+                <h4>Project Skills Trends</h4>
+                <canvas id="projectSkillsChart"></canvas>
+            </div>
+            <div style="width: 48%;">
+                <h4>Freelancer Skills Trends</h4>
+                <canvas id="freelancerSkillsChart"></canvas>
+            </div>
         </div>
 
     </div>
@@ -38,14 +44,11 @@
             url: "{{ route('admin.statistics.data') }}",
             method: "GET",
             success: function (response) {
-                console.log("取得データ:", response); // デバッグ用
-
                 if (!response || !response.weeks) {
                     console.error("データが正しく取得できませんでした:", response);
                     return;
                 }
 
-                // 各キャンバスを取得
                 const ctxRegistrations = document.getElementById('registrationsChart').getContext('2d');
                 const ctxProjects = document.getElementById('projectsChart').getContext('2d');
 
@@ -53,7 +56,7 @@
                 new Chart(ctxRegistrations, {
                     type: 'line',
                     data: {
-                        labels: response.weeks, // 週ごとのラベル
+                        labels: response.weeks,
                         datasets: [{
                             label: 'Number of Registrations',
                             data: response.userCounts,
@@ -62,16 +65,7 @@
                             fill: true
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                suggestedMin: 0,
-                                suggestedMax: Math.max(...response.userCounts) + 2
-                            }
-                        }
-                    }
+                    options: { responsive: true, scales: { y: { beginAtZero: true } } }
                 });
 
                 // プロジェクト数のグラフ
@@ -87,65 +81,71 @@
                             fill: true
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                suggestedMin: 0,
-                                suggestedMax: Math.max(...response.projectCounts) + 2
-                            }
-                        }
-                    }
+                    options: { responsive: true, scales: { y: { beginAtZero: true } } }
                 });
 
             },
-            error: function (error) {
-                console.error("データ取得エラー:", error);
-            }
+            error: function (error) { console.error("データ取得エラー:", error); }
         });
 
-        // スキルのデータ取得
+        // プロジェクトのスキル推移グラフ
         $.ajax({
             url: "{{ route('admin.statistics.skills') }}",
             method: "GET",
             success: function (response) {
-                console.log("スキルデータ:", response); // デバッグ用
-
                 if (!response || response.length === 0) {
                     console.error("スキルデータがありません。", response);
                     return;
                 }
 
-                const skillNames = response.map(skill => skill.name);
-                const skillCounts = response.map(skill => skill.count);
+                const weeks = response.weeks;
+                const datasets = response.skills.map(skill => ({
+                    label: skill.name,
+                    data: skill.weekly_counts,
+                    borderColor: getRandomColor(),
+                    fill: false
+                }));
 
-                const ctxSkills = document.getElementById('skillsChart').getContext('2d');
-
-                new Chart(ctxSkills, {
-                    type: 'bar',
-                    data: {
-                        labels: skillNames,
-                        datasets: [{
-                            label: 'Number of Projects Requiring Each Skill',
-                            data: skillCounts,
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: { beginAtZero: true }
-                        }
-                    }
+                new Chart(document.getElementById('projectSkillsChart').getContext('2d'), {
+                    type: 'line',
+                    data: { labels: weeks, datasets },
+                    options: { responsive: true, scales: { y: { beginAtZero: true } } }
                 });
             },
-            error: function (error) {
-                console.error("スキルデータ取得エラー:", error);
-            }
+            error: function (error) { console.error("スキルデータ取得エラー:", error); }
         });
+
+        // フリーランサーのスキル推移グラフ
+        $.ajax({
+            url: "{{ route('admin.statistics.freelancer_skills') }}",
+            method: "GET",
+            success: function (response) {
+                if (!response || response.length === 0) {
+                    console.error("フリーランサースキルデータがありません。", response);
+                    return;
+                }
+
+                const weeks = response.weeks;
+                const datasets = response.skills.map(skill => ({
+                    label: skill.name,
+                    data: skill.weekly_counts,
+                    borderColor: getRandomColor(),
+                    fill: false
+                }));
+
+                new Chart(document.getElementById('freelancerSkillsChart').getContext('2d'), {
+                    type: 'line',
+                    data: { labels: weeks, datasets },
+                    options: { responsive: true, scales: { y: { beginAtZero: true } } }
+                });
+            },
+            error: function (error) { console.error("フリーランサースキルデータ取得エラー:", error); }
+        });
+
+        // ランダムな色を生成する関数
+        function getRandomColor() {
+            return `hsl(${Math.random() * 360}, 70%, 50%)`;
+        }
     });
 </script>
 @endsection
