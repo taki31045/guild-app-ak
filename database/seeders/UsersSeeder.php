@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
             [
                 'username' => 'Kredo Japan',
                 'name' => 'Kredo Japan',
-                'email' => 'Kredo@example.com',
+                'email' => 'kredo@example.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'role_id' => 2, // Company

@@ -124,6 +124,7 @@ main a:hover{
 
 .detail-bottom .back-link{
     text-decoration: none;
+    color: black;
 }
 
 .detail-bottom .back-link:hover{
@@ -247,7 +248,7 @@ main a:hover{
     height: 100%;
     background: linear-gradient(90deg, #8a2be2, #ac93c3);
     text-align: right;
-    padding-right: 5px;
+    padding: 0 20px 0 5px;
     font-size: 12px;
     font-weight: bold;
     color: white;
