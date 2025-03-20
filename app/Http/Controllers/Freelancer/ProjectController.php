@@ -207,7 +207,6 @@ class ProjectController extends Controller
             'order_id' => null,
             'transaction_id' => null,
             'amount'     => $project->reward_amount,
-            'fee' => null,
             'currency' => null,
             'status' => 'COMPLETED'
         ]);
