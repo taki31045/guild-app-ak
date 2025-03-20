@@ -21,7 +21,9 @@
                                 <a href="{{ route('admin.transaction') }}" class="list-group-item {{ request()->is('admin/transaction') ? 'active' : '' }}">
                                     Transaction
                                 </a>
-                                
+                                <a href="{{ route('admin.statistics') }}" class="list-group-item {{ request()->is('admin/statistics') ? 'active' : '' }}">
+                                    Statistics
+                                </a>
                             </div>
                         </div>
                     {{-- @endif --}}
