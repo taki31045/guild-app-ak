@@ -32,33 +32,7 @@ require __DIR__.'/freelancer.php';
 
 
 
-// <<<<<<< HEAD
-//     //Project
-//     Route::get('/projects', [App\Http\Controllers\Freelancer\ProjectController::class, 'index'])->name('projects.index');
-//     Route::get('/projects/{id}/show', [App\Http\Controllers\Freelancer\ProjectController::class, 'show'])->name('projects.show');
-//     Route::post('/projects/comments/store', [App\Http\Controllers\Freelancer\ProjectController::class, 'store'])->name('projects.comments.store');
-//     Route::post('/projects/{project}/favorite', [App\Http\Controllers\Freelancer\ProjectController::class, 'favorite'])->name('projects.favorite');
 
-//     // Project Status
-//     Route::get('/projects/{id}/request', [App\Http\Controllers\Freelancer\ProjectController::class, 'request'])->name('projects.request');
-//     Route::get('/projects/{id}/cancel', [App\Http\Controllers\Freelancer\ProjectController::class, 'cancelRequest'])->name('projects.cancel');
-//     Route::get('/projects/{id}/start', [App\Http\Controllers\Freelancer\ProjectController::class, 'start'])->name('projects.start');
-//     Route::get('/projects/{id}/reject-acknowledge', [App\Http\Controllers\Freelancer\ProjectController::class, 'rejectAcknowledge'])->name('projects.acknowledge');
-//     Route::get('/projects/{id}/submit', [App\Http\Controllers\Freelancer\ProjectController::class, 'submit'])->name('projects.submit');
-//     Route::get('/projects/{id}/result', [App\Http\Controllers\Freelancer\ProjectController::class, 'result'])->name('projects.result');
-
-//     //message
-//     Route::get('/messages/{id}/show', [App\Http\Controllers\Freelancer\MessageController::class, 'index'])->name('messages.index');
-//     Route::post('/messages/{id}/store', [App\Http\Controllers\Freelancer\MessageController::class, 'store'])->name('messages.store');
-
-//     // contact
-//     Route::get('/contact', [App\Http\Controllers\Freelancer\ContactController::class, 'index'])->name('contact');
-//     Route::post('/contact/send', [App\Http\Controllers\Freelancer\ContactController::class, 'sendMail'])->name('contact.send');
-//     Route::get('/chart',[App\Http\Controllers\Freelancer\ChartController::class, 'index'])->name('chart');
-
-// });
-// =======
-// >>>>>>> upstream/main
 
 
 

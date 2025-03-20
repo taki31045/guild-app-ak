@@ -28,7 +28,7 @@ h1 {
     background-color: rgba(66, 66, 66, 0.9);
     box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 80%;
+    width:100%;
     margin: auto;
     padding: 2%;
 }
@@ -46,7 +46,7 @@ h1 {
 
 /* ステータスバッジの強調 */
 .status-badge {
-    min-width: 15%;
+    min-width: 30%;
     text-align: center;
     border-radius: 1vw;
     padding: 1.5% 2%;
@@ -81,6 +81,10 @@ h1 {
 .text-muted {
     color: #6c757d !important;
 }
+a {
+    color: inherit;  /* 親要素の色を継承 */
+    text-decoration: none;  /* 下線を削除 */
+}
 
 </style>
 
@@ -104,15 +108,25 @@ h1 {
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header">
+                        @if($project_progress)
+                        <a href="{{ route('company.project.detail', $project_progress->id)}}" class="m-0  text-uppercase">
+                            {{ $project_progress ? $project_progress['title'] : 'No Project' }}
+                        </a>
+                        @else
                         <h5 class="m-0 text-uppercase">
                             {{ $project_progress ? $project_progress['title'] : 'No Project' }}
                         </h5>
+                        @endif
                     </div>
                     <div class="card-body">
                         <p class="text-truncate">
                             {{ $project_progress ? $project_progress['description'] : 'No description available.' }}
                         </p>
+                        @if($project_progress)
+                        <a href="{{ route('company.freelancer.profile.show',$project_progress['application']['freelancer']['user']['id'])}}">Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</a>
+                        @else
                         <p>Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</p>
+                        @endif
                         <span class="fw-bold">Price: {{ $project_progress ? $project_progress['reward_amount'] : '-' }}</span>
 
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -139,7 +153,7 @@ h1 {
                                     <a href="{{ route('company.project.status.submittedDecline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
 
                                     @if ($project_progress->application->submission_path)
-                                        <a href="{{ route('company.project.download.file', $project_progress->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
+                                        <a href="{{ route('company.project.download.file', $project_progress->application->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
                                     @endif
 
                                 @endif

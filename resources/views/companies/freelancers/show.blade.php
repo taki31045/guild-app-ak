@@ -190,7 +190,7 @@
                 <div class="project-status">
                     <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
                 </div>
-                @include('users.modals.status')
+
             </div>
         @endforeach
 

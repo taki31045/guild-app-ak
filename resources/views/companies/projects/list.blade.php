@@ -129,11 +129,11 @@
                                     </div>
                                     <div class="col-5">
                                         @if ($project->id)
-                                            <a href="{{ route('company.project.recommended_freelancers', $project->id) }}" class="recommend-circle ms-5">
+                                            <a href="{{ route('company.project.recommended_freelancers', $project->id) }}" class="recommend-circle  ms-5 ">
                                                 {{ $project->recommended_freelancers_count }}
                                             </a>
-                                            <a href="{{ route('company.project.for_update', $project->id) }}" class="btn btn-sm btn-outline-secondary mb-1 ms-3">Edit</a>
-                                            <button class="btn btn-sm btn-outline-secondary mb-1" data-bs-toggle="modal" data-bs-target="#delete-project-{{ $project->id }}">
+                                            <a href="{{ route('company.project.for_update', $project->id) }}" class="btn btn-sm btn-outline-secondary mt-4 ms-3">Edit</a>
+                                            <button class="btn btn-sm btn-outline-secondary mt-4" data-bs-toggle="modal" data-bs-target="#delete-project-{{ $project->id }}">
                                                 Delete
                                             </button>
                                             @include('companies.projects.modal.delete')
