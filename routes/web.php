@@ -29,13 +29,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 require __DIR__.'/company.php';
 require __DIR__.'/freelancer.php';
 
-
-
-
-
-
-
-
 //admin
 Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
 

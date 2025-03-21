@@ -81,9 +81,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function favoriteFreelancers()
-{
-    return $this->belongsToMany(Freelancer::class, 'favorite_freelancers', 'company_id', 'freelancer_id');
-}
+    public function favoriteFreelancers(){
+        return $this->belongsToMany(Freelancer::class, 'favorite_freelancers', 'company_id', 'freelancer_id');
+    }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'payee_id');
+    }
 }

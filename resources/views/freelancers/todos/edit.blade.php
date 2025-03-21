@@ -45,8 +45,7 @@
                     <button type="submit" class="btn btn-dark w-100 mt-3">Update</button>
                 </form>
             </div>
-            <a href="{{route('freelancer.index', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
-
+            <a href="{{route('freelancer.index', Auth::user()->id)}}" class="fs-2  text-decoration-none text-black"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
         </div>
     </div>
     @endsection

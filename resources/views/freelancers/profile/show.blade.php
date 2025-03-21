@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="{{asset($styles)}}">
 @endsection
 
+@section('scripts')
+    <script src="{{asset('js/submitWork.js') }}"></script>
+@endsection
+
 @section('content')
 
 <div class="profile-container">
@@ -37,11 +41,11 @@
                 <div class="profile-content mb-3">
                     <table class="detail">
                         <tr>
-                            <th class="pe-5">Username</th>
+                            <th>Username</th>
                             <td>{{$user->username}}</td>
                         </tr>
                         <tr>
-                            <th class="pe-5">Name</th>
+                            <th>Name</th>
                             <td>{{$user->name}}</td>
                         </tr>
                         <tr>
@@ -64,12 +68,20 @@
                             <th>Facebook</th>
                             <td>{{$user->freelancer->facebook}}</td>
                         </tr>
+                        <tr>
+                            <th>Rank Point</th>
+                            <td>{{$user->freelancer->rank_point}}</td>
+                        </tr>
                         @if (Auth::user()->id == $user->id)
                             <tr>
                                 <th>Total Earnings</th>
                                 <td>{{$user->freelancer->total_earnings}}</td>
                             </tr>
                         @endif
+                        <tr>
+                            <th>Completed projects</th>
+                            <td>{{count($user->transactions)}}</td>
+                        </tr>
                     </table>
                 </div>
 
@@ -86,25 +98,25 @@
                 <div class="evaluation-item">
                     <span class="evaluation-title">Quality</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('quality') * 10}}%">{{$evaluations->avg('quality') * 10}}%</div>
+                        <div class="progress" style="width: {{round($evaluations->avg('quality') * 10)}}%">{{round($evaluations->avg('quality') * 10)}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Communication</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('communication') * 10}}%">{{$evaluations->avg('communication') * 10}}%</div>
+                        <div class="progress" style="width: {{round($evaluations->avg('communication') * 10)}}%">{{round($evaluations->avg('communication') * 10)}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Adherence</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('adherence') * 10}}%">{{$evaluations->avg('adherence') * 10}}%</div>
+                        <div class="progress" style="width: {{round($evaluations->avg('adherence') * 10)}}%">{{round($evaluations->avg('adherence') * 10)}}%</div>
                     </div>
                 </div>
                 <div class="evaluation-item">
                     <span class="evaluation-title">Total</span>
                     <div class="evaluation-bar">
-                        <div class="progress" style="width: {{$evaluations->avg('total') * 10}}%">{{$evaluations->avg('total') * 10}}%</div>
+                        <div class="progress" style="width: {{round($evaluations->avg('total') * 10)}}%">{{round($evaluations->avg('total') * 10)}}%</div>
                     </div>
                 </div>
             </div>
@@ -186,9 +198,10 @@
                 {{-- status --}}
                 {{-- requested, accepted, rejected, ongoing, submitted, resulted, completed --}}
                 <div class="project-status">
+                    {{-- <button class="status-label {{ $application->status }}">{{ ucfirst($application->status) }}</button> --}}
                     <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                    @include('freelancers.dashboard.modal.status')
                 </div>
-                @include('freelancers.dashboard.modal.status')
             </div>
         @endforeach
 

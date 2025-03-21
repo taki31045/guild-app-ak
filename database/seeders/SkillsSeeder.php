@@ -26,7 +26,7 @@ class SkillsSeeder extends Seeder
             // フロントエンド（HTML/CSS/JS）
             ['name' => 'HTML', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'CSS', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'JavaScript (ES6+)', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'JavaScript', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'TypeScript', 'created_at' => now(), 'updated_at' => now()],
 
             // フレームワーク・ライブラリ

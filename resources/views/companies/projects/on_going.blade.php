@@ -110,7 +110,7 @@ a {
                     <div class="card-header">
                         @if($project_progress)
                         <a href="{{ route('company.project.detail', $project_progress->id)}}" class="m-0  text-uppercase">
-                            {{ $project_progress ? $project_progress['title'] : 'No Project' }}
+                            {{ $project_progress ? Str::limit($project_progress['title'], 30) : 'No Project' }}
                         </a>
                         @else
                         <h5 class="m-0 text-uppercase">
