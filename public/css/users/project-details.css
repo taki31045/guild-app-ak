@@ -27,6 +27,14 @@ main a:hover{
     align-items: center;
 }
 
+.edit-icon{
+    font-size: 25px;
+}
+
+.edit-icon:hover{
+    color: brown;
+}
+
 .favoriteBtn{
     background: none;
     border: none;

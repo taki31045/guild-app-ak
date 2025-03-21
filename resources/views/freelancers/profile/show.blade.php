@@ -68,6 +68,10 @@
                             <th>Facebook</th>
                             <td>{{$user->freelancer->facebook}}</td>
                         </tr>
+                        <tr>
+                            <th>Rank Point</th>
+                            <td>{{$user->freelancer->rank_point}}</td>
+                        </tr>
                         @if (Auth::user()->id == $user->id)
                             <tr>
                                 <th>Total Earnings</th>

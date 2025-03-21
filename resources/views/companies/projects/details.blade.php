@@ -13,10 +13,12 @@
             <div class="detail-container">
                 <div class="job-header">
                     <h3>PROJECT DETAILS</h3>
+                    @if ($project->company->user->id == Auth::user()->id)
+                        <a href="{{ route('company.project.for_update', $project->id) }}"> <i class="fa-solid fa-pen-to-square edit-icon"></i></a>
+                    @endif
                 </div>
                 <div class="details mt-5">
                     <div class="row">
-
                         <div class="col">
                             <h4 class="h5 fw-bold">{{$project->title}}</h4>
                             <p href="{{route('freelancer.company.profile.show', $project->company->user->id)}}" class="fw-bold m-0">{{$project->company->user->name}}</p>
