@@ -41,11 +41,11 @@
                 <div class="profile-content mb-3">
                     <table class="detail">
                         <tr>
-                            <th class="pe-5">Username</th>
+                            <th>Username</th>
                             <td>{{$user->username}}</td>
                         </tr>
                         <tr>
-                            <th class="pe-5">Name</th>
+                            <th>Name</th>
                             <td>{{$user->name}}</td>
                         </tr>
                         <tr>
@@ -74,6 +74,10 @@
                                 <td>{{$user->freelancer->total_earnings}}</td>
                             </tr>
                         @endif
+                        <tr>
+                            <th>Completed projects</th>
+                            <td>{{count($user->transactions)}}</td>
+                        </tr>
                     </table>
                 </div>
 
@@ -190,7 +194,9 @@
                 {{-- status --}}
                 {{-- requested, accepted, rejected, ongoing, submitted, resulted, completed --}}
                 <div class="project-status">
-                    <button class="status-label {{ $application->status }}">{{ ucfirst($application->status) }}</button>
+                    {{-- <button class="status-label {{ $application->status }}">{{ ucfirst($application->status) }}</button> --}}
+                    <button class="status-label {{ $application->status }}" data-bs-toggle="modal" data-bs-target="#projectStatusModal-{{$application->id}}">{{ ucfirst($application->status) }}</button>
+                    @include('freelancers.dashboard.modal.status')
                 </div>
             </div>
         @endforeach
