@@ -118,4 +118,66 @@ class StatisticsController extends Controller
             'skills' => $skillData
         ]);
     }
+
+    // プロジェクトスキル件数Top10
+    public function getProjectSkillTop10()
+    {
+        $topSkills = DB::table('project_skills')
+            ->select('skills.name', DB::raw('COUNT(*) as count'))
+            ->join('skills', 'project_skills.skill_id', '=', 'skills.id')
+            ->groupBy('skills.name')
+            ->orderByDesc('count')
+            ->limit(10)
+            ->get();
+
+        return response()->json($topSkills);
+    }
+
+    // フリーランサースキル件数Top10
+    public function getFreelancerSkillTop10()
+    {
+        $topSkills = DB::table('freelancer_skills')
+            ->select('skills.name', DB::raw('COUNT(*) as count'))
+            ->join('skills', 'freelancer_skills.skill_id', '=', 'skills.id')
+            ->groupBy('skills.name')
+            ->orderByDesc('count')
+            ->limit(10)
+            ->get();
+
+        return response()->json($topSkills);
+    }
+
+    public function projectRanks()
+    {
+        $ranks = \DB::table('projects')
+            ->select('required_rank', \DB::raw('count(*) as count'))
+            ->groupBy('required_rank')
+            ->orderBy('required_rank')
+            ->pluck('count', 'required_rank');
+
+        // rank1〜5 まで0件の場合も補完
+        $result = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $result[] = $ranks[$i] ?? 0;
+        }
+
+        return response()->json(['counts' => $result]);
+    }
+
+    public function freelancerRanks()
+    {
+        $ranks = \DB::table('freelancers')
+            ->select('rank', \DB::raw('count(*) as count'))
+            ->groupBy('rank')
+            ->orderBy('rank')
+            ->pluck('count', 'rank');
+
+        // rank1〜5 まで0件の場合も補完
+        $result = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $result[] = $ranks[$i] ?? 0;
+        }
+
+        return response()->json(['counts' => $result]);
+    }
 }
