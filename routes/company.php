@@ -12,7 +12,6 @@ use App\Http\Controllers\Company\Evaluation\EvaluationController;
 use App\Http\Controllers\Company\Admin\AdminController;
 //paypal
 use App\Http\Controllers\PayPalController;
-use App\Models\Message;
 
 //company
 Route::middleware(['company', 'auth', 'verified'])->prefix('company')->name('company.')->group(function () {

@@ -70,7 +70,11 @@
     <div class="sidebar">
         @foreach ($all_users as $user_all)
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
+<<<<<<< HEAD
                 <a href="{{ route('company.freelancer.profile.show', $user_all->id)}}" class="text-black"><i class="fa-solid fa-circle-user fa-3x"></i></a>
+=======
+                <i class="fa-solid fa-circle-user fa-3x"></i>
+>>>>>>> de85ca61 (first commit)
                 <a href="{{ route('company.contact.with_freelancer', $user_all->id )}}" class="mt-2 fs-5 ms-2">{{ $user_all->name }}</a>
             </div>
         @endforeach
@@ -81,7 +85,7 @@
         @if($user->id == Auth::user()->id)
             <div class="none-message text-center">
                 <h1 class="border-bottom mt-3">User name:</h1>
-                <div class="message-container d-flex justify-content-center align-items-center"> 
+                <div class="message-container d-flex justify-content-center align-items-center">
                     <div>
                         <i class="fa-regular fa-comment text-dark fa-4x"></i>
                         <h4>Your messages</h4>
@@ -92,7 +96,7 @@
             </div>
         @else
             <h1 class="border-bottom mt-3">User name: {{ $user->name }}</h1>
-            <div class="message-container"> 
+            <div class="message-container">
                 @foreach ($messages as $message)
                     @if ($message->sender_id == Auth::user()->id)
                         <div class="message-right">
