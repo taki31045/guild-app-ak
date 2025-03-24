@@ -46,7 +46,10 @@ h1 {
 
 /* ステータスバッジの強調 */
 .status-badge {
+
     min-width: 30%;
+    /* min-width: 30%;
+
     text-align: center;
     border-radius: 1vw;
     padding: 1.5% 2%;
@@ -54,7 +57,17 @@ h1 {
     color: white;
     box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.2);
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 1vw; */
+    width: 30%; /* 幅を固定 */
+    text-align: center;
+    border-radius: 1vw;
+    padding: 1.5% 2%;
+    background-color: #C976DE;
+    color: white;
+    box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: min(1vw, 0.5em); /* 文字がはみ出そうなら小さくなる */
+    white-space: wrap; /* テキストを折り返さない */
 }
 
 /* 価格の強調 */
@@ -81,6 +94,7 @@ h1 {
 .text-muted {
     color: #6c757d !important;
 }
+
 a {
     color: inherit;  /* 親要素の色を継承 */
     text-decoration: none;  /* 下線を削除 */
@@ -108,26 +122,48 @@ a {
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header">
+
                         @if($project_progress)
                         <a href="{{ route('company.project.detail', $project_progress->id)}}" class="m-0  text-uppercase">
-                            {{ $project_progress ? $project_progress['title'] : 'No Project' }}
+                            {{ $project_progress ? Str::limit($project_progress['title'], 30) : 'No Project' }}
                         </a>
                         @else
                         <h5 class="m-0 text-uppercase">
                             {{ $project_progress ? $project_progress['title'] : 'No Project' }}
                         </h5>
                         @endif
+
+
+                        {{-- <h5 class="m-0 text-uppercase">
+                            {{ $project_progress ? $project_progress['title'] : 'No Project' }}
+                        </h5> --}}
+
+
                     </div>
                     <div class="card-body">
-                        <p class="text-truncate">
+                        {{-- <p class="text-truncate">
                             {{ $project_progress ? $project_progress['description'] : 'No description available.' }}
+
                         </p>
+
+                        </p> --}}
+
                         @if($project_progress)
-                        <a href="{{ route('company.freelancer.profile.show',$project_progress['application']['freelancer']['user']['id'])}}">Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</a>
+                        <p><a href="{{ route('company.freelancer.profile.show',$project_progress['application']['freelancer']['user']['id'])}}">Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</a></p>
                         @else
                         <p>Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</p>
                         @endif
+
                         <span class="fw-bold">Price: {{ $project_progress ? $project_progress['reward_amount'] : '-' }}</span>
+
+
+
+                        {{-- <p>Freelancer: {{ $project_progress ? $project_progress['application']['freelancer']['user']['name'] : 'N/A' }}</p> --}}
+
+
+
+                        {{-- <p class="fw-bold">Price: {{ $project_progress ? $project_progress['reward_amount'] : '-' }}</p> --}}
+
 
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <span>Deadline: {{ $project_progress ? \Carbon\Carbon::parse($project_progress['deadline'])->format('m/d') : '-' }}</span>

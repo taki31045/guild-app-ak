@@ -38,7 +38,7 @@ class PayPalController extends Controller
                     ]
                 ]
             ]
-            
+
             //             まとめ
             // ✅ createOrder() で 新しい支払いオーダーを作成 する。
             // ✅ intent: "CAPTURE" は 即時決済 を意味する。
@@ -46,7 +46,7 @@ class PayPalController extends Controller
             // ✅ purchase_units で 支払い金額や通貨を指定。
             // ✅ 成功すると 注文IDや支払いリンク がPayPalから返ってくる。
         ]);
-    
+
 
 
 
@@ -77,7 +77,7 @@ class PayPalController extends Controller
 
 
 
-       
+
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
@@ -92,23 +92,23 @@ class PayPalController extends Controller
                 'order_id' => $response['id'],
                 'type' => 'escrow_deposit',
                 'transaction_id' => $response['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
-                'amount' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'],
+                'amount' => $price,
                 'fee' => $fee,
                 'currency' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
                 'status' => 'COMPLETED',
             ]);
 
-            Application::where('project_id',  session('project_id'))->update(['status' => 'ongoing']);
+            Application::where('project_id',  session('project_id'))->update(['status' => 'accepted']);
 
 
             Admin::where('user_id','1')->update([
-                'balance' => DB::raw('balance + ' . $fee),
+                'balance' => DB::raw('balance + ' . $totalPrice),
                 'total_fee_revenue' => DB::raw('total_fee_revenue + ' . $fee),
                 'escrow_balance' => DB::raw('escrow_balance + ' . $price),
             ]);
-              
 
-            
+
+
             return redirect()
                 ->route('company.project.on_going')
                 ->with('success', '支払いが完了しました。');
@@ -126,7 +126,7 @@ class PayPalController extends Controller
             ->with('error', '支払いがキャンセルされました。');
     }
 
-    
+
 
 }
 
@@ -186,6 +186,6 @@ class PayPalController extends Controller
 //       }
 //     ]
 //   }
-  
+
 
 

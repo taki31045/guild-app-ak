@@ -18,7 +18,7 @@ class FreelancersSeeder extends Seeder
             [
                 'user_id' => $freelancerUsers[0]->id,
                 'rank' => 1,
-                'rank_point' => 150,
+                'rank_point' => 8,
                 'github' => 'https://github.com/dev_emily',
                 'X' => 'https://x.com/dev_emily',
                 'instagram' => 'https://instagram.com/dev_emily',
@@ -30,7 +30,7 @@ class FreelancersSeeder extends Seeder
             [
                 'user_id' => $freelancerUsers[1]->id,
                 'rank' => 3,
-                'rank_point' => 200,
+                'rank_point' => 5,
                 'github' => 'https://github.com/data_mike',
                 'X' => 'https://x.com/data_mike',
                 'instagram' => 'https://instagram.com/data_mike',
@@ -42,7 +42,7 @@ class FreelancersSeeder extends Seeder
             [
                 'user_id' => $freelancerUsers[2]->id,
                 'rank' => 5,
-                'rank_point' => 90,
+                'rank_point' => 3,
                 'github' => 'https://github.com/ui_olivia',
                 'X' => 'https://x.com/ui_olivia',
                 'instagram' => 'https://instagram.com/ui_olivia',

@@ -59,8 +59,12 @@ main{
     margin: 5px 0;
 }
 
-.detail table tr th{
-    width: 50px;
+.detail th{
+    width: 170px;
+}
+
+.detail{
+    font-size: 15px;
 }
 
 .skills{
@@ -86,6 +90,10 @@ main{
     padding: 20px;
     margin-top: 10px;
     box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.12);
+}
+
+.evaluation-container-sm{
+    margin-bottom: 30px;
 }
 
 .evaluation-item{

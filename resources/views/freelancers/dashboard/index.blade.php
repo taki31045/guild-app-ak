@@ -14,7 +14,7 @@
 @section('content')
 
     <div class="row justify-content-center mb-5">
-        <div class="col-8">
+        <div class="col-7">
             <h2>ON GOING</h2>
 
             @if ($applications->isEmpty())
@@ -28,7 +28,7 @@
                             <div class="Project-date">{{ \Carbon\Carbon::parse($application->project->deadline)->format('m/d') }}</div>
                             <div class="Project-details">
                                 <a href="{{route('freelancer.projects.show', $application->project->id)}}" class="fs-5">
-                                    {{$application->project->title}}
+                                    {{Str::limit($application->project->title, 50)}}
                                 </a>
 
                                 <a href="{{route('freelancer.company.profile.show', $application->project->company->user->id)}}" class="fw-bold m-0">{{$application->project->company->user->name}}</a>
@@ -125,9 +125,13 @@
                             ?>
                         </p>
                         <div class="skills">
-                            @foreach ($project->skills as $skill)
-                            <span class="skill-tag">{{$skill->name}}</span>
+                            @foreach ($project->skills->take(3) as $skill)
+                                <span class="skill-tag">{{ $skill->name }}</span>
                             @endforeach
+
+                            @if ($project->skills->count() > 3)
+                                <span class="skill-tag">+{{ $project->skills->count() - 3 }}</span>
+                            @endif
                         </div>
                     </div>
                 @endforeach

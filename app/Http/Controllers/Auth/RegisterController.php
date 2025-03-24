@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
 
 
-    
+
     protected function create(array $data)
     {
         // Create the user based on the role_id

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Company\Project;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +26,7 @@ class ProjectController extends Controller
         return redirect()->route('company.project.detail', $request->id);
     }
 
-    //project作成のためのpageに移動 
+    //project作成のためのpageに移動
     public function index(){
         $skills = Skill::all();
         return view('companies.projects.create', compact('skills'));
@@ -129,7 +128,7 @@ class ProjectController extends Controller
 
 
 
-        return redirect()->route('company.dashboard')->with('success','Project was edited');
+        return redirect()->route('company.project.on_going')->with('success','Project was edited');
     }
 
 

@@ -45,7 +45,7 @@
 
                 @elseif($application->status === 'resulted')
                     @if ($application->project->evaluation !== NULL)
-                        <div class="evaluation-container">
+                        <div class="evaluation-container-sm">
                             <h4>Evaluation</h4>
                             <div class="evaluation-item">
                                 <span class="evaluation-title">Quality</span>
