@@ -20,9 +20,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm admin-navbar">
             <div class="container">
-                <a class="navbar-brand fs-3 fw-bold" href="{{ url('/admin/freelancer') }}">
+                <a class="navbar-brand fs-1 fw-bold" href="{{ url('/admin/freelancer') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -31,8 +31,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav me-auto ms-4 fs-6">
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,5 +78,11 @@
             @yield('content')
         </main>
     </div>
+<script src="{{ asset('js/admins/statistics/common.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+@stack('scripts')
+    
 </body>
 </html>

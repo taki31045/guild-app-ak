@@ -12,32 +12,44 @@ class StatisticsController extends Controller
 {
     public function index()
     {
-        return view('admins.statistics');
+        return view('admins.statistics.index');
     }
 
     public function getStatisticsData()
-    {
-        $weeks = [];
-        $userCounts = [];
-        $projectCounts = [];
+{
+    $weeks = [];
+    $freelancerCounts = [];
+    $companyCounts = [];
+    $projectCounts = [];
 
-        // 過去6週間分のデータを取得
-        for ($i = 5; $i >= 0; $i--) {
-            $startOfWeek = Carbon::now()->subWeeks($i)->startOfWeek();
-            $endOfWeek = Carbon::now()->subWeeks($i)->endOfWeek();
+    // 過去6週間分のデータを取得
+    for ($i = 5; $i >= 0; $i--) {
+        $startOfWeek = Carbon::now()->subWeeks($i)->startOfWeek();
+        $endOfWeek = Carbon::now()->subWeeks($i)->endOfWeek();
 
-            $weeks[] = $startOfWeek->format('Y-m-d') . ' ~ ' . $endOfWeek->format('Y-m-d');
+        $weeks[] = $startOfWeek->format('Y-m-d') . ' ~ ' . $endOfWeek->format('Y-m-d');
 
-            $userCounts[] = User::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
-            $projectCounts[] = Project::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
-        }
+        // フリーランサー (role_id = 3)
+        $freelancerCounts[] = User::where('role_id', 3)
+            ->whereBetween('created_at', [$startOfWeek, $endOfWeek])
+            ->count();
 
-        return response()->json([
-            'weeks' => $weeks,
-            'userCounts' => $userCounts,
-            'projectCounts' => $projectCounts
-        ]);
+        // カンパニー (role_id = 2)
+        $companyCounts[] = User::where('role_id', 2)
+            ->whereBetween('created_at', [$startOfWeek, $endOfWeek])
+            ->count();
+
+        // プロジェクト数
+        $projectCounts[] = Project::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
     }
+
+    return response()->json([
+        'weeks'            => $weeks,
+        'freelancerCounts' => $freelancerCounts,
+        'companyCounts'    => $companyCounts,
+        'projectCounts'    => $projectCounts
+    ]);
+}
 
         
 
