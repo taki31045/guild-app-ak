@@ -7,7 +7,7 @@
     
     <!-- Admin Balance カード -->
     <div class="card mb-5 shadow-sm">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header custom-light-gray">
             <h4 class="m-0">Admin Balance</h4>
         </div>
         <div class="card-body row justify-content-center align-items-center">
@@ -24,7 +24,7 @@
 
     <!-- Project Transactions カード -->
     <div class="card shadow-sm mb-4">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header custom-light-gray">
             <h4 class="m-0">Project's Transactions List</h4>
         </div>
         <div class="card-body">
@@ -40,7 +40,7 @@
                     <input type="text" name="freelancer_name" class="form-control border-2" placeholder="Search by Freelancer Name" value="{{ request('freelancer_name') }}">
                 </div>
                 <div class="col-md-4 d-flex">
-                    <button type="submit" class="btn btn-secondary me-2">Search</button>
+                    <button type="submit" class="btn  btn-secondary me-2">Search</button>
                     <a href="{{ route('admin.transaction') }}" class="btn btn-outline-secondary">Reset</a>
                 </div>
             </form>

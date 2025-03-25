@@ -5,7 +5,7 @@
 @section('page-content')
 <div class="container ms-5">
     <div class="card border-secondary mb-4">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header custom-light-gray">
             <h2 class="h4 m-0">Projects List</h2>
         </div>
         <div class="card-body">
@@ -22,7 +22,7 @@
                     <input type="text" name="company_name" class="form-control border-dark" placeholder="Search by Company Name" value="{{ request('company_name') }}">
                 </div>
                 <div class="col-md-4 d-flex">
-                    <button type="submit" class="btn btn-secondary me-2">Search</button>
+                    <button type="submit" class="btn  btn-secondary me-2">Search</button>
                     <a href="{{ route('admin.project') }}" class="btn btn-outline-secondary">Reset</a>
                 </div>
             </form>

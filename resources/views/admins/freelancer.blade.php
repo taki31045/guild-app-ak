@@ -5,7 +5,7 @@
 @section('page-content')
 <div class="container ms-5">
     <div class="card border-secondary mb-4">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header custom-light-gray">
             <h2 class="h4 m-0">Freelancers List</h2>
         </div>
         <div class="card-body">

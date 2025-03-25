@@ -3,7 +3,7 @@
     background-size: cover;          /* 全体をカバーするようにリサイズ */
     background-position: center;     /* 真ん中基準でトリミング */
     background-repeat: no-repeat;    /* 繰り返さない */
-    height: 100px;                   /* 高さはお好みで調整（例: 80px〜120px 推奨） */
+    height: 80px;                   /* 高さはお好みで調整（例: 80px〜120px 推奨） */
 }
 
 .list-group-item.active {
@@ -124,4 +124,20 @@ body {
         background-color: #6c757d;
         color: #fff;
     }
+
+    .card-header.custom-light-gray {
+        background-color: #d3d3d3; /* 薄めのグレー */
+        color: #333; /* 文字色は濃いグレー */
+    }
     
+    .btn-custom-gray {
+    background-color: #d3d3d3;
+    color: #333;
+    border: 1px solid #a9a9a9; /* 少し濃いグレーで枠をつけると自然に見える */
+}
+
+.btn-custom-gray:hover {
+    background-color: #bcbcbc; /* ホバー時は少し濃く */
+    color: #000;
+    border-color: #8c8c8c;
+}

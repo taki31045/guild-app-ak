@@ -22,7 +22,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm admin-navbar">
             <div class="container">
-                <a class="navbar-brand fs-1 fw-bold" href="{{ url('/admin/freelancer') }}">
+                <a class="navbar-brand fs-1 " href="{{ url('/admin/freelancer') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
