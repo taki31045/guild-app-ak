@@ -139,7 +139,7 @@
         @foreach ($completedProjects as $completedProject)
             <div class="tab-pane Project-history">
                 <div class="project-box">
-                    <div class="Project-date">{{$completedProject->project->deadline}}</div>
+                    <div class="Project-date">{{ \Carbon\Carbon::parse($completedProject->project->deadline)->format('m/d') }}</div>
                     <div class="Project-details">
                         <a href="{{route('freelancer.projects.show', $completedProject->project->id)}}" class="fs-5 fw-bold">
                             {{$completedProject->project->title}}
@@ -169,7 +169,7 @@
         @foreach ($ongoingProjects as $application)
             <div class="tab-pane ongoing">
                 <div class="project-box">
-                    <div class="Project-date">{{$application->project->deadline}}</div>
+                    <div class="Project-date">{{ \Carbon\Carbon::parse($application->project->deadline)->format('m/d') }}</div>
                     <div class="Project-details">
                         @if(Auth::user()->role_id == 3)
                             <a href="{{route('freelancer.projects.show', $application->project->id)}}" class="fs-5 fw-bold">
@@ -208,9 +208,9 @@
         @foreach ($favoriteProjects as $favoriteProject)
             <div class="tab-pane likes">
                 <div class="project-box">
-                    <div class="Project-date">{{$favoriteProject->deadline}}</div>
+                    <div class="Project-date">{{ \Carbon\Carbon::parse($favoriteProject->deadline)->format('m/d') }}</div>
                     <div class="Project-details">
-                        <a href="{{route('freelancer.projects.show', $favoriteProject->id)}}" class="fw-bold">
+                        <a href="{{route('freelancer.projects.show', $favoriteProject->id)}}" class="fs-5 fw-bold">
                             {{$favoriteProject->title}}
                         </a>
                         <br>
